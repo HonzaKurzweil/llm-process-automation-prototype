@@ -1,0 +1,156 @@
+operator: FuturaTel CZ
+catalog_version: "1.0"
+currency: CZK
+services:
+  - service_id: svc_mobile_start_5g
+    category: mobile
+    subcategory: capped_data
+    name: Mobil Start 5G
+    description: 1 mobilní číslo, neomezené volání a SMS v ČR, 10 GB dat v síti 5G.
+    base_price_czk: 449
+    billing_period: monthly
+    contract_term_options_months: [0, 24]
+    availability_model: nationwide
+    locality_group_ids: []
+    requires_installation_address: false
+    supports_number_porting_in: true
+    bundle_eligible: true
+    eligible_customer_statuses: [new, existing]
+    mandatory_input_fields: []
+    tags: [consumer, single_line, 5g]
+
+  - service_id: svc_mobile_unlimited_5g
+    category: mobile
+    subcategory: unlimited_data
+    name: Mobil Neomezeně 5G
+    description: 1 mobilní číslo, neomezené volání a SMS v ČR, neomezená data v síti 5G.
+    base_price_czk: 749
+    billing_period: monthly
+    contract_term_options_months: [0, 24]
+    availability_model: nationwide
+    locality_group_ids: []
+    requires_installation_address: false
+    supports_number_porting_in: true
+    bundle_eligible: true
+    eligible_customer_statuses: [new, existing]
+    mandatory_input_fields: []
+    tags: [consumer, premium, 5g]
+
+  - service_id: svc_mobile_family_plus
+    category: mobile
+    subcategory: family_tariff
+    name: Mobil Rodina Plus
+    description: Mobilní tarif určený pro rodinné kombinace, neomezené volání a SMS, 40 GB sdílených dat na linku.
+    base_price_czk: 599
+    billing_period: monthly
+    contract_term_options_months: [0, 24]
+    availability_model: nationwide
+    locality_group_ids: []
+    requires_installation_address: false
+    supports_number_porting_in: true
+    bundle_eligible: true
+    eligible_customer_statuses: [new, existing]
+    mandatory_input_fields: []
+    tags: [consumer, family, multi_line, 5g]
+
+  - service_id: svc_internet_fiber_300
+    category: fixed_internet
+    subcategory: fiber
+    name: Optika Domů 300
+    description: Pevný internet přes optickou síť s rychlostí až 300 Mb/s.
+    base_price_czk: 499
+    billing_period: monthly
+    contract_term_options_months: [0, 24]
+    availability_model: locality_group
+    locality_group_ids: [loc_fiber_300_cities]
+    requires_installation_address: true
+    supports_number_porting_in: false
+    bundle_eligible: true
+    eligible_customer_statuses: [new, existing]
+    mandatory_input_fields: [installation_address]
+    tags: [home, fiber, core_connectivity]
+
+  - service_id: svc_internet_fiber_1000
+    category: fixed_internet
+    subcategory: fiber
+    name: Optika Domů 1000
+    description: Pevný internet přes optickou síť s rychlostí až 1 Gb/s.
+    base_price_czk: 699
+    billing_period: monthly
+    contract_term_options_months: [0, 24]
+    availability_model: locality_group
+    locality_group_ids: [loc_fiber_1000_cities]
+    requires_installation_address: true
+    supports_number_porting_in: false
+    bundle_eligible: true
+    eligible_customer_statuses: [new, existing]
+    mandatory_input_fields: [installation_address]
+    tags: [home, fiber, high_speed, core_connectivity]
+
+  - service_id: svc_internet_dsl_100
+    category: fixed_internet
+    subcategory: dsl
+    name: Internet Domů 100 DSL
+    description: Pevný internet po metalické síti s rychlostí až 100 Mb/s, dostupnost závisí na vedení v lokalitě.
+    base_price_czk: 449
+    billing_period: monthly
+    contract_term_options_months: [0, 24]
+    availability_model: network_check_required
+    locality_group_ids: []
+    requires_installation_address: true
+    supports_number_porting_in: false
+    bundle_eligible: true
+    eligible_customer_statuses: [new, existing]
+    mandatory_input_fields: [installation_address]
+    tags: [home, dsl, fallback_connectivity]
+
+  - service_id: svc_internet_wireless_50
+    category: fixed_internet
+    subcategory: fixed_wireless
+    name: Internet Domů Bezdrát 50
+    description: Bezdrátový internet pro lokality bez optiky nebo kvalitního DSL, rychlost až 50 Mb/s.
+    base_price_czk: 399
+    billing_period: monthly
+    contract_term_options_months: [0, 24]
+    availability_model: locality_group
+    locality_group_ids: [loc_fixed_wireless_cities]
+    requires_installation_address: true
+    supports_number_porting_in: false
+    bundle_eligible: true
+    eligible_customer_statuses: [new, existing]
+    mandatory_input_fields: [installation_address]
+    tags: [home, wireless, fallback_connectivity]
+
+  - service_id: svc_tv_basic
+    category: tv
+    subcategory: tv_package
+    name: Televize Basic
+    description: Základní televizní balíček pro domácnosti se standardní nabídkou kanálů.
+    base_price_czk: 299
+    billing_period: monthly
+    contract_term_options_months: [0, 24]
+    availability_model: nationwide
+    locality_group_ids: []
+    requires_installation_address: false
+    supports_number_porting_in: false
+    bundle_eligible: true
+    eligible_customer_statuses: [new, existing]
+    mandatory_input_fields: []
+    tags: [home, tv, entertainment]
+
+  - service_id: svc_tv_family
+    category: tv
+    subcategory: tv_package
+    name: Televize Family
+    description: Rozšířený televizní balíček s větším počtem rodinných a filmových kanálů.
+    base_price_czk: 399
+    billing_period: monthly
+    contract_term_options_months: [0, 24]
+    availability_model: nationwide
+    locality_group_ids: []
+    requires_installation_address: false
+    supports_number_porting_in: false
+    bundle_eligible: true
+    eligible_customer_statuses: [new, existing]
+    mandatory_input_fields: []
+    tags: [home, tv, entertainment, premium]

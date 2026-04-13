@@ -1,0 +1,43 @@
+operator: FuturaTel CZ
+catalog_version: "1.0"
+locality_groups:
+  - locality_group_id: loc_fiber_300_cities
+    name: Města se zjednodušenou dostupností Optika Domů 300
+    description: Zjednodušená referenční množina měst, kde lze pro účely datasetu nabízet optiku 300 Mb/s.
+    localities:
+      - Praha
+      - Brno
+      - Ostrava
+      - Plzeň
+      - Liberec
+      - Pardubice
+      - Hradec Králové
+      - Olomouc
+      - České Budějovice
+      - Zlín
+
+  - locality_group_id: loc_fiber_1000_cities
+    name: Města se zjednodušenou dostupností Optika Domů 1000
+    description: Užší množina měst s dostupností vyššího optického tarifu 1 Gb/s pro účely syntetických dat.
+    localities:
+      - Praha
+      - Brno
+      - Ostrava
+      - Plzeň
+      - Olomouc
+      - České Budějovice
+
+  - locality_group_id: loc_fixed_wireless_cities
+    name: Lokality s preferovanou nabídkou bezdrátového internetu
+    description: Zjednodušená referenční množina menších měst a obcí vhodná pro simulaci nabídek bezdrátového internetu.
+    localities:
+      - Benešov
+      - Beroun
+      - Kladno
+      - Kolín
+      - Písek
+      - Tábor
+      - Třebíč
+      - Uherské Hradiště
+      - Jičín
+      - Domažlice

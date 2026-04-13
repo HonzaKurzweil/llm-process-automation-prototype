@@ -1,0 +1,168 @@
+operator: FuturaTel CZ
+catalog_version: "1.0"
+
+# dependency_rules říkají, že určitá položka vyžaduje jinou službu nebo produkt.
+dependency_rules:
+  - rule_id: dep_tv_basic_requires_fixed_internet
+    source_kind: service
+    source_id: svc_tv_basic
+    requirement_type: requires_category
+    required_categories: [fixed_internet]
+    required_ids: []
+    reason: TV služba se prodává jen společně s pevným internetem.
+
+  - rule_id: dep_tv_family_requires_fixed_internet
+    source_kind: service
+    source_id: svc_tv_family
+    requirement_type: requires_category
+    required_categories: [fixed_internet]
+    required_ids: []
+    reason: Rozšířený TV balíček se prodává jen společně s pevným internetem.
+
+  - rule_id: dep_sports_pack_requires_tv_family
+    source_kind: product
+    source_id: prod_tv_sports_pack
+    requirement_type: requires_id
+    required_categories: []
+    required_ids: [svc_tv_family]
+    reason: Sportovní doplněk lze objednat jen k rozšířenému TV balíčku Family.
+
+  - rule_id: dep_install_express_requires_fixed_internet
+    source_kind: product
+    source_id: prod_installation_express
+    requirement_type: requires_category
+    required_categories: [fixed_internet]
+    required_ids: []
+    reason: Expresní instalace je relevantní jen při zřízení pevného internetu.
+
+  - rule_id: dep_router_standard_requires_fixed_internet
+    source_kind: product
+    source_id: prod_router_standard
+    requirement_type: requires_category
+    required_categories: [fixed_internet]
+    required_ids: []
+    reason: Router Standard lze pronajmout jen ke službě pevného internetu.
+
+  - rule_id: dep_router_pro_requires_fixed_internet
+    source_kind: product
+    source_id: prod_router_pro
+    requirement_type: requires_category
+    required_categories: [fixed_internet]
+    required_ids: []
+    reason: Router Pro lze pronajmout jen ke službě pevného internetu.
+
+  - rule_id: dep_mesh_requires_router_pro_or_fiber1000
+    source_kind: product
+    source_id: prod_mesh_node
+    requirement_type: requires_one_of_ids
+    required_categories: []
+    required_ids: [prod_router_pro, svc_internet_fiber_1000]
+    reason: Mesh jednotka dává smysl jen při výkonnějším domácím vybavení nebo nejvyšším optickém tarifu.
+
+# incompatibility_rules říkají, že dvě položky nemají být v jedné objednávce současně.
+incompatibility_rules:
+  - rule_id: inc_standard_vs_pro_router
+    left_kind: product
+    left_id: prod_router_standard
+    right_kind: product
+    right_id: prod_router_pro
+    reason: Zákazník si má zvolit pouze jeden typ hlavního routeru.
+
+  - rule_id: inc_fiber1000_vs_dsl100
+    left_kind: service
+    left_id: svc_internet_fiber_1000
+    right_kind: service
+    right_id: svc_internet_dsl_100
+    reason: V jednom standardním rezidenčním leadu se nepředpokládá souběžná objednávka dvou hlavních pevných internetů pro stejnou instalaci.
+
+  - rule_id: inc_fiber1000_vs_wireless50
+    left_kind: service
+    left_id: svc_internet_fiber_1000
+    right_kind: service
+    right_id: svc_internet_wireless_50
+    reason: Alternativní přístupové technologie se v jednom běžném leadu nekombinují.
+
+# eligibility_rules podmiňují nárok na službu nebo slevu dalšími okolnostmi.
+eligibility_rules:
+  - rule_id: elg_family_tariff_requires_two_mobile_lines
+    target_kind: service
+    target_id: svc_mobile_family_plus
+    condition_type: min_category_quantity
+    condition:
+      category: mobile
+      min_quantity: 2
+    reason: Rodinný tarif má smysl jen při alespoň dvou mobilních linkách.
+
+  - rule_id: elg_bundle_discount_requires_two_categories
+    target_kind: discount
+    target_id: disc_bundle_10_new
+    condition_type: min_distinct_service_categories
+    condition:
+      min_distinct_service_categories: 2
+    reason: Balíčková sleva vzniká až při kombinaci alespoň dvou různých kategorií služeb.
+
+  - rule_id: elg_porting_discount_requires_porting
+    target_kind: discount
+    target_id: disc_porting_mobile_200
+    condition_type: requires_flag
+    condition:
+      flag: porting_requested
+      value: true
+    reason: Sleva za přenos čísla je navázána na skutečný požadavek na portaci.
+
+  - rule_id: elg_retention_discount_requires_existing_customer
+    target_kind: discount
+    target_id: disc_retention_15_existing
+    condition_type: requires_customer_status
+    condition:
+      eligible_customer_statuses: [existing]
+      retention_case_required: true
+    reason: Retenční sleva je určena jen pro jednání se stávajícím zákazníkem.
+
+  - rule_id: elg_family_line_discount_requires_family_tariff_and_two_lines
+    target_kind: discount
+    target_id: disc_family_line_100
+    condition_type: composite
+    condition:
+      required_service_ids: [svc_mobile_family_plus]
+      category: mobile
+      min_quantity: 2
+    reason: Sleva na další linky je určena jen pro rodinnou mobilní kombinaci.
+
+  - rule_id: elg_express_install_discount_requires_mobile_and_fixed_internet
+    target_kind: discount
+    target_id: disc_install_express_waiver
+    condition_type: composite
+    condition:
+      required_categories: [mobile, fixed_internet]
+      min_distinct_service_categories: 2
+    reason: Akce na expresní instalaci zdarma se poskytuje jen při kombinaci internetu a mobilu.
+
+# quantity_rules zavádějí jednoduché limity počtu položek v jednom leadu.
+quantity_rules:
+  - rule_id: qty_max_one_fixed_internet_core
+    target_kind: service
+    target_scope: category
+    target_id: fixed_internet
+    max_quantity: 1
+    reason: Pro zjednodušený rezidenční use case uvažujeme jednu hlavní pevnou internetovou službu na lead.
+
+  - rule_id: qty_max_mesh_nodes_three
+    target_kind: product
+    target_scope: id
+    target_id: prod_mesh_node
+    max_quantity: 3
+    reason: V běžné domácnosti dává smysl nejvýše trojice mesh jednotek.
+
+  - rule_id: qty_max_set_top_box_three
+    target_kind: product
+    target_scope: id
+    target_id: prod_set_top_box
+    max_quantity: 3
+    reason: Zjednodušený limit pro domácnost s více televizemi.
+
+# discount_exclusion_rules řeší nesčitatelné akce.
+discount_exclusion_rules:
+  - rule_id: dex_core_service_monthly_promos_mutually_exclusive
+    exclusivity_group: core_service_monthly_promo
+    reason: Hlavní měsíční promo na služby se nesmí kombinovat s jiným hlavním měsíčním promem.
