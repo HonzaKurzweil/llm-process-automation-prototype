@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StructuredOutputService {
 
-    public void sayHello(String input) {
-        log.info("Generated greeting: {}", input);
+    public void startService(String input) {
+        log.info("Starting service with input: {}", input);
     }
 }
