@@ -1,0 +1,320 @@
+reference_outputs:
+
+  - request_type_id: rt_new_mobile_order
+    references:
+      - reference_id: ref_new_mobile_order_01
+        reference_kind: incomplete_reference
+        note: Neúplná reference. Jde o mobilní objednávku s požadavkem na portaci, ale chybí portované číslo.
+        extracted_fields:
+          customer_status: new
+          customer_name: Petr Veselý
+          contact_phone: "+420 603 112 445"
+          requested_services:
+            - service_id: svc_mobile_unlimited_5g
+              quantity: 1
+          contract_term_months: 24
+          porting_requested: true
+          requested_discounts:
+            - discount_id: disc_porting_mobile_200
+        missing_required_fields:
+          - ported_numbers
+        expected_rule_violations: []
+
+      - reference_id: ref_new_mobile_order_02
+        reference_kind: complete_valid_reference
+        note: Kompletní reference, která splňuje byznysová pravidla. Portace je vyžádána a jsou uvedena potřebná data.
+        extracted_fields:
+          customer_status: new
+          customer_name: Klára Horáková
+          contact_phone: "+420 777 210 884"
+          contact_email: klara.horakova@email.cz
+          requested_services:
+            - service_id: svc_mobile_start_5g
+              quantity: 1
+          contract_term_months: 24
+          porting_requested: true
+          ported_numbers:
+            - number: "+420 731 555 888"
+              donor_operator: O2
+          requested_discounts:
+            - discount_id: disc_porting_mobile_200
+        missing_required_fields: []
+        expected_rule_violations: []
+
+      - reference_id: ref_new_mobile_order_03
+        reference_kind: complete_invalid_reference
+        note: Kompletní reference, ale porušuje byznysové pravidlo pro slevu za portaci. Sleva je požadována bez portace.
+        extracted_fields:
+          customer_status: new
+          customer_name: Marek Beneš
+          contact_phone: "+420 724 990 331"
+          requested_services:
+            - service_id: svc_mobile_unlimited_5g
+              quantity: 1
+          contract_term_months: 0
+          porting_requested: false
+          requested_discounts:
+            - discount_id: disc_porting_mobile_200
+        missing_required_fields: []
+        expected_rule_violations:
+          - elg_porting_discount_requires_porting
+
+  - request_type_id: rt_family_mobile_order
+    references:
+      - reference_id: ref_family_mobile_order_01
+        reference_kind: incomplete_reference
+        note: Neúplná reference. Rodinný tarif uvádí dvě linky, ale detail je vyplněn jen pro jednu.
+        extracted_fields:
+          customer_status: existing
+          customer_name: Jana Křížová
+          contact_phone: "+420 608 441 903"
+          requested_services:
+            - service_id: svc_mobile_family_plus
+              quantity: 2
+          mobile_lines_count: 2
+          mobile_lines:
+            - label: hlavní_linka
+              plan_service_id: svc_mobile_family_plus
+              porting_requested: false
+          contract_term_months: 24
+          requested_discounts:
+            - discount_id: disc_family_line_100
+        missing_required_fields:
+          - mobile_lines
+        expected_rule_violations: []
+
+      - reference_id: ref_family_mobile_order_02
+        reference_kind: complete_valid_reference
+        note: Kompletní reference, která splňuje byznysová pravidla. Rodinný tarif má tři linky a sleva na další linky je oprávněná.
+        extracted_fields:
+          customer_status: new
+          customer_name: Tomáš Dvořák
+          contact_phone: "+420 606 200 111"
+          requested_services:
+            - service_id: svc_mobile_family_plus
+              quantity: 3
+          mobile_lines_count: 3
+          mobile_lines:
+            - label: hlavní_linka
+              plan_service_id: svc_mobile_family_plus
+              porting_requested: true
+            - label: druha_linka
+              plan_service_id: svc_mobile_family_plus
+              porting_requested: false
+            - label: treti_linka
+              plan_service_id: svc_mobile_family_plus
+              porting_requested: false
+          ported_numbers:
+            - number: "+420 604 887 220"
+              donor_operator: Vodafone
+          contract_term_months: 24
+          requested_discounts:
+            - discount_id: disc_family_line_100
+        missing_required_fields: []
+        expected_rule_violations: []
+
+      - reference_id: ref_family_mobile_order_03
+        reference_kind: complete_invalid_reference
+        note: Kompletní reference, ale porušuje pravidla rodinného tarifu. Je uvedena jen jedna linka a přesto je použit rodinný tarif i sleva na další linky.
+        extracted_fields:
+          customer_status: existing
+          customer_name: Roman Hlaváč
+          contact_phone: "+420 605 780 123"
+          requested_services:
+            - service_id: svc_mobile_family_plus
+              quantity: 1
+          mobile_lines_count: 1
+          mobile_lines:
+            - label: hlavní_linka
+              plan_service_id: svc_mobile_family_plus
+              porting_requested: false
+          contract_term_months: 24
+          requested_discounts:
+            - discount_id: disc_family_line_100
+        missing_required_fields: []
+        expected_rule_violations:
+          - elg_family_tariff_requires_two_mobile_lines
+          - elg_family_line_discount_requires_family_tariff_and_two_lines
+
+  - request_type_id: rt_fixed_internet_with_hardware_order
+    references:
+      - reference_id: ref_fixed_internet_hw_01
+        reference_kind: incomplete_reference
+        note: Neúplná reference. Je uvedena internetová služba i hardware, ale chybí instalační adresa.
+        extracted_fields:
+          customer_status: new
+          customer_name: Monika Šimečková
+          contact_phone: "+420 731 440 550"
+          requested_services:
+            - service_id: svc_internet_fiber_300
+              quantity: 1
+          requested_products:
+            - product_id: prod_router_pro
+              quantity: 1
+          contract_term_months: 24
+        missing_required_fields:
+          - installation_address
+        expected_rule_violations: []
+
+      - reference_id: ref_fixed_internet_hw_02
+        reference_kind: complete_valid_reference
+        note: Kompletní reference, která splňuje byznysová pravidla. Internet je doplněn kompatibilním routerem Pro a dvěma mesh jednotkami.
+        extracted_fields:
+          customer_status: new
+          customer_name: Daniel Procházka
+          contact_phone: "+420 702 555 910"
+          installation_address: "Brno, Královo Pole, Purkyňova 85"
+          requested_services:
+            - service_id: svc_internet_fiber_300
+              quantity: 1
+          requested_products:
+            - product_id: prod_router_pro
+              quantity: 1
+            - product_id: prod_mesh_node
+              quantity: 2
+          contract_term_months: 24
+        missing_required_fields: []
+        expected_rule_violations: []
+
+      - reference_id: ref_fixed_internet_hw_03
+        reference_kind: complete_invalid_reference
+        note: Kompletní reference, ale porušuje pravidlo nekompatibility. V jedné objednávce jsou současně Router Standard i Router Pro.
+        extracted_fields:
+          customer_status: existing
+          customer_name: Lenka Votápková
+          contact_phone: "+420 739 661 200"
+          installation_address: "Pardubice, Polabiny, Bělehradská 412"
+          requested_services:
+            - service_id: svc_internet_dsl_100
+              quantity: 1
+          requested_products:
+            - product_id: prod_router_standard
+              quantity: 1
+            - product_id: prod_router_pro
+              quantity: 1
+          contract_term_months: 0
+        missing_required_fields: []
+        expected_rule_violations:
+          - inc_standard_vs_pro_router
+
+  - request_type_id: rt_internet_tv_bundle_order
+    references:
+      - reference_id: ref_internet_tv_bundle_01
+        reference_kind: incomplete_reference
+        note: Neúplná reference. Je jasné, že klient chce internet a TV, ale chybí instalační adresa pro internet.
+        extracted_fields:
+          customer_status: new
+          customer_name: Veronika Jarošová
+          contact_phone: "+420 774 551 008"
+          requested_services:
+            - service_id: svc_internet_fiber_300
+              quantity: 1
+            - service_id: svc_tv_family
+              quantity: 1
+          contract_term_months: 24
+          requested_products:
+            - product_id: prod_set_top_box
+              quantity: 1
+        missing_required_fields:
+          - installation_address
+        expected_rule_violations: []
+
+      - reference_id: ref_internet_tv_bundle_02
+        reference_kind: complete_valid_reference
+        note: Kompletní reference, která splňuje byznysová pravidla. Nový zákazník objednává internet a TV Family, sportovní balíček i bundle slevu.
+        extracted_fields:
+          customer_status: new
+          customer_name: Martin Čermák
+          contact_phone: "+420 725 118 443"
+          installation_address: "Praha 9, Vysočany, Sokolovská 188"
+          requested_services:
+            - service_id: svc_internet_fiber_300
+              quantity: 1
+            - service_id: svc_tv_family
+              quantity: 1
+          requested_products:
+            - product_id: prod_set_top_box
+              quantity: 2
+            - product_id: prod_tv_sports_pack
+              quantity: 1
+          contract_term_months: 24
+          requested_discounts:
+            - discount_id: disc_bundle_10_new
+        missing_required_fields: []
+        expected_rule_violations: []
+
+      - reference_id: ref_internet_tv_bundle_03
+        reference_kind: complete_invalid_reference
+        note: Kompletní reference, ale porušuje pravidlo závislosti. Sportovní balíček je požadován k TV Basic místo TV Family.
+        extracted_fields:
+          customer_status: new
+          customer_name: Aleš Konečný
+          contact_phone: "+420 720 991 774"
+          installation_address: "Olomouc, Nové Sady, Rooseveltova 61"
+          requested_services:
+            - service_id: svc_internet_fiber_300
+              quantity: 1
+            - service_id: svc_tv_basic
+              quantity: 1
+          requested_products:
+            - product_id: prod_tv_sports_pack
+              quantity: 1
+          contract_term_months: 24
+        missing_required_fields: []
+        expected_rule_violations:
+          - dep_sports_pack_requires_tv_family
+
+  - request_type_id: rt_retention_discount_request
+    references:
+      - reference_id: ref_retention_discount_01
+        reference_kind: incomplete_reference
+        note: Neúplná reference. Je zřejmé, že jde o retenční jednání, ale chybí určení cílové služby, ke které se má sleva vztahovat.
+        extracted_fields:
+          customer_status: existing
+          customer_name: Iveta Malá
+          contact_phone: "+420 736 410 902"
+          retention_case: true
+          current_services:
+            - service_id: svc_internet_fiber_300
+          requested_discounts:
+            - discount_id: disc_retention_15_existing
+          churn_reason: "zvažuje odchod kvůli ceně"
+        missing_required_fields:
+          - target_service_id
+        expected_rule_violations: []
+
+      - reference_id: ref_retention_discount_02
+        reference_kind: complete_valid_reference
+        note: Kompletní reference, která splňuje byznysová pravidla. Stávající zákazník řeší retenční jednání na konkrétní službě.
+        extracted_fields:
+          customer_status: existing
+          customer_name: Pavel Kubík
+          contact_phone: "+420 604 321 765"
+          retention_case: true
+          current_services:
+            - service_id: svc_internet_fiber_300
+          target_service_id: svc_internet_fiber_300
+          requested_discounts:
+            - discount_id: disc_retention_15_existing
+          churn_reason: "konkurenční nabídka je levnější"
+          competitor_offer: "internet 500 Mb/s za 549 Kč"
+        missing_required_fields: []
+        expected_rule_violations: []
+
+      - reference_id: ref_retention_discount_03
+        reference_kind: complete_invalid_reference
+        note: Kompletní reference, ale porušuje pravidlo pro retenční slevu. Sleva je požadována, přestože případ není označen jako retenční.
+        extracted_fields:
+          customer_status: existing
+          customer_name: Zdeněk Rybář
+          contact_phone: "+420 603 998 441"
+          retention_case: false
+          current_services:
+            - service_id: svc_mobile_unlimited_5g
+          target_service_id: svc_mobile_unlimited_5g
+          requested_discounts:
+            - discount_id: disc_retention_15_existing
+          churn_reason: "žádost o lepší cenu při prodloužení"
+        missing_required_fields: []
+        expected_rule_violations:
+          - elg_retention_discount_requires_existing_customer
