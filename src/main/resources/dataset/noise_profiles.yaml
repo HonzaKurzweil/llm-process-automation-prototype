@@ -1,0 +1,242 @@
+version: 1
+
+generation_guidelines:
+  max_noise_tags_per_input: 2
+  allow_zero_noise_for_clean_baseline: true
+  keep_channel_style_separate_from_noise: true
+  notes:
+    - "Každý vstup má právě jeden channel_style."
+    - "Doporučené je kombinovat nejvýše 1 až 2 noise_tags."
+    - "Business perturbation tags používej hlavně u invalid referencí."
+    - "Nepřehánět počet současných poruch, aby vstupy zůstaly realistické."
+    - "Pokud schema extrakce neobsahuje pole pro unknown/unresolved mentions, používej nonexistent_product_mention opatrně."
+
+reference_output_policy:
+  surface_noise:
+    effect: "Nemění referenční výstup, mění jen podobu textu."
+    examples:
+      - typos_light
+      - typos_heavy
+      - punctuation_noise
+      - casing_noise
+  omission_noise:
+    effect: "Pole chybí i v reference_output, pokud ve vstupu skutečně není sdělené."
+    examples:
+      - missing_noncritical
+      - missing_critical
+  contradiction_noise:
+    effect: "Pokud je konflikt nerozhodnutelný, pole má být null nebo se uvede v unresolved/conflicting fields."
+    examples:
+      - contradictory_value
+      - self_correction_conflict
+  invalid_entity_noise:
+    effect: "Neznámá entita nemá být mapována na existující katalogové ID bez opory ve vstupu."
+    examples:
+      - nonexistent_product_mention
+      - stale_offer_reference
+  irrelevant_noise:
+    effect: "Balast se do reference_output nepromítá."
+    examples:
+      - irrelevant_info
+      - thread_quote_noise
+      - followup_action_noise
+
+channel_styles:
+  - channel_style_id: crm_ticket
+    description: "Interní stručný zápis obchodníka nebo operátora, často heslovitý a polostrukturovaný."
+    typical_features:
+      - "krátké věty nebo body"
+      - "zkratky a interní slang"
+      - "minimum zdvořilostních formulací"
+      - "kombinace faktů a interních poznámek"
+
+  - channel_style_id: broker_email
+    description: "E-mail obchodníka zprostředkovávajícího požadavek zákazníka."
+    typical_features:
+      - "souvislý text"
+      - "oslovení, podpis"
+      - "vysvětlující formulace"
+      - "často přeposlaný nebo navazující kontext"
+
+  - channel_style_id: call_transcript
+    description: "Přepis hovoru s obchodníkem nebo zákazníkem."
+    typical_features:
+      - "mluvený jazyk"
+      - "nedokončené věty"
+      - "opravy a váhání"
+      - "opakování a odbočky"
+
+shared_noise_tags:
+  - noise_tag_id: clean
+    category: baseline
+    description: "Bez šumu, čistý a jednoznačný vstup."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: typos_light
+    category: surface
+    description: "Několik běžných překlepů, chybějící diakritika nebo drobné chybné skloňování."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: typos_heavy
+    category: surface
+    description: "Vyšší hustota překlepů a deformací slov, ale text je stále čitelný."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+    warning: "Nepoužívat příliš často, může být nerealistické."
+
+  - noise_tag_id: punctuation_noise
+    category: surface
+    description: "Chybějící nebo chaotická interpunkce, splývání vět."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: casing_noise
+    category: surface
+    description: "Nekonzistentní velká/malá písmena, názvy produktů bez standardního zápisu."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+
+  - noise_tag_id: duplication
+    category: information
+    description: "Tatáž informace je ve vstupu uvedena vícekrát."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: irrelevant_info
+    category: information
+    description: "Balast, který nesouvisí s extrahovaným požadavkem, např. interní provozní poznámka nebo vedlejší komentář."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: missing_noncritical
+    category: omission
+    description: "Chybí méně důležitý údaj, ale hlavní smysl požadavku je zachován."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: missing_critical
+    category: omission
+    description: "Chybí klíčový údaj potřebný pro úplné zpracování, např. instalační adresa nebo portované číslo."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: contradictory_value
+    category: contradiction
+    description: "Ve vstupu se objeví dvě neslučitelné hodnoty téhož údaje."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: ambiguous_reference
+    category: ambiguity
+    description: "Nejasný odkaz typu 'tohle', 'ten větší tarif', 'tu službu nechte', bez jednoznačné vazby."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: stale_offer_reference
+    category: invalid_entity
+    description: "Zmínka o starém, již neplatném nebo katalogově neexistujícím názvu nabídky."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+  - noise_tag_id: nonexistent_product_mention
+    category: invalid_entity
+    description: "Text obsahuje neexistující produkt nebo službu, která není v katalogu."
+    applies_to_channels:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+
+channel_specific_noise_tags:
+  crm_ticket:
+    - noise_tag_id: shorthand_internal
+      category: channel_specific
+      description: "Použití interních zkratek a heslovitých zápisů."
+    - noise_tag_id: bullet_fragmentation
+      category: channel_specific
+      description: "Informace jsou rozsekané do útržků nebo bodů bez spojovacího textu."
+    - noise_tag_id: followup_action_noise
+      category: channel_specific
+      description: "Vedle požadavku jsou uvedeny interní akční poznámky typu 'ověřit síť', 'volat zpět zítra'."
+    - noise_tag_id: copy_paste_mix
+      category: channel_specific
+      description: "Část záznamu vypadá jako vložený úryvek z jiného interního systému."
+
+  broker_email:
+    - noise_tag_id: greeting_signature_noise
+      category: channel_specific
+      description: "Oslovení, podpis, kontaktní blok, disclaimer."
+    - noise_tag_id: thread_quote_noise
+      category: channel_specific
+      description: "Citace předchozí komunikace nebo přeposlaných částí."
+    - noise_tag_id: polite_paraphrase_noise
+      category: channel_specific
+      description: "Nadměrně popisný a zdvořilý styl, který rozmělňuje klíčové informace."
+    - noise_tag_id: attachment_reference_noise
+      category: channel_specific
+      description: "Zmínka o příloze nebo slíbeném doplnění informací, které ale v textu nejsou."
+
+  call_transcript:
+    - noise_tag_id: hesitation_disfluency
+      category: channel_specific
+      description: "Váhání, výplňová slova a přerušování typu 'ehm', 'no', 'vlastně'."
+    - noise_tag_id: self_correction_conflict
+      category: channel_specific
+      description: "Mluvčí sám sebe opravuje a není vždy jasné, která verze platí."
+    - noise_tag_id: incomplete_sentences
+      category: channel_specific
+      description: "Nedokončené věty a fragmenty běžné v mluveném projevu."
+    - noise_tag_id: spoken_number_variation
+      category: channel_specific
+      description: "Telefonní čísla, rychlosti nebo počty jsou řečeny nejednotně nebo váhavě."
+    - noise_tag_id: smalltalk_noise
+      category: channel_specific
+      description: "Krátké nesouvisející odbočky a zdvořilostní pasáže ze začátku nebo konce hovoru."
+
+business_perturbation_tags:
+  - perturbation_tag_id: invalid_discount_eligibility
+    category: business_rule
+    description: "Požadovaná sleva nesplňuje podmínky nároku, např. je pro jiný customer status nebo jiný typ objednávky."
+
+  - perturbation_tag_id: incompatible_products
+    category: business_rule
+    description: "Vstup obsahuje kombinaci produktů nebo služeb, která je podle pravidel nekompatibilní."
+
+  - perturbation_tag_id: unavailable_locality
+    category: business_rule
+    description: "Požadovaná služba je zmíněna pro lokalitu, kde by podle pravidel neměla být dostupná."
+
+  - perturbation_tag_id: missing_dependency
+    category: business_rule
+    description: "Je zmíněn produkt nebo doplněk, který vyžaduje jinou hlavní službu, ale ta ve vstupu chybí."
+
+  - perturbation_tag_id: over_limit_quantity
+    category: business_rule
+    description: "Počet kusů nebo linek překračuje definované limity."
+
+  - perturbation_tag_id: bundle_without_bundle_condition
+    category: business_rule
+    description: "Je požadována bundle sleva nebo bundle logika, ale objednávka fakticky bundle netvoří."
