@@ -8,5 +8,5 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public record ServiceRequest(
         @JsonProperty("service_id") String serviceId,
-        @JsonProperty("quantity") int quantity
+        @JsonProperty("quantity") Integer quantity
 ) {}

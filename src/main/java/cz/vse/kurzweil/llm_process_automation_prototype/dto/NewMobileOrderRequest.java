@@ -30,10 +30,10 @@ public record NewMobileOrderRequest(
 
         /** Allowed values per service catalog: 0 (no commitment) or 24 months. */
         @JsonProperty("contract_term_months")
-        int contractTermMonths,
+        Integer contractTermMonths,
 
         @JsonProperty("porting_requested")
-        boolean portingRequested,
+        Boolean portingRequested,
 
         // ── conditional required (when portingRequested == true) ─────────────────
         @JsonProperty("ported_numbers")
