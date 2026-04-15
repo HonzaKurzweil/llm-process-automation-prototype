@@ -1,0 +1,276 @@
+{
+  "dataset_version": 1,
+  "source_files": [
+    "src/main/resources/domain/services.yaml",
+    "src/main/resources/domain/products.yaml",
+    "src/main/resources/domain/discounts.yaml",
+    "src/main/resources/domain/rules.yaml",
+    "src/main/resources/dataset/request_types.yaml",
+    "src/main/resources/dataset/reference_outputs.yaml",
+    "src/main/resources/dataset/noise_profiles.yaml"
+  ],
+  "generation_parameters": {
+    "request_type_id": "rt_new_mobile_order",
+    "channels": ["crm_ticket", "broker_email", "call_transcript"],
+    "noise_mode": "light",
+    "variants_per_reference_per_channel": 1,
+    "allow_reference_mutation": false
+  },
+  "records": [
+    {
+      "input_id": "rt_new_mobile_order__ref_new_mobile_order_01__crm_ticket__v01",
+      "request_type_id": "rt_new_mobile_order",
+      "reference_id": "ref_new_mobile_order_01",
+      "reference_kind": "incomplete_reference",
+      "channel": "crm_ticket",
+      "channel_style": "crm_ticket",
+      "noise_tags": ["bullet_fragmentation"],
+      "business_perturbation_tags": [],
+      "input_text": "Nový zákazník – Petr Veselý\nTel.: 603 112 445\nTarif: Mobil Neomezeně 5G – 1x\nZávazek: 24 měs.\nPortace: ANO – číslo zatím neposkytnuto\nSleva: Přenos čísla 200 Kč / 6 měs.",
+      "reference_output": {
+        "customer_status": "new",
+        "customer_name": "Petr Veselý",
+        "contact_phone": "+420 603 112 445",
+        "requested_services": [
+          {"service_id": "svc_mobile_unlimited_5g", "quantity": 1}
+        ],
+        "contract_term_months": 24,
+        "porting_requested": true,
+        "requested_discounts": [
+          {"discount_id": "disc_porting_mobile_200"}
+        ]
+      },
+      "missing_required_fields": ["ported_numbers"],
+      "expected_rule_violations": [],
+      "generation_note": "Incomplete reference expressed as a CRM ticket with bullet fragmentation. Porting is flagged but ported_numbers is absent, preserving the material incompleteness."
+    },
+    {
+      "input_id": "rt_new_mobile_order__ref_new_mobile_order_01__broker_email__v01",
+      "request_type_id": "rt_new_mobile_order",
+      "reference_id": "ref_new_mobile_order_01",
+      "reference_kind": "incomplete_reference",
+      "channel": "broker_email",
+      "channel_style": "broker_email",
+      "noise_tags": ["greeting_signature_noise"],
+      "business_perturbation_tags": [],
+      "input_text": "Dobrý den,\n\nrád bych zadal objednávku mobilní služby pro nového zákazníka pana Petra Veselého.\n\nZákazník: Petr Veselý (nový zákazník)\nTelefon: +420 603 112 445\nTarif: Mobil Neomezeně 5G, 1 linka\nDélka závazku: 24 měsíců\nPortace čísla: zákazník o přenesení čísla žádá\nSleva: Přenos čísla 200 Kč na 6 měsíců\n\nPortované číslo mi zákazník dosud neposkytl, zašlu ho dodatečně.\n\nS pozdravem,\nOndřej Kovář\nObchodní zástupce\nondrej.kovar@futuraprofit.cz | +420 739 000 100",
+      "reference_output": {
+        "customer_status": "new",
+        "customer_name": "Petr Veselý",
+        "contact_phone": "+420 603 112 445",
+        "requested_services": [
+          {"service_id": "svc_mobile_unlimited_5g", "quantity": 1}
+        ],
+        "contract_term_months": 24,
+        "porting_requested": true,
+        "requested_discounts": [
+          {"discount_id": "disc_porting_mobile_200"}
+        ]
+      },
+      "missing_required_fields": ["ported_numbers"],
+      "expected_rule_violations": [],
+      "generation_note": "Incomplete reference expressed as broker email with greeting/signature noise. Porting is stated but ported_numbers is explicitly not yet available, preserving the material incompleteness."
+    },
+    {
+      "input_id": "rt_new_mobile_order__ref_new_mobile_order_01__call_transcript__v01",
+      "request_type_id": "rt_new_mobile_order",
+      "reference_id": "ref_new_mobile_order_01",
+      "reference_kind": "incomplete_reference",
+      "channel": "call_transcript",
+      "channel_style": "call_transcript",
+      "noise_tags": ["hesitation_disfluency"],
+      "business_perturbation_tags": [],
+      "input_text": "Operátor: Dobrý den, FuturaTel, jak vám mohu pomoci?\nZákazník: Ehm, dobrý den, jo. Chtěl bych se přihlásit k novýmu tarifu, jmenuji se Petr Veselý.\nOperátor: Dobře, pane Veselý. Jaký tarif vás zajímá?\nZákazník: Ten neomezenej, teda... Mobil Neomezeně 5G. Na dvacet čtyři měsíce.\nOperátor: Budete přenášet číslo od jiného operátora?\nZákazník: Ano, to bych chtěl, no. A taky tu slevu dvě stě korun, co dáváte při přenosu čísla.\nOperátor: Dobře. A na jaké číslo se má portace provést?\nZákazník: Ehm, to mám zapsaný doma, teď ho fakt nemám po ruce. Můžu to dodat potom?\nOperátor: Samozřejmě, potvrdíme objednávku, jakmile číslo zašlete. Kontaktní číslo je 603 112 445?\nZákazník: Jo, přesně tak.",
+      "reference_output": {
+        "customer_status": "new",
+        "customer_name": "Petr Veselý",
+        "contact_phone": "+420 603 112 445",
+        "requested_services": [
+          {"service_id": "svc_mobile_unlimited_5g", "quantity": 1}
+        ],
+        "contract_term_months": 24,
+        "porting_requested": true,
+        "requested_discounts": [
+          {"discount_id": "disc_porting_mobile_200"}
+        ]
+      },
+      "missing_required_fields": ["ported_numbers"],
+      "expected_rule_violations": [],
+      "generation_note": "Incomplete reference expressed as a call transcript with hesitation/disfluency noise. Customer confirms porting intent but cannot provide the ported number, preserving the material incompleteness."
+    },
+    {
+      "input_id": "rt_new_mobile_order__ref_new_mobile_order_02__crm_ticket__v01",
+      "request_type_id": "rt_new_mobile_order",
+      "reference_id": "ref_new_mobile_order_02",
+      "reference_kind": "complete_valid_reference",
+      "channel": "crm_ticket",
+      "channel_style": "crm_ticket",
+      "noise_tags": ["shorthand_internal"],
+      "business_perturbation_tags": [],
+      "input_text": "NOV zákazník – Klára Horáková\nTel.: 777 210 884 | mail: klara.horakova@email.cz\nTarif: Mobil Start 5G (1x), 24M závazek\nPort: ANO – číslo +420 731 555 888, donor O2\nSleva: port 200 Kč/6M\nStav: kompletní, ke zpracování",
+      "reference_output": {
+        "customer_status": "new",
+        "customer_name": "Klára Horáková",
+        "contact_phone": "+420 777 210 884",
+        "contact_email": "klara.horakova@email.cz",
+        "requested_services": [
+          {"service_id": "svc_mobile_start_5g", "quantity": 1}
+        ],
+        "contract_term_months": 24,
+        "porting_requested": true,
+        "ported_numbers": [
+          {"number": "+420 731 555 888", "donor_operator": "O2"}
+        ],
+        "requested_discounts": [
+          {"discount_id": "disc_porting_mobile_200"}
+        ]
+      },
+      "missing_required_fields": [],
+      "expected_rule_violations": [],
+      "generation_note": "Complete valid reference expressed as a CRM ticket with shorthand internal notation. All required fields including ported number and donor operator are present."
+    },
+    {
+      "input_id": "rt_new_mobile_order__ref_new_mobile_order_02__broker_email__v01",
+      "request_type_id": "rt_new_mobile_order",
+      "reference_id": "ref_new_mobile_order_02",
+      "reference_kind": "complete_valid_reference",
+      "channel": "broker_email",
+      "channel_style": "broker_email",
+      "noise_tags": ["greeting_signature_noise"],
+      "business_perturbation_tags": [],
+      "input_text": "Dobrý den,\n\nzasílám objednávku nové mobilní služby pro zákaznici Kláru Horákovou.\n\nZákaznice: Klára Horáková (nová zákaznice)\nTelefon: +420 777 210 884\nE-mail: klara.horakova@email.cz\nTarif: Mobil Start 5G, 1 linka\nDélka závazku: 24 měsíců\nPortace čísla: ano – přenášené číslo +420 731 555 888, dosavadní operátor O2\nSleva: Přenos čísla 200 Kč na 6 měsíců\n\nVšechny údaje jsou kompletní, objednávka je připravena ke zpracování.\n\nDěkuji,\nLucie Benešová\nObchodní oddělení\nlucie.benesova@futuraprofit.cz",
+      "reference_output": {
+        "customer_status": "new",
+        "customer_name": "Klára Horáková",
+        "contact_phone": "+420 777 210 884",
+        "contact_email": "klara.horakova@email.cz",
+        "requested_services": [
+          {"service_id": "svc_mobile_start_5g", "quantity": 1}
+        ],
+        "contract_term_months": 24,
+        "porting_requested": true,
+        "ported_numbers": [
+          {"number": "+420 731 555 888", "donor_operator": "O2"}
+        ],
+        "requested_discounts": [
+          {"discount_id": "disc_porting_mobile_200"}
+        ]
+      },
+      "missing_required_fields": [],
+      "expected_rule_violations": [],
+      "generation_note": "Complete valid reference expressed as a broker email with greeting/signature noise. All fields including ported number and donor operator are clearly stated."
+    },
+    {
+      "input_id": "rt_new_mobile_order__ref_new_mobile_order_02__call_transcript__v01",
+      "request_type_id": "rt_new_mobile_order",
+      "reference_id": "ref_new_mobile_order_02",
+      "reference_kind": "complete_valid_reference",
+      "channel": "call_transcript",
+      "channel_style": "call_transcript",
+      "noise_tags": ["incomplete_sentences"],
+      "business_perturbation_tags": [],
+      "input_text": "Operátor: Dobrý den, FuturaTel, jak vám mohu pomoci?\nZákazník: Dobrý den, nový tarif, Mobil Start 5G. Jmenuji se Klára Horáková.\nOperátor: Dobře. Na jak dlouho?\nZákazník: Dvacet čtyři měsíce. A přenesení čísla od O2 – číslo 731 555 888.\nOperátor: Váš kontaktní telefon prosím?\nZákazník: 777 210 884. E-mail taky – klara.horakova@email.cz.\nOperátor: A zájem o slevu za portaci?\nZákazník: Ano, tu dvě stě korun na půl roku.\nOperátor: Výborně, zaznamenáno. Vše kompletní.",
+      "reference_output": {
+        "customer_status": "new",
+        "customer_name": "Klára Horáková",
+        "contact_phone": "+420 777 210 884",
+        "contact_email": "klara.horakova@email.cz",
+        "requested_services": [
+          {"service_id": "svc_mobile_start_5g", "quantity": 1}
+        ],
+        "contract_term_months": 24,
+        "porting_requested": true,
+        "ported_numbers": [
+          {"number": "+420 731 555 888", "donor_operator": "O2"}
+        ],
+        "requested_discounts": [
+          {"discount_id": "disc_porting_mobile_200"}
+        ]
+      },
+      "missing_required_fields": [],
+      "expected_rule_violations": [],
+      "generation_note": "Complete valid reference expressed as a call transcript with incomplete sentence fragments typical of spoken interaction. All fields are extractable from the dialogue."
+    },
+    {
+      "input_id": "rt_new_mobile_order__ref_new_mobile_order_03__crm_ticket__v01",
+      "request_type_id": "rt_new_mobile_order",
+      "reference_id": "ref_new_mobile_order_03",
+      "reference_kind": "complete_invalid_reference",
+      "channel": "crm_ticket",
+      "channel_style": "crm_ticket",
+      "noise_tags": ["followup_action_noise"],
+      "business_perturbation_tags": ["invalid_discount_eligibility"],
+      "input_text": "Zákazník: Marek Beneš (nový)\nTel.: 724 990 331\nTarif: Mobil Neomezeně 5G – 1x\nZávazek: bez závazku\nPortace: NE\nSleva: Přenos čísla 200 Kč / 6 měs. – požadováno zákazníkem\n→ pozn.: ověřit nárok, portace není součástí objednávky\n→ zpětně kontaktovat zákazníka",
+      "reference_output": {
+        "customer_status": "new",
+        "customer_name": "Marek Beneš",
+        "contact_phone": "+420 724 990 331",
+        "requested_services": [
+          {"service_id": "svc_mobile_unlimited_5g", "quantity": 1}
+        ],
+        "contract_term_months": 0,
+        "porting_requested": false,
+        "requested_discounts": [
+          {"discount_id": "disc_porting_mobile_200"}
+        ]
+      },
+      "missing_required_fields": [],
+      "expected_rule_violations": ["elg_porting_discount_requires_porting"],
+      "generation_note": "Complete invalid reference expressed as a CRM ticket with followup action noise. Porting discount is requested despite porting_requested=false, preserving the elg_porting_discount_requires_porting violation."
+    },
+    {
+      "input_id": "rt_new_mobile_order__ref_new_mobile_order_03__broker_email__v01",
+      "request_type_id": "rt_new_mobile_order",
+      "reference_id": "ref_new_mobile_order_03",
+      "reference_kind": "complete_invalid_reference",
+      "channel": "broker_email",
+      "channel_style": "broker_email",
+      "noise_tags": ["polite_paraphrase_noise"],
+      "business_perturbation_tags": ["invalid_discount_eligibility"],
+      "input_text": "Dobrý den,\n\ndovolte, abych se na vás obrátil s objednávkou pro nového zákazníka, pana Marka Beneše. Pan Beneš má zájem o mobilní tarif Mobil Neomezeně 5G, a to bez jakéhokoli závazku. Přenesení čísla od jiného operátora v tuto chvíli neplánuje a nepožaduje jej.\n\nZákazník zároveň výslovně požádal o slevu Přenos čísla 200 Kč na 6 měsíců. Kontaktní telefon pana Beneše je +420 724 990 331.\n\nProsím o zpracování objednávky. V případě jakýchkoli dotazů jsem vám plně k dispozici.\n\nS přátelským pozdravem,\nMartin Šebek\nObchodní zástupce\nmartin.sebek@futurabroker.cz | +420 722 300 088",
+      "reference_output": {
+        "customer_status": "new",
+        "customer_name": "Marek Beneš",
+        "contact_phone": "+420 724 990 331",
+        "requested_services": [
+          {"service_id": "svc_mobile_unlimited_5g", "quantity": 1}
+        ],
+        "contract_term_months": 0,
+        "porting_requested": false,
+        "requested_discounts": [
+          {"discount_id": "disc_porting_mobile_200"}
+        ]
+      },
+      "missing_required_fields": [],
+      "expected_rule_violations": ["elg_porting_discount_requires_porting"],
+      "generation_note": "Complete invalid reference expressed as a broker email with polite paraphrase noise. No porting requested but porting discount is explicitly asked for, preserving the elg_porting_discount_requires_porting violation."
+    },
+    {
+      "input_id": "rt_new_mobile_order__ref_new_mobile_order_03__call_transcript__v01",
+      "request_type_id": "rt_new_mobile_order",
+      "reference_id": "ref_new_mobile_order_03",
+      "reference_kind": "complete_invalid_reference",
+      "channel": "call_transcript",
+      "channel_style": "call_transcript",
+      "noise_tags": ["smalltalk_noise"],
+      "business_perturbation_tags": ["invalid_discount_eligibility"],
+      "input_text": "Operátor: Dobrý den, FuturaTel, jak vám mohu pomoci?\nZákazník: Dobrý den, to je fajn, že jste se ozvali tak rychle. Chtěl bych si objednat mobilní tarif.\nOperátor: Rádi pomůžeme. Jak se jmenujete?\nZákazník: Marek Beneš. Zajímá mě Mobil Neomezeně 5G.\nOperátor: Na jak dlouho, chcete závazek?\nZákazník: Ne, bez závazku prosím.\nOperátor: Dobře. Budete přenášet číslo od jiného operátora?\nZákazník: Ne, to ne, to nepotřebuji.\nOperátor: Rozumím. Máte zájem o nějakou slevu?\nZákazník: Ano, slyšel jsem o slevě dvěstě korun za přenesení čísla. To bych chtěl uplatnit.\nOperátor: Kontaktní číslo prosím?\nZákazník: 724 990 331. A hezký zbytek dne.\nOperátor: Vám také, díky za zavolání.",
+      "reference_output": {
+        "customer_status": "new",
+        "customer_name": "Marek Beneš",
+        "contact_phone": "+420 724 990 331",
+        "requested_services": [
+          {"service_id": "svc_mobile_unlimited_5g", "quantity": 1}
+        ],
+        "contract_term_months": 0,
+        "porting_requested": false,
+        "requested_discounts": [
+          {"discount_id": "disc_porting_mobile_200"}
+        ]
+      },
+      "missing_required_fields": [],
+      "expected_rule_violations": ["elg_porting_discount_requires_porting"],
+      "generation_note": "Complete invalid reference expressed as a call transcript with smalltalk noise. Customer explicitly declines porting but requests the porting discount, preserving the elg_porting_discount_requires_porting violation."
+    }
+  ]
+}
