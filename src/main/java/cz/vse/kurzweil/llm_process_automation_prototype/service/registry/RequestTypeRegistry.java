@@ -12,25 +12,32 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType.RT_FAMILY_MOBILE_ORDER;
+import static cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType.RT_FIXED_INTERNET_WITH_HARDWARE_ORDER;
+import static cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType.RT_INTERNET_TV_BUNDLE_ORDER;
+import static cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType.RT_NEW_MOBILE_ORDER;
+import static cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType.RT_RETENTION_DISCOUNT_REQUEST;
+
 @Component
 public class RequestTypeRegistry {
 
     private final Map<RequestType, RequestTypeMetadata> registry = new EnumMap<>(RequestType.class);
 
     public RequestTypeRegistry() {
-        register(RequestType.RT_NEW_MOBILE_ORDER,
+
+        register(RT_NEW_MOBILE_ORDER,
                 NewMobileOrderRequest.class,
                 "prompts/extraction/rt_new_mobile_order");
-        register(RequestType.RT_FAMILY_MOBILE_ORDER,
+        register(RT_FAMILY_MOBILE_ORDER,
                 FamilyMobileOrderRequest.class,
                 "prompts/extraction/rt_family_mobile_order");
-        register(RequestType.RT_FIXED_INTERNET_WITH_HARDWARE_ORDER,
+        register(RT_FIXED_INTERNET_WITH_HARDWARE_ORDER,
                 FixedInternetWithHardwareOrderRequest.class,
                 "prompts/extraction/rt_fixed_internet_with_hardware_order");
-        register(RequestType.RT_INTERNET_TV_BUNDLE_ORDER,
+        register(RT_INTERNET_TV_BUNDLE_ORDER,
                 InternetTvBundleOrderRequest.class,
                 "prompts/extraction/rt_internet_tv_bundle_order");
-        register(RequestType.RT_RETENTION_DISCOUNT_REQUEST,
+        register(RT_RETENTION_DISCOUNT_REQUEST,
                 RetentionDiscountRequest.class,
                 "prompts/extraction/rt_retention_discount_request");
     }
