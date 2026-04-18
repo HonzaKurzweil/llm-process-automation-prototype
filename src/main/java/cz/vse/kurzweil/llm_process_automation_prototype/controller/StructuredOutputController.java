@@ -1,9 +1,10 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.controller;
 
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.newmobileorder.NewMobileOrderRequest;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.ExtractionMode;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.StructuredOutputService;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.classification.ClassificationService;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class StructuredOutputController {
 
-    private final StructuredOutputService structuredOutputService;
+    private final ClassificationService classificationService;
+    private final StructuredExtractionService structuredExtractionService;
+
+    @PostMapping("/classify")
+    public ResponseEntity<RequestType> classify(
+            @RequestParam String input,
+            @RequestParam(defaultValue = "DIRECT") PromptVariant variant,
+            @RequestParam(defaultValue = "GPT_4O_MINI") ModelType model) {
+        return ResponseEntity.ok(classificationService.classify(input, variant, model));
+    }
 
     @PostMapping("/extract")
-    public ResponseEntity<NewMobileOrderRequest> extract(
+    public ResponseEntity<Object> extract(
             @RequestParam String input,
-            @RequestParam(defaultValue = "DIRECT") ExtractionMode mode,
+            @RequestParam(defaultValue = "RT_NEW_MOBILE_ORDER") RequestType requestType,
+            @RequestParam(defaultValue = "DIRECT") PromptVariant variant,
             @RequestParam(defaultValue = "GPT_4O_MINI") ModelType model) {
-        return ResponseEntity.ok(structuredOutputService.extract(input, mode, model));
+        return ResponseEntity.ok(structuredExtractionService.extract(input, requestType, variant, model));
     }
 }

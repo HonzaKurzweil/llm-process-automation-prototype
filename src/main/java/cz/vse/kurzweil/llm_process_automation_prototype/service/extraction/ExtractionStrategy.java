@@ -1,12 +1,12 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.classification;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction;
 
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
 import org.springframework.ai.chat.client.ChatClient;
 
-public interface ClassificationStrategy {
+public interface ExtractionStrategy {
 
     PromptVariant variant();
 
-    RequestType classify(String inputText, ChatClient client);
+    <T> T extract(String inputText, RequestType requestType, Class<T> dtoClass, ChatClient client);
 }

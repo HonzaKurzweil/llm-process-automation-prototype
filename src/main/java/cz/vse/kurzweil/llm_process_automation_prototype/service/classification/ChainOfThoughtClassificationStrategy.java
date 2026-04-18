@@ -1,19 +1,17 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service.classification;
 
+// NOT WIRED — first-iteration placeholder, reserved for a future chain-of-thought experiment.
+// To activate: add @Component and ensure PromptVariant.CHAIN_OF_THOUGHT is accepted in the controller.
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.ExtractionMode;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-/**
- * Two-call chain: first reasons about the input's signals, then classifies based on that reasoning.
- */
 @Slf4j
-@Component
 public class ChainOfThoughtClassificationStrategy implements ClassificationStrategy {
 
     private static final String REASONING_SYSTEM_PROMPT = """
@@ -48,8 +46,8 @@ public class ChainOfThoughtClassificationStrategy implements ClassificationStrat
             """;
 
     @Override
-    public ExtractionMode mode() {
-        return ExtractionMode.CHAIN_OF_THOUGHT;
+    public PromptVariant variant() {
+        return PromptVariant.CHAIN_OF_THOUGHT;
     }
 
     @Override
