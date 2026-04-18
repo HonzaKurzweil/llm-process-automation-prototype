@@ -1,5 +1,7 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.controller;
 
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.NewMobileOrderRequest;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.ExtractionMode;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.StructuredOutputService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +17,10 @@ public class StructuredOutputController {
 
     private final StructuredOutputService structuredOutputService;
 
-    @PostMapping("/start")
-    public ResponseEntity<Void> start(@RequestParam String input) {
-        structuredOutputService.startService(input);
-        return ResponseEntity.ok().build();
+    @PostMapping("/extract")
+    public ResponseEntity<NewMobileOrderRequest> extract(
+            @RequestParam String input,
+            @RequestParam(defaultValue = "DIRECT") ExtractionMode mode) {
+        return ResponseEntity.ok(structuredOutputService.extract(input, mode));
     }
 }
