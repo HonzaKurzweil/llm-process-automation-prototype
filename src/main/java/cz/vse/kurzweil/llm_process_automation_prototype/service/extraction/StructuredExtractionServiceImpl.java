@@ -3,7 +3,6 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.registry.RequestTypeMetadata;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.registry.RequestTypeRegistry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -40,9 +39,10 @@ public class StructuredExtractionServiceImpl implements StructuredExtractionServ
     @SuppressWarnings("unchecked")
     public <T> T extract(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
         log.info("Extracting with requestType={}, variant={}, model={}", requestType, variant, model);
-        RequestTypeMetadata metadata = registry.get(requestType);
-        ExtractionStrategy strategy = strategies.get(variant);
-        ChatClient client = clients.get(model);
-        return strategy.extract(inputText, requestType, (Class<T>) metadata.dtoClass(), client);
+        return strategies.get(variant).extract(
+                inputText, requestType,
+                (Class<T>) registry.get(requestType).dtoClass(),
+                clients.get(model)
+        );
     }
 }
