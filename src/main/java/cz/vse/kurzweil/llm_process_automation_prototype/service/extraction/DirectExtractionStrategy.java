@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * injected by Spring AI's BeanOutputConverter.
  */
 @Component
-public class DirectExtractionStrategy implements ExtractionStrategy {
+public class DirectExtractionStrategy implements PromptStrategy {
 
     private static final String SYSTEM_PROMPT = """
             You are a data extraction assistant for FuturaTel CZ, a Czech telecom operator.
@@ -28,20 +28,14 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
             Set any field to null when it is not present in the input.
             """;
 
-    private final ChatClient chatClient;
-
-    public DirectExtractionStrategy(ChatClient chatClient) {
-        this.chatClient = chatClient;
-    }
-
     @Override
     public ExtractionMode mode() {
         return ExtractionMode.DIRECT;
     }
 
     @Override
-    public NewMobileOrderRequest extract(String inputText) {
-        return chatClient.prompt()
+    public NewMobileOrderRequest extract(String inputText, ChatClient client) {
+        return client.prompt()
                 .system(SYSTEM_PROMPT)
                 .user(inputText)
                 .call()

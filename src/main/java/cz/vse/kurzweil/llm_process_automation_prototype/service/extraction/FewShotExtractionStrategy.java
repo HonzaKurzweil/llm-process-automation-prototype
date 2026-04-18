@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * Examples demonstrate both an incomplete case (ported number missing) and a complete valid case.
  */
 @Component
-public class FewShotExtractionStrategy implements ExtractionStrategy {
+public class FewShotExtractionStrategy implements PromptStrategy {
 
     private static final String SYSTEM_PROMPT = """
             You are a data extraction assistant for FuturaTel CZ, a Czech telecom operator.
@@ -55,20 +55,14 @@ public class FewShotExtractionStrategy implements ExtractionStrategy {
             {"customer_status":"new","customer_name":"Klára Horáková","contact_phone":"+420 777 210 884","requested_services":[{"service_id":"svc_mobile_start_5g","quantity":1}],"contract_term_months":24,"porting_requested":true,"ported_numbers":[{"number":"+420 731 555 888","donor_operator":"O2"}],"contact_email":"klara.horakova@email.cz","requested_discounts":[{"discount_id":"disc_porting_mobile_200"}],"notes":null}
             """;
 
-    private final ChatClient chatClient;
-
-    public FewShotExtractionStrategy(ChatClient chatClient) {
-        this.chatClient = chatClient;
-    }
-
     @Override
     public ExtractionMode mode() {
         return ExtractionMode.FEW_SHOT;
     }
 
     @Override
-    public NewMobileOrderRequest extract(String inputText) {
-        return chatClient.prompt()
+    public NewMobileOrderRequest extract(String inputText, ChatClient client) {
+        return client.prompt()
                 .system(SYSTEM_PROMPT)
                 .user(inputText)
                 .call()

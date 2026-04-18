@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class ChainOfThoughtExtractionStrategy implements ExtractionStrategy {
+public class ChainOfThoughtExtractionStrategy implements PromptStrategy {
 
     private static final String REASONING_SYSTEM_PROMPT = """
             You are a data extraction assistant for FuturaTel CZ, a Czech telecom operator.
@@ -48,20 +48,14 @@ public class ChainOfThoughtExtractionStrategy implements ExtractionStrategy {
             Set any field to null when the analysis confirms it is absent.
             """;
 
-    private final ChatClient chatClient;
-
-    public ChainOfThoughtExtractionStrategy(ChatClient chatClient) {
-        this.chatClient = chatClient;
-    }
-
     @Override
     public ExtractionMode mode() {
         return ExtractionMode.CHAIN_OF_THOUGHT;
     }
 
     @Override
-    public NewMobileOrderRequest extract(String inputText) {
-        String reasoning = chatClient.prompt()
+    public NewMobileOrderRequest extract(String inputText, ChatClient client) {
+        String reasoning = client.prompt()
                 .system(REASONING_SYSTEM_PROMPT)
                 .user(inputText)
                 .call()
@@ -79,7 +73,7 @@ public class ChainOfThoughtExtractionStrategy implements ExtractionStrategy {
                 Now extract the structured data.
                 """.formatted(inputText, reasoning);
 
-        return chatClient.prompt()
+        return client.prompt()
                 .system(EXTRACTION_SYSTEM_PROMPT)
                 .user(extractionPrompt)
                 .call()
