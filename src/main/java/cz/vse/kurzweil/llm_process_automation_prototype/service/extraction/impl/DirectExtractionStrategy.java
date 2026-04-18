@@ -1,4 +1,4 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.impl;
 
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;

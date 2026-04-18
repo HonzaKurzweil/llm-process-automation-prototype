@@ -1,8 +1,9 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.impl;
 
 import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.openai.OpenAiChatOptions;
