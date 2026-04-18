@@ -1,12 +1,13 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public enum ModelType {
     GPT_4O_MINI("gpt-4o-mini"),
     GPT_4O("gpt-4o");
 
-    public final String modelId;
-
-    ModelType(String modelId) {
-        this.modelId = modelId;
-    }
+    private final String modelId;
 }

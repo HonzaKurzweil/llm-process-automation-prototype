@@ -31,7 +31,7 @@ public class StructuredExtractionServiceImpl implements StructuredExtractionServ
         this.registry = registry;
         this.clients = Arrays.stream(ModelType.values()).collect(Collectors.toMap(
                 m -> m,
-                m -> builder.defaultOptions(OpenAiChatOptions.builder().model(m.modelId).build()).build()
+                m -> builder.defaultOptions(OpenAiChatOptions.builder().model(m.getModelId()).build()).build()
         ));
     }
 
