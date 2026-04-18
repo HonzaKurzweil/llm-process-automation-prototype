@@ -5,9 +5,10 @@ import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -21,14 +22,13 @@ public class ClassificationServiceImpl implements ClassificationService {
 
     public ClassificationServiceImpl(
             List<ClassificationStrategy> strategies,
-            @Qualifier("gpt4oMini") ChatClient gpt4oMiniClient,
-            @Qualifier("gpt4o") ChatClient gpt4oClient) {
+            ChatClient.Builder builder) {
         this.strategies = strategies.stream()
                 .collect(Collectors.toMap(ClassificationStrategy::variant, s -> s));
-        this.clients = Map.of(
-                ModelType.GPT_4O_MINI, gpt4oMiniClient,
-                ModelType.GPT_4O, gpt4oClient
-        );
+        this.clients = Arrays.stream(ModelType.values()).collect(Collectors.toMap(
+                m -> m,
+                m -> builder.defaultOptions(OpenAiChatOptions.builder().model(m.modelId).build()).build()
+        ));
     }
 
     @Override
