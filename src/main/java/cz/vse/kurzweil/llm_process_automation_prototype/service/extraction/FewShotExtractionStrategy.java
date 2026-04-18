@@ -21,15 +21,15 @@ public class FewShotExtractionStrategy implements ExtractionStrategy {
     }
 
     @Override
-    public <T> T extract(String inputText, RequestType requestType, Class<T> dtoClass, ChatClient client) {
-        String systemPrompt = promptLoader.load(
-                "prompts/extraction/" + requestType.getValue() + "/few-shot-system.md");
-        String examples = promptLoader.load(
-                "prompts/extraction/" + requestType.getValue() + "/few-shot-examples.md");
+    @SuppressWarnings("unchecked")
+    public <T> T extract(String inputText, RequestType requestType, ChatClient client) {
+        String dir = requestType.getPromptDirectory();
+        String systemPrompt = promptLoader.load(dir + "/few-shot-system.md") + "\n\n"
+                + promptLoader.load(dir + "/few-shot-examples.md");
         return client.prompt()
-                .system(systemPrompt + "\n\n" + examples)
+                .system(systemPrompt)
                 .user(inputText)
                 .call()
-                .entity(dtoClass);
+                .entity((Class<T>) requestType.getDtoClass());
     }
 }

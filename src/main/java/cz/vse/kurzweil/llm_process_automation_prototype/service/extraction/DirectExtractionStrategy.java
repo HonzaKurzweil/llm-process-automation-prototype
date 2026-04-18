@@ -21,13 +21,13 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
     }
 
     @Override
-    public <T> T extract(String inputText, RequestType requestType, Class<T> dtoClass, ChatClient client) {
-        String systemPrompt = promptLoader.load(
-                "prompts/extraction/" + requestType.getValue() + "/direct-system.md");
+    @SuppressWarnings("unchecked")
+    public <T> T extract(String inputText, RequestType requestType, ChatClient client) {
+        String systemPrompt = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md");
         return client.prompt()
                 .system(systemPrompt)
                 .user(inputText)
                 .call()
-                .entity(dtoClass);
+                .entity((Class<T>) requestType.getDtoClass());
     }
 }

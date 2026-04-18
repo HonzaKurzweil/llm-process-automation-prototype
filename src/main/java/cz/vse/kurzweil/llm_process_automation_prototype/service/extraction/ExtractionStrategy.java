@@ -8,5 +8,5 @@ public interface ExtractionStrategy {
 
     PromptVariant variant();
 
-    <T> T extract(String inputText, RequestType requestType, Class<T> dtoClass, ChatClient client);
+    <T> T extract(String inputText, RequestType requestType, ChatClient client);
 }
