@@ -1,6 +1,10 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.dto;
+package cz.vse.kurzweil.llm_process_automation_prototype.dto.newmobileorder;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.CustomerStatus;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.DiscountRequest;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.PortedNumber;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.ServiceRequest;
 
 import java.util.List;
 
@@ -15,7 +19,6 @@ import java.util.List;
  */
 public record NewMobileOrderRequest(
 
-        // ── required ─────────────────────────────────────────────────────────────
         @JsonProperty("customer_status")
         CustomerStatus customerStatus,
 
@@ -28,18 +31,16 @@ public record NewMobileOrderRequest(
         @JsonProperty("requested_services")
         List<ServiceRequest> requestedServices,
 
-        /** Allowed values per service catalog: 0 (no commitment) or 24 months. */
         @JsonProperty("contract_term_months")
         Integer contractTermMonths,
 
         @JsonProperty("porting_requested")
         Boolean portingRequested,
 
-        // ── conditional required (when portingRequested == true) ─────────────────
+        // conditional required (when portingRequested == true)
         @JsonProperty("ported_numbers")
         List<PortedNumber> portedNumbers,
 
-        // ── optional ─────────────────────────────────────────────────────────────
         @JsonProperty("contact_email")
         String contactEmail,
 
