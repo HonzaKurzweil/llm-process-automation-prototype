@@ -1,0 +1,32 @@
+version: '1.0'
+purpose: Doporučená taxonomie výstupů pro klasifikační službu. Tento soubor je záměrně oddělen od request_types.
+known_request_types_source: request_types_v3.yaml
+classifier_output_dto:
+  root_class_name: RequestClassificationResultDto
+  fields:
+  - name: outcome_type
+    java_type: ClassificationOutcomeType
+    required: true
+  - name: primary_request_type_id
+    java_type: String
+    required: false
+  - name: secondary_request_type_ids
+    java_type: List<String>
+    required: false
+  - name: contains_unknown_additional_intent
+    java_type: Boolean
+    required: false
+  - name: explanation
+    java_type: String
+    required: false
+outcome_types:
+- outcome_type: single_known_request_type
+  description: Ve vstupu je rozpoznán právě jeden známý request type a žádný další nezpracovatelný intent.
+- outcome_type: single_known_request_type_with_unknown_tail
+  description: Je rozpoznán jeden známý request type, ale text obsahuje i další neznámý nebo mimo-scope intent.
+- outcome_type: multi_intent_known_request_types
+  description: Ve vstupu je současně přítomno více známých request types.
+- outcome_type: unknown_or_out_of_scope
+  description: Ve vstupu není spolehlivě rozpoznán žádný známý request type.
+- outcome_type: ambiguous_or_insufficient_signal
+  description: Vstup obsahuje příliš málo informací nebo rozporné signály pro spolehlivou klasifikaci.

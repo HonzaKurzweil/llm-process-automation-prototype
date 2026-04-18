@@ -1,0 +1,427 @@
+version: '3.0'
+artifact_role:
+  primary_uses:
+  - Zdrojová definice request types pro generování syntetických vstupů.
+  - Zdrojová definice DTO struktur pro extrakci dat do Java objektů.
+  not_modeled_here:
+  - Prompty, instrukce a runtime chování extrakční služby.
+  - Business validace proti doménovým pravidlům v rules.yaml.
+  - Speciální klasifikační výstupy typu unknown_or_out_of_scope nebo multi_intent.
+shared_field_catalog:
+  customer_status:
+    java_type: CustomerStatus
+    value_kind: enum
+    allowed_values:
+    - new
+    - existing
+    description: Status zákazníka vůči operátorovi.
+  customer_name:
+    java_type: String
+    value_kind: string
+    description: Jméno a příjmení zákazníka nebo kontaktní osoby.
+  contact_phone:
+    java_type: String
+    value_kind: string
+    format: czech_phone_number
+    description: Primární kontaktní telefon pro zpracování požadavku.
+  contact_email:
+    java_type: String
+    value_kind: string
+    format: email
+    description: Kontaktní e-mail, pokud je ve vstupu uveden.
+  installation_address:
+    java_type: String
+    value_kind: string
+    description: Instalační adresa pro pevný internet nebo domácí služby.
+  requested_services:
+    java_type: List<ServiceSelectionDto>
+    value_kind: array
+    item_component_ref: service_selection
+    description: Hlavní služby, které zákazník požaduje objednat.
+  requested_products:
+    java_type: List<ProductSelectionDto>
+    value_kind: array
+    item_component_ref: product_selection
+    description: Doplňkové produkty nebo add-ony uvedené v požadavku.
+  requested_discounts:
+    java_type: List<DiscountSelectionDto>
+    value_kind: array
+    item_component_ref: discount_selection
+    description: Slevy explicitně požadované nebo zmíněné ve vstupu.
+  contract_term_months:
+    java_type: Integer
+    value_kind: integer
+    allowed_values:
+    - 0
+    - 24
+    description: Požadovaná délka závazku v měsících.
+  porting_requested:
+    java_type: Boolean
+    value_kind: boolean
+    description: Indikátor, že zákazník požaduje přenos čísla od jiného operátora.
+  ported_numbers:
+    java_type: List<PortedNumberDto>
+    value_kind: array
+    item_component_ref: ported_number
+    description: Seznam čísel určených k portaci.
+  mobile_lines_count:
+    java_type: Integer
+    value_kind: integer
+    minimum: 1
+    description: Počet mobilních linek v rodinné mobilní objednávce.
+  mobile_lines:
+    java_type: List<MobileLineDto>
+    value_kind: array
+    item_component_ref: mobile_line
+    description: Detail jednotlivých linek v rodinné mobilní objednávce.
+  retention_case:
+    java_type: Boolean
+    value_kind: boolean
+    description: Indikátor, že jde o retenční jednání.
+  current_services:
+    java_type: List<CurrentServiceRefDto>
+    value_kind: array
+    item_component_ref: current_service_ref
+    description: Služby, které zákazník aktuálně využívá.
+  target_service_id:
+    java_type: String
+    value_kind: domain_ref
+    domain: service_id
+    description: Služba, ke které se retenční požadavek vztahuje.
+  churn_reason:
+    java_type: String
+    value_kind: string
+    description: Důvod zvažovaného odchodu nebo žádosti o lepší podmínky.
+  competitor_offer:
+    java_type: String
+    value_kind: string
+    description: Konkurenční nabídka zmíněná v retenčním kontextu.
+shared_component_catalog:
+  service_selection:
+    java_class_name: ServiceSelectionDto
+    description: Jedna požadovaná hlavní služba a její množství.
+    fields:
+    - name: service_id
+      java_type: String
+      value_kind: domain_ref
+      domain: service_id
+      required: true
+    - name: quantity
+      java_type: Integer
+      value_kind: integer
+      minimum: 1
+      required: true
+  product_selection:
+    java_class_name: ProductSelectionDto
+    description: Jeden požadovaný doplňkový produkt a jeho množství.
+    fields:
+    - name: product_id
+      java_type: String
+      value_kind: domain_ref
+      domain: product_id
+      required: true
+    - name: quantity
+      java_type: Integer
+      value_kind: integer
+      minimum: 1
+      required: true
+  discount_selection:
+    java_class_name: DiscountSelectionDto
+    description: Jedna sleva explicitně uvedená v požadavku.
+    fields:
+    - name: discount_id
+      java_type: String
+      value_kind: domain_ref
+      domain: discount_id
+      required: true
+  ported_number:
+    java_class_name: PortedNumberDto
+    description: Jedno portované číslo a donor operátor.
+    fields:
+    - name: number
+      java_type: String
+      value_kind: string
+      format: czech_phone_number
+      required: true
+    - name: donor_operator
+      java_type: String
+      value_kind: string
+      required: true
+  mobile_line:
+    java_class_name: MobileLineDto
+    description: Jedna linka v rodinné mobilní objednávce.
+    fields:
+    - name: label
+      java_type: String
+      value_kind: string
+      required: true
+    - name: plan_service_id
+      java_type: String
+      value_kind: domain_ref
+      domain: service_id
+      required: true
+    - name: porting_requested
+      java_type: Boolean
+      value_kind: boolean
+      required: true
+  current_service_ref:
+    java_class_name: CurrentServiceRefDto
+    description: Odkaz na aktuálně využívanou službu v retenčním požadavku.
+    fields:
+    - name: service_id
+      java_type: String
+      value_kind: domain_ref
+      domain: service_id
+      required: true
+request_types:
+- request_type_id: rt_new_mobile_order
+  canonical_name: single_mobile_order
+  title: Objednávka samostatné mobilní služby
+  description: Objednávka jedné mobilní služby pro nového nebo stávajícího zákazníka, volitelně s přenosem čísla.
+  dto:
+    root_class_name: SingleMobileOrderRequestDto
+    fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - contact_email
+    - requested_services
+    - contract_term_months
+    - porting_requested
+    - ported_numbers
+    - requested_discounts
+  completeness:
+    required_fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - requested_services
+    - contract_term_months
+    - porting_requested
+    conditional_required_fields:
+    - when: porting_requested == true
+      required_fields:
+      - ported_numbers
+  field_domain_scope:
+    requested_services.service_id:
+      allowed_service_ids:
+      - svc_mobile_start_5g
+      - svc_mobile_unlimited_5g
+    requested_discounts.discount_id:
+      allowed_discount_ids:
+      - disc_porting_mobile_200
+  collection_field_constraints:
+    requested_services:
+      min_items: 1
+      max_items: 1
+    ported_numbers:
+      min_items: 0
+    requested_discounts:
+      min_items: 0
+      max_items: 1
+- request_type_id: rt_family_mobile_order
+  canonical_name: family_mobile_order
+  title: Rodinná mobilní objednávka
+  description: Objednávka rodinného mobilního tarifu s více linkami v rámci jednoho požadavku.
+  dto:
+    root_class_name: FamilyMobileOrderRequestDto
+    fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - contact_email
+    - requested_services
+    - mobile_lines_count
+    - mobile_lines
+    - ported_numbers
+    - contract_term_months
+    - requested_discounts
+  completeness:
+    required_fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - requested_services
+    - mobile_lines_count
+    - mobile_lines
+    - contract_term_months
+    conditional_required_fields:
+    - when: any mobile_lines[].porting_requested == true
+      required_fields:
+      - ported_numbers
+  field_domain_scope:
+    requested_services.service_id:
+      allowed_service_ids:
+      - svc_mobile_family_plus
+    mobile_lines.plan_service_id:
+      allowed_service_ids:
+      - svc_mobile_family_plus
+    requested_discounts.discount_id:
+      allowed_discount_ids:
+      - disc_family_line_100
+      - disc_porting_mobile_200
+  collection_field_constraints:
+    requested_services:
+      min_items: 1
+      max_items: 1
+    mobile_lines:
+      min_items: 1
+    ported_numbers:
+      min_items: 0
+    requested_discounts:
+      min_items: 0
+      max_items: 2
+- request_type_id: rt_fixed_internet_with_hardware_order
+  canonical_name: fixed_internet_hardware_order
+  title: Objednávka pevného internetu s hardwarem
+  description: Objednávka jedné hlavní pevné internetové služby s doplňkovým hardwarem nebo instalačním add-onem.
+  dto:
+    root_class_name: FixedInternetHardwareOrderRequestDto
+    fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - contact_email
+    - installation_address
+    - requested_services
+    - requested_products
+    - contract_term_months
+  completeness:
+    required_fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - installation_address
+    - requested_services
+    - requested_products
+    - contract_term_months
+    conditional_required_fields: []
+  field_domain_scope:
+    requested_services.service_id:
+      allowed_service_ids:
+      - svc_internet_fiber_300
+      - svc_internet_fiber_1000
+      - svc_internet_dsl_100
+      - svc_internet_wireless_50
+    requested_products.product_id:
+      allowed_product_ids:
+      - prod_router_standard
+      - prod_router_pro
+      - prod_mesh_node
+      - prod_installation_express
+  collection_field_constraints:
+    requested_services:
+      min_items: 1
+      max_items: 1
+    requested_products:
+      min_items: 1
+- request_type_id: rt_internet_tv_bundle_order
+  canonical_name: internet_tv_bundle_order
+  title: Objednávka balíčku internet + televize
+  description: Kombinovaná objednávka jedné pevné internetové služby a jedné televizní služby, volitelně s TV doplňky a bundle slevou.
+  dto:
+    root_class_name: InternetTvBundleOrderRequestDto
+    fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - contact_email
+    - installation_address
+    - requested_services
+    - requested_products
+    - contract_term_months
+    - requested_discounts
+  completeness:
+    required_fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - installation_address
+    - requested_services
+    - contract_term_months
+    conditional_required_fields: []
+  field_domain_scope:
+    requested_services.service_id:
+      allowed_service_ids:
+      - svc_internet_fiber_300
+      - svc_internet_fiber_1000
+      - svc_internet_dsl_100
+      - svc_internet_wireless_50
+      - svc_tv_basic
+      - svc_tv_family
+    requested_products.product_id:
+      allowed_product_ids:
+      - prod_set_top_box
+      - prod_tv_sports_pack
+      - prod_router_standard
+      - prod_router_pro
+    requested_discounts.discount_id:
+      allowed_discount_ids:
+      - disc_bundle_10_new
+  collection_field_constraints:
+    requested_services:
+      min_items: 2
+      max_items: 2
+    requested_products:
+      min_items: 0
+    requested_discounts:
+      min_items: 0
+      max_items: 1
+- request_type_id: rt_retention_discount_request
+  canonical_name: retention_discount_request
+  title: Požadavek na retenční slevu
+  description: Retenční jednání se stávajícím zákazníkem o konkrétní službě se žádostí o retenční slevu.
+  dto:
+    root_class_name: RetentionDiscountRequestDto
+    fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - retention_case
+    - current_services
+    - target_service_id
+    - requested_discounts
+    - churn_reason
+    - competitor_offer
+  completeness:
+    required_fields:
+    - customer_status
+    - customer_name
+    - contact_phone
+    - retention_case
+    - current_services
+    - target_service_id
+    - requested_discounts
+    conditional_required_fields: []
+  field_domain_scope:
+    current_services.service_id:
+      allowed_service_ids:
+      - svc_mobile_start_5g
+      - svc_mobile_unlimited_5g
+      - svc_mobile_family_plus
+      - svc_internet_fiber_300
+      - svc_internet_fiber_1000
+      - svc_internet_dsl_100
+      - svc_internet_wireless_50
+      - svc_tv_basic
+      - svc_tv_family
+    target_service_id:
+      allowed_service_ids:
+      - svc_mobile_start_5g
+      - svc_mobile_unlimited_5g
+      - svc_mobile_family_plus
+      - svc_internet_fiber_300
+      - svc_internet_fiber_1000
+      - svc_internet_dsl_100
+      - svc_internet_wireless_50
+      - svc_tv_basic
+      - svc_tv_family
+    requested_discounts.discount_id:
+      allowed_discount_ids:
+      - disc_retention_15_existing
+  collection_field_constraints:
+    current_services:
+      min_items: 1
+    requested_discounts:
+      min_items: 1
+      max_items: 1
