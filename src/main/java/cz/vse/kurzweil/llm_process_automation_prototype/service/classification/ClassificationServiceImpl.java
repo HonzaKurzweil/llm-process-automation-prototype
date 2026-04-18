@@ -27,7 +27,7 @@ public class ClassificationServiceImpl implements ClassificationService {
                 .collect(Collectors.toMap(ClassificationStrategy::variant, s -> s));
         this.clients = Arrays.stream(ModelType.values()).collect(Collectors.toMap(
                 m -> m,
-                m -> builder.defaultOptions(OpenAiChatOptions.builder().model(m.modelId).build()).build()
+                m -> builder.defaultOptions(OpenAiChatOptions.builder().model(m.getModelId()).build()).build()
         ));
     }
 
