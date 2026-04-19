@@ -1,9 +1,0 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.dto;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-/** One entry in requested_services: a service catalog ID and the desired quantity. */
-public record ServiceRequest(
-        @JsonProperty("service_id") String serviceId,
-        @JsonProperty("quantity") Integer quantity
-) {}

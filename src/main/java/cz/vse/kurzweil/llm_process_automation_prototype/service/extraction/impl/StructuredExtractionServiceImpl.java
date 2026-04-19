@@ -1,6 +1,5 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.impl;
 
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.newmobileorder.NewMobileOrderRequest;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
@@ -44,7 +43,6 @@ public class StructuredExtractionServiceImpl implements StructuredExtractionServ
     public <T> T extract(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
         log.info("Extracting with requestType={}, variant={}, model={}", requestType, variant, model);
         Object extract = strategies.get(variant).extract(inputText, requestType, clients.get(model));
-       // NewMobileOrderRequest dto = (NewMobileOrderRequest) extract;
         return (T) extract;
     }
 }
