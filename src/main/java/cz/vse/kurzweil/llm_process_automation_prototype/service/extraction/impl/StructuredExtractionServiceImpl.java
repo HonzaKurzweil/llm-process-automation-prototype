@@ -6,11 +6,8 @@ import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
-import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -24,19 +21,10 @@ public class StructuredExtractionServiceImpl implements StructuredExtractionServ
 
     public StructuredExtractionServiceImpl(
             List<ExtractionStrategy> strategies,
-            ChatClient.Builder builder) {
+            Map<ModelType, ChatClient> clients) {
         this.strategies = strategies.stream()
                 .collect(Collectors.toMap(ExtractionStrategy::variant, s -> s));
-        this.clients = Arrays.stream(ModelType.values()).collect(Collectors.toMap(
-                m -> m,
-                m -> builder.defaultOptions(
-                                OpenAiChatOptions.builder()
-                                        .model(m.getModelId())
-                                        .build()
-                        )
-                        .defaultAdvisors(new SimpleLoggerAdvisor())
-                        .build()
-        ));
+        this.clients = clients;
     }
 
     @Override
