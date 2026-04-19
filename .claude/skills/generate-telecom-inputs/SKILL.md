@@ -1,6 +1,6 @@
 ---
 name: generate-telecom-inputs
-description: Generate Czech telecom intake datasets for either extraction (clear request type) or classification (unclear, multi-intent, ambiguous, or out-of-scope request type) from request_types_v3.yaml, reference_outputs_v2.yaml, classifier_outcomes_v1.yaml, noise_profiles.yaml, and domain YAML catalogs.
+description: Generate Czech telecom intake datasets for either extraction (clear request type) or classification (unclear, mixed, ambiguous, or out-of-scope request type) from request_types_v3.yaml, reference_outputs_v4.yaml, classifier_outcomes_v3.yaml, noise_profiles.yaml, and domain YAML catalogs.
 when_to_use: Use this skill when the user asks to generate synthetic telecom CRM tickets, broker emails, call transcripts, extraction benchmarks, classification benchmarks, or mixed telecom intake datasets.
 argument-hint: "mode=<extraction|classification|both> request_type_ids=<id|all> channels=crm_ticket,broker_email,call_transcript variants_per_base=1 noise_mode=<none|light|mixed|custom> output_path=<path>"
 disable-model-invocation: true
@@ -23,12 +23,10 @@ Unless the user provides overrides, use these files:
 
 - Domain catalogs: `src/main/resources/domain/*.yaml`
 - Request types: `src/main/resources/dataset/generator_helpers/request_types_v3.yaml`
-- Classifier outcomes: `src/main/resources/dataset/generator_helpers/classifier_outcomes_v1.yaml`
+- Classifier outcomes: `src/main/resources/dataset/generator_helpers/classifier_outcomes_v3.yaml`
 - Noise profiles: `src/main/resources/dataset/generator_helpers/noise_profiles.yaml`
-- Reference outputs and classification scenarios: `src/main/resources/dataset/generator_helpers/reference_outputs_v2.yaml`
+- Reference outputs and classification scenarios: `src/main/resources/dataset/generator_helpers/reference_outputs_v4.yaml`
 - Output directory: `src/main/resources/dataset/inputs/`
-
-Do **not** read from `src/main/resources/read_prompts/` when generating dataset inputs. Those prompt files belong to later extraction/classification experiments, not to dataset generation.
 
 If a required file is missing, report the missing path and stop.
 
@@ -49,7 +47,7 @@ Optional:
 - `request_type_ids`: comma-separated list or `all`. Used mainly for `extraction`, and as a filter for linked known components in `classification`.
 - `extraction_reference_ids`: explicit extraction reference IDs.
 - `classification_scenario_ids`: explicit classification scenario IDs.
-- `classifier_outcome_types`: comma-separated subset of outcome types from `classifier_outcomes_v1.yaml`.
+- `classifier_outcome_types`: comma-separated subset of scenario types from `classifier_outcomes_v3.yaml`.
 - `channels`: comma-separated subset of `crm_ticket`, `broker_email`, `call_transcript`. Default: all three.
 - `noise_mode`: `none`, `light`, `mixed`, or `custom`. Default: `light`.
 - `noise_tags`: comma-separated explicit noise tags, valid only with `noise_mode=custom`.
@@ -66,11 +64,13 @@ Optional:
 
 1. Generate only **Czech** input texts in a realistic Czech telecom context.
 2. Use only IDs present in the loaded domain and helper files.
-3. Do not expose hidden technical labels such as `request_type_id`, `reference_id`, `scenario_id`, or classifier outcome names inside `input_text`.
+3. Do not expose hidden technical labels such as `request_type_id`, `reference_id`, `scenario_id`, or classifier taxonomy labels inside `input_text`.
 4. For `extraction` mode, each generated input must preserve the semantic content of exactly one extraction reference.
-5. For `classification` mode, each generated input must preserve the intended classifier outcome of the selected scenario.
+5. For `classification` mode, the generated input must preserve the intended classification scenario and the expected runtime outcome:
+   - one known request type, or
+   - `unclassifiable` because the input is mixed, contains an unknown tail, is out of scope, or is too ambiguous.
 6. Irrelevant noise must not introduce accidental extra known intents.
-7. Observability metadata must use literal snippets from the generated input text whenever possible.
+7. Observability metadata must use **literal snippets from the generated input text** whenever possible.
 8. Do not invent new services, products, discounts, or business rules.
 9. Keep texts realistic and compact; avoid theatrical dialogue or absurd details.
 
@@ -91,7 +91,7 @@ Optional:
 
 Use the schema documented in `references/output-contract.md`.
 
-Every record contains:
+In brief, every record contains:
 
 - base metadata (`record_id`, `mode`, `channel`, `noise_tags`),
 - `input_text`,
@@ -113,7 +113,7 @@ Selection priority:
 Selection priority:
 
 1. `classification_scenario_ids`
-2. `classifier_outcome_types`
+2. `classifier_outcome_types` (matched against `scenario_type`)
 3. linked request type filter via `request_type_ids`
 4. all classification scenarios
 
@@ -144,9 +144,14 @@ Gold annotation must contain:
 Gold annotation must contain:
 
 - `scenario_id`
-- `expected_classifier_result`
+- `scenario_type`
+- `expected_request_type_id_reference`
+- `unclassifiable_reason_id`
 - `linked_reference_ids`
 - `linked_request_type_ids`
+
+Optional:
+- `possible_request_type_ids` for ambiguous scenarios only.
 
 ## Observability policy
 
@@ -158,3 +163,9 @@ If `include_observability_metadata=true`, include at least:
 - `component_segments`
 - `distractor_snippets`
 - `generation_note`
+
+## Additional resources
+
+- `references/parameter-reference.md`: parameter behavior and selection rules.
+- `references/output-contract.md`: exact record schemas and consistency requirements.
+- `examples/example-invocations.md`: sample slash-command usage.

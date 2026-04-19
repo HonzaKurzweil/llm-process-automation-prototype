@@ -1,4 +1,4 @@
-version: '2.0'
+version: '4.0'
 artifact_role:
   primary_uses:
   - Gold reference outputs pro generování vstupů pro extrakční službu s jasně daným request type.
@@ -10,7 +10,7 @@ artifact_role:
   - Char-offset anotace; observability metadata mají být založena na evidence snippets.
 compatibility:
   request_types_source: request_types_v3.yaml
-  classifier_outcomes_source: classifier_outcomes_v1.yaml
+  classifier_outcomes_source: classifier_outcomes_v3.yaml
   domain_rules_source: rules_v2.yaml
 extraction_reference_sets:
 - request_type_id: rt_new_mobile_order
@@ -416,10 +416,8 @@ classification_scenarios:
 - scenario_id: cls_single_known_mobile_01
   note: Jednoznačný vstup odpovídající samostatné mobilní objednávce bez dalších intentů.
   expected_classifier_result:
-    outcome_type: single_known_request_type
-    primary_request_type_id: rt_new_mobile_order
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: rt_new_mobile_order
+    unclassifiable_reason_id: null
   composition:
     known_components:
     - request_type_id: rt_new_mobile_order
@@ -435,13 +433,12 @@ classification_scenarios:
     - crm_ticket
     - broker_email
     - call_transcript
+  scenario_type: single_known_request_type
 - scenario_id: cls_single_known_family_01
   note: Jednoznačný vstup odpovídající rodinné mobilní objednávce.
   expected_classifier_result:
-    outcome_type: single_known_request_type
-    primary_request_type_id: rt_family_mobile_order
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: rt_family_mobile_order
+    unclassifiable_reason_id: null
   composition:
     known_components:
     - request_type_id: rt_family_mobile_order
@@ -457,13 +454,12 @@ classification_scenarios:
     - crm_ticket
     - broker_email
     - call_transcript
+  scenario_type: single_known_request_type
 - scenario_id: cls_single_known_fixed_internet_01
   note: Jednoznačný vstup odpovídající objednávce pevného internetu s hardwarem.
   expected_classifier_result:
-    outcome_type: single_known_request_type
-    primary_request_type_id: rt_fixed_internet_with_hardware_order
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: rt_fixed_internet_with_hardware_order
+    unclassifiable_reason_id: null
   composition:
     known_components:
     - request_type_id: rt_fixed_internet_with_hardware_order
@@ -479,13 +475,12 @@ classification_scenarios:
     - crm_ticket
     - broker_email
     - call_transcript
+  scenario_type: single_known_request_type
 - scenario_id: cls_single_known_bundle_01
   note: Jednoznačný vstup odpovídající kombinované objednávce internet + TV.
   expected_classifier_result:
-    outcome_type: single_known_request_type
-    primary_request_type_id: rt_internet_tv_bundle_order
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: rt_internet_tv_bundle_order
+    unclassifiable_reason_id: null
   composition:
     known_components:
     - request_type_id: rt_internet_tv_bundle_order
@@ -501,13 +496,12 @@ classification_scenarios:
     - crm_ticket
     - broker_email
     - call_transcript
+  scenario_type: single_known_request_type
 - scenario_id: cls_single_known_retention_01
   note: Jednoznačný vstup odpovídající retenčnímu požadavku na slevu.
   expected_classifier_result:
-    outcome_type: single_known_request_type
-    primary_request_type_id: rt_retention_discount_request
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: rt_retention_discount_request
+    unclassifiable_reason_id: null
   composition:
     known_components:
     - request_type_id: rt_retention_discount_request
@@ -523,13 +517,12 @@ classification_scenarios:
     - crm_ticket
     - broker_email
     - call_transcript
+  scenario_type: single_known_request_type
 - scenario_id: cls_known_with_unknown_tail_01
   note: Rozpoznatelný známý požadavek na internet s hardwarem, za kterým následuje krátký mimo-scope dodatek.
   expected_classifier_result:
-    outcome_type: single_known_request_type_with_unknown_tail
-    primary_request_type_id: rt_fixed_internet_with_hardware_order
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: true
+    expected_request_type_id_reference: unclassifiable
+    unclassifiable_reason_id: known_request_type_with_unknown_tail
   composition:
     known_components:
     - request_type_id: rt_fixed_internet_with_hardware_order
@@ -544,13 +537,12 @@ classification_scenarios:
     recommended_channels:
     - broker_email
     - crm_ticket
+  scenario_type: known_request_type_with_unknown_tail
 - scenario_id: cls_known_with_unknown_tail_02
   note: Rozpoznatelný retenční požadavek, ale zároveň je připojena technická reklamace mimo scope.
   expected_classifier_result:
-    outcome_type: single_known_request_type_with_unknown_tail
-    primary_request_type_id: rt_retention_discount_request
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: true
+    expected_request_type_id_reference: unclassifiable
+    unclassifiable_reason_id: known_request_type_with_unknown_tail
   composition:
     known_components:
     - request_type_id: rt_retention_discount_request
@@ -565,15 +557,12 @@ classification_scenarios:
     recommended_channels:
     - broker_email
     - call_transcript
+  scenario_type: known_request_type_with_unknown_tail
 - scenario_id: cls_multi_known_01
   note: V jednom vstupu jsou dva samostatné známé požadavky pro dva různé klienty.
   expected_classifier_result:
-    outcome_type: multi_intent_known_request_types
-    primary_request_type_id: null
-    secondary_request_type_ids:
-    - rt_new_mobile_order
-    - rt_fixed_internet_with_hardware_order
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: unclassifiable
+    unclassifiable_reason_id: multiple_known_request_types_present
   composition:
     known_components:
     - request_type_id: rt_new_mobile_order
@@ -595,15 +584,12 @@ classification_scenarios:
     recommended_channels:
     - broker_email
     - crm_ticket
+  scenario_type: multiple_known_request_types_present
 - scenario_id: cls_multi_known_02
   note: 'V jednom vstupu jsou přítomny dva různé známé požadavky: bundle objednávka a retenční jednání.'
   expected_classifier_result:
-    outcome_type: multi_intent_known_request_types
-    primary_request_type_id: null
-    secondary_request_type_ids:
-    - rt_internet_tv_bundle_order
-    - rt_retention_discount_request
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: unclassifiable
+    unclassifiable_reason_id: multiple_known_request_types_present
   composition:
     known_components:
     - request_type_id: rt_internet_tv_bundle_order
@@ -624,13 +610,12 @@ classification_scenarios:
     - Text má naznačit dva oddělené leady nebo dvě oddělené části komunikace.
     recommended_channels:
     - broker_email
+  scenario_type: multiple_known_request_types_present
 - scenario_id: cls_unknown_01
   note: Telekomunikační vstup, který se týká fakturace a roamingu, nikoli známého request type.
   expected_classifier_result:
-    outcome_type: unknown_or_out_of_scope
-    primary_request_type_id: null
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: unclassifiable
+    unclassifiable_reason_id: unknown_or_out_of_scope
   composition:
     known_components: []
     unknown_component_summary: Klient řeší nesouhlas s roamingovým vyúčtováním a chce upravit datum splatnosti faktury.
@@ -645,13 +630,12 @@ classification_scenarios:
     - crm_ticket
     - broker_email
     - call_transcript
+  scenario_type: unknown_or_out_of_scope
 - scenario_id: cls_unknown_02
   note: Telekomunikační vstup zaměřený na výměnu SIM/eSIM a PUK, mimo scope definovaných request types.
   expected_classifier_result:
-    outcome_type: unknown_or_out_of_scope
-    primary_request_type_id: null
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: unclassifiable
+    unclassifiable_reason_id: unknown_or_out_of_scope
   composition:
     known_components: []
     unknown_component_summary: Zákazník chce aktivaci eSIM a zároveň požaduje zaslat PUK kód pro jinou linku.
@@ -665,13 +649,12 @@ classification_scenarios:
     recommended_channels:
     - crm_ticket
     - call_transcript
+  scenario_type: unknown_or_out_of_scope
 - scenario_id: cls_ambiguous_01
   note: Vstup je příliš vágní; naznačuje více možných směrů bez dostatečného signálu pro spolehlivou klasifikaci.
   expected_classifier_result:
-    outcome_type: ambiguous_or_insufficient_signal
-    primary_request_type_id: null
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: unclassifiable
+    unclassifiable_reason_id: ambiguous_or_insufficient_signal
   composition:
     known_components: []
     unknown_component_summary: Poznámka říká jen to, že klient chce řešit internet nebo televizi podle minulé nabídky a zavolat zpět.
@@ -685,13 +668,12 @@ classification_scenarios:
     recommended_channels:
     - crm_ticket
     - call_transcript
+  scenario_type: ambiguous_or_insufficient_signal
 - scenario_id: cls_ambiguous_02
   note: Velmi krátký a rozporný vstup se zmínkou o slevě a nabídce bez vazby na jasný proces.
   expected_classifier_result:
-    outcome_type: ambiguous_or_insufficient_signal
-    primary_request_type_id: null
-    secondary_request_type_ids: []
-    contains_unknown_additional_intent: false
+    expected_request_type_id_reference: unclassifiable
+    unclassifiable_reason_id: ambiguous_or_insufficient_signal
   composition:
     known_components: []
     unknown_component_summary: Ve zprávě je pouze prosba o zpětné zavolání kvůli nabídce a slevě z minulého týdne.
@@ -706,3 +688,4 @@ classification_scenarios:
     - crm_ticket
     - broker_email
     - call_transcript
+  scenario_type: ambiguous_or_insufficient_signal
