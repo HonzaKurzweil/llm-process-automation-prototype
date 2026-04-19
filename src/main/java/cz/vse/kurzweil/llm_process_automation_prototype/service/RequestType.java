@@ -23,9 +23,9 @@ public enum RequestType {
     private final String promptDirectory;
 
 
-    public static RequestType fromRequestTypeIdReference(String value) {
+    public static RequestType fromRequestTypeIdReference(String requestTypeIdReference) {
         for (RequestType type : values()) {
-            if (type.requestTypeIdReference.equalsIgnoreCase(value)) {
+            if (type.requestTypeIdReference.equalsIgnoreCase(requestTypeIdReference)) {
                 return type;
             }
         }
