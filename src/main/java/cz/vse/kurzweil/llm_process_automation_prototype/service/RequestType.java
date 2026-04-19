@@ -27,11 +27,6 @@ public enum RequestType {
         this.promptDirectory = promptDirectory;
     }
 
-    @JsonValue
-    public String getValue() {
-        return value;
-    }
-
     @JsonCreator
     public static RequestType fromValue(String value) {
         for (RequestType type : values()) {

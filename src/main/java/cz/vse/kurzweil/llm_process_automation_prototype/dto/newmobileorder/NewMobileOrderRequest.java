@@ -19,35 +19,24 @@ import java.util.List;
  */
 public record NewMobileOrderRequest(
 
-        @JsonProperty("customer_status")
         CustomerStatus customerStatus,
 
-        @JsonProperty("customer_name")
         String customerName,
 
-        @JsonProperty("contact_phone")
         String contactPhone,
 
-        @JsonProperty("requested_services")
         List<ServiceRequest> requestedServices,
 
-        @JsonProperty("contract_term_months")
         Integer contractTermMonths,
 
-        @JsonProperty("porting_requested")
         Boolean portingRequested,
 
-        // conditional required (when portingRequested == true)
-        @JsonProperty("ported_numbers")
         List<PortedNumber> portedNumbers,
 
-        @JsonProperty("contact_email")
         String contactEmail,
 
-        @JsonProperty("requested_discounts")
         List<DiscountRequest> requestedDiscounts,
 
-        @JsonProperty("notes")
         String notes
 
 ) {}

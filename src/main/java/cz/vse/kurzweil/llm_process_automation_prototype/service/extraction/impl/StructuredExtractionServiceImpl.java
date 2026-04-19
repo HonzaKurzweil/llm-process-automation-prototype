@@ -1,11 +1,13 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.impl;
 
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.newmobileorder.NewMobileOrderRequest;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.stereotype.Service;
 
@@ -28,13 +30,21 @@ public class StructuredExtractionServiceImpl implements StructuredExtractionServ
                 .collect(Collectors.toMap(ExtractionStrategy::variant, s -> s));
         this.clients = Arrays.stream(ModelType.values()).collect(Collectors.toMap(
                 m -> m,
-                m -> builder.defaultOptions(OpenAiChatOptions.builder().model(m.getModelId()).build()).build()
+                m -> builder.defaultOptions(
+                                OpenAiChatOptions.builder()
+                                        .model(m.getModelId())
+                                        .build()
+                        )
+                        .defaultAdvisors(new SimpleLoggerAdvisor())
+                        .build()
         ));
     }
 
     @Override
     public <T> T extract(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
         log.info("Extracting with requestType={}, variant={}, model={}", requestType, variant, model);
-        return strategies.get(variant).extract(inputText, requestType, clients.get(model));
+        Object extract = strategies.get(variant).extract(inputText, requestType, clients.get(model));
+       // NewMobileOrderRequest dto = (NewMobileOrderRequest) extract;
+        return (T) extract;
     }
 }
