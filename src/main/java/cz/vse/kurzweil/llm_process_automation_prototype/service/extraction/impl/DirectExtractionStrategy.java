@@ -2,7 +2,7 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.impl
 
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.prompt.PromptResourceLoader;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptResourceLoader;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.prompt;
+package cz.vse.kurzweil.llm_process_automation_prototype.service;
 
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
