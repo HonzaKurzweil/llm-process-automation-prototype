@@ -1,8 +1,8 @@
 ---
 name: generate-telecom-inputs
-description: Generate Czech telecom intake input records from request type definitions, reference outputs, noise profiles, and domain YAML catalogs. Use when creating synthetic CRM tickets, broker emails, or call transcripts for LLM extraction evaluation.
-when_to_use: Use this skill when the user asks to generate telecom input data, input variants, CRM ticket text, broker email text, call transcript text, or dataset input files from request_types.yaml, reference_outputs.yaml, noise_profiles.yaml, and domain YAML files.
-argument-hint: "request_type_id=<id|all> channels=crm_ticket,broker_email,call_transcript output_path=<path> noise_mode=<none|light|mixed|custom>"
+description: Generate Czech telecom intake datasets for either extraction (clear request type) or classification (unclear, multi-intent, ambiguous, or out-of-scope request type) from request_types_v3.yaml, reference_outputs_v2.yaml, classifier_outcomes_v1.yaml, noise_profiles.yaml, and domain YAML catalogs.
+when_to_use: Use this skill when the user asks to generate synthetic telecom CRM tickets, broker emails, call transcripts, extraction benchmarks, classification benchmarks, or mixed telecom intake datasets.
+argument-hint: "mode=<extraction|classification|both> request_type_ids=<id|all> channels=crm_ticket,broker_email,call_transcript variants_per_base=1 noise_mode=<none|light|mixed|custom> output_path=<path>"
 disable-model-invocation: true
 allowed-tools:
   - Read
@@ -15,145 +15,155 @@ allowed-tools:
 
 # Generate Telecom Inputs Skill
 
-Generate synthetic Czech telecom intake input files from existing structured reference files. This skill creates **input text records only**; it must not invent new request types, product/service/discount IDs, or processing/validation rules.
+Generate synthetic Czech telecom intake input records from structured references and scenario definitions. This skill produces benchmark-style input datasets with gold annotations and observability metadata suitable for later back-checking.
 
 ## Default project paths
 
 Unless the user provides overrides, use these files:
 
 - Domain catalogs: `src/main/resources/domain/*.yaml`
-- Request type definitions: `src/main/resources/dataset/request_types.yaml`
-- Reference outputs: `src/main/resources/dataset/reference_outputs.yaml`
-- Noise profiles: `src/main/resources/dataset/noise_profiles.yaml`
-- Output directory: `src/main/resources/dataset/inputs/`
+- Request types: `src/main/resources/generator_helpers/request_types_v3.yaml`
+- Classifier outcomes: `src/main/resources/generator_helpers/classifier_outcomes_v1.yaml`
+- Noise profiles: `src/main/resources/generator_helpers/noise_profiles.yaml`
+- Reference outputs and classification scenarios: `src/main/resources/dataset/reference_outputs_v2.yaml`
+- Output directory: `src/main/resources/dataset/generated_inputs/`
 
 If a required file is missing, report the missing path and stop.
 
+## Supported modes
+
+- `extraction`: generate records for extraction from inputs with a clear known request type.
+- `classification`: generate records where the input must first be classified.
+- `both`: generate both kinds of records in one output file.
+
 ## Parameters
 
-Parse parameters from the user request. Use defaults when safe.
+Required unless explicit IDs are provided:
 
-Required unless `reference_ids` is provided:
-
-- `request_type_id`: one request type ID, or `all`
+- `mode`: `extraction`, `classification`, or `both`. Default: `extraction`.
 
 Optional:
 
-- `reference_ids`: comma-separated explicit reference IDs. If present, generate only these references.
+- `request_type_ids`: comma-separated list or `all`. Used mainly for `extraction`, and as a filter for linked known components in `classification`.
+- `extraction_reference_ids`: explicit extraction reference IDs.
+- `classification_scenario_ids`: explicit classification scenario IDs.
+- `classifier_outcome_types`: comma-separated subset of outcome types from `classifier_outcomes_v1.yaml`.
 - `channels`: comma-separated subset of `crm_ticket`, `broker_email`, `call_transcript`. Default: all three.
 - `noise_mode`: `none`, `light`, `mixed`, or `custom`. Default: `light`.
-- `noise_tags`: comma-separated noise tags, used only when `noise_mode=custom`.
-- `variants_per_reference_per_channel`: integer. Default: `1`.
+- `noise_tags`: comma-separated explicit noise tags, valid only with `noise_mode=custom`.
+- `variants_per_base`: integer. Default: `1`.
 - `output_format`: `json`, `jsonl`, or `yaml`. Default: `json`.
-- `output_path`: explicit output file path. Default: `src/main/resources/dataset/inputs/<request_type_id>/inputs_<request_type_id>.json`.
-- `include_reference_output`: `true` or `false`. Default: `true`.
+- `output_path`: explicit output file path.
+- `include_gold_annotation`: `true` or `false`. Default: `true`.
+- `include_observability_metadata`: `true` or `false`. Default: `true`.
 - `overwrite`: `true` or `false`. Default: `false`.
 - `dry_run`: `true` or `false`. Default: `false`.
-- `allow_reference_mutation`: `true` or `false`. Default: `false`.
-- `batch_id`: optional stable suffix for generated `input_id` values.
+- `batch_id`: optional suffix for stable record IDs.
 
 ## Core constraints
 
 1. Generate only **Czech** input texts in a realistic Czech telecom context.
-2. Use only product, service, discount, rule, and locality IDs present in the loaded source files.
-3. Do not add facts to `input_text` that are not present in the selected `reference_output`, unless they are irrelevant noise and are not extractable fields.
-4. Do not remove extractable facts from `input_text` when `allow_reference_mutation=false`.
-5. Preserve the semantic kind of each reference:
-   - `incomplete_reference`: generated input must remain incomplete in exactly the same material way.
-   - `complete_valid_reference`: generated input must express all reference fields and must not introduce rule violations.
-   - `complete_invalid_reference`: generated input must express all reference fields and must preserve the intended business-rule violation.
-6. Do not create OCR, invoice, banking, healthcare, insurance, or non-telecom examples.
-7. Do not generate processing instructions, prompts for extraction, guardrails, or evaluation code unless explicitly requested.
-8. Keep text realistic but compact. Avoid theatrical dialogue, absurd prices, fake operators outside common Czech context, or impossible addresses.
+2. Use only IDs present in the loaded domain and helper files.
+3. Do not expose hidden technical labels such as `request_type_id`, `reference_id`, `scenario_id`, or classifier outcome names inside `input_text`.
+4. For `extraction` mode, each generated input must preserve the semantic content of exactly one extraction reference.
+5. For `classification` mode, each generated input must preserve the intended classifier outcome of the selected scenario:
+   - single known request type,
+   - single known request type with unknown tail,
+   - multi-intent known request types,
+   - unknown or out-of-scope,
+   - ambiguous or insufficient signal.
+6. Irrelevant noise must not introduce accidental extra known intents.
+7. Observability metadata must use **literal snippets from the generated input text** whenever possible.
+8. Do not invent new services, products, discounts, or business rules.
+9. Keep texts realistic and compact; avoid theatrical dialogue or absurd details.
 
 ## Workflow
 
-1. Read and understand the source files listed in Default project paths.
-2. Validate requested IDs:
-   - `request_type_id` must exist in `request_types.yaml` unless `all`.
-   - every `reference_id` must exist in `reference_outputs.yaml`.
-   - every requested `channel` must exist in `noise_profiles.yaml`.
-   - every requested `noise_tag` must exist and must apply to the selected channel.
-3. Select references:
-   - if `reference_ids` is present, select those references;
-   - else select all references under `request_type_id`;
-   - else if `request_type_id=all`, select all references.
-4. Choose noise:
-   - `none`: use only clean channel style; no additional noise tags.
-   - `light`: use at most one mild noise tag per record, preferably channel-specific style or minor surface noise.
-   - `mixed`: use at most two compatible noise tags per record. Do not combine contradictory, omission, and invalid-entity noise in one record unless explicitly requested.
-   - `custom`: use `noise_tags`, but reject incompatible tags.
-5. Generate input records. For each selected reference and channel, create `variants_per_reference_per_channel` records.
-6. Write the output file unless `dry_run=true`.
-7. Report a compact summary: number of generated records, output path, request types, channels, and any skipped references.
+1. Read the helper files and domain files.
+2. Validate requested IDs and requested channels.
+3. Resolve base items:
+   - `extraction`: select records from `extraction_reference_sets`.
+   - `classification`: select records from `classification_scenarios`.
+4. Choose noise according to `noise_mode` and `noise_profiles.yaml`.
+5. Generate `variants_per_base` records per selected base item and channel.
+6. Build gold annotations and observability metadata.
+7. Write the output unless `dry_run=true`.
+8. Report a compact summary with counts, selected modes, output path, and any skipped items.
 
-## Output record schema
+## Output record contract
 
-Each generated record must use this shape:
+Use the schema documented in `references/output-contract.md`.
 
-```json
-{
-  "input_id": "rt_internet_tv_bundle_order__ref_internet_tv_bundle_02__broker_email__v01",
-  "request_type_id": "rt_internet_tv_bundle_order",
-  "reference_id": "ref_internet_tv_bundle_02",
-  "reference_kind": "complete_valid_reference",
-  "channel": "broker_email",
-  "channel_style": "broker_email",
-  "noise_tags": ["greeting_signature_noise"],
-  "business_perturbation_tags": [],
-  "input_text": "Dobrý den, posílám poptávku...",
-  "reference_output": {},
-  "missing_required_fields": [],
-  "expected_rule_violations": [],
-  "generation_note": "Complete valid reference expressed as broker email with greeting/signature noise."
-}
-```
+In brief, every record contains:
 
-If `include_reference_output=false`, omit `reference_output`, `missing_required_fields`, and `expected_rule_violations`, but keep `reference_id` and `reference_kind`.
+- base metadata (`record_id`, `mode`, `channel`, `noise_tags`),
+- `input_text`,
+- `gold_annotation` for extraction or classification,
+- `observability` metadata for later back-checking.
 
-## Output file schema for JSON
+## Selection behavior
 
-```json
-{
-  "dataset_version": 1,
-  "source_files": [
-    "src/main/resources/domain/*.yaml",
-    "src/main/resources/dataset/request_types.yaml",
-    "src/main/resources/dataset/reference_outputs.yaml",
-    "src/main/resources/dataset/noise_profiles.yaml"
-  ],
-  "generation_parameters": {
-    "request_type_id": "rt_internet_tv_bundle_order",
-    "channels": ["crm_ticket", "broker_email", "call_transcript"],
-    "noise_mode": "light",
-    "variants_per_reference_per_channel": 1,
-    "allow_reference_mutation": false
-  },
-  "records": []
-}
-```
+### Extraction mode
 
-## Channel style guidance
+Selection priority:
 
-Use these distinctions strictly:
+1. `extraction_reference_ids`
+2. `request_type_ids`
+3. all extraction references
 
-- `crm_ticket`: internal, terse, semi-structured, abbreviations, bullet-like fragments, minimal politeness.
-- `broker_email`: coherent email from a broker/salesperson, greeting/signature, contextual sentences, sometimes redundant information.
-- `call_transcript`: spoken Czech, hesitations, self-corrections, interruptions, partial sentences. Still keep it readable.
+### Classification mode
 
-## Reference mutation policy
+Selection priority:
 
-Default is `allow_reference_mutation=false`. Under this policy:
+1. `classification_scenario_ids`
+2. `classifier_outcome_types`
+3. linked request type filter via `request_type_ids`
+4. all classification scenarios
 
-- Do not apply `missing_critical` or `missing_noncritical` to a complete reference.
-- Do not add a nonexistent product or discount unless the selected reference already contains an invalid or unresolved item.
-- Do not introduce contradictions that change the expected reference output.
-- Surface noise, duplication, email thread noise, and irrelevant information are safe because they do not change extractable facts.
+If `request_type_ids` is used together with `classification` mode, keep only scenarios whose known linked components all fall into the requested request types. This prevents accidental mixing with unrelated scenarios.
 
-If the user explicitly sets `allow_reference_mutation=true`, create a new derived reference output inside the generated record and clearly mark it with `derived_reference_output: true`. Do not modify source reference files.
+## Channel guidance
+
+- `crm_ticket`: terse, semi-structured, internal shorthand is acceptable.
+- `broker_email`: coherent email style, explanatory sentences, optional greeting/signature.
+- `call_transcript`: spoken Czech, hesitations and repairs allowed, but keep readable.
+
+## Gold-annotation policy
+
+### Extraction mode
+
+Gold annotation must contain:
+
+- `request_type_id`
+- `reference_id`
+- `reference_kind`
+- `extracted_fields`
+- `missing_required_fields`
+- `missing_required_paths`
+- `expected_rule_violations`
+
+### Classification mode
+
+Gold annotation must contain:
+
+- `scenario_id`
+- `expected_classifier_result`
+- `linked_reference_ids`
+- `linked_request_type_ids`
+
+## Observability policy
+
+If `include_observability_metadata=true`, include at least:
+
+- `materialized_field_paths`
+- `intentionally_omitted_field_paths`
+- `evidence_by_field_path`
+- `component_segments`
+- `distractor_snippets`
+- `generation_note`
 
 ## Additional resources
 
-- `references/parameter-reference.md`: detailed parameter behavior.
-- `references/output-contract.md`: exact input record contract and consistency rules.
-- `examples/example-invocations.md`: example slash-command usage.
+- `references/parameter-reference.md`: parameter behavior and selection rules.
+- `references/output-contract.md`: exact record schemas and consistency requirements.
+- `examples/example-invocations.md`: sample slash-command usage.

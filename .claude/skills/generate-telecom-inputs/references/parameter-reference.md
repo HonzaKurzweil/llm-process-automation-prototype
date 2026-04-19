@@ -1,17 +1,39 @@
 # Parameter Reference
 
-## request_type_id
-Controls which request type to generate. Use `all` to generate all request types.
+## mode
+- `extraction`
+- `classification`
+- `both`
+
+Default: `extraction`
+
+## request_type_ids
+Comma-separated list of known request types, or `all`.
 
 Examples:
-- `request_type_id=rt_new_mobile_order`
-- `request_type_id=all`
+- `request_type_ids=rt_new_mobile_order`
+- `request_type_ids=rt_new_mobile_order,rt_fixed_internet_with_hardware_order`
+- `request_type_ids=all`
 
-## reference_ids
-Overrides `request_type_id` selection and generates only explicit references.
+## extraction_reference_ids
+Explicit extraction reference IDs.
 
 Example:
-- `reference_ids=ref_new_mobile_order_01,ref_internet_tv_bundle_02`
+- `extraction_reference_ids=ref_new_mobile_order_02,ref_internet_tv_bundle_02`
+
+## classification_scenario_ids
+Explicit classification scenario IDs.
+
+Example:
+- `classification_scenario_ids=cls_multi_known_01,cls_unknown_01`
+
+## classifier_outcome_types
+Subset of:
+- `single_known_request_type`
+- `single_known_request_type_with_unknown_tail`
+- `multi_intent_known_request_types`
+- `unknown_or_out_of_scope`
+- `ambiguous_or_insufficient_signal`
 
 ## channels
 Allowed values:
@@ -23,14 +45,36 @@ Default: all three.
 
 ## noise_mode
 - `none`: clean baseline.
-- `light`: one mild tag; safe for first dataset generation.
-- `mixed`: up to two compatible tags; useful for harder benchmark inputs.
+- `light`: at most one mild or channel-specific noise tag.
+- `mixed`: up to two compatible noise tags.
 - `custom`: use explicit `noise_tags`.
 
 ## noise_tags
 Only valid with `noise_mode=custom`. Tags must exist in `noise_profiles.yaml` and apply to the selected channel.
 
-## allow_reference_mutation
-Default: `false`.
+## variants_per_base
+How many variants to generate per selected base item and channel.
 
-Keep it `false` for the main benchmark, because generated input must match existing `reference_output`. Use `true` only when deliberately creating derived examples with a different reference output.
+Default: `1`
+
+## include_gold_annotation
+Default: `true`
+
+If `false`, omit `gold_annotation` but keep `source` metadata.
+
+## include_observability_metadata
+Default: `true`
+
+If `false`, omit the `observability` object.
+
+## output_format
+- `json`
+- `jsonl`
+- `yaml`
+
+Default: `json`
+
+## dry_run
+Default: `false`
+
+When `true`, validate selection and report counts, but do not write files.

@@ -1,31 +1,31 @@
 # Example invocations
 
-## Generate one request type, all channels, light noise
+## Extraction benchmark for one request type
 
 ```text
-/generate-telecom-inputs request_type_id=rt_internet_tv_bundle_order noise_mode=light
+/generate-telecom-inputs mode=extraction request_type_ids=rt_internet_tv_bundle_order channels=crm_ticket,broker_email,call_transcript noise_mode=light variants_per_base=1 output_path=src/main/resources/dataset/generated_inputs/extraction_bundle.json
 ```
 
-## Generate only CRM tickets for all references of one request type
+## Classification benchmark for unknown and ambiguous cases only
 
 ```text
-/generate-telecom-inputs request_type_id=rt_new_mobile_order channels=crm_ticket noise_mode=none
+/generate-telecom-inputs mode=classification classifier_outcome_types=unknown_or_out_of_scope,ambiguous_or_insufficient_signal channels=crm_ticket,call_transcript noise_mode=light output_path=src/main/resources/dataset/generated_inputs/classification_unknown_ambiguous.json
 ```
 
-## Generate explicit references only
+## Mixed dataset with both extraction and classification
 
 ```text
-/generate-telecom-inputs reference_ids=ref_new_mobile_order_01,ref_new_mobile_order_02 channels=broker_email,call_transcript noise_mode=light output_path=src/main/resources/dataset/inputs/mobile_inputs.json
+/generate-telecom-inputs mode=both request_type_ids=all channels=crm_ticket,broker_email noise_mode=mixed variants_per_base=2 output_path=src/main/resources/dataset/generated_inputs/all_inputs_v2.json
 ```
 
-## Generate harder mixed-noise inputs
+## Only explicit classification scenarios
 
 ```text
-/generate-telecom-inputs request_type_id=all channels=crm_ticket,broker_email noise_mode=mixed variants_per_reference_per_channel=2 output_path=src/main/resources/dataset/inputs/all_mixed_inputs.json
+/generate-telecom-inputs mode=classification classification_scenario_ids=cls_multi_known_01,cls_known_with_unknown_tail_01 channels=broker_email noise_mode=light output_path=src/main/resources/dataset/generated_inputs/classification_complex.json
 ```
 
 ## Dry run
 
 ```text
-/generate-telecom-inputs request_type_id=rt_retention_discount_request channels=call_transcript dry_run=true
+/generate-telecom-inputs mode=both request_type_ids=all dry_run=true
 ```
