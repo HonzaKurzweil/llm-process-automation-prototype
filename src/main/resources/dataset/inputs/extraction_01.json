@@ -1,0 +1,1053 @@
+{
+  "dataset_version": 5,
+  "source_files": {
+    "domain": "src/main/resources/domain/*.yaml",
+    "request_types": "src/main/resources/dataset/generator_helpers/request_types_v3.yaml",
+    "classifier_outcomes": "src/main/resources/dataset/generator_helpers/classifier_outcomes_v3.yaml",
+    "noise_profiles": "src/main/resources/dataset/generator_helpers/noise_profiles.yaml",
+    "reference_outputs": "src/main/resources/dataset/generator_helpers/reference_outputs_v4.yaml"
+  },
+  "generation_parameters": {
+    "mode": "extraction",
+    "request_type_ids": ["rt_internet_tv_bundle_order"],
+    "channels": ["crm_ticket", "broker_email", "call_transcript"],
+    "noise_mode": "light",
+    "variants_per_base": 1,
+    "output_path": "src/main/resources/dataset/inputs/extraction_01.json",
+    "include_gold_annotation": true,
+    "include_observability_metadata": true,
+    "overwrite": false,
+    "dry_run": false
+  },
+  "records": [
+    {
+      "record_id": "ext__ref_internet_tv_bundle_01__crm_ticket__v01",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "channel_style": "crm_ticket",
+      "noise_tags": ["shorthand_internal"],
+      "business_perturbation_tags": [],
+      "source": {
+        "request_type_id": "rt_internet_tv_bundle_order",
+        "reference_id": "ref_internet_tv_bundle_01",
+        "reference_kind": "incomplete_reference"
+      },
+      "input_text": "Zákazník: Veronika Jarošová – nová zákaznice\nTel: 774 551 008\nPož: Optika Domů 300 (1x) + Televize Family (1x), set-top box 1x\nZávazek: 24 měs.",
+      "gold_annotation": {
+        "extraction": {
+          "request_type_id": "rt_internet_tv_bundle_order",
+          "reference_id": "ref_internet_tv_bundle_01",
+          "reference_kind": "incomplete_reference",
+          "extracted_fields": {
+            "customer_status": "new",
+            "customer_name": "Veronika Jarošová",
+            "contact_phone": "+420 774 551 008",
+            "requested_services": [
+              { "service_id": "svc_internet_fiber_300", "quantity": 1 },
+              { "service_id": "svc_tv_family", "quantity": 1 }
+            ],
+            "contract_term_months": 24,
+            "requested_products": [
+              { "product_id": "prod_set_top_box", "quantity": 1 }
+            ]
+          },
+          "missing_required_fields": ["installation_address"],
+          "missing_required_paths": ["installation_address"],
+          "expected_rule_violations": []
+        }
+      },
+      "observability": {
+        "materialized_field_paths": [
+          "customer_status",
+          "customer_name",
+          "contact_phone",
+          "requested_services[0].service_id",
+          "requested_services[0].quantity",
+          "requested_services[1].service_id",
+          "requested_services[1].quantity",
+          "requested_products[0].product_id",
+          "requested_products[0].quantity",
+          "contract_term_months"
+        ],
+        "intentionally_omitted_field_paths": ["installation_address"],
+        "evidence_by_field_path": {
+          "customer_name": {
+            "normalized_value": "Veronika Jarošová",
+            "evidence_snippets": ["Veronika Jarošová"]
+          },
+          "customer_status": {
+            "normalized_value": "new",
+            "evidence_snippets": ["nová zákaznice"]
+          },
+          "contact_phone": {
+            "normalized_value": "+420 774 551 008",
+            "evidence_snippets": ["774 551 008"]
+          },
+          "requested_services[0].service_id": {
+            "normalized_value": "svc_internet_fiber_300",
+            "evidence_snippets": ["Optika Domů 300"]
+          },
+          "requested_services[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Optika Domů 300 (1x)"]
+          },
+          "requested_services[1].service_id": {
+            "normalized_value": "svc_tv_family",
+            "evidence_snippets": ["Televize Family"]
+          },
+          "requested_services[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Televize Family (1x)"]
+          },
+          "requested_products[0].product_id": {
+            "normalized_value": "prod_set_top_box",
+            "evidence_snippets": ["set-top box"]
+          },
+          "requested_products[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["set-top box 1x"]
+          },
+          "contract_term_months": {
+            "normalized_value": 24,
+            "evidence_snippets": ["24 měs."]
+          }
+        },
+        "component_segments": [
+          {
+            "component_role": "primary_known",
+            "request_type_id": "rt_internet_tv_bundle_order",
+            "reference_id": "ref_internet_tv_bundle_01",
+            "evidence_snippets": ["Optika Domů 300", "Televize Family", "set-top box 1x"]
+          }
+        ],
+        "distractor_snippets": [],
+        "generation_note": "Incomplete reference rendered as CRM ticket in shorthand style. Installation address absent from the communication — the customer did not provide it."
+      }
+    },
+    {
+      "record_id": "ext__ref_internet_tv_bundle_01__broker_email__v01",
+      "mode": "extraction",
+      "channel": "broker_email",
+      "channel_style": "broker_email",
+      "noise_tags": ["greeting_signature_noise"],
+      "business_perturbation_tags": [],
+      "source": {
+        "request_type_id": "rt_internet_tv_bundle_order",
+        "reference_id": "ref_internet_tv_bundle_01",
+        "reference_kind": "incomplete_reference"
+      },
+      "input_text": "Dobrý den,\n\nposílám novou objednávku pro zákaznici Veroniku Jarošovou (+420 774 551 008) – nová zákaznice. Zákaznice má zájem o Optiku Domů 300 a Televizi Family; k tomu požaduje 1 set-top box. Smlouva na 24 měsíců. Instalační adresu zatím neuvádím – zákaznice ji potvrdí přímo při instalaci.\n\nS pozdravem,\nOndřej Marek\nFuturaTel CZ, obchodní zástupce",
+      "gold_annotation": {
+        "extraction": {
+          "request_type_id": "rt_internet_tv_bundle_order",
+          "reference_id": "ref_internet_tv_bundle_01",
+          "reference_kind": "incomplete_reference",
+          "extracted_fields": {
+            "customer_status": "new",
+            "customer_name": "Veronika Jarošová",
+            "contact_phone": "+420 774 551 008",
+            "requested_services": [
+              { "service_id": "svc_internet_fiber_300", "quantity": 1 },
+              { "service_id": "svc_tv_family", "quantity": 1 }
+            ],
+            "contract_term_months": 24,
+            "requested_products": [
+              { "product_id": "prod_set_top_box", "quantity": 1 }
+            ]
+          },
+          "missing_required_fields": ["installation_address"],
+          "missing_required_paths": ["installation_address"],
+          "expected_rule_violations": []
+        }
+      },
+      "observability": {
+        "materialized_field_paths": [
+          "customer_status",
+          "customer_name",
+          "contact_phone",
+          "requested_services[0].service_id",
+          "requested_services[0].quantity",
+          "requested_services[1].service_id",
+          "requested_services[1].quantity",
+          "requested_products[0].product_id",
+          "requested_products[0].quantity",
+          "contract_term_months"
+        ],
+        "intentionally_omitted_field_paths": ["installation_address"],
+        "evidence_by_field_path": {
+          "customer_name": {
+            "normalized_value": "Veronika Jarošová",
+            "evidence_snippets": ["Veroniku Jarošovou"]
+          },
+          "customer_status": {
+            "normalized_value": "new",
+            "evidence_snippets": ["nová zákaznice"]
+          },
+          "contact_phone": {
+            "normalized_value": "+420 774 551 008",
+            "evidence_snippets": ["+420 774 551 008"]
+          },
+          "requested_services[0].service_id": {
+            "normalized_value": "svc_internet_fiber_300",
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[1].service_id": {
+            "normalized_value": "svc_tv_family",
+            "evidence_snippets": ["Televizi Family"]
+          },
+          "requested_services[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Televizi Family"]
+          },
+          "requested_products[0].product_id": {
+            "normalized_value": "prod_set_top_box",
+            "evidence_snippets": ["set-top box"]
+          },
+          "requested_products[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["1 set-top box"]
+          },
+          "contract_term_months": {
+            "normalized_value": 24,
+            "evidence_snippets": ["24 měsíců"]
+          }
+        },
+        "component_segments": [
+          {
+            "component_role": "primary_known",
+            "request_type_id": "rt_internet_tv_bundle_order",
+            "reference_id": "ref_internet_tv_bundle_01",
+            "evidence_snippets": ["Optiku Domů 300", "Televizi Family", "1 set-top box"]
+          }
+        ],
+        "distractor_snippets": ["Dobrý den,", "S pozdravem,", "Ondřej Marek", "FuturaTel CZ, obchodní zástupce"],
+        "generation_note": "Incomplete reference rendered as broker email with greeting and signature noise. Broker explicitly states installation address will be provided separately."
+      }
+    },
+    {
+      "record_id": "ext__ref_internet_tv_bundle_01__call_transcript__v01",
+      "mode": "extraction",
+      "channel": "call_transcript",
+      "channel_style": "call_transcript",
+      "noise_tags": ["hesitation_disfluency"],
+      "business_perturbation_tags": [],
+      "source": {
+        "request_type_id": "rt_internet_tv_bundle_order",
+        "reference_id": "ref_internet_tv_bundle_01",
+        "reference_kind": "incomplete_reference"
+      },
+      "input_text": "Zákazník: Dobrý den, chtěla bych objednat internet a televizi. Ehm... Optiku Domů 300 a Televizi Family, prosím. A k tomu jeden set-top box.\nOperátor: Dobře. Na jak dlouho si přejete smlouvu?\nZákazník: Na 24 měsíců.\nOperátor: A Vaše jméno a telefon?\nZákazník: Veronika Jarošová, číslo 774 551 008. Jsem nová zákaznice.\nOperátor: Ještě bych potřeboval instalační adresu...\nZákazník: Tu... ehm, sdělím technikovi přímo při příjezdu, teď ji nemám u sebe.",
+      "gold_annotation": {
+        "extraction": {
+          "request_type_id": "rt_internet_tv_bundle_order",
+          "reference_id": "ref_internet_tv_bundle_01",
+          "reference_kind": "incomplete_reference",
+          "extracted_fields": {
+            "customer_status": "new",
+            "customer_name": "Veronika Jarošová",
+            "contact_phone": "+420 774 551 008",
+            "requested_services": [
+              { "service_id": "svc_internet_fiber_300", "quantity": 1 },
+              { "service_id": "svc_tv_family", "quantity": 1 }
+            ],
+            "contract_term_months": 24,
+            "requested_products": [
+              { "product_id": "prod_set_top_box", "quantity": 1 }
+            ]
+          },
+          "missing_required_fields": ["installation_address"],
+          "missing_required_paths": ["installation_address"],
+          "expected_rule_violations": []
+        }
+      },
+      "observability": {
+        "materialized_field_paths": [
+          "customer_status",
+          "customer_name",
+          "contact_phone",
+          "requested_services[0].service_id",
+          "requested_services[0].quantity",
+          "requested_services[1].service_id",
+          "requested_services[1].quantity",
+          "requested_products[0].product_id",
+          "requested_products[0].quantity",
+          "contract_term_months"
+        ],
+        "intentionally_omitted_field_paths": ["installation_address"],
+        "evidence_by_field_path": {
+          "customer_name": {
+            "normalized_value": "Veronika Jarošová",
+            "evidence_snippets": ["Veronika Jarošová"]
+          },
+          "customer_status": {
+            "normalized_value": "new",
+            "evidence_snippets": ["nová zákaznice"]
+          },
+          "contact_phone": {
+            "normalized_value": "+420 774 551 008",
+            "evidence_snippets": ["774 551 008"]
+          },
+          "requested_services[0].service_id": {
+            "normalized_value": "svc_internet_fiber_300",
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[1].service_id": {
+            "normalized_value": "svc_tv_family",
+            "evidence_snippets": ["Televizi Family"]
+          },
+          "requested_services[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Televizi Family"]
+          },
+          "requested_products[0].product_id": {
+            "normalized_value": "prod_set_top_box",
+            "evidence_snippets": ["set-top box"]
+          },
+          "requested_products[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["jeden set-top box"]
+          },
+          "contract_term_months": {
+            "normalized_value": 24,
+            "evidence_snippets": ["24 měsíců"]
+          }
+        },
+        "component_segments": [
+          {
+            "component_role": "primary_known",
+            "request_type_id": "rt_internet_tv_bundle_order",
+            "reference_id": "ref_internet_tv_bundle_01",
+            "evidence_snippets": ["Optiku Domů 300", "Televizi Family", "jeden set-top box"]
+          }
+        ],
+        "distractor_snippets": ["Ehm...", "Tu... ehm"],
+        "generation_note": "Incomplete reference rendered as call transcript with hesitation markers. Customer verbally defers installation address to the technician visit."
+      }
+    },
+    {
+      "record_id": "ext__ref_internet_tv_bundle_02__crm_ticket__v01",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "channel_style": "crm_ticket",
+      "noise_tags": ["irrelevant_info"],
+      "business_perturbation_tags": [],
+      "source": {
+        "request_type_id": "rt_internet_tv_bundle_order",
+        "reference_id": "ref_internet_tv_bundle_02",
+        "reference_kind": "complete_valid_reference"
+      },
+      "input_text": "Zákazník: Martin Čermák – nový\nTel: +420 725 118 443\nAdresa instalace: Praha 9, Vysočany, Sokolovská 188\nSlužby: Optika Domů 300 (1x), Televize Family (1x)\nPříslušenství: set-top box 2x, Sport Plus 1x\nZávazek: 24 měs.\nSleva: Balíček 10 % pro nové zákazníky\nPozn.: zákazník preferuje montáž v dopoledních hodinách",
+      "gold_annotation": {
+        "extraction": {
+          "request_type_id": "rt_internet_tv_bundle_order",
+          "reference_id": "ref_internet_tv_bundle_02",
+          "reference_kind": "complete_valid_reference",
+          "extracted_fields": {
+            "customer_status": "new",
+            "customer_name": "Martin Čermák",
+            "contact_phone": "+420 725 118 443",
+            "installation_address": "Praha 9, Vysočany, Sokolovská 188",
+            "requested_services": [
+              { "service_id": "svc_internet_fiber_300", "quantity": 1 },
+              { "service_id": "svc_tv_family", "quantity": 1 }
+            ],
+            "requested_products": [
+              { "product_id": "prod_set_top_box", "quantity": 2 },
+              { "product_id": "prod_tv_sports_pack", "quantity": 1 }
+            ],
+            "contract_term_months": 24,
+            "requested_discounts": [
+              { "discount_id": "disc_bundle_10_new" }
+            ]
+          },
+          "missing_required_fields": [],
+          "missing_required_paths": [],
+          "expected_rule_violations": []
+        }
+      },
+      "observability": {
+        "materialized_field_paths": [
+          "customer_status",
+          "customer_name",
+          "contact_phone",
+          "installation_address",
+          "requested_services[0].service_id",
+          "requested_services[0].quantity",
+          "requested_services[1].service_id",
+          "requested_services[1].quantity",
+          "requested_products[0].product_id",
+          "requested_products[0].quantity",
+          "requested_products[1].product_id",
+          "requested_products[1].quantity",
+          "contract_term_months",
+          "requested_discounts[0].discount_id"
+        ],
+        "intentionally_omitted_field_paths": [],
+        "evidence_by_field_path": {
+          "customer_name": {
+            "normalized_value": "Martin Čermák",
+            "evidence_snippets": ["Martin Čermák"]
+          },
+          "customer_status": {
+            "normalized_value": "new",
+            "evidence_snippets": ["nový"]
+          },
+          "contact_phone": {
+            "normalized_value": "+420 725 118 443",
+            "evidence_snippets": ["+420 725 118 443"]
+          },
+          "installation_address": {
+            "normalized_value": "Praha 9, Vysočany, Sokolovská 188",
+            "evidence_snippets": ["Praha 9, Vysočany, Sokolovská 188"]
+          },
+          "requested_services[0].service_id": {
+            "normalized_value": "svc_internet_fiber_300",
+            "evidence_snippets": ["Optika Domů 300"]
+          },
+          "requested_services[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Optika Domů 300 (1x)"]
+          },
+          "requested_services[1].service_id": {
+            "normalized_value": "svc_tv_family",
+            "evidence_snippets": ["Televize Family"]
+          },
+          "requested_services[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Televize Family (1x)"]
+          },
+          "requested_products[0].product_id": {
+            "normalized_value": "prod_set_top_box",
+            "evidence_snippets": ["set-top box"]
+          },
+          "requested_products[0].quantity": {
+            "normalized_value": 2,
+            "evidence_snippets": ["set-top box 2x"]
+          },
+          "requested_products[1].product_id": {
+            "normalized_value": "prod_tv_sports_pack",
+            "evidence_snippets": ["Sport Plus"]
+          },
+          "requested_products[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Sport Plus 1x"]
+          },
+          "contract_term_months": {
+            "normalized_value": 24,
+            "evidence_snippets": ["24 měs."]
+          },
+          "requested_discounts[0].discount_id": {
+            "normalized_value": "disc_bundle_10_new",
+            "evidence_snippets": ["Balíček 10 % pro nové zákazníky"]
+          }
+        },
+        "component_segments": [
+          {
+            "component_role": "primary_known",
+            "request_type_id": "rt_internet_tv_bundle_order",
+            "reference_id": "ref_internet_tv_bundle_02",
+            "evidence_snippets": ["Optika Domů 300", "Televize Family", "set-top box 2x", "Sport Plus 1x", "Balíček 10 % pro nové zákazníky"]
+          }
+        ],
+        "distractor_snippets": ["zákazník preferuje montáž v dopoledních hodinách"],
+        "generation_note": "Complete valid reference rendered as CRM ticket. Irrelevant internal note about preferred installation time slot added as light noise."
+      }
+    },
+    {
+      "record_id": "ext__ref_internet_tv_bundle_02__broker_email__v01",
+      "mode": "extraction",
+      "channel": "broker_email",
+      "channel_style": "broker_email",
+      "noise_tags": ["greeting_signature_noise"],
+      "business_perturbation_tags": [],
+      "source": {
+        "request_type_id": "rt_internet_tv_bundle_order",
+        "reference_id": "ref_internet_tv_bundle_02",
+        "reference_kind": "complete_valid_reference"
+      },
+      "input_text": "Vážení kolegové,\n\nzasílám objednávku pro nového zákazníka Martina Čermáka (tel. +420 725 118 443). Zákazník má zájem o Optiku Domů 300 a Televizi Family na adrese Praha 9, Vysočany, Sokolovská 188. K televizní službě přidáváme 2 kusy set-top boxu a sportovní balíček Sport Plus. Smlouva na 24 měsíců, uplatňujeme slevu Balíček 10 % pro nové zákazníky.\n\nProsím o co nejrychlejší zpracování.\n\nS pozdravem,\nJana Procházková\nobchodní zástupce, FuturaTel CZ",
+      "gold_annotation": {
+        "extraction": {
+          "request_type_id": "rt_internet_tv_bundle_order",
+          "reference_id": "ref_internet_tv_bundle_02",
+          "reference_kind": "complete_valid_reference",
+          "extracted_fields": {
+            "customer_status": "new",
+            "customer_name": "Martin Čermák",
+            "contact_phone": "+420 725 118 443",
+            "installation_address": "Praha 9, Vysočany, Sokolovská 188",
+            "requested_services": [
+              { "service_id": "svc_internet_fiber_300", "quantity": 1 },
+              { "service_id": "svc_tv_family", "quantity": 1 }
+            ],
+            "requested_products": [
+              { "product_id": "prod_set_top_box", "quantity": 2 },
+              { "product_id": "prod_tv_sports_pack", "quantity": 1 }
+            ],
+            "contract_term_months": 24,
+            "requested_discounts": [
+              { "discount_id": "disc_bundle_10_new" }
+            ]
+          },
+          "missing_required_fields": [],
+          "missing_required_paths": [],
+          "expected_rule_violations": []
+        }
+      },
+      "observability": {
+        "materialized_field_paths": [
+          "customer_status",
+          "customer_name",
+          "contact_phone",
+          "installation_address",
+          "requested_services[0].service_id",
+          "requested_services[0].quantity",
+          "requested_services[1].service_id",
+          "requested_services[1].quantity",
+          "requested_products[0].product_id",
+          "requested_products[0].quantity",
+          "requested_products[1].product_id",
+          "requested_products[1].quantity",
+          "contract_term_months",
+          "requested_discounts[0].discount_id"
+        ],
+        "intentionally_omitted_field_paths": [],
+        "evidence_by_field_path": {
+          "customer_name": {
+            "normalized_value": "Martin Čermák",
+            "evidence_snippets": ["Martina Čermáka"]
+          },
+          "customer_status": {
+            "normalized_value": "new",
+            "evidence_snippets": ["nového zákazníka"]
+          },
+          "contact_phone": {
+            "normalized_value": "+420 725 118 443",
+            "evidence_snippets": ["+420 725 118 443"]
+          },
+          "installation_address": {
+            "normalized_value": "Praha 9, Vysočany, Sokolovská 188",
+            "evidence_snippets": ["Praha 9, Vysočany, Sokolovská 188"]
+          },
+          "requested_services[0].service_id": {
+            "normalized_value": "svc_internet_fiber_300",
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[1].service_id": {
+            "normalized_value": "svc_tv_family",
+            "evidence_snippets": ["Televizi Family"]
+          },
+          "requested_services[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Televizi Family"]
+          },
+          "requested_products[0].product_id": {
+            "normalized_value": "prod_set_top_box",
+            "evidence_snippets": ["set-top boxu"]
+          },
+          "requested_products[0].quantity": {
+            "normalized_value": 2,
+            "evidence_snippets": ["2 kusy set-top boxu"]
+          },
+          "requested_products[1].product_id": {
+            "normalized_value": "prod_tv_sports_pack",
+            "evidence_snippets": ["Sport Plus"]
+          },
+          "requested_products[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["sportovní balíček Sport Plus"]
+          },
+          "contract_term_months": {
+            "normalized_value": 24,
+            "evidence_snippets": ["24 měsíců"]
+          },
+          "requested_discounts[0].discount_id": {
+            "normalized_value": "disc_bundle_10_new",
+            "evidence_snippets": ["Balíček 10 % pro nové zákazníky"]
+          }
+        },
+        "component_segments": [
+          {
+            "component_role": "primary_known",
+            "request_type_id": "rt_internet_tv_bundle_order",
+            "reference_id": "ref_internet_tv_bundle_02",
+            "evidence_snippets": ["Optiku Domů 300", "Televizi Family", "2 kusy set-top boxu", "Sport Plus", "Balíček 10 % pro nové zákazníky"]
+          }
+        ],
+        "distractor_snippets": ["Vážení kolegové,", "S pozdravem,", "Jana Procházková", "obchodní zástupce, FuturaTel CZ"],
+        "generation_note": "Complete valid reference rendered as broker email with greeting and signature noise."
+      }
+    },
+    {
+      "record_id": "ext__ref_internet_tv_bundle_02__call_transcript__v01",
+      "mode": "extraction",
+      "channel": "call_transcript",
+      "channel_style": "call_transcript",
+      "noise_tags": ["hesitation_disfluency"],
+      "business_perturbation_tags": [],
+      "source": {
+        "request_type_id": "rt_internet_tv_bundle_order",
+        "reference_id": "ref_internet_tv_bundle_02",
+        "reference_kind": "complete_valid_reference"
+      },
+      "input_text": "Zákazník: Dobrý den. Chtěl bych, ehm, objednat internet a televizi.\nOperátor: Rád pomůžu. Jaký tarif Vás zajímá?\nZákazník: Optiku Domů 300 a Televizi Family. A k tomu dva set-top boxy a Sport Plus, ten sportovní.\nOperátor: Dobře. Jméno, telefon a adresa instalace?\nZákazník: Martin Čermák, 725 118 443. Adresa: Praha 9, Vysočany, Sokolovská 188.\nOperátor: Délka závazku?\nZákazník: 24 měsíců. Jsem nový zákazník a chtěl bych tu slevu Balíček 10 % pro nové zákazníky.",
+      "gold_annotation": {
+        "extraction": {
+          "request_type_id": "rt_internet_tv_bundle_order",
+          "reference_id": "ref_internet_tv_bundle_02",
+          "reference_kind": "complete_valid_reference",
+          "extracted_fields": {
+            "customer_status": "new",
+            "customer_name": "Martin Čermák",
+            "contact_phone": "+420 725 118 443",
+            "installation_address": "Praha 9, Vysočany, Sokolovská 188",
+            "requested_services": [
+              { "service_id": "svc_internet_fiber_300", "quantity": 1 },
+              { "service_id": "svc_tv_family", "quantity": 1 }
+            ],
+            "requested_products": [
+              { "product_id": "prod_set_top_box", "quantity": 2 },
+              { "product_id": "prod_tv_sports_pack", "quantity": 1 }
+            ],
+            "contract_term_months": 24,
+            "requested_discounts": [
+              { "discount_id": "disc_bundle_10_new" }
+            ]
+          },
+          "missing_required_fields": [],
+          "missing_required_paths": [],
+          "expected_rule_violations": []
+        }
+      },
+      "observability": {
+        "materialized_field_paths": [
+          "customer_status",
+          "customer_name",
+          "contact_phone",
+          "installation_address",
+          "requested_services[0].service_id",
+          "requested_services[0].quantity",
+          "requested_services[1].service_id",
+          "requested_services[1].quantity",
+          "requested_products[0].product_id",
+          "requested_products[0].quantity",
+          "requested_products[1].product_id",
+          "requested_products[1].quantity",
+          "contract_term_months",
+          "requested_discounts[0].discount_id"
+        ],
+        "intentionally_omitted_field_paths": [],
+        "evidence_by_field_path": {
+          "customer_name": {
+            "normalized_value": "Martin Čermák",
+            "evidence_snippets": ["Martin Čermák"]
+          },
+          "customer_status": {
+            "normalized_value": "new",
+            "evidence_snippets": ["nový zákazník"]
+          },
+          "contact_phone": {
+            "normalized_value": "+420 725 118 443",
+            "evidence_snippets": ["725 118 443"]
+          },
+          "installation_address": {
+            "normalized_value": "Praha 9, Vysočany, Sokolovská 188",
+            "evidence_snippets": ["Praha 9, Vysočany, Sokolovská 188"]
+          },
+          "requested_services[0].service_id": {
+            "normalized_value": "svc_internet_fiber_300",
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[1].service_id": {
+            "normalized_value": "svc_tv_family",
+            "evidence_snippets": ["Televizi Family"]
+          },
+          "requested_services[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Televizi Family"]
+          },
+          "requested_products[0].product_id": {
+            "normalized_value": "prod_set_top_box",
+            "evidence_snippets": ["set-top boxy"]
+          },
+          "requested_products[0].quantity": {
+            "normalized_value": 2,
+            "evidence_snippets": ["dva set-top boxy"]
+          },
+          "requested_products[1].product_id": {
+            "normalized_value": "prod_tv_sports_pack",
+            "evidence_snippets": ["Sport Plus"]
+          },
+          "requested_products[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Sport Plus, ten sportovní"]
+          },
+          "contract_term_months": {
+            "normalized_value": 24,
+            "evidence_snippets": ["24 měsíců"]
+          },
+          "requested_discounts[0].discount_id": {
+            "normalized_value": "disc_bundle_10_new",
+            "evidence_snippets": ["Balíček 10 % pro nové zákazníky"]
+          }
+        },
+        "component_segments": [
+          {
+            "component_role": "primary_known",
+            "request_type_id": "rt_internet_tv_bundle_order",
+            "reference_id": "ref_internet_tv_bundle_02",
+            "evidence_snippets": ["Optiku Domů 300", "Televizi Family", "dva set-top boxy", "Sport Plus", "Balíček 10 % pro nové zákazníky"]
+          }
+        ],
+        "distractor_snippets": ["ehm"],
+        "generation_note": "Complete valid reference rendered as call transcript with hesitation disfluency."
+      }
+    },
+    {
+      "record_id": "ext__ref_internet_tv_bundle_03__crm_ticket__v01",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "channel_style": "crm_ticket",
+      "noise_tags": ["shorthand_internal"],
+      "business_perturbation_tags": ["missing_dependency"],
+      "source": {
+        "request_type_id": "rt_internet_tv_bundle_order",
+        "reference_id": "ref_internet_tv_bundle_03",
+        "reference_kind": "complete_invalid_reference"
+      },
+      "input_text": "Zákazník: Aleš Konečný – nový\nTel: +420 720 991 774\nAdresa: Olomouc, Nové Sady, Rooseveltova 61\nPož: Optika Domů 300 (1x) + Televize Basic (1x), Sport Plus 1x\nZávazek: 24 měs.\nPozn.: klient výslovně požaduje Sport Plus k Basic TV",
+      "gold_annotation": {
+        "extraction": {
+          "request_type_id": "rt_internet_tv_bundle_order",
+          "reference_id": "ref_internet_tv_bundle_03",
+          "reference_kind": "complete_invalid_reference",
+          "extracted_fields": {
+            "customer_status": "new",
+            "customer_name": "Aleš Konečný",
+            "contact_phone": "+420 720 991 774",
+            "installation_address": "Olomouc, Nové Sady, Rooseveltova 61",
+            "requested_services": [
+              { "service_id": "svc_internet_fiber_300", "quantity": 1 },
+              { "service_id": "svc_tv_basic", "quantity": 1 }
+            ],
+            "requested_products": [
+              { "product_id": "prod_tv_sports_pack", "quantity": 1 }
+            ],
+            "contract_term_months": 24
+          },
+          "missing_required_fields": [],
+          "missing_required_paths": [],
+          "expected_rule_violations": ["dep_sports_pack_requires_tv_family"]
+        }
+      },
+      "observability": {
+        "materialized_field_paths": [
+          "customer_status",
+          "customer_name",
+          "contact_phone",
+          "installation_address",
+          "requested_services[0].service_id",
+          "requested_services[0].quantity",
+          "requested_services[1].service_id",
+          "requested_services[1].quantity",
+          "requested_products[0].product_id",
+          "requested_products[0].quantity",
+          "contract_term_months"
+        ],
+        "intentionally_omitted_field_paths": [],
+        "evidence_by_field_path": {
+          "customer_name": {
+            "normalized_value": "Aleš Konečný",
+            "evidence_snippets": ["Aleš Konečný"]
+          },
+          "customer_status": {
+            "normalized_value": "new",
+            "evidence_snippets": ["nový"]
+          },
+          "contact_phone": {
+            "normalized_value": "+420 720 991 774",
+            "evidence_snippets": ["+420 720 991 774"]
+          },
+          "installation_address": {
+            "normalized_value": "Olomouc, Nové Sady, Rooseveltova 61",
+            "evidence_snippets": ["Olomouc, Nové Sady, Rooseveltova 61"]
+          },
+          "requested_services[0].service_id": {
+            "normalized_value": "svc_internet_fiber_300",
+            "evidence_snippets": ["Optika Domů 300"]
+          },
+          "requested_services[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Optika Domů 300 (1x)"]
+          },
+          "requested_services[1].service_id": {
+            "normalized_value": "svc_tv_basic",
+            "evidence_snippets": ["Televize Basic"]
+          },
+          "requested_services[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Televize Basic (1x)"]
+          },
+          "requested_products[0].product_id": {
+            "normalized_value": "prod_tv_sports_pack",
+            "evidence_snippets": ["Sport Plus"]
+          },
+          "requested_products[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Sport Plus 1x"]
+          },
+          "contract_term_months": {
+            "normalized_value": 24,
+            "evidence_snippets": ["24 měs."]
+          }
+        },
+        "component_segments": [
+          {
+            "component_role": "primary_known",
+            "request_type_id": "rt_internet_tv_bundle_order",
+            "reference_id": "ref_internet_tv_bundle_03",
+            "evidence_snippets": ["Optika Domů 300", "Televize Basic", "Sport Plus 1x"]
+          }
+        ],
+        "distractor_snippets": [],
+        "generation_note": "Complete invalid reference rendered as CRM ticket. Internal note reinforces Sport Plus with TV Basic — intentional business rule violation dep_sports_pack_requires_tv_family."
+      }
+    },
+    {
+      "record_id": "ext__ref_internet_tv_bundle_03__broker_email__v01",
+      "mode": "extraction",
+      "channel": "broker_email",
+      "channel_style": "broker_email",
+      "noise_tags": ["polite_paraphrase_noise"],
+      "business_perturbation_tags": ["missing_dependency"],
+      "source": {
+        "request_type_id": "rt_internet_tv_bundle_order",
+        "reference_id": "ref_internet_tv_bundle_03",
+        "reference_kind": "complete_invalid_reference"
+      },
+      "input_text": "Dobrý den,\n\ndovolte mi zaslat podrobnosti k objednávce pro nového zákazníka, pana Aleše Konečného (tel. +420 720 991 774). Klient projevil zájem o Optiku Domů 300 a Televizi Basic na adrese Olomouc, Nové Sady, Rooseveltova 61. Zároveň si přeje přidat sportovní doplněk Sport Plus. Smlouva je požadována na dobu 24 měsíců.\n\nDěkuji za vyřízení.\n\nS pozdravem,\nRadek Šimánek\nobchodní partner, FuturaTel CZ",
+      "gold_annotation": {
+        "extraction": {
+          "request_type_id": "rt_internet_tv_bundle_order",
+          "reference_id": "ref_internet_tv_bundle_03",
+          "reference_kind": "complete_invalid_reference",
+          "extracted_fields": {
+            "customer_status": "new",
+            "customer_name": "Aleš Konečný",
+            "contact_phone": "+420 720 991 774",
+            "installation_address": "Olomouc, Nové Sady, Rooseveltova 61",
+            "requested_services": [
+              { "service_id": "svc_internet_fiber_300", "quantity": 1 },
+              { "service_id": "svc_tv_basic", "quantity": 1 }
+            ],
+            "requested_products": [
+              { "product_id": "prod_tv_sports_pack", "quantity": 1 }
+            ],
+            "contract_term_months": 24
+          },
+          "missing_required_fields": [],
+          "missing_required_paths": [],
+          "expected_rule_violations": ["dep_sports_pack_requires_tv_family"]
+        }
+      },
+      "observability": {
+        "materialized_field_paths": [
+          "customer_status",
+          "customer_name",
+          "contact_phone",
+          "installation_address",
+          "requested_services[0].service_id",
+          "requested_services[0].quantity",
+          "requested_services[1].service_id",
+          "requested_services[1].quantity",
+          "requested_products[0].product_id",
+          "requested_products[0].quantity",
+          "contract_term_months"
+        ],
+        "intentionally_omitted_field_paths": [],
+        "evidence_by_field_path": {
+          "customer_name": {
+            "normalized_value": "Aleš Konečný",
+            "evidence_snippets": ["Aleše Konečného"]
+          },
+          "customer_status": {
+            "normalized_value": "new",
+            "evidence_snippets": ["nového zákazníka"]
+          },
+          "contact_phone": {
+            "normalized_value": "+420 720 991 774",
+            "evidence_snippets": ["+420 720 991 774"]
+          },
+          "installation_address": {
+            "normalized_value": "Olomouc, Nové Sady, Rooseveltova 61",
+            "evidence_snippets": ["Olomouc, Nové Sady, Rooseveltova 61"]
+          },
+          "requested_services[0].service_id": {
+            "normalized_value": "svc_internet_fiber_300",
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[1].service_id": {
+            "normalized_value": "svc_tv_basic",
+            "evidence_snippets": ["Televizi Basic"]
+          },
+          "requested_services[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Televizi Basic"]
+          },
+          "requested_products[0].product_id": {
+            "normalized_value": "prod_tv_sports_pack",
+            "evidence_snippets": ["Sport Plus"]
+          },
+          "requested_products[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["sportovní doplněk Sport Plus"]
+          },
+          "contract_term_months": {
+            "normalized_value": 24,
+            "evidence_snippets": ["24 měsíců"]
+          }
+        },
+        "component_segments": [
+          {
+            "component_role": "primary_known",
+            "request_type_id": "rt_internet_tv_bundle_order",
+            "reference_id": "ref_internet_tv_bundle_03",
+            "evidence_snippets": ["Optiku Domů 300", "Televizi Basic", "sportovní doplněk Sport Plus"]
+          }
+        ],
+        "distractor_snippets": ["dovolte mi zaslat podrobnosti k objednávce pro nového zákazníka", "Děkuji za vyřízení.", "S pozdravem,", "Radek Šimánek", "obchodní partner, FuturaTel CZ"],
+        "generation_note": "Complete invalid reference rendered as broker email with polite paraphrase noise. Combination of TV Basic + Sport Plus violates dep_sports_pack_requires_tv_family."
+      }
+    },
+    {
+      "record_id": "ext__ref_internet_tv_bundle_03__call_transcript__v01",
+      "mode": "extraction",
+      "channel": "call_transcript",
+      "channel_style": "call_transcript",
+      "noise_tags": ["smalltalk_noise"],
+      "business_perturbation_tags": ["missing_dependency"],
+      "source": {
+        "request_type_id": "rt_internet_tv_bundle_order",
+        "reference_id": "ref_internet_tv_bundle_03",
+        "reference_kind": "complete_invalid_reference"
+      },
+      "input_text": "Operátor: FuturaTel CZ, dobrý den.\nZákazník: Ahoj, tady Aleš Konečný.\nOperátor: Dobrý den, jak Vám mohu pomoci?\nZákazník: Chci internet a televizi. Optiku Domů 300 a Televizi Basic. A ještě Sport Plus k tomu. Adresa je Rooseveltova 61, Olomouc, Nové Sady.\nOperátor: Délka závazku a kontaktní telefon?\nZákazník: 24 měsíců a číslo 720 991 774. Jsem nový zákazník.\nOperátor: Je to vše?\nZákazník: Jo, díky moc. Hezký den.",
+      "gold_annotation": {
+        "extraction": {
+          "request_type_id": "rt_internet_tv_bundle_order",
+          "reference_id": "ref_internet_tv_bundle_03",
+          "reference_kind": "complete_invalid_reference",
+          "extracted_fields": {
+            "customer_status": "new",
+            "customer_name": "Aleš Konečný",
+            "contact_phone": "+420 720 991 774",
+            "installation_address": "Olomouc, Nové Sady, Rooseveltova 61",
+            "requested_services": [
+              { "service_id": "svc_internet_fiber_300", "quantity": 1 },
+              { "service_id": "svc_tv_basic", "quantity": 1 }
+            ],
+            "requested_products": [
+              { "product_id": "prod_tv_sports_pack", "quantity": 1 }
+            ],
+            "contract_term_months": 24
+          },
+          "missing_required_fields": [],
+          "missing_required_paths": [],
+          "expected_rule_violations": ["dep_sports_pack_requires_tv_family"]
+        }
+      },
+      "observability": {
+        "materialized_field_paths": [
+          "customer_status",
+          "customer_name",
+          "contact_phone",
+          "installation_address",
+          "requested_services[0].service_id",
+          "requested_services[0].quantity",
+          "requested_services[1].service_id",
+          "requested_services[1].quantity",
+          "requested_products[0].product_id",
+          "requested_products[0].quantity",
+          "contract_term_months"
+        ],
+        "intentionally_omitted_field_paths": [],
+        "evidence_by_field_path": {
+          "customer_name": {
+            "normalized_value": "Aleš Konečný",
+            "evidence_snippets": ["Aleš Konečný"]
+          },
+          "customer_status": {
+            "normalized_value": "new",
+            "evidence_snippets": ["nový zákazník"]
+          },
+          "contact_phone": {
+            "normalized_value": "+420 720 991 774",
+            "evidence_snippets": ["720 991 774"]
+          },
+          "installation_address": {
+            "normalized_value": "Olomouc, Nové Sady, Rooseveltova 61",
+            "evidence_snippets": ["Rooseveltova 61, Olomouc, Nové Sady"]
+          },
+          "requested_services[0].service_id": {
+            "normalized_value": "svc_internet_fiber_300",
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Optiku Domů 300"]
+          },
+          "requested_services[1].service_id": {
+            "normalized_value": "svc_tv_basic",
+            "evidence_snippets": ["Televizi Basic"]
+          },
+          "requested_services[1].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Televizi Basic"]
+          },
+          "requested_products[0].product_id": {
+            "normalized_value": "prod_tv_sports_pack",
+            "evidence_snippets": ["Sport Plus"]
+          },
+          "requested_products[0].quantity": {
+            "normalized_value": 1,
+            "evidence_snippets": ["Sport Plus k tomu"]
+          },
+          "contract_term_months": {
+            "normalized_value": 24,
+            "evidence_snippets": ["24 měsíců"]
+          }
+        },
+        "component_segments": [
+          {
+            "component_role": "primary_known",
+            "request_type_id": "rt_internet_tv_bundle_order",
+            "reference_id": "ref_internet_tv_bundle_03",
+            "evidence_snippets": ["Optiku Domů 300", "Televizi Basic", "Sport Plus k tomu"]
+          }
+        ],
+        "distractor_snippets": ["Ahoj, tady Aleš Konečný.", "Jo, díky moc. Hezký den."],
+        "generation_note": "Complete invalid reference rendered as call transcript with smalltalk noise at opening and closing. Address stated in customer-natural order (street first). Combination of TV Basic + Sport Plus violates dep_sports_pack_requires_tv_family."
+      }
+    }
+  ]
+}
