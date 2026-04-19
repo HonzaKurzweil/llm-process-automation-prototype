@@ -1,46 +1,38 @@
---- EXAMPLE 1 (broker email — family order with partial porting) ---
+--- EXAMPLE 1 (broker email — complete valid reference) ---
 INPUT:
 Dobrý den,
-zasílám rodinnou objednávku pro klienta Martina Konečného, nový zákazník.
-Kontakt: +420 774 555 444
-E-mail: martin.konecny@email.cz
-Tarif: Mobil Rodina Plus
-Počet linek: 3
-Linka 1: přenos ano, číslo 731 555 111, operátor O2
-Linka 2: přenos ano, číslo 732 666 222, operátor T-Mobile
-Linka 3: nové číslo
+zasílám rodinnou objednávku pro nového zákazníka Tomáše Dvořáka.
+Telefon: 606 200 111
+Tarif: Mobil Family Plus, 3 linky
+Hlavní linka: přenos ano, číslo 604 887 220 od Vodafone
+Druhá linka: nové číslo
+Třetí linka: nové číslo
 Závazek: 24 měsíců
-Slevy: rodinná sleva 100 Kč na další linku, sleva za přenos čísla
+Sleva: 100 Kč na další linky
 
 OUTPUT:
-{"customerStatus":"new","customerName":"Martin Konečný","contactPhone":"+420 774 555 444","contactEmail":"martin.konecny@email.cz","requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":3}],"mobileLinesCount":3,"mobileLines":[{"label":"hlavni_linka","planServiceId":"svc_mobile_family_plus","portingRequested":true},{"label":"druha_linka","planServiceId":"svc_mobile_family_plus","portingRequested":true},{"label":"treti_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"portedNumbers":[{"number":"+420 731 555 111","donorOperator":"O2"},{"number":"+420 732 666 222","donorOperator":"T-Mobile"}],"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"},{"discountId":"disc_porting_mobile_200"}]}
+{"customerStatus":"new","customerName":"Tomáš Dvořák","contactPhone":"+420 606 200 111","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":3}],"mobileLinesCount":3,"mobileLines":[{"label":"hlavní_linka","planServiceId":"svc_mobile_family_plus","portingRequested":true},{"label":"druha_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false},{"label":"treti_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"portedNumbers":[{"number":"+420 604 887 220","donorOperator":"Vodafone"}],"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"}]}
 
---- EXAMPLE 2 (CRM ticket — existing customer, no porting) ---
+--- EXAMPLE 2 (CRM ticket — incomplete reference) ---
 INPUT:
-Stávající zákazník: Lucie Procházková
-Telefon: 605 111 222
-Požadavek: rodinný mobilní tarif Rodina Plus, 4 linky
-Portace: ne, všechna čísla nová v síti
-Závazek 24 měsíců
-Sleva: rodinná linka 100
+Stávající zákaznice: Jana Křížová
+Tel.: 608 441 903
+Požadavek: Family Plus, 2 linky
+Detail linek: hlavní linka bez portace
+Závazek: 24 měs.
+Sleva: family line 100
 
 OUTPUT:
-{"customerStatus":"existing","customerName":"Lucie Procházková","contactPhone":"+420 605 111 222","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":4}],"mobileLinesCount":4,"mobileLines":[{"label":"hlavni_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false},{"label":"druha_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false},{"label":"treti_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false},{"label":"linka_4","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"portedNumbers":null,"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"}]}
+{"customerStatus":"existing","customerName":"Jana Křížová","contactPhone":"+420 608 441 903","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":2}],"mobileLinesCount":2,"mobileLines":[{"label":"hlavní_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"portedNumbers":null,"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"}]}
 
---- EXAMPLE 3 (call transcript — two lines, one ported) ---
+--- EXAMPLE 3 (call transcript — complete invalid reference) ---
 INPUT:
-Operátor: Co pro vás mohu udělat?
-Zákazník: Chci rodinný tarif pro dvě čísla.
-Operátor: Jméno?
-Zákazník: Eva Jelínková, jsem nová zákaznice.
-Operátor: Kontaktní telefon?
-Zákazník: 777123456.
-Operátor: Bude to Mobil Rodina Plus?
-Zákazník: Ano. Jedno číslo chci přenést od Vodafone, je to 734 222 999. Druhé bude nové.
+Operátor: S čím vám pomohu?
+Zákazník: Chci Family Plus.
+Operátor: Pro kolik linek?
+Zákazník: Jen pro jednu. Jmenuju se Roman Hlaváč, číslo 605780123, jsem stávající zákazník.
 Operátor: Závazek?
-Zákazník: 24 měsíců.
-Operátor: Nějaká sleva?
-Zákazník: Jen tu za přenos.
+Zákazník: 24 měsíců. A chci tu slevu 100 Kč na další linku.
 
 OUTPUT:
-{"customerStatus":"new","customerName":"Eva Jelínková","contactPhone":"+420 777 123 456","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":2}],"mobileLinesCount":2,"mobileLines":[{"label":"hlavni_linka","planServiceId":"svc_mobile_family_plus","portingRequested":true},{"label":"druha_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"portedNumbers":[{"number":"+420 734 222 999","donorOperator":"Vodafone"}],"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_porting_mobile_200"}]}
+{"customerStatus":"existing","customerName":"Roman Hlaváč","contactPhone":"+420 605 780 123","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":1}],"mobileLinesCount":1,"mobileLines":[{"label":"hlavní_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"portedNumbers":null,"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"}]}

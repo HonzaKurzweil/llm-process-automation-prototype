@@ -1,39 +1,39 @@
---- EXAMPLE 1 (broker email — existing customer, no porting) ---
+--- EXAMPLE 1 (broker email — complete valid reference) ---
 INPUT:
 Dobrý den,
-posílám objednávku nové mobilní služby pro stávající zákaznici Janu Malou.
-Jméno zákaznice: Jana Malá
-Telefon: 777 888 999
-E-mail: jana.mala@email.cz
-Požadovaný tarif: Mobil Start 5G
+posílám objednávku pro novou zákaznici Simonu Havlíčkovou.
+Telefon: 777 808 909
+E-mail: simona.havlickova@email.cz
+Tarif: Mobil Start 5G
 Závazek: 24 měsíců
-Portace: ne
+Portace: ano, číslo 731 222 999 od O2
+Sleva: přenos čísla 200 Kč na 6 měsíců
 
 OUTPUT:
-{"customerStatus":"existing","customerName":"Jana Malá","contactPhone":"+420 777 888 999","contactEmail":"jana.mala@email.cz","requestedServices":[{"serviceId":"svc_mobile_start_5g","quantity":1}],"contractTermMonths":24,"portingRequested":false,"portedNumbers":null,"requestedDiscounts":null}
+{"customerStatus":"new","customerName":"Simona Havlíčková","contactPhone":"+420 777 808 909","contactEmail":"simona.havlickova@email.cz","requestedServices":[{"serviceId":"svc_mobile_start_5g","quantity":1}],"contractTermMonths":24,"portingRequested":true,"portedNumbers":[{"number":"+420 731 222 999","donorOperator":"O2"}],"requestedDiscounts":[{"discountId":"disc_porting_mobile_200"}]}
 
---- EXAMPLE 2 (CRM ticket — new customer, porting requested, number not yet provided) ---
+--- EXAMPLE 2 (CRM ticket — incomplete reference) ---
 INPUT:
-Nový zákazník – Petr Veselý
+Nový zákazník: Petr Vacek
 Tel.: 603 112 445
-Tarif: Mobil Neomezeně 5G
+Požadavek: Mobil Neomezeně 5G
 Závazek: 24 měs.
-Portace: ANO – číslo zatím neposkytnuto
-Sleva: Přenos čísla 200 Kč / 6 měs.
+Portace: ano, číslo dodá později
+Sleva: přenos čísla 200 Kč / 6 měs.
 
 OUTPUT:
-{"customerStatus":"new","customerName":"Petr Veselý","contactPhone":"+420 603 112 445","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_unlimited_5g","quantity":1}],"contractTermMonths":24,"portingRequested":true,"portedNumbers":null,"requestedDiscounts":[{"discountId":"disc_porting_mobile_200"}]}
+{"customerStatus":"new","customerName":"Petr Vacek","contactPhone":"+420 603 112 445","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_unlimited_5g","quantity":1}],"contractTermMonths":24,"portingRequested":true,"portedNumbers":null,"requestedDiscounts":[{"discountId":"disc_porting_mobile_200"}]}
 
---- EXAMPLE 3 (call transcript — complete porting) ---
+--- EXAMPLE 3 (call transcript — complete invalid reference) ---
 INPUT:
-Operátor: Dobrý den, co byste si přál?
-Zákazník: Chtěl bych tarif Mobil Start 5G.
-Operátor: Bude to pro nového zákazníka?
-Zákazník: Ano, na moje jméno Tomáš Král. Volejte mi na 605334221.
-Operátor: Portace čísla?
-Zákazník: Ano, chci převést číslo 731 222 111 od Vodafone.
-Operátor: Na jak dlouho závazek?
-Zákazník: Na 24 měsíců. A když bude, tak i sleva za přenos.
+Operátor: Co pro vás mohu udělat?
+Zákazník: Chci tarif Mobil Neomezeně 5G.
+Operátor: Jméno a kontakt?
+Zákazník: Marek Beneš, číslo 724990331. Jsem nový zákazník.
+Operátor: Chcete přenést číslo?
+Zákazník: Ne.
+Operátor: Závazek?
+Zákazník: Bez závazku. Ale chci tam tu slevu za přenos čísla.
 
 OUTPUT:
-{"customerStatus":"new","customerName":"Tomáš Král","contactPhone":"+420 605 334 221","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_start_5g","quantity":1}],"contractTermMonths":24,"portingRequested":true,"portedNumbers":[{"number":"+420 731 222 111","donorOperator":"Vodafone"}],"requestedDiscounts":[{"discountId":"disc_porting_mobile_200"}]}
+{"customerStatus":"new","customerName":"Marek Beneš","contactPhone":"+420 724 990 331","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_unlimited_5g","quantity":1}],"contractTermMonths":0,"portingRequested":false,"portedNumbers":null,"requestedDiscounts":[{"discountId":"disc_porting_mobile_200"}]}
