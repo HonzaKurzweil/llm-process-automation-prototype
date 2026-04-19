@@ -24,7 +24,7 @@ public class FewShotExtractionStrategy implements ExtractionStrategy {
     @SuppressWarnings("unchecked")
     public <T> T extract(String inputText, RequestType requestType, ChatClient client) {
         String dir = requestType.getPromptDirectory();
-        String systemPrompt = promptLoader.load(dir + "/few-shot-system.md") + "\n\n"
+        String systemPrompt = promptLoader.load(dir + "/direct-system.md") + "\n\n"
                 + promptLoader.load(dir + "/few-shot-examples.md");
         return client.prompt()
                 .system(systemPrompt)
