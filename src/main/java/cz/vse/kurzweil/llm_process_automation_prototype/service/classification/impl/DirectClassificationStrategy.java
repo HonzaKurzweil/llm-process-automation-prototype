@@ -15,7 +15,7 @@ public class DirectClassificationStrategy implements ClassificationStrategy {
     private final String systemPrompt;
 
     public DirectClassificationStrategy(PromptResourceLoader promptLoader) {
-        this.systemPrompt = promptLoader.load("prompts/classification/direct-system.md");
+        this.systemPrompt = promptLoader.load("read_prompts/classification/direct-system.md");
     }
 
     @Override

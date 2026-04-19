@@ -15,8 +15,8 @@ public class FewShotClassificationStrategy implements ClassificationStrategy {
     private final String systemPrompt;
 
     public FewShotClassificationStrategy(PromptResourceLoader promptLoader) {
-        String base = promptLoader.load("prompts/classification/few-shot-system.md");
-        String examples = promptLoader.load("prompts/classification/few-shot-examples.md");
+        String base = promptLoader.load("read_prompts/classification/few-shot-system.md");
+        String examples = promptLoader.load("read_prompts/classification/few-shot-examples.md");
         this.systemPrompt = base + "\n\n" + examples;
     }
 
