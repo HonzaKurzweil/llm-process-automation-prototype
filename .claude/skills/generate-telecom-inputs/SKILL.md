@@ -22,11 +22,13 @@ Generate synthetic Czech telecom intake input records from structured references
 Unless the user provides overrides, use these files:
 
 - Domain catalogs: `src/main/resources/domain/*.yaml`
-- Request types: `src/main/resources/generator_helpers/request_types_v3.yaml`
-- Classifier outcomes: `src/main/resources/generator_helpers/classifier_outcomes_v1.yaml`
-- Noise profiles: `src/main/resources/generator_helpers/noise_profiles.yaml`
-- Reference outputs and classification scenarios: `src/main/resources/dataset/reference_outputs_v2.yaml`
-- Output directory: `src/main/resources/dataset/generated_inputs/`
+- Request types: `src/main/resources/dataset/generator_helpers/request_types_v3.yaml`
+- Classifier outcomes: `src/main/resources/dataset/generator_helpers/classifier_outcomes_v1.yaml`
+- Noise profiles: `src/main/resources/dataset/generator_helpers/noise_profiles.yaml`
+- Reference outputs and classification scenarios: `src/main/resources/dataset/generator_helpers/reference_outputs_v2.yaml`
+- Output directory: `src/main/resources/dataset/inputs/`
+
+Do **not** read from `src/main/resources/read_prompts/` when generating dataset inputs. Those prompt files belong to later extraction/classification experiments, not to dataset generation.
 
 If a required file is missing, report the missing path and stop.
 
@@ -66,14 +68,9 @@ Optional:
 2. Use only IDs present in the loaded domain and helper files.
 3. Do not expose hidden technical labels such as `request_type_id`, `reference_id`, `scenario_id`, or classifier outcome names inside `input_text`.
 4. For `extraction` mode, each generated input must preserve the semantic content of exactly one extraction reference.
-5. For `classification` mode, each generated input must preserve the intended classifier outcome of the selected scenario:
-   - single known request type,
-   - single known request type with unknown tail,
-   - multi-intent known request types,
-   - unknown or out-of-scope,
-   - ambiguous or insufficient signal.
+5. For `classification` mode, each generated input must preserve the intended classifier outcome of the selected scenario.
 6. Irrelevant noise must not introduce accidental extra known intents.
-7. Observability metadata must use **literal snippets from the generated input text** whenever possible.
+7. Observability metadata must use literal snippets from the generated input text whenever possible.
 8. Do not invent new services, products, discounts, or business rules.
 9. Keep texts realistic and compact; avoid theatrical dialogue or absurd details.
 
@@ -94,7 +91,7 @@ Optional:
 
 Use the schema documented in `references/output-contract.md`.
 
-In brief, every record contains:
+Every record contains:
 
 - base metadata (`record_id`, `mode`, `channel`, `noise_tags`),
 - `input_text`,
@@ -161,9 +158,3 @@ If `include_observability_metadata=true`, include at least:
 - `component_segments`
 - `distractor_snippets`
 - `generation_note`
-
-## Additional resources
-
-- `references/parameter-reference.md`: parameter behavior and selection rules.
-- `references/output-contract.md`: exact record schemas and consistency requirements.
-- `examples/example-invocations.md`: sample slash-command usage.

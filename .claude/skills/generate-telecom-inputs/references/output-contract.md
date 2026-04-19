@@ -6,13 +6,13 @@ Generated records are benchmark inputs. They must be precise enough to support l
 
 ```json
 {
-  "dataset_version": 2,
+  "dataset_version": 3,
   "source_files": {
     "domain": "src/main/resources/domain/*.yaml",
-    "request_types": "src/main/resources/generator_helpers/request_types_v3.yaml",
-    "classifier_outcomes": "src/main/resources/generator_helpers/classifier_outcomes_v1.yaml",
-    "noise_profiles": "src/main/resources/generator_helpers/noise_profiles.yaml",
-    "reference_outputs": "src/main/resources/dataset/reference_outputs_v2.yaml"
+    "request_types": "src/main/resources/dataset/generator_helpers/request_types_v3.yaml",
+    "classifier_outcomes": "src/main/resources/dataset/generator_helpers/classifier_outcomes_v1.yaml",
+    "noise_profiles": "src/main/resources/dataset/generator_helpers/noise_profiles.yaml",
+    "reference_outputs": "src/main/resources/dataset/generator_helpers/reference_outputs_v2.yaml"
   },
   "generation_parameters": {},
   "records": []
@@ -30,117 +30,23 @@ Generated records are benchmark inputs. They must be precise enough to support l
 - `source`
 - `input_text`
 
-## Extraction record shape
+## Extraction record essentials
 
-```json
-{
-  "record_id": "ext__ref_new_mobile_order_02__crm_ticket__v01",
-  "mode": "extraction",
-  "channel": "crm_ticket",
-  "channel_style": "crm_ticket",
-  "noise_tags": ["shorthand_internal"],
-  "business_perturbation_tags": [],
-  "source": {
-    "request_type_id": "rt_new_mobile_order",
-    "reference_id": "ref_new_mobile_order_02",
-    "reference_kind": "complete_valid_reference"
-  },
-  "input_text": "...",
-  "gold_annotation": {
-    "extraction": {
-      "request_type_id": "rt_new_mobile_order",
-      "reference_id": "ref_new_mobile_order_02",
-      "reference_kind": "complete_valid_reference",
-      "extracted_fields": {},
-      "missing_required_fields": [],
-      "missing_required_paths": [],
-      "expected_rule_violations": []
-    }
-  },
-  "observability": {
-    "materialized_field_paths": ["customer_name", "requested_services[0].service_id"],
-    "intentionally_omitted_field_paths": [],
-    "evidence_by_field_path": {
-      "customer_name": {
-        "normalized_value": "Klára Horáková",
-        "evidence_snippets": ["Klára Horáková"]
-      },
-      "requested_services[0].service_id": {
-        "normalized_value": "svc_mobile_start_5g",
-        "evidence_snippets": ["Mobil Start 5G"]
-      }
-    },
-    "component_segments": [
-      {
-        "component_role": "primary_known",
-        "request_type_id": "rt_new_mobile_order",
-        "reference_id": "ref_new_mobile_order_02",
-        "evidence_snippets": ["Mobil Start 5G", "přenos čísla"]
-      }
-    ],
-    "distractor_snippets": [],
-    "generation_note": "Complete valid extraction record rendered as CRM ticket."
-  }
-}
-```
+Each extraction record must contain:
 
-## Classification record shape
+- clear `source.request_type_id`
+- clear `source.reference_id`
+- `gold_annotation.extraction`
+- `observability` metadata unless disabled
 
-```json
-{
-  "record_id": "cls__cls_multi_known_01__broker_email__v01",
-  "mode": "classification",
-  "channel": "broker_email",
-  "channel_style": "broker_email",
-  "noise_tags": ["greeting_signature_noise"],
-  "business_perturbation_tags": [],
-  "source": {
-    "scenario_id": "cls_multi_known_01",
-    "scenario_type": "multi_intent_known_request_types"
-  },
-  "input_text": "...",
-  "gold_annotation": {
-    "classification": {
-      "scenario_id": "cls_multi_known_01",
-      "expected_classifier_result": {
-        "outcome_type": "multi_intent_known_request_types",
-        "primary_request_type_id": null,
-        "secondary_request_type_ids": [
-          "rt_new_mobile_order",
-          "rt_fixed_internet_with_hardware_order"
-        ],
-        "contains_unknown_additional_intent": false
-      },
-      "linked_reference_ids": ["ref_new_mobile_order_02", "ref_fixed_internet_hw_02"],
-      "linked_request_type_ids": ["rt_new_mobile_order", "rt_fixed_internet_with_hardware_order"]
-    }
-  },
-  "observability": {
-    "materialized_field_paths": [
-      "requested_services[0].service_id",
-      "installation_address"
-    ],
-    "intentionally_omitted_field_paths": [],
-    "evidence_by_field_path": {},
-    "component_segments": [
-      {
-        "component_role": "known_intent_1",
-        "request_type_id": "rt_new_mobile_order",
-        "reference_id": "ref_new_mobile_order_02",
-        "evidence_snippets": ["Mobil Start 5G", "přenos čísla"]
-      },
-      {
-        "component_role": "known_intent_2",
-        "request_type_id": "rt_fixed_internet_with_hardware_order",
-        "reference_id": "ref_fixed_internet_hw_02",
-        "evidence_snippets": ["Optika Domů 300", "Purkyňova 85"]
-      }
-    ],
-    "distractor_snippets": [],
-    "generation_note": "Two separate known intents kept distinct inside one broker email."
-  }
-}
-```
+## Classification record essentials
+
+Each classification record must contain:
+
+- clear `source.scenario_id`
+- clear `source.scenario_type`
+- `gold_annotation.classification`
+- `observability` metadata unless disabled
 
 ## Consistency requirements
 
@@ -148,8 +54,5 @@ Generated records are benchmark inputs. They must be precise enough to support l
 2. A path listed in `intentionally_omitted_field_paths` must not appear in `evidence_by_field_path`.
 3. `component_segments` must align with the intended classifier outcome.
 4. `distractor_snippets` may add noise, but must not introduce accidental extra known intents.
-5. Extraction records must preserve the exact reference kind semantics:
-   - incomplete stays incomplete,
-   - complete valid stays valid,
-   - complete invalid stays invalid for the same rule reason.
+5. Extraction records must preserve the exact reference kind semantics.
 6. Classification records must preserve the intended outcome type from the scenario definition.
