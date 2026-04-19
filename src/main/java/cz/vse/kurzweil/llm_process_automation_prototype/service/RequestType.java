@@ -1,14 +1,15 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.familymobileorder.FamilyMobileOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.fixedinternetorder.FixedInternetHardwareOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.internettvbundle.InternetTvBundleOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.newmobileorder.SingleMobileOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.retentiondiscount.RetentionDiscountRequestDto;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
+@Getter
+@RequiredArgsConstructor
 public enum RequestType {
     RT_NEW_MOBILE_ORDER("rt_new_mobile_order", SingleMobileOrderRequestDto.class, "read_prompts/extraction/rt_new_mobile_order"),
     RT_FAMILY_MOBILE_ORDER("rt_family_mobile_order", FamilyMobileOrderRequestDto.class, "read_prompts/extraction/rt_family_mobile_order"),
@@ -17,20 +18,14 @@ public enum RequestType {
     RT_RETENTION_DISCOUNT_REQUEST("rt_retention_discount_request", RetentionDiscountRequestDto.class, "read_prompts/extraction/rt_retention_discount_request"),
     UNCLASSIFIABLE("unclassifiable", null, null);
 
-    private final String value;
-    @Getter private final Class<?> dtoClass;
-    @Getter private final String promptDirectory;
+    private final String requestTypeIdReference;
+    private final Class<?> dtoClass;
+    private final String promptDirectory;
 
-    RequestType(String value, Class<?> dtoClass, String promptDirectory) {
-        this.value = value;
-        this.dtoClass = dtoClass;
-        this.promptDirectory = promptDirectory;
-    }
 
-    @JsonCreator
-    public static RequestType fromValue(String value) {
+    public static RequestType fromRequestTypeIdReference(String value) {
         for (RequestType type : values()) {
-            if (type.value.equalsIgnoreCase(value)) {
+            if (type.requestTypeIdReference.equalsIgnoreCase(value)) {
                 return type;
             }
         }
