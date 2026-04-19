@@ -6,6 +6,8 @@ import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.ResponseEntity;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,5 +34,11 @@ public class StructuredExtractionServiceImpl implements StructuredExtractionServ
         log.info("Extracting with requestType={}, variant={}, model={}", requestType, variant, model);
         Object extract = strategies.get(variant).extract(inputText, requestType, clients.get(model));
         return (T) extract;
+    }
+
+    @Override
+    public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
+        log.info("Extracting with responseEntity, requestType={}, variant={}, model={}", requestType, variant, model);
+        return strategies.get(variant).extractResponseEntity(inputText, requestType, clients.get(model));
     }
 }
