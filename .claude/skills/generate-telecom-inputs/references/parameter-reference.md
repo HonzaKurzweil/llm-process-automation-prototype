@@ -7,27 +7,27 @@
 
 Default: `extraction`
 
-## request_type_ids
+## requestTypeIds
 Comma-separated list of known request types, or `all`.
 
 Examples:
-- `request_type_ids=rt_new_mobile_order`
-- `request_type_ids=rt_new_mobile_order,rt_fixed_internet_with_hardware_order`
-- `request_type_ids=all`
+- `requestTypeIds=rt_new_mobile_order`
+- `requestTypeIds=rt_new_mobile_order,rt_fixed_internet_with_hardware_order`
+- `requestTypeIds=all`
 
-## extraction_reference_ids
+## extractionReferenceIds
 Explicit extraction reference IDs.
 
 Example:
-- `extraction_reference_ids=ref_new_mobile_order_02,ref_internet_tv_bundle_02`
+- `extractionReferenceIds=ref_new_mobile_order_02,ref_internet_tv_bundle_02`
 
-## classification_scenario_ids
+## classificationScenarioIds
 Explicit classification scenario IDs.
 
 Example:
-- `classification_scenario_ids=cls_multi_known_01,cls_unknown_01`
+- `classificationScenarioIds=cls_multi_known_01,cls_unknown_01`
 
-## classifier_outcome_types
+## classifierOutcomeTypes
 Subset of scenario types from `classifier_outcomes_v3.yaml`:
 - `single_known_request_type`
 - `known_request_type_with_unknown_tail`
@@ -35,7 +35,7 @@ Subset of scenario types from `classifier_outcomes_v3.yaml`:
 - `unknown_or_out_of_scope`
 - `ambiguous_or_insufficient_signal`
 
-These values filter `classification_scenarios[*].scenario_type`.
+These values filter `classificationScenarios[*].scenarioType`.
 
 ## channels
 Allowed values:
@@ -45,38 +45,38 @@ Allowed values:
 
 Default: all three.
 
-## noise_mode
+## noiseMode
 - `none`: clean baseline.
 - `light`: at most one mild or channel-specific noise tag.
 - `mixed`: up to two compatible noise tags.
-- `custom`: use explicit `noise_tags`.
+- `custom`: use explicit `noiseTags`.
 
-## noise_tags
-Only valid with `noise_mode=custom`. Tags must exist in `noise_profiles.yaml` and apply to the selected channel.
+## noiseTags
+Only valid with `noiseMode=custom`. Tags must exist in `noise_profiles.yaml` and apply to the selected channel.
 
-## variants_per_base
+## variantsPerBase
 How many variants to generate per selected base item and channel.
 
 Default: `1`
 
-## include_gold_annotation
+## includeGoldAnnotation
 Default: `true`
 
-If `false`, omit `gold_annotation` but keep `source` metadata.
+If `false`, omit `goldAnnotation` but keep `source` metadata.
 
-## include_observability_metadata
+## includeObservabilityMetadata
 Default: `true`
 
 If `false`, omit the `observability` object.
 
-## output_format
+## outputFormat
 - `json`
 - `jsonl`
 - `yaml`
 
 Default: `json`
 
-## dry_run
+## dryRun
 Default: `false`
 
 When `true`, validate selection and report counts, but do not write files.
