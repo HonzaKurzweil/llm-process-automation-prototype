@@ -2,8 +2,6 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.execution;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
@@ -20,8 +18,6 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Path;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -35,17 +31,6 @@ public class ExecutionServiceImpl implements ExecutionService {
 
     private final TreeComparator treeComparator;
     private final ResultExporter resultExporter;
-
-    private static final List<String> ARRAY_SORT_KEYS = List.of(
-            "serviceId",
-            "productId",
-            "discountId",
-            "targetServiceId",
-            "label",
-            "number",
-            "donorOperator"
-    );
-
     private final StructuredExtractionService structuredExtractionService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -103,13 +88,10 @@ public class ExecutionServiceImpl implements ExecutionService {
         } catch (Exception exception) {
             return generateExceptionResult(record, variant, model, exception, requestType, startedAtNanos, expectedDto);
         }
-
         long durationMillis = elapsedMillis(startedAtNanos);
-        JsonNode expectedTree = canonicalize(safeTree(expectedDto));
-        JsonNode actualTree = canonicalize(safeTree(actualDto));
-
+        JsonNode expectedTree = treeComparator.canonicalize(safeTree(expectedDto));
+        JsonNode actualTree = treeComparator.canonicalize(safeTree(actualDto));
         ComparisonResult comparisonResult = treeComparator.compareTrees(expectedTree, actualTree);
-
         return generateResult(record, variant, model, requestType, comparisonResult, durationMillis, expectedTree, actualTree);
     }
 
@@ -139,62 +121,6 @@ public class ExecutionServiceImpl implements ExecutionService {
 
     private JsonNode safeTree(Object value) {
         return objectMapper.valueToTree(value);
-    }
-
-
-    private JsonNode canonicalize(JsonNode node) {
-        if (node == null || node.isNull() || node.isValueNode()) {
-            return node;
-        }
-
-        if (node.isObject()) {
-            ObjectNode objectNode = objectMapper.createObjectNode();
-            List<String> fieldNames = new ArrayList<>();
-            node.fieldNames().forEachRemaining(fieldNames::add);
-            fieldNames.stream().sorted().forEach(field -> objectNode.set(field, canonicalize(node.get(field))));
-            return objectNode;
-        }
-
-        if (node.isArray()) {
-            List<JsonNode> items = new ArrayList<>();
-            node.forEach(item -> items.add(canonicalize(item)));
-
-            Comparator<JsonNode> comparator = buildArrayComparator(items);
-            if (comparator != null) {
-                items.sort(comparator);
-            }
-
-            ArrayNode arrayNode = objectMapper.createArrayNode();
-            items.forEach(arrayNode::add);
-            return arrayNode;
-        }
-
-        return node;
-    }
-
-    private Comparator<JsonNode> buildArrayComparator(List<JsonNode> items) {
-        if (items.isEmpty()) {
-            return null;
-        }
-
-        if (items.stream().allMatch(JsonNode::isValueNode)) {
-            return Comparator.comparing(JsonNode::asText, Comparator.nullsFirst(String::compareTo));
-        }
-
-        if (!items.stream().allMatch(JsonNode::isObject)) {
-            return null;
-        }
-
-        String sortKey = ARRAY_SORT_KEYS.stream()
-                .filter(candidate -> items.stream().allMatch(item -> item.has(candidate)))
-                .findFirst()
-                .orElse(null);
-
-        if (sortKey == null) {
-            return Comparator.comparing(JsonNode::toString);
-        }
-
-        return Comparator.comparing(item -> item.path(sortKey).asText(""), Comparator.nullsFirst(String::compareTo));
     }
 
     private static @NonNull ExtractionValidationRecordResult generateResult(ExtractionRecord record,
