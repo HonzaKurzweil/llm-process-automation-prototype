@@ -12,6 +12,7 @@ import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.*;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -28,6 +29,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.EXTRACTION_TYPE;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -60,17 +63,9 @@ public class ExecutionServiceImpl implements ExecutionService {
         }
     }
 
-    /**
-     * Useful for tests or for a future controller endpoint. The public interface can still stay void.
-     */
     private ExtractionValidationRunResult runExtractionValidation(Path inputFile, PromptVariant variant, ModelType model) {
         ExtractionDatasetBundle bundle = readBundle(inputFile);
-
-        List<ExtractionRecord> extractionRecords = bundle.records().stream()
-                .filter(record -> "extraction".equalsIgnoreCase(record.mode()))
-                .toList();
-
-        List<ExtractionValidationRecordResult> recordResults = extractionRecords.stream()
+        List<ExtractionValidationRecordResult> recordResults = getBundleRecordsInExtractionMode(bundle).stream()
                 .map(record -> validateSingleRecord(record, variant, model))
                 .toList();
 
@@ -85,6 +80,12 @@ public class ExecutionServiceImpl implements ExecutionService {
                 summary,
                 recordResults
         );
+    }
+
+    private @NonNull List<ExtractionRecord> getBundleRecordsInExtractionMode(ExtractionDatasetBundle bundle) {
+        return bundle.records().stream()
+                .filter(record -> EXTRACTION_TYPE.equalsIgnoreCase(record.mode()))
+                .toList();
     }
 
     private ExtractionValidationRecordResult validateSingleRecord(
@@ -172,10 +173,6 @@ public class ExecutionServiceImpl implements ExecutionService {
         );
     }
 
-    /**
-     * This is the only method you will likely need to adjust if the real StructuredExtractionService
-     * uses a slightly different signature.
-     */
     private Object invokeExtraction(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
         return structuredExtractionService.extract(inputText, requestType, variant, model);
     }
@@ -289,7 +286,7 @@ public class ExecutionServiceImpl implements ExecutionService {
         }
 
         if (node.isObject()) {
-            if (node.size() == 0) {
+            if (node.isEmpty()) {
                 output.add(normalizedPath);
                 return;
             }
