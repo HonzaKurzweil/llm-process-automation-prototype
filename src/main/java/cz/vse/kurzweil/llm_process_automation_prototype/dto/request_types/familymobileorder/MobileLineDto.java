@@ -4,4 +4,5 @@ public record MobileLineDto(
         String label,
         String planServiceId,
         Boolean portingRequested
-) {}
+) {
+}

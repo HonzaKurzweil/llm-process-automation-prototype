@@ -1,6 +1,7 @@
 # Output Contract
 
-Generated records are benchmark inputs. They must be precise enough to support later comparison against gold annotations and simple observability-based audits.
+Generated records are benchmark inputs. They must be precise enough to support later comparison against gold annotations
+and simple observability-based audits.
 
 ## File-level shape (JSON)
 
@@ -38,7 +39,9 @@ Generated records are benchmark inputs. They must be precise enough to support l
   "mode": "extraction",
   "channel": "crm_ticket",
   "channelStyle": "crm_ticket",
-  "noiseTags": ["shorthand_internal"],
+  "noiseTags": [
+    "shorthand_internal"
+  ],
   "businessPerturbationTags": [],
   "source": {
     "requestTypeId": "rt_new_mobile_order",
@@ -58,16 +61,23 @@ Generated records are benchmark inputs. They must be precise enough to support l
     }
   },
   "observability": {
-    "materializedFieldPaths": ["customerName", "requestedServices[0].serviceId"],
+    "materializedFieldPaths": [
+      "customerName",
+      "requestedServices[0].serviceId"
+    ],
     "intentionallyOmittedFieldPaths": [],
     "evidenceByFieldPath": {
       "customerName": {
         "normalizedValue": "Klára Horáková",
-        "evidenceSnippets": ["Klára Horáková"]
+        "evidenceSnippets": [
+          "Klára Horáková"
+        ]
       },
       "requestedServices[0].serviceId": {
         "normalizedValue": "svc_mobile_start_5g",
-        "evidenceSnippets": ["Mobil Start 5G"]
+        "evidenceSnippets": [
+          "Mobil Start 5G"
+        ]
       }
     },
     "componentSegments": [
@@ -75,7 +85,10 @@ Generated records are benchmark inputs. They must be precise enough to support l
         "componentRole": "primary_known",
         "requestTypeId": "rt_new_mobile_order",
         "referenceId": "ref_new_mobile_order_02",
-        "evidenceSnippets": ["Mobil Start 5G", "přenos čísla"]
+        "evidenceSnippets": [
+          "Mobil Start 5G",
+          "přenos čísla"
+        ]
       }
     ],
     "distractorSnippets": [],
@@ -92,7 +105,9 @@ Generated records are benchmark inputs. They must be precise enough to support l
   "mode": "classification",
   "channel": "broker_email",
   "channelStyle": "broker_email",
-  "noiseTags": ["greeting_signature_noise"],
+  "noiseTags": [
+    "greeting_signature_noise"
+  ],
   "businessPerturbationTags": [],
   "source": {
     "scenarioId": "cls_multi_known_01",
@@ -105,8 +120,14 @@ Generated records are benchmark inputs. They must be precise enough to support l
       "scenarioType": "multiple_known_request_types_present",
       "expectedRequestTypeIdReference": "unclassifiable",
       "unclassifiableReasonId": "multiple_known_request_types_present",
-      "linkedReferenceIds": ["ref_new_mobile_order_02", "ref_fixed_internet_hw_02"],
-      "linkedRequestTypeIds": ["rt_new_mobile_order", "rt_fixed_internet_with_hardware_order"]
+      "linkedReferenceIds": [
+        "ref_new_mobile_order_02",
+        "ref_fixed_internet_hw_02"
+      ],
+      "linkedRequestTypeIds": [
+        "rt_new_mobile_order",
+        "rt_fixed_internet_with_hardware_order"
+      ]
     }
   },
   "observability": {
@@ -121,13 +142,19 @@ Generated records are benchmark inputs. They must be precise enough to support l
         "componentRole": "known_intent_1",
         "requestTypeId": "rt_new_mobile_order",
         "referenceId": "ref_new_mobile_order_02",
-        "evidenceSnippets": ["Mobil Start 5G", "přenos čísla"]
+        "evidenceSnippets": [
+          "Mobil Start 5G",
+          "přenos čísla"
+        ]
       },
       {
         "componentRole": "known_intent_2",
         "requestTypeId": "rt_fixed_internet_with_hardware_order",
         "referenceId": "ref_fixed_internet_hw_02",
-        "evidenceSnippets": ["Optika Domů 300", "Purkyňova 85"]
+        "evidenceSnippets": [
+          "Optika Domů 300",
+          "Purkyňova 85"
+        ]
       }
     ],
     "distractorSnippets": [],
@@ -143,8 +170,9 @@ Generated records are benchmark inputs. They must be precise enough to support l
 3. `componentSegments` must align with the intended classification scenario.
 4. `distractorSnippets` may add noise, but must not introduce accidental extra known intents.
 5. Extraction records must preserve the exact reference-kind semantics:
-   - incomplete stays incomplete,
-   - complete valid stays valid,
-   - complete invalid stays invalid for the same rule reason.
+    - incomplete stays incomplete,
+    - complete valid stays valid,
+    - complete invalid stays invalid for the same rule reason.
 6. Classification records must preserve the intended classifier result from the scenario definition.
-7. Only records with `expectedRequestTypeIdReference` different from `unclassifiable` are eligible for direct downstream extraction.
+7. Only records with `expectedRequestTypeIdReference` different from `unclassifiable` are eligible for direct downstream
+   extraction.

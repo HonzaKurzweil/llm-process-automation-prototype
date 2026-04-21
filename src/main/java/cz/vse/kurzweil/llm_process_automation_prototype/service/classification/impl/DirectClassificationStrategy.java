@@ -35,5 +35,6 @@ public class DirectClassificationStrategy implements ClassificationStrategy {
 
     private record ClassificationResponse(
             @JsonProperty("request_type") RequestType requestType
-    ) {}
+    ) {
+    }
 }

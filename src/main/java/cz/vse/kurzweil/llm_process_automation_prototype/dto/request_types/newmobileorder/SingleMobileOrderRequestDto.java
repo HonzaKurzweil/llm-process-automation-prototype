@@ -17,4 +17,5 @@ public record SingleMobileOrderRequestDto(
         Boolean portingRequested,
         List<PortedNumberDto> portedNumbers,
         List<DiscountSelectionDto> requestedDiscounts
-) {}
+) {
+}

@@ -8,17 +8,22 @@ Nevymýšlej chybějící údaje. Pokud informace ve vstupu chybí, ponech pří
 Pokud je ve vstupu obchodně neobvyklá nebo nevalidní kombinace, pouze ji přečti a vrať tak, jak je uvedena.
 
 Význam polí:
+
 - `customerStatus` = vztah zákazníka k operátorovi. Používej `new` nebo `existing`.
 - `customerName` = jméno a příjmení zákazníka.
 - `contactPhone` = hlavní kontaktní telefon. Česká čísla normalizuj do tvaru `+420 XXX XXX XXX`, pokud to jde.
 - `contactEmail` = kontaktní e-mail, pokud je uveden.
-- `installationAddress` = instalační adresa jako jeden textový řetězec. Pokud jsou části adresy ve vstupu v jiném pořadí, sjednoť je do čitelného tvaru jedné adresy.
-- `requestedServices` = požadované hlavní služby. U tohoto request type očekávej jednu internetovou službu a jednu TV službu, pokud jsou rozpoznatelné.
+- `installationAddress` = instalační adresa jako jeden textový řetězec. Pokud jsou části adresy ve vstupu v jiném
+  pořadí, sjednoť je do čitelného tvaru jedné adresy.
+- `requestedServices` = požadované hlavní služby. U tohoto request type očekávej jednu internetovou službu a jednu TV
+  službu, pokud jsou rozpoznatelné.
 - `requestedProducts` = požadovaný hardware nebo TV add-on. Každá položka obsahuje `productId` a `quantity`.
 - `contractTermMonths` = požadovaná délka závazku v měsících. V této doméně dávej smysl hlavně hodnotám `0` nebo `24`.
-- `requestedDiscounts` = slevy explicitně uvedené nebo výslovně požadované ve vstupu. Slevu neodvozuj jen z toho, že by na ni zákazník mohl mít nárok.
+- `requestedDiscounts` = slevy explicitně uvedené nebo výslovně požadované ve vstupu. Slevu neodvozuj jen z toho, že by
+  na ni zákazník mohl mít nárok.
 
 Mapování katalogových ID:
+
 - `svc_internet_fiber_300` = optický internet 300 Mb/s
 - `svc_internet_fiber_1000` = optický internet 1000 Mb/s
 - `svc_internet_dsl_100` = DSL internet 100 Mb/s

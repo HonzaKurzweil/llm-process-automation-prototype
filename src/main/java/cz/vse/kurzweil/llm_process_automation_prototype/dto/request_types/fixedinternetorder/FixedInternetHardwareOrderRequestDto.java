@@ -15,4 +15,5 @@ public record FixedInternetHardwareOrderRequestDto(
         List<ServiceSelectionDto> requestedServices,
         List<ProductSelectionDto> requestedProducts,
         Integer contractTermMonths
-) {}
+) {
+}

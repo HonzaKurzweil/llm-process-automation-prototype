@@ -11,7 +11,11 @@ Závazek: 24 měsíců
 Sleva: 100 Kč na další linky
 
 OUTPUT:
-{"customerStatus":"new","customerName":"Tomáš Dvořák","contactPhone":"+420 606 200 111","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":3}],"mobileLinesCount":3,"mobileLines":[{"label":"hlavní_linka","planServiceId":"svc_mobile_family_plus","portingRequested":true},{"label":"druha_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false},{"label":"treti_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"portedNumbers":[{"number":"+420 604 887 220","donorOperator":"Vodafone"}],"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"}]}
+{"customerStatus":"new","customerName":"Tomáš Dvořák","contactPhone":"+420 606 200 111","contactEmail":null,"
+requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":3}],"mobileLinesCount":3,"
+mobileLines":[{"label":"hlavní_linka","planServiceId":"svc_mobile_family_plus","portingRequested":true},{"label":"druha_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false},{"label":"treti_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"
+portedNumbers":[{"number":"+420 604 887 220","donorOperator":"Vodafone"}],"contractTermMonths":24,"
+requestedDiscounts":[{"discountId":"disc_family_line_100"}]}
 
 --- EXAMPLE 2 (CRM ticket — incomplete reference) ---
 INPUT:
@@ -23,7 +27,10 @@ Závazek: 24 měs.
 Sleva: family line 100
 
 OUTPUT:
-{"customerStatus":"existing","customerName":"Jana Křížová","contactPhone":"+420 608 441 903","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":2}],"mobileLinesCount":2,"mobileLines":[{"label":"hlavní_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"portedNumbers":null,"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"}]}
+{"customerStatus":"existing","customerName":"Jana Křížová","contactPhone":"+420 608 441 903","contactEmail":null,"
+requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":2}],"mobileLinesCount":2,"
+mobileLines":[{"label":"hlavní_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"
+portedNumbers":null,"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"}]}
 
 --- EXAMPLE 3 (call transcript — complete invalid reference) ---
 INPUT:
@@ -35,4 +42,7 @@ Operátor: Závazek?
 Zákazník: 24 měsíců. A chci tu slevu 100 Kč na další linku.
 
 OUTPUT:
-{"customerStatus":"existing","customerName":"Roman Hlaváč","contactPhone":"+420 605 780 123","contactEmail":null,"requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":1}],"mobileLinesCount":1,"mobileLines":[{"label":"hlavní_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"portedNumbers":null,"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"}]}
+{"customerStatus":"existing","customerName":"Roman Hlaváč","contactPhone":"+420 605 780 123","contactEmail":null,"
+requestedServices":[{"serviceId":"svc_mobile_family_plus","quantity":1}],"mobileLinesCount":1,"
+mobileLines":[{"label":"hlavní_linka","planServiceId":"svc_mobile_family_plus","portingRequested":false}],"
+portedNumbers":null,"contractTermMonths":24,"requestedDiscounts":[{"discountId":"disc_family_line_100"}]}

@@ -15,7 +15,9 @@ allowed-tools:
 
 # Generate Telecom Inputs Skill
 
-Generate synthetic Czech telecom intake input records from structured references and scenario definitions. This camelCase variant is designed so that generated JSON or YAML can be mapped directly to Java record-like data objects without extra Jackson naming strategies.
+Generate synthetic Czech telecom intake input records from structured references and scenario definitions. This
+camelCase variant is designed so that generated JSON or YAML can be mapped directly to Java record-like data objects
+without extra Jackson naming strategies.
 
 ## Default project paths
 
@@ -25,7 +27,8 @@ Unless the user provides overrides, use these files:
 - Request types: `src/main/resources/dataset/generator_helpers/request_types_v3.yaml`
 - Classifier outcomes: `src/main/resources/dataset/generator_helpers/classifier_outcomes_v3.yaml`
 - Noise profiles: `src/main/resources/dataset/generator_helpers/noise_profiles.yaml`
-- Reference outputs and classification scenarios: `src/main/resources/dataset/generator_helpers/reference_outputs_v4.yaml`
+- Reference outputs and classification scenarios:
+  `src/main/resources/dataset/generator_helpers/reference_outputs_v4.yaml`
 - Output directory: `src/main/resources/dataset/inputs/`
 
 If a required file is missing, report the missing path and stop.
@@ -44,7 +47,8 @@ Required unless explicit IDs are provided:
 
 Optional:
 
-- `requestTypeIds`: comma-separated list or `all`. Used mainly for `extraction`, and as a filter for linked known components in `classification`.
+- `requestTypeIds`: comma-separated list or `all`. Used mainly for `extraction`, and as a filter for linked known
+  components in `classification`.
 - `extractionReferenceIds`: explicit extraction reference IDs.
 - `classificationScenarioIds`: explicit classification scenario IDs.
 - `classifierOutcomeTypes`: comma-separated subset of scenario types from `classifier_outcomes_v3.yaml`.
@@ -64,11 +68,13 @@ Optional:
 
 1. Generate only **Czech** input texts in a realistic Czech telecom context.
 2. Use only IDs present in the loaded domain and helper files.
-3. Do not expose hidden technical labels such as `requestTypeId`, `referenceId`, `scenarioId`, or classifier taxonomy labels inside `inputText`.
+3. Do not expose hidden technical labels such as `requestTypeId`, `referenceId`, `scenarioId`, or classifier taxonomy
+   labels inside `inputText`.
 4. For `extraction` mode, each generated input must preserve the semantic content of exactly one extraction reference.
-5. For `classification` mode, the generated input must preserve the intended classification scenario and the expected runtime outcome:
-   - one known request type, or
-   - `unclassifiable` because the input is mixed, contains an unknown tail, is out of scope, or is too ambiguous.
+5. For `classification` mode, the generated input must preserve the intended classification scenario and the expected
+   runtime outcome:
+    - one known request type, or
+    - `unclassifiable` because the input is mixed, contains an unknown tail, is out of scope, or is too ambiguous.
 6. Irrelevant noise must not introduce accidental extra known intents.
 7. Observability metadata must use **literal snippets from the generated input text** whenever possible.
 8. Do not invent new services, products, discounts, or business rules.
@@ -80,8 +86,8 @@ Optional:
 1. Read the helper files and domain files.
 2. Validate requested IDs and requested channels.
 3. Resolve base items:
-   - `extraction`: select records from `extractionReferenceSets`.
-   - `classification`: select records from `classificationScenarios`.
+    - `extraction`: select records from `extractionReferenceSets`.
+    - `classification`: select records from `classificationScenarios`.
 4. Choose noise according to `noiseProfiles.yaml`.
 5. Generate `variantsPerBase` records per selected base item and channel.
 6. Build gold annotations and observability metadata.
@@ -118,7 +124,8 @@ Selection priority:
 3. linked request type filter via `requestTypeIds`
 4. all classification scenarios
 
-If `requestTypeIds` is used together with `classification` mode, keep only scenarios whose known linked components all fall into the requested request types. This prevents accidental mixing with unrelated scenarios.
+If `requestTypeIds` is used together with `classification` mode, keep only scenarios whose known linked components all
+fall into the requested request types. This prevents accidental mixing with unrelated scenarios.
 
 ## Channel guidance
 
@@ -152,6 +159,7 @@ Gold annotation must contain:
 - `linkedRequestTypeIds`
 
 Optional:
+
 - `possibleRequestTypeIds` for ambiguous scenarios only.
 
 ## Observability policy

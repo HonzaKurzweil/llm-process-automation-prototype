@@ -18,4 +18,5 @@ public record FamilyMobileOrderRequestDto(
         List<PortedNumberDto> portedNumbers,
         Integer contractTermMonths,
         List<DiscountSelectionDto> requestedDiscounts
-) {}
+) {
+}

@@ -16,4 +16,5 @@ public record RetentionDiscountRequestDto(
         List<DiscountSelectionDto> requestedDiscounts,
         String churnReason,
         String competitorOffer
-) {}
+) {
+}

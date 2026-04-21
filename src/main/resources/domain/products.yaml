@@ -2,101 +2,101 @@ operator: FuturaTel CZ
 catalogVersion: '1.0'
 currency: CZK
 products:
-- productId: prod_router_standard
-  category: hardware
-  subcategory: wifi_router
-  name: Wi-Fi Router Standard
-  description: Základní pronájem domácího routeru pro pevný internet.
-  basePriceCzk: 49
-  billingModel: monthly_rental
-  parentServiceCategories:
-  - fixed_internet
-  parentServiceIds: []
-  maxQuantityPerOrder: 1
-  bundleEligible: false
-  tags:
-  - home_wifi
-  - rental
-  - standard
-- productId: prod_router_pro
-  category: hardware
-  subcategory: wifi_router
-  name: Wi-Fi Router Pro
-  description: Výkonnější router s Wi-Fi 6 pro vyšší rychlosti a více zařízení v domácnosti.
-  basePriceCzk: 99
-  billingModel: monthly_rental
-  parentServiceCategories:
-  - fixed_internet
-  parentServiceIds: []
-  maxQuantityPerOrder: 1
-  bundleEligible: false
-  tags:
-  - home_wifi
-  - rental
-  - wifi6
-  - premium
-- productId: prod_mesh_node
-  category: hardware
-  subcategory: wifi_extension
-  name: Mesh Wi-Fi jednotka
-  description: Doplňkový prvek pro rozšíření Wi-Fi pokrytí ve větší domácnosti.
-  basePriceCzk: 69
-  billingModel: monthly_rental
-  parentServiceCategories:
-  - fixed_internet
-  parentServiceIds: []
-  maxQuantityPerOrder: 3
-  bundleEligible: false
-  tags:
-  - home_wifi
-  - rental
-  - extension
-- productId: prod_set_top_box
-  category: hardware
-  subcategory: tv_device
-  name: Set-top box
-  description: Koncové zařízení pro televizní službu objednávané k TV balíčku.
-  basePriceCzk: 70
-  billingModel: monthly_rental
-  parentServiceCategories:
-  - tv
-  parentServiceIds: []
-  maxQuantityPerOrder: 3
-  bundleEligible: false
-  tags:
-  - tv
-  - rental
-  - device
-- productId: prod_installation_express
-  category: addon
-  subcategory: installation
-  name: Expresní instalace
-  description: Příplatek za přednostní termín instalace pevného internetu.
-  basePriceCzk: 999
-  billingModel: one_time
-  parentServiceCategories:
-  - fixed_internet
-  parentServiceIds: []
-  maxQuantityPerOrder: 1
-  bundleEligible: false
-  tags:
-  - installation
-  - priority
-  - one_time
-- productId: prod_tv_sports_pack
-  category: addon
-  subcategory: tv_addon
-  name: Sport Plus
-  description: Doplňkový sportovní balíček k rozšířené televizní službě.
-  basePriceCzk: 199
-  billingModel: monthly
-  parentServiceCategories:
-  - tv
-  parentServiceIds:
-  - svc_tv_family
-  maxQuantityPerOrder: 1
-  bundleEligible: false
-  tags:
-  - tv
-  - sports
-  - addon
+  - productId: prod_router_standard
+    category: hardware
+    subcategory: wifi_router
+    name: Wi-Fi Router Standard
+    description: Základní pronájem domácího routeru pro pevný internet.
+    basePriceCzk: 49
+    billingModel: monthly_rental
+    parentServiceCategories:
+      - fixed_internet
+    parentServiceIds: [ ]
+    maxQuantityPerOrder: 1
+    bundleEligible: false
+    tags:
+      - home_wifi
+      - rental
+      - standard
+  - productId: prod_router_pro
+    category: hardware
+    subcategory: wifi_router
+    name: Wi-Fi Router Pro
+    description: Výkonnější router s Wi-Fi 6 pro vyšší rychlosti a více zařízení v domácnosti.
+    basePriceCzk: 99
+    billingModel: monthly_rental
+    parentServiceCategories:
+      - fixed_internet
+    parentServiceIds: [ ]
+    maxQuantityPerOrder: 1
+    bundleEligible: false
+    tags:
+      - home_wifi
+      - rental
+      - wifi6
+      - premium
+  - productId: prod_mesh_node
+    category: hardware
+    subcategory: wifi_extension
+    name: Mesh Wi-Fi jednotka
+    description: Doplňkový prvek pro rozšíření Wi-Fi pokrytí ve větší domácnosti.
+    basePriceCzk: 69
+    billingModel: monthly_rental
+    parentServiceCategories:
+      - fixed_internet
+    parentServiceIds: [ ]
+    maxQuantityPerOrder: 3
+    bundleEligible: false
+    tags:
+      - home_wifi
+      - rental
+      - extension
+  - productId: prod_set_top_box
+    category: hardware
+    subcategory: tv_device
+    name: Set-top box
+    description: Koncové zařízení pro televizní službu objednávané k TV balíčku.
+    basePriceCzk: 70
+    billingModel: monthly_rental
+    parentServiceCategories:
+      - tv
+    parentServiceIds: [ ]
+    maxQuantityPerOrder: 3
+    bundleEligible: false
+    tags:
+      - tv
+      - rental
+      - device
+  - productId: prod_installation_express
+    category: addon
+    subcategory: installation
+    name: Expresní instalace
+    description: Příplatek za přednostní termín instalace pevného internetu.
+    basePriceCzk: 999
+    billingModel: one_time
+    parentServiceCategories:
+      - fixed_internet
+    parentServiceIds: [ ]
+    maxQuantityPerOrder: 1
+    bundleEligible: false
+    tags:
+      - installation
+      - priority
+      - one_time
+  - productId: prod_tv_sports_pack
+    category: addon
+    subcategory: tv_addon
+    name: Sport Plus
+    description: Doplňkový sportovní balíček k rozšířené televizní službě.
+    basePriceCzk: 199
+    billingModel: monthly
+    parentServiceCategories:
+      - tv
+    parentServiceIds:
+      - svc_tv_family
+    maxQuantityPerOrder: 1
+    bundleEligible: false
+    tags:
+      - tv
+      - sports
+      - addon

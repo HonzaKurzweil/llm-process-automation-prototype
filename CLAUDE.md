@@ -40,16 +40,16 @@ dto/                                        (empty — for request/response mode
 
 All telecom business knowledge lives in static YAML files, not a database:
 
-| File | Purpose |
-|------|---------|
-| `domain/services.yaml` | Telecom service catalog (mobile, internet, TV tariffs) |
-| `domain/products.yaml` | Hardware and add-ons (routers, set-top boxes, installation) |
-| `domain/discounts.yaml` | Promotional discounts and eligibility conditions |
-| `domain/rules.yaml` | Business rules: `dependency`, `incompatibility`, `eligibility`, `quantity` |
-| `domain/locality_groups.yaml` | Geographic availability regions |
-| `dataset/request_types.yaml` | Input request types and their required/optional fields |
-| `dataset/reference_outputs.yaml` | Gold-standard extraction outputs for LLM training/validation |
-| `dataset/noise_profiles.yaml` | Text perturbation definitions (typos, missing fields, contradictions) |
+| File                             | Purpose                                                                    |
+|----------------------------------|----------------------------------------------------------------------------|
+| `domain/services.yaml`           | Telecom service catalog (mobile, internet, TV tariffs)                     |
+| `domain/products.yaml`           | Hardware and add-ons (routers, set-top boxes, installation)                |
+| `domain/discounts.yaml`          | Promotional discounts and eligibility conditions                           |
+| `domain/rules.yaml`              | Business rules: `dependency`, `incompatibility`, `eligibility`, `quantity` |
+| `domain/locality_groups.yaml`    | Geographic availability regions                                            |
+| `dataset/request_types.yaml`     | Input request types and their required/optional fields                     |
+| `dataset/reference_outputs.yaml` | Gold-standard extraction outputs for LLM training/validation               |
+| `dataset/noise_profiles.yaml`    | Text perturbation definitions (typos, missing fields, contradictions)      |
 
 See `docs/FIELD_EXPLANATION.md` (in Czech) for detailed field semantics across all domain YAMLs.
 
@@ -60,8 +60,10 @@ See `docs/FIELD_EXPLANATION.md` (in Czech) for detailed field semantics across a
 3. `rules.yaml` validates the extracted order (dependency checks, incompatibility checks, eligibility, quantity limits).
 4. Output compared against `reference_outputs.yaml` gold standards for evaluation.
 
-The `dataset/noise_profiles.yaml` describes synthetic noise types used to generate realistic training inputs. The `prompts/` directory is reserved for future LLM prompt templates.
+The `dataset/noise_profiles.yaml` describes synthetic noise types used to generate realistic training inputs. The
+`prompts/` directory is reserved for future LLM prompt templates.
 
 ### Business domain
 
-Fictional Czech telecom operator **FuturaTel CZ**. Services include mobile (5G tariffs), fixed internet (fiber/DSL/wireless), and TV. All field names, YAML keys, and documentation are in Czech.
+Fictional Czech telecom operator **FuturaTel CZ**. Services include mobile (5G tariffs), fixed internet (
+fiber/DSL/wireless), and TV. All field names, YAML keys, and documentation are in Czech.

@@ -37,5 +37,6 @@ public class FewShotClassificationStrategy implements ClassificationStrategy {
 
     private record ClassificationResponse(
             @JsonProperty("request_type") RequestType requestType
-    ) {}
+    ) {
+    }
 }

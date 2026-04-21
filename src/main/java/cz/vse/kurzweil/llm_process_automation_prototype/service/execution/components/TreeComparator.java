@@ -6,11 +6,7 @@ import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.Fi
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.appendPath;

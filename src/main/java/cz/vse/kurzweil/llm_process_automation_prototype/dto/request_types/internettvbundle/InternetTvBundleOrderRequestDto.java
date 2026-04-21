@@ -17,4 +17,5 @@ public record InternetTvBundleOrderRequestDto(
         List<ProductSelectionDto> requestedProducts,
         Integer contractTermMonths,
         List<DiscountSelectionDto> requestedDiscounts
-) {}
+) {
+}
