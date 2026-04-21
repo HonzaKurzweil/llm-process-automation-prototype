@@ -113,86 +113,6 @@ public class ExecutionServiceImpl implements ExecutionService {
         return generateResult(record, variant, model, requestType, comparisonResult, durationMillis, expectedTree, actualTree);
     }
 
-    private static @NonNull ExtractionValidationRecordResult generateResult(ExtractionRecord record,
-                                                                            PromptVariant variant,
-                                                                            ModelType model,
-                                                                            RequestType requestType,
-                                                                            ComparisonResult comparisonResult,
-                                                                            long durationMillis,
-                                                                            JsonNode expectedTree,
-                                                                            JsonNode actualTree) {
-        return new ExtractionValidationRecordResult(
-                record.recordId(),
-                requestType.getRequestTypeIdReference(),
-                record.channel(),
-                record.channelStyle(),
-                record.noiseTags(),
-                record.businessPerturbationTags(),
-                record.source().referenceId(),
-                record.source().referenceKind(),
-                variant.name(),
-                model.getModelId(),
-                true,
-                comparisonResult.exactMatch(),
-                durationMillis,
-                record.goldAnnotation().extraction().missingRequiredFields(),
-                record.goldAnnotation().extraction().missingRequiredPaths(),
-                record.goldAnnotation().extraction().expectedRuleViolations(),
-                comparisonResult.totalComparedPaths(),
-                comparisonResult.matchedPaths(),
-                comparisonResult.matchRate(),
-                comparisonResult.differences(),
-                expectedTree,
-                actualTree,
-                null
-        );
-    }
-
-    private @NonNull ExtractionValidationRecordResult generateExceptionResult(ExtractionRecord record,
-                                                                              PromptVariant variant,
-                                                                              ModelType model, Exception exception,
-                                                                              RequestType requestType,
-                                                                              long startedAtNanos,
-                                                                              Object expectedDto) {
-        return ExtractionValidationRecordResult.failureAfterInvocation(
-                record.recordId(),
-                requestType.getRequestTypeIdReference(),
-                record.channel(),
-                record.channelStyle(),
-                record.noiseTags(),
-                record.businessPerturbationTags(),
-                record.source().referenceId(),
-                record.source().referenceKind(),
-                variant.name(),
-                model.getModelId(),
-                elapsedMillis(startedAtNanos),
-                record.goldAnnotation().extraction().missingRequiredFields(),
-                record.goldAnnotation().extraction().missingRequiredPaths(),
-                record.goldAnnotation().extraction().expectedRuleViolations(),
-                safeTree(expectedDto),
-                exception.getClass().getSimpleName() + ": " + exception.getMessage()
-        );
-    }
-
-    private @NonNull ExtractionValidationRecordResult generateUnknownDtoResult(ExtractionRecord record,
-                                                                               PromptVariant variant,
-                                                                               ModelType model,
-                                                                               RequestType requestType) {
-        return ExtractionValidationRecordResult.failureWithoutInvocation(
-                record.recordId(),
-                requestType.name(),
-                record.channel(),
-                record.channelStyle(),
-                record.noiseTags(),
-                record.businessPerturbationTags(),
-                record.source().referenceId(),
-                record.source().referenceKind(),
-                variant.name(),
-                model.getModelId(),
-                "Dataset record does not map to a concrete extraction DTO class."
-        );
-    }
-
     private Object invokeExtraction(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
         return structuredExtractionService.extract(inputText, requestType, variant, model);
     }
@@ -277,5 +197,83 @@ public class ExecutionServiceImpl implements ExecutionService {
         return Comparator.comparing(item -> item.path(sortKey).asText(""), Comparator.nullsFirst(String::compareTo));
     }
 
+    private static @NonNull ExtractionValidationRecordResult generateResult(ExtractionRecord record,
+                                                                            PromptVariant variant,
+                                                                            ModelType model,
+                                                                            RequestType requestType,
+                                                                            ComparisonResult comparisonResult,
+                                                                            long durationMillis,
+                                                                            JsonNode expectedTree,
+                                                                            JsonNode actualTree) {
+        return new ExtractionValidationRecordResult(
+                record.recordId(),
+                requestType.getRequestTypeIdReference(),
+                record.channel(),
+                record.channelStyle(),
+                record.noiseTags(),
+                record.businessPerturbationTags(),
+                record.source().referenceId(),
+                record.source().referenceKind(),
+                variant.name(),
+                model.getModelId(),
+                true,
+                comparisonResult.exactMatch(),
+                durationMillis,
+                record.goldAnnotation().extraction().missingRequiredFields(),
+                record.goldAnnotation().extraction().missingRequiredPaths(),
+                record.goldAnnotation().extraction().expectedRuleViolations(),
+                comparisonResult.totalComparedPaths(),
+                comparisonResult.matchedPaths(),
+                comparisonResult.matchRate(),
+                comparisonResult.differences(),
+                expectedTree,
+                actualTree,
+                null
+        );
+    }
 
+    private @NonNull ExtractionValidationRecordResult generateExceptionResult(ExtractionRecord record,
+                                                                              PromptVariant variant,
+                                                                              ModelType model, Exception exception,
+                                                                              RequestType requestType,
+                                                                              long startedAtNanos,
+                                                                              Object expectedDto) {
+        return ExtractionValidationRecordResult.failureAfterInvocation(
+                record.recordId(),
+                requestType.getRequestTypeIdReference(),
+                record.channel(),
+                record.channelStyle(),
+                record.noiseTags(),
+                record.businessPerturbationTags(),
+                record.source().referenceId(),
+                record.source().referenceKind(),
+                variant.name(),
+                model.getModelId(),
+                elapsedMillis(startedAtNanos),
+                record.goldAnnotation().extraction().missingRequiredFields(),
+                record.goldAnnotation().extraction().missingRequiredPaths(),
+                record.goldAnnotation().extraction().expectedRuleViolations(),
+                safeTree(expectedDto),
+                exception.getClass().getSimpleName() + ": " + exception.getMessage()
+        );
+    }
+
+    private @NonNull ExtractionValidationRecordResult generateUnknownDtoResult(ExtractionRecord record,
+                                                                               PromptVariant variant,
+                                                                               ModelType model,
+                                                                               RequestType requestType) {
+        return ExtractionValidationRecordResult.failureWithoutInvocation(
+                record.recordId(),
+                requestType.name(),
+                record.channel(),
+                record.channelStyle(),
+                record.noiseTags(),
+                record.businessPerturbationTags(),
+                record.source().referenceId(),
+                record.source().referenceKind(),
+                variant.name(),
+                model.getModelId(),
+                "Dataset record does not map to a concrete extraction DTO class."
+        );
+    }
 }
