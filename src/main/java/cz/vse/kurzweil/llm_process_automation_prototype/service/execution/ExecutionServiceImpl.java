@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ExtractionDataSetBundleReader;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.*;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +48,7 @@ public class ExecutionServiceImpl implements ExecutionService {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
 
+    @Override
     public void validateExtractionService(Path inputFile, PromptVariant variant, ModelType model) {
         ExtractionValidationRunResult runResult = runExtractionValidation(inputFile, variant, model);
         Path outputFile = buildOutputPath(inputFile, variant, model);
