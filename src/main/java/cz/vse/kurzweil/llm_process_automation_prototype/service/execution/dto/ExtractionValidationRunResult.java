@@ -8,7 +8,6 @@ public record ExtractionValidationRunResult(
         Integer datasetVersion,
         String promptVariant,
         String modelId,
-        RunSummary summary,
         List<ExtractionValidationRecordResult> records
 ) {
 }

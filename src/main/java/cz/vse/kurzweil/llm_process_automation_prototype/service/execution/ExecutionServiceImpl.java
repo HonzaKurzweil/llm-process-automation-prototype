@@ -69,15 +69,12 @@ public class ExecutionServiceImpl implements ExecutionService {
                 .map(record -> validateSingleRecord(record, variant, model))
                 .toList();
 
-        RunSummary summary = summarize(recordResults);
-
         return new ExtractionValidationRunResult(
                 Instant.now().toString(),
                 inputFile.toAbsolutePath().toString(),
                 bundle.datasetVersion(),
                 variant.name(),
                 model.getModelId(),
-                summary,
                 recordResults
         );
     }
@@ -358,35 +355,6 @@ public class ExecutionServiceImpl implements ExecutionService {
         }
 
         return Comparator.comparing(item -> item.path(sortKey).asText(""), Comparator.nullsFirst(String::compareTo));
-    }
-
-    private RunSummary summarize(List<ExtractionValidationRecordResult> recordResults) {
-        int totalRecords = recordResults.size();
-        long invocationFailures = recordResults.stream().filter(result -> !result.invocationSucceeded()).count();
-        long exactMatches = recordResults.stream().filter(ExtractionValidationRecordResult::exactMatch).count();
-
-        Map<String, OutcomeCounter> byRequestType = aggregateBy(recordResults, ExtractionValidationRecordResult::requestTypeId);
-        Map<String, OutcomeCounter> byChannel = aggregateBy(recordResults, ExtractionValidationRecordResult::channel);
-        Map<String, OutcomeCounter> byReferenceKind = aggregateBy(recordResults, ExtractionValidationRecordResult::referenceKind);
-        Map<String, OutcomeCounter> byPromptVariant = aggregateBy(recordResults, ExtractionValidationRecordResult::promptVariant);
-        Map<String, OutcomeCounter> byModel = aggregateBy(recordResults, ExtractionValidationRecordResult::modelId);
-
-        return new RunSummary(totalRecords, exactMatches, invocationFailures, byRequestType, byChannel, byReferenceKind, byPromptVariant, byModel);
-    }
-
-    private Map<String, OutcomeCounter> aggregateBy(
-            List<ExtractionValidationRecordResult> results,
-            java.util.function.Function<ExtractionValidationRecordResult, String> classifier
-    ) {
-        return results.stream().collect(Collectors.groupingBy(
-                classifier,
-                LinkedHashMap::new,
-                Collectors.collectingAndThen(Collectors.toList(), group -> new OutcomeCounter(
-                        group.size(),
-                        group.stream().filter(ExtractionValidationRecordResult::exactMatch).count(),
-                        group.stream().filter(result -> !result.invocationSucceeded()).count()
-                ))
-        ));
     }
 
     private Path buildOutputPath(Path inputFile, PromptVariant variant, ModelType model) {
