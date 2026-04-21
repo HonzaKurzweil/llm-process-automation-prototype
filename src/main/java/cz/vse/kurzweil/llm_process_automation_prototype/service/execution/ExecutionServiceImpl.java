@@ -2,12 +2,12 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.execution;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ResultExporter;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.TreeComparator;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.*;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -28,7 +27,6 @@ import java.util.Map;
 
 import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.EXTRACTION_TYPE;
 import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.elapsedMillis;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.sanitize;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -36,6 +34,7 @@ import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.s
 public class ExecutionServiceImpl implements ExecutionService {
 
     private final TreeComparator treeComparator;
+    private final ResultExporter resultExporter;
 
     private static final List<String> ARRAY_SORT_KEYS = List.of(
             "serviceId",
@@ -55,8 +54,7 @@ public class ExecutionServiceImpl implements ExecutionService {
     public void validateExtractionService(Path inputFile, PromptVariant variant, ModelType model) {
         try {
             ExtractionValidationRunResult runResult = runExtractionValidation(inputFile, variant, model);
-            Path outputFile = buildOutputPath(inputFile, variant, model);
-            writeRunResult(outputFile, runResult);
+            resultExporter.exportResults(inputFile, variant, model, runResult);
         } catch (Exception e) {
             log.error("Extraction validation failed", e);
             throw new RuntimeException(e);
@@ -254,39 +252,5 @@ public class ExecutionServiceImpl implements ExecutionService {
         return Comparator.comparing(item -> item.path(sortKey).asText(""), Comparator.nullsFirst(String::compareTo));
     }
 
-    private Path buildOutputPath(Path inputFile, PromptVariant variant, ModelType model) {
-        String inputFileName = inputFile.getFileName().toString();
-        String baseName = inputFileName.endsWith(".json")
-                ? inputFileName.substring(0, inputFileName.length() - 5)
-                : inputFileName;
 
-        Path resultsDirectory = inputFile.getParent() == null
-                ? Path.of("results")
-                : inputFile.getParent().resolveSibling("results");
-
-        try {
-            Files.createDirectories(resultsDirectory);
-        } catch (IOException exception) {
-            throw new UncheckedIOException("Failed to create results directory: " + resultsDirectory, exception);
-        }
-
-        String outputFileName = baseName
-                + "__validation__"
-                + variant.name().toLowerCase()
-                + "__"
-                + sanitize(model.getModelId())
-                + ".json";
-
-        return resultsDirectory.resolve(outputFileName);
-    }
-
-    private void writeRunResult(Path outputFile, ExtractionValidationRunResult runResult) {
-        try {
-            objectMapper.copy()
-                    .enable(SerializationFeature.INDENT_OUTPUT)
-                    .writeValue(outputFile.toFile(), runResult);
-        } catch (IOException exception) {
-            throw new UncheckedIOException("Failed to write validation result to " + outputFile, exception);
-        }
-    }
 }
