@@ -6,4 +6,6 @@ import lombok.experimental.UtilityClass;
 public class Constants {
 
     public static final String EXTRACTION_TYPE = "extraction";
+    public static final String SUFFIX_JSON = ".json";
+    public static final String RESULTS_DIR_NAME = "results";
 }

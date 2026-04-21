@@ -13,7 +13,9 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.sanitize;
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.RESULTS_DIR_NAME;
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.SUFFIX_JSON;
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.generateOutputFileName;
 
 @Slf4j
 @Component
@@ -31,28 +33,15 @@ public class ResultExporter {
 
     private Path buildOutputPath(Path inputFile, PromptVariant variant, ModelType model) {
         String inputFileName = inputFile.getFileName().toString();
-        String baseName = inputFileName.endsWith(".json")
-                ? inputFileName.substring(0, inputFileName.length() - 5)
-                : inputFileName;
-
-        Path resultsDirectory = inputFile.getParent() == null
-                ? Path.of("results")
-                : inputFile.getParent().resolveSibling("results");
+        String baseName = inputFileName.substring(0, inputFileName.length() - SUFFIX_JSON.length());
+        Path resultsDirectory = inputFile.getParent().resolveSibling(RESULTS_DIR_NAME);
 
         try {
             Files.createDirectories(resultsDirectory);
         } catch (IOException exception) {
             throw new UncheckedIOException("Failed to create results directory: " + resultsDirectory, exception);
         }
-
-        String outputFileName = baseName
-                + "__validation__"
-                + variant.name().toLowerCase()
-                + "__"
-                + sanitize(model.getModelId())
-                + ".json";
-
-        return resultsDirectory.resolve(outputFileName);
+        return resultsDirectory.resolve(generateOutputFileName(variant, model, baseName));
     }
 
     private void writeRunResult(Path outputFile, ExtractionValidationRunResult runResult) {
