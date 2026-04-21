@@ -54,6 +54,11 @@ public class TreeComparator {
     }
 
 
+    /**
+     * Normalizes a JSON tree before comparison: sorts object fields alphabetically and array elements
+     * by a stable key (e.g. "id" or "kod"), so that LLM output differing only in ordering does not
+     * produce false field-level differences when evaluated against reference_outputs.yaml gold standards.
+     */
     public JsonNode canonicalize(JsonNode node) {
         if (node == null || node.isNull() || node.isValueNode()) {
             return node;
