@@ -1,8 +1,8 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.dto.fixedinternetorder;
+package cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.fixedinternetorder;
 
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.CustomerStatus;
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.ProductSelectionDto;
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.ServiceSelectionDto;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.CustomerStatus;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.ProductSelectionDto;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.ServiceSelectionDto;
 
 import java.util.List;
 

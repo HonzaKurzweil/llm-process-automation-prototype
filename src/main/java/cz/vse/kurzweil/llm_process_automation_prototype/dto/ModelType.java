@@ -1,4 +1,4 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service;
+package cz.vse.kurzweil.llm_process_automation_prototype.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

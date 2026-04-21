@@ -1,4 +1,4 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.dto.familymobileorder;
+package cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.familymobileorder;
 
 public record MobileLineDto(
         String label,

@@ -1,8 +1,8 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service.classification;
 
-import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
 
 public interface ClassificationService {
 

@@ -1,10 +1,10 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service;
+package cz.vse.kurzweil.llm_process_automation_prototype.dto;
 
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.familymobileorder.FamilyMobileOrderRequestDto;
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.fixedinternetorder.FixedInternetHardwareOrderRequestDto;
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.internettvbundle.InternetTvBundleOrderRequestDto;
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.newmobileorder.SingleMobileOrderRequestDto;
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.retentiondiscount.RetentionDiscountRequestDto;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.familymobileorder.FamilyMobileOrderRequestDto;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.fixedinternetorder.FixedInternetHardwareOrderRequestDto;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.internettvbundle.InternetTvBundleOrderRequestDto;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.newmobileorder.SingleMobileOrderRequestDto;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.retentiondiscount.RetentionDiscountRequestDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

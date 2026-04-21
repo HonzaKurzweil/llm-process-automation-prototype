@@ -1,8 +1,8 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.dto.retentiondiscount;
+package cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.retentiondiscount;
 
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.CurrentServiceRefDto;
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.CustomerStatus;
-import cz.vse.kurzweil.llm_process_automation_prototype.dto.DiscountSelectionDto;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.CurrentServiceRefDto;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.CustomerStatus;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.DiscountSelectionDto;
 
 import java.util.List;
 

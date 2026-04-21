@@ -1,6 +1,6 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.config;
 
-import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.openai.OpenAiChatOptions;

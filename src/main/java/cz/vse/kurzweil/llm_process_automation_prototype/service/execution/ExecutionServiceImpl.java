@@ -5,9 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.*;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
 import lombok.RequiredArgsConstructor;
@@ -50,10 +50,14 @@ public class ExecutionServiceImpl implements ExecutionService {
 
     @Override
     public void validateExtractionService(Path inputFile, PromptVariant variant, ModelType model) {
-        ExtractionValidationRunResult runResult = runExtractionValidation(inputFile, variant, model);
-        Path outputFile = buildOutputPath(inputFile, variant, model);
-        writeRunResult(outputFile, runResult);
-        logSummary(runResult, outputFile);
+        try {
+            ExtractionValidationRunResult runResult = runExtractionValidation(inputFile, variant, model);
+            Path outputFile = buildOutputPath(inputFile, variant, model);
+            writeRunResult(outputFile, runResult);
+        } catch (Exception e) {
+            log.error("Extraction validation failed", e);
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -422,18 +426,6 @@ public class ExecutionServiceImpl implements ExecutionService {
         } catch (IOException exception) {
             throw new UncheckedIOException("Failed to write validation result to " + outputFile, exception);
         }
-    }
-
-    private void logSummary(ExtractionValidationRunResult runResult, Path outputFile) {
-        RunSummary summary = runResult.summary();
-        log.info(
-                "Extraction validation finished. file={}, totalRecords={}, exactMatches={}, invocationFailures={}, output={}",
-                runResult.inputFile(),
-                summary.totalRecords(),
-                summary.exactMatches(),
-                summary.invocationFailures(),
-                outputFile.toAbsolutePath()
-        );
     }
 
     private long elapsedMillis(long startedAtNanos) {

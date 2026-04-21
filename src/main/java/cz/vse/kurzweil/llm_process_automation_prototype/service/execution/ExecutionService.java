@@ -1,7 +1,7 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service.execution;
 
-import cz.vse.kurzweil.llm_process_automation_prototype.service.ModelType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 
 import java.nio.file.Path;
 

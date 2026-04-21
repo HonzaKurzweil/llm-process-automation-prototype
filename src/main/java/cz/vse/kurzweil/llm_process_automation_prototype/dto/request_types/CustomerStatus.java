@@ -1,4 +1,4 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.dto;
+package cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

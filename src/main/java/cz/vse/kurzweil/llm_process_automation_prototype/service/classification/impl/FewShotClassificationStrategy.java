@@ -1,8 +1,8 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service.classification.impl;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptVariant;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptResourceLoader;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Component;
