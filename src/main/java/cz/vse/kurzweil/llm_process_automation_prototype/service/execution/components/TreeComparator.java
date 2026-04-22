@@ -12,6 +12,11 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_MISSING_FIELD;
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_NULL_MISMATCH;
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_TYPE_MISMATCH;
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_UNEXPECTED_FIELD;
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_VALUE_MISMATCH;
 import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.appendPath;
 import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.normalizePath;
 
@@ -94,25 +99,25 @@ public class TreeComparator {
 
         if (expected == null || expected.isMissingNode()) {
             if (actual != null && !actual.isMissingNode()) {
-                differences.add(new FieldDifference(normalizedPath, "unexpected_field", null, actual));
+                differences.add(new FieldDifference(normalizedPath, DIFF_UNEXPECTED_FIELD, null, actual));
             }
             return;
         }
 
         if (actual == null || actual.isMissingNode()) {
-            differences.add(new FieldDifference(normalizedPath, "missing_field", expected, null));
+            differences.add(new FieldDifference(normalizedPath, DIFF_MISSING_FIELD, expected, null));
             return;
         }
 
         if (expected.isNull() || actual.isNull()) {
             if (!expected.equals(actual)) {
-                differences.add(new FieldDifference(normalizedPath, "null_mismatch", expected, actual));
+                differences.add(new FieldDifference(normalizedPath, DIFF_NULL_MISMATCH, expected, actual));
             }
             return;
         }
 
         if (expected.getNodeType() != actual.getNodeType()) {
-            differences.add(new FieldDifference(normalizedPath, "type_mismatch", expected, actual));
+            differences.add(new FieldDifference(normalizedPath, DIFF_TYPE_MISMATCH, expected, actual));
             return;
         }
 
@@ -138,7 +143,7 @@ public class TreeComparator {
         }
 
         if (!expected.equals(actual)) {
-            differences.add(new FieldDifference(normalizedPath, "value_mismatch", expected, actual));
+            differences.add(new FieldDifference(normalizedPath, DIFF_VALUE_MISMATCH, expected, actual));
         }
     }
 
