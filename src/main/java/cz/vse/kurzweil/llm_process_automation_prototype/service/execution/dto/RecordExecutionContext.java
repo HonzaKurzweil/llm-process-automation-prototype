@@ -1,0 +1,12 @@
+package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto;
+
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
+
+public record RecordExecutionContext(
+        ExtractionRecord record,
+        RequestType requestType,
+        PromptVariant variant,
+        ModelType model
+) {}

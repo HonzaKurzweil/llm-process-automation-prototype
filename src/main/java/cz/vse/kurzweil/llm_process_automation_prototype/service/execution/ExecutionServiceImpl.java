@@ -74,25 +74,26 @@ public class ExecutionServiceImpl implements ExecutionService {
             ModelType model
     ) {
         RequestType requestType = RequestType.fromRequestTypeIdReference(record.source().requestTypeId());
+        RecordExecutionContext ctx = new RecordExecutionContext(record, requestType, variant, model);
 
         if (requestType == RequestType.UNCLASSIFIABLE || requestType.getDtoClass() == null) {
-            return generateUnknownDtoResult(record, variant, model, requestType);
+            return generateUnknownDtoResult(ctx);
         }
 
-        Object expectedDto = materializeExpectedDto(record, requestType.getDtoClass());
+        Object expectedDto = materializeExpectedDto(ctx.record(), ctx.requestType().getDtoClass());
 
         long startedAtNanos = System.nanoTime();
         Object actualDto;
         try {
-            actualDto = structuredExtractionService.extract(record.inputText(), requestType, variant, model);
+            actualDto = structuredExtractionService.extract(ctx.record().inputText(), ctx.requestType(), ctx.variant(), ctx.model());
         } catch (Exception exception) {
-            return generateExceptionResult(record, variant, model, exception, requestType, elapsedMillis(startedAtNanos), expectedDto);
+            return generateExceptionResult(ctx, exception, elapsedMillis(startedAtNanos), expectedDto);
         }
         long durationMillis = elapsedMillis(startedAtNanos);
         JsonNode expectedTree = treeComparator.canonicalize(safeTree(expectedDto));
         JsonNode actualTree = treeComparator.canonicalize(safeTree(actualDto));
         ComparisonResult comparisonResult = treeComparator.compareTrees(expectedTree, actualTree);
-        return generateResult(record, variant, model, requestType, comparisonResult, durationMillis, expectedTree, actualTree);
+        return generateResult(ctx, comparisonResult, durationMillis, expectedTree, actualTree);
     }
 
     private Object materializeExpectedDto(ExtractionRecord record, Class<?> dtoClass) {
@@ -119,31 +120,28 @@ public class ExecutionServiceImpl implements ExecutionService {
         return objectMapper.valueToTree(value);
     }
 
-    private static @NonNull ExtractionValidationRecordResult generateResult(ExtractionRecord record,
-                                                                            PromptVariant variant,
-                                                                            ModelType model,
-                                                                            RequestType requestType,
+    private static @NonNull ExtractionValidationRecordResult generateResult(RecordExecutionContext ctx,
                                                                             ComparisonResult comparisonResult,
                                                                             long durationMillis,
                                                                             JsonNode expectedTree,
                                                                             JsonNode actualTree) {
         return new ExtractionValidationRecordResult(
-                record.recordId(),
-                requestType.getRequestTypeIdReference(),
-                record.channel(),
-                record.channelStyle(),
-                record.noiseTags(),
-                record.businessPerturbationTags(),
-                record.source().referenceId(),
-                record.source().referenceKind(),
-                variant.name(),
-                model.getModelId(),
+                ctx.record().recordId(),
+                ctx.requestType().getRequestTypeIdReference(),
+                ctx.record().channel(),
+                ctx.record().channelStyle(),
+                ctx.record().noiseTags(),
+                ctx.record().businessPerturbationTags(),
+                ctx.record().source().referenceId(),
+                ctx.record().source().referenceKind(),
+                ctx.variant().name(),
+                ctx.model().getModelId(),
                 true,
                 comparisonResult.exactMatch(),
                 durationMillis,
-                record.goldAnnotation().extraction().missingRequiredFields(),
-                record.goldAnnotation().extraction().missingRequiredPaths(),
-                record.goldAnnotation().extraction().expectedRuleViolations(),
+                ctx.record().goldAnnotation().extraction().missingRequiredFields(),
+                ctx.record().goldAnnotation().extraction().missingRequiredPaths(),
+                ctx.record().goldAnnotation().extraction().expectedRuleViolations(),
                 comparisonResult.totalComparedPaths(),
                 comparisonResult.matchedPaths(),
                 comparisonResult.matchRate(),
@@ -154,47 +152,42 @@ public class ExecutionServiceImpl implements ExecutionService {
         );
     }
 
-    private @NonNull ExtractionValidationRecordResult generateExceptionResult(ExtractionRecord record,
-                                                                              PromptVariant variant,
-                                                                              ModelType model, Exception exception,
-                                                                              RequestType requestType,
+    private @NonNull ExtractionValidationRecordResult generateExceptionResult(RecordExecutionContext ctx,
+                                                                              Exception exception,
                                                                               long durationMillis,
                                                                               Object expectedDto) {
         return ExtractionValidationRecordResult.failureAfterInvocation(
-                record.recordId(),
-                requestType.getRequestTypeIdReference(),
-                record.channel(),
-                record.channelStyle(),
-                record.noiseTags(),
-                record.businessPerturbationTags(),
-                record.source().referenceId(),
-                record.source().referenceKind(),
-                variant.name(),
-                model.getModelId(),
+                ctx.record().recordId(),
+                ctx.requestType().getRequestTypeIdReference(),
+                ctx.record().channel(),
+                ctx.record().channelStyle(),
+                ctx.record().noiseTags(),
+                ctx.record().businessPerturbationTags(),
+                ctx.record().source().referenceId(),
+                ctx.record().source().referenceKind(),
+                ctx.variant().name(),
+                ctx.model().getModelId(),
                 durationMillis,
-                record.goldAnnotation().extraction().missingRequiredFields(),
-                record.goldAnnotation().extraction().missingRequiredPaths(),
-                record.goldAnnotation().extraction().expectedRuleViolations(),
+                ctx.record().goldAnnotation().extraction().missingRequiredFields(),
+                ctx.record().goldAnnotation().extraction().missingRequiredPaths(),
+                ctx.record().goldAnnotation().extraction().expectedRuleViolations(),
                 safeTree(expectedDto),
                 exception.getClass().getSimpleName() + ": " + exception.getMessage()
         );
     }
 
-    private @NonNull ExtractionValidationRecordResult generateUnknownDtoResult(ExtractionRecord record,
-                                                                               PromptVariant variant,
-                                                                               ModelType model,
-                                                                               RequestType requestType) {
+    private @NonNull ExtractionValidationRecordResult generateUnknownDtoResult(RecordExecutionContext ctx) {
         return ExtractionValidationRecordResult.failureWithoutInvocation(
-                record.recordId(),
-                requestType.name(),
-                record.channel(),
-                record.channelStyle(),
-                record.noiseTags(),
-                record.businessPerturbationTags(),
-                record.source().referenceId(),
-                record.source().referenceKind(),
-                variant.name(),
-                model.getModelId(),
+                ctx.record().recordId(),
+                ctx.requestType().name(),
+                ctx.record().channel(),
+                ctx.record().channelStyle(),
+                ctx.record().noiseTags(),
+                ctx.record().businessPerturbationTags(),
+                ctx.record().source().referenceId(),
+                ctx.record().source().referenceKind(),
+                ctx.variant().name(),
+                ctx.model().getModelId(),
                 "Dataset record does not map to a concrete extraction DTO class."
         );
     }
