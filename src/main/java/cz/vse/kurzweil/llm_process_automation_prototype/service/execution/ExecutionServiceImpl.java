@@ -86,7 +86,7 @@ public class ExecutionServiceImpl implements ExecutionService {
         try {
             actualDto = invokeExtraction(record.inputText(), requestType, variant, model);
         } catch (Exception exception) {
-            return generateExceptionResult(record, variant, model, exception, requestType, startedAtNanos, expectedDto);
+            return generateExceptionResult(record, variant, model, exception, requestType, elapsedMillis(startedAtNanos), expectedDto);
         }
         long durationMillis = elapsedMillis(startedAtNanos);
         JsonNode expectedTree = treeComparator.canonicalize(safeTree(expectedDto));
@@ -162,7 +162,7 @@ public class ExecutionServiceImpl implements ExecutionService {
                                                                               PromptVariant variant,
                                                                               ModelType model, Exception exception,
                                                                               RequestType requestType,
-                                                                              long startedAtNanos,
+                                                                              long durationMillis,
                                                                               Object expectedDto) {
         return ExtractionValidationRecordResult.failureAfterInvocation(
                 record.recordId(),
@@ -175,7 +175,7 @@ public class ExecutionServiceImpl implements ExecutionService {
                 record.source().referenceKind(),
                 variant.name(),
                 model.getModelId(),
-                elapsedMillis(startedAtNanos),
+                durationMillis,
                 record.goldAnnotation().extraction().missingRequiredFields(),
                 record.goldAnnotation().extraction().missingRequiredPaths(),
                 record.goldAnnotation().extraction().expectedRuleViolations(),
