@@ -2,6 +2,8 @@ package cz.vse.kurzweil.llm_process_automation_prototype.utils;
 
 import lombok.experimental.UtilityClass;
 
+import java.util.List;
+
 @UtilityClass
 public class Constants {
 
@@ -14,4 +16,14 @@ public class Constants {
     public static final String DIFF_TYPE_MISMATCH = "type_mismatch";
     public static final String DIFF_NULL_MISMATCH = "null_mismatch";
     public static final String DIFF_VALUE_MISMATCH = "value_mismatch";
+
+    public static final List<String> ARRAY_SORT_KEYS = List.of(
+            "serviceId",
+            "productId",
+            "discountId",
+            "targetServiceId",
+            "label",
+            "number",
+            "donorOperator"
+    );
 }

@@ -12,27 +12,13 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_MISSING_FIELD;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_NULL_MISMATCH;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_TYPE_MISMATCH;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_UNEXPECTED_FIELD;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.DIFF_VALUE_MISMATCH;
+import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.*;
 import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.appendPath;
 import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.normalizePath;
 
 @Slf4j
 @Component
 public class TreeComparator {
-
-    private static final List<String> ARRAY_SORT_KEYS = List.of(
-            "serviceId",
-            "productId",
-            "discountId",
-            "targetServiceId",
-            "label",
-            "number",
-            "donorOperator"
-    );
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -110,7 +96,9 @@ public class TreeComparator {
         }
 
         if (expected.isNull() || actual.isNull()) {
-            if (!expected.equals(actual)) {
+            boolean nullVsEmptyArray = (expected.isNull() && actual.isArray() && actual.isEmpty())
+                    || (actual.isNull() && expected.isArray() && expected.isEmpty());
+            if (!nullVsEmptyArray && !expected.equals(actual)) {
                 differences.add(new FieldDifference(normalizedPath, DIFF_NULL_MISMATCH, expected, actual));
             }
             return;
