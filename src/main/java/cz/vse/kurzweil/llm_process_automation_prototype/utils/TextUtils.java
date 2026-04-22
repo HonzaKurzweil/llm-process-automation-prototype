@@ -19,10 +19,6 @@ public class TextUtils {
         return (path == null || path.isBlank()) ? "$" : path;
     }
 
-    public static long elapsedMillis(long startedAtNanos) {
-        return (System.nanoTime() - startedAtNanos) / 1_000_000L;
-    }
-
     public static String sanitize(String raw) {
         return raw.replaceAll("[^a-zA-Z0-9._-]", "_");
     }

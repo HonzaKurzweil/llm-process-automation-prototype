@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.EXTRACTION_TYPE;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.elapsedMillis;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -75,25 +74,21 @@ public class ExecutionServiceImpl implements ExecutionService {
     ) {
         RequestType requestType = RequestType.fromRequestTypeIdReference(record.source().requestTypeId());
         RecordExecutionContext ctx = new RecordExecutionContext(record, requestType, variant, model);
-
         if (requestType == RequestType.UNCLASSIFIABLE || requestType.getDtoClass() == null) {
             return generateUnknownDtoResult(ctx);
         }
-
         Object expectedDto = deserializeExpectedDto(ctx.record(), ctx.requestType().getDtoClass());
 
-        long startedAtNanos = System.nanoTime();
         Object actualDto;
         try {
             actualDto = structuredExtractionService.extract(ctx.record().inputText(), ctx.requestType(), ctx.variant(), ctx.model());
         } catch (Exception exception) {
-            return generateExceptionResult(ctx, exception, elapsedMillis(startedAtNanos), expectedDto);
+            return generateExceptionResult(ctx, exception, expectedDto);
         }
-        long durationMillis = elapsedMillis(startedAtNanos);
         JsonNode expectedTree = treeComparator.canonicalize(safeTree(expectedDto));
         JsonNode actualTree = treeComparator.canonicalize(safeTree(actualDto));
         ComparisonResult comparisonResult = treeComparator.compareTrees(expectedTree, actualTree);
-        return generateResult(ctx, comparisonResult, durationMillis, expectedTree, actualTree);
+        return generateResult(ctx, comparisonResult, expectedTree, actualTree);
     }
 
     private Object deserializeExpectedDto(ExtractionRecord record, Class<?> dtoClass) {
@@ -122,7 +117,6 @@ public class ExecutionServiceImpl implements ExecutionService {
 
     private @NonNull ExtractionValidationRecordResult generateResult(RecordExecutionContext ctx,
                                                                             ComparisonResult comparisonResult,
-                                                                            long durationMillis,
                                                                             JsonNode expectedTree,
                                                                             JsonNode actualTree) {
         return new ExtractionValidationRecordResult(
@@ -138,7 +132,6 @@ public class ExecutionServiceImpl implements ExecutionService {
                 ctx.model().getModelId(),
                 true,
                 comparisonResult.exactMatch(),
-                durationMillis,
                 ctx.record().goldAnnotation().extraction().missingRequiredFields(),
                 ctx.record().goldAnnotation().extraction().missingRequiredPaths(),
                 ctx.record().goldAnnotation().extraction().expectedRuleViolations(),
@@ -154,7 +147,6 @@ public class ExecutionServiceImpl implements ExecutionService {
 
     private @NonNull ExtractionValidationRecordResult generateExceptionResult(RecordExecutionContext ctx,
                                                                               Exception exception,
-                                                                              long durationMillis,
                                                                               Object expectedDto) {
         return ExtractionValidationRecordResult.failureAfterInvocation(
                 ctx.record().recordId(),
@@ -167,7 +159,6 @@ public class ExecutionServiceImpl implements ExecutionService {
                 ctx.record().source().referenceKind(),
                 ctx.variant().name(),
                 ctx.model().getModelId(),
-                durationMillis,
                 ctx.record().goldAnnotation().extraction().missingRequiredFields(),
                 ctx.record().goldAnnotation().extraction().missingRequiredPaths(),
                 ctx.record().goldAnnotation().extraction().expectedRuleViolations(),
