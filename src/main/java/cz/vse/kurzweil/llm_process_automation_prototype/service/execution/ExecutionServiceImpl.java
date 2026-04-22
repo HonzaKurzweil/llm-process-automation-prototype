@@ -84,7 +84,7 @@ public class ExecutionServiceImpl implements ExecutionService {
         long startedAtNanos = System.nanoTime();
         Object actualDto;
         try {
-            actualDto = invokeExtraction(record.inputText(), requestType, variant, model);
+            actualDto = structuredExtractionService.extract(record.inputText(), requestType, variant, model);
         } catch (Exception exception) {
             return generateExceptionResult(record, variant, model, exception, requestType, elapsedMillis(startedAtNanos), expectedDto);
         }
@@ -93,10 +93,6 @@ public class ExecutionServiceImpl implements ExecutionService {
         JsonNode actualTree = treeComparator.canonicalize(safeTree(actualDto));
         ComparisonResult comparisonResult = treeComparator.compareTrees(expectedTree, actualTree);
         return generateResult(record, variant, model, requestType, comparisonResult, durationMillis, expectedTree, actualTree);
-    }
-
-    private Object invokeExtraction(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
-        return structuredExtractionService.extract(inputText, requestType, variant, model);
     }
 
     private Object materializeExpectedDto(ExtractionRecord record, Class<?> dtoClass) {
