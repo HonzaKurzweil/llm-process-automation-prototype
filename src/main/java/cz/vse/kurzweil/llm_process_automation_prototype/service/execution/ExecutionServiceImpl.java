@@ -49,7 +49,7 @@ public class ExecutionServiceImpl implements ExecutionService {
     private ExtractionValidationRunResult runExtractionValidation(Path inputFile, PromptVariant variant, ModelType model) {
         ExtractionDatasetBundle bundle = readBundle(inputFile);
         List<ExtractionValidationRecordResult> recordResults = getBundleRecordsInExtractionMode(bundle).stream()
-                .map(record -> validateSingleRecord(record, variant, model))
+                .map(record -> evaluateSingleRecord(record, variant, model))
                 .toList();
 
         return new ExtractionValidationRunResult(
@@ -68,7 +68,7 @@ public class ExecutionServiceImpl implements ExecutionService {
                 .toList();
     }
 
-    private ExtractionValidationRecordResult validateSingleRecord(
+    private ExtractionValidationRecordResult evaluateSingleRecord(
             ExtractionRecord record,
             PromptVariant variant,
             ModelType model
