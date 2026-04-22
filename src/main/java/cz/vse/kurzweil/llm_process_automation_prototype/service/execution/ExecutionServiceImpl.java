@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Path;
-import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +51,6 @@ public class ExecutionServiceImpl implements ExecutionService {
                 .toList();
 
         return new ExtractionValidationRunResult(
-                Instant.now().toString(),
                 inputFile.toAbsolutePath().toString(),
                 bundle.datasetVersion(),
                 variant.name(),
@@ -85,8 +83,8 @@ public class ExecutionServiceImpl implements ExecutionService {
         } catch (Exception exception) {
             return generateExceptionResult(ctx, exception, expectedDto);
         }
-        JsonNode expectedTree = treeComparator.canonicalize(safeTree(expectedDto));
-        JsonNode actualTree = treeComparator.canonicalize(safeTree(actualDto));
+        JsonNode expectedTree = treeComparator.canonicalize(objectMapper.valueToTree(expectedDto));
+        JsonNode actualTree = treeComparator.canonicalize(objectMapper.valueToTree(actualDto));
         ComparisonResult comparisonResult = treeComparator.compareTrees(expectedTree, actualTree);
         return generateResult(ctx, comparisonResult, expectedTree, actualTree);
     }
@@ -109,10 +107,6 @@ public class ExecutionServiceImpl implements ExecutionService {
         } catch (IOException exception) {
             throw new UncheckedIOException("Failed to read extraction bundle: " + inputFile, exception);
         }
-    }
-
-    private JsonNode safeTree(Object value) {
-        return objectMapper.valueToTree(value);
     }
 
     private @NonNull ExtractionValidationRecordResult generateResult(RecordExecutionContext ctx,
@@ -162,7 +156,7 @@ public class ExecutionServiceImpl implements ExecutionService {
                 ctx.record().goldAnnotation().extraction().missingRequiredFields(),
                 ctx.record().goldAnnotation().extraction().missingRequiredPaths(),
                 ctx.record().goldAnnotation().extraction().expectedRuleViolations(),
-                safeTree(expectedDto),
+                objectMapper.valueToTree(expectedDto),
                 exception.getClass().getSimpleName() + ": " + exception.getMessage()
         );
     }
