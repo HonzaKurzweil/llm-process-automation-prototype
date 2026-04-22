@@ -80,7 +80,7 @@ public class ExecutionServiceImpl implements ExecutionService {
             return generateUnknownDtoResult(ctx);
         }
 
-        Object expectedDto = materializeExpectedDto(ctx.record(), ctx.requestType().getDtoClass());
+        Object expectedDto = deserializeExpectedDto(ctx.record(), ctx.requestType().getDtoClass());
 
         long startedAtNanos = System.nanoTime();
         Object actualDto;
@@ -96,7 +96,7 @@ public class ExecutionServiceImpl implements ExecutionService {
         return generateResult(ctx, comparisonResult, durationMillis, expectedTree, actualTree);
     }
 
-    private Object materializeExpectedDto(ExtractionRecord record, Class<?> dtoClass) {
+    private Object deserializeExpectedDto(ExtractionRecord record, Class<?> dtoClass) {
         Map<String, Object> extractedFields = record.goldAnnotation().extraction().extractedFields();
         try {
             return objectMapper.convertValue(extractedFields, dtoClass);
@@ -120,7 +120,7 @@ public class ExecutionServiceImpl implements ExecutionService {
         return objectMapper.valueToTree(value);
     }
 
-    private static @NonNull ExtractionValidationRecordResult generateResult(RecordExecutionContext ctx,
+    private @NonNull ExtractionValidationRecordResult generateResult(RecordExecutionContext ctx,
                                                                             ComparisonResult comparisonResult,
                                                                             long durationMillis,
                                                                             JsonNode expectedTree,
