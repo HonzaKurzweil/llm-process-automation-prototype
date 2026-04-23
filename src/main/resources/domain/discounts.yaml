@@ -1,105 +1,32 @@
+version: lean-1.0
 operator: FuturaTel CZ
-catalogVersion: '1.0'
-currency: CZK
 discounts:
-  - discountId: disc_bundle_10_new
-    name: Balíček 10 % pro nové zákazníky
-    description: Sleva 10 % na měsíční cenu hlavních služeb při objednání alespoň dvou různých kategorií služeb.
-    discountType: percentage
-    value: 10
-    appliesToScope: category
-    appliesToCategories:
-      - mobile
-      - fixed_internet
-      - tv
-    appliesToIds: [ ]
-    billingScope: monthly
-    durationMonths: 12
-    eligibleCustomerStatuses:
-      - new
-    requiresBundle: true
-    minDistinctServiceCategories: 2
-    stackable: false
-    exclusivityGroup: core_service_monthly_promo
-    requiresPorting: false
-    requiresRetentionCase: false
-  - discountId: disc_porting_mobile_200
-    name: Přenos čísla 200 Kč na 6 měsíců
-    description: Sleva 200 Kč měsíčně na mobilní službu při přenosu čísla od jiného operátora.
-    discountType: fixed_amount_czk
-    value: 200
-    appliesToScope: category
-    appliesToCategories:
-      - mobile
-    appliesToIds: [ ]
-    billingScope: monthly
-    durationMonths: 6
-    eligibleCustomerStatuses:
-      - new
-      - existing
-    requiresBundle: false
-    minDistinctServiceCategories: 0
-    stackable: true
-    exclusivityGroup: mobile_porting_bonus
-    requiresPorting: true
-    requiresRetentionCase: false
-  - discountId: disc_retention_15_existing
-    name: Retenční sleva 15 %
-    description: Sleva 15 % na měsíční cenu hlavní služby při vyjednávání se stávajícím zákazníkem.
-    discountType: percentage
-    value: 15
-    appliesToScope: category
-    appliesToCategories:
-      - mobile
-      - fixed_internet
-      - tv
-    appliesToIds: [ ]
-    billingScope: monthly
-    durationMonths: 6
-    eligibleCustomerStatuses:
-      - existing
-    requiresBundle: false
-    minDistinctServiceCategories: 0
-    stackable: false
-    exclusivityGroup: core_service_monthly_promo
-    requiresPorting: false
-    requiresRetentionCase: true
-  - discountId: disc_family_line_100
-    name: Rodinná linka -100 Kč
-    description: Sleva 100 Kč měsíčně na druhou a každou další mobilní linku v rodinné kombinaci.
-    discountType: fixed_amount_czk
-    value: 100
-    appliesToScope: category
-    appliesToCategories:
-      - mobile
-    appliesToIds: [ ]
-    billingScope: monthly
-    durationMonths: 24
-    eligibleCustomerStatuses:
-      - new
-      - existing
-    requiresBundle: false
-    minDistinctServiceCategories: 0
-    stackable: true
-    exclusivityGroup: family_line_promo
-    requiresPorting: false
-    requiresRetentionCase: false
-  - discountId: disc_install_express_waiver
-    name: Expresní instalace zdarma
-    description: Odpuštění jednorázového poplatku za expresní instalaci při objednání balíčku internet plus mobil.
-    discountType: fixed_amount_czk
-    value: 999
-    appliesToScope: product
-    appliesToCategories: [ ]
-    appliesToIds:
-      - prod_installation_express
-    billingScope: one_time
-    durationMonths: 1
-    eligibleCustomerStatuses:
-      - new
-    requiresBundle: true
-    minDistinctServiceCategories: 2
-    stackable: false
-    exclusivityGroup: installation_promo
-    requiresPorting: false
-    requiresRetentionCase: false
+- discountId: disc_bundle_10_new
+  name: Balíček 10 % pro nové zákazníky
+  aliases:
+  - balíček 10 %
+  - bundle sleva
+  usedByRequestTypes:
+  - rt_internet_tv_bundle_order
+- discountId: disc_porting_mobile_200
+  name: Přenos čísla 200 Kč na 6 měsíců
+  aliases:
+  - sleva za přenos čísla
+  - porting bonus
+  usedByRequestTypes:
+  - rt_new_mobile_order
+  - rt_family_mobile_order
+- discountId: disc_retention_15_existing
+  name: Retenční sleva 15 %
+  aliases:
+  - retenční sleva 15 %
+  - retence 15 %
+  usedByRequestTypes:
+  - rt_retention_discount_request
+- discountId: disc_family_line_100
+  name: Rodinná linka -100 Kč
+  aliases:
+  - rodinná linka minus 100
+  - sleva na další linku
+  usedByRequestTypes:
+  - rt_family_mobile_order

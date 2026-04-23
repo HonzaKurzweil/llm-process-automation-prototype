@@ -1,0 +1,64 @@
+version: 1.0-lean-camelCase
+runtimeAlignment:
+  enumClassName: RequestType
+  resolutionMethod: RequestType.fromRequestTypeIdReference(String)
+  knownRequestTypeIds:
+  - rt_new_mobile_order
+  - rt_family_mobile_order
+  - rt_fixed_internet_with_hardware_order
+  - rt_internet_tv_bundle_order
+  - rt_retention_discount_request
+  fallbackRequestTypeId: unclassifiable
+scenarioKinds:
+- scenarioKind: singleKnownExact
+  description: Input obsahuje právě jeden jasně formulovaný známý request type.
+  expectedClassification: known
+  knownRequestCount: 1
+  allowsUnknownTail: false
+  allowsPartialKnownRequest: false
+- scenarioKind: singleKnownPartial
+  description: Input obsahuje právě jeden známý request type, ale některé jeho údaje
+    chybí.
+  expectedClassification: known
+  knownRequestCount: 1
+  allowsUnknownTail: false
+  allowsPartialKnownRequest: true
+- scenarioKind: singleKnownWithUnknownTail
+  description: Input obsahuje jeden známý request type a navíc další neznámý nebo
+    mimo-scope požadavek.
+  expectedClassification: unclassifiable
+  knownRequestCount: 1
+  allowsUnknownTail: true
+  allowsPartialKnownRequest: true
+  unclassifiableReason: knownRequestTypeWithUnknownTail
+- scenarioKind: multiKnownMixed
+  description: Input obsahuje dva nebo více známých request types v jedné zprávě.
+  expectedClassification: unclassifiable
+  knownRequestCount: 2+
+  allowsUnknownTail: false
+  allowsPartialKnownRequest: true
+  unclassifiableReason: multipleKnownRequestTypesPresent
+- scenarioKind: unknownOnly
+  description: Input neobsahuje žádný známý request type a týká se jiného tématu.
+  expectedClassification: unclassifiable
+  knownRequestCount: 0
+  allowsUnknownTail: false
+  allowsPartialKnownRequest: false
+  unclassifiableReason: unknownOrOutOfScope
+- scenarioKind: ambiguousInsufficient
+  description: Input obsahuje příliš málo nebo příliš neurčitých informací pro bezpečné
+    přiřazení jednoho typu.
+  expectedClassification: unclassifiable
+  knownRequestCount: 0-1
+  allowsUnknownTail: false
+  allowsPartialKnownRequest: true
+  unclassifiableReason: ambiguousOrInsufficientSignal
+unclassifiableReasons:
+- reasonId: multipleKnownRequestTypesPresent
+  description: Ve vstupu je více samostatných známých požadavků.
+- reasonId: knownRequestTypeWithUnknownTail
+  description: Rozpoznatelný známý požadavek je smíchaný s dalším mimo-scope požadavkem.
+- reasonId: unknownOrOutOfScope
+  description: Vstup neodpovídá žádnému známému request typu.
+- reasonId: ambiguousOrInsufficientSignal
+  description: Text je příliš vágní nebo neúplný pro bezpečnou klasifikaci.
