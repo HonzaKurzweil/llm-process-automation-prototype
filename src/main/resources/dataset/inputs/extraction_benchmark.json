@@ -1,0 +1,616 @@
+{
+  "generatorVersion": "generate-telecom-benchmark-lean",
+  "generatedAt": "2026-04-23",
+  "generationRunParams": {
+    "mode": "extraction",
+    "requestTypeIds": ["rt_new_mobile_order"],
+    "channels": ["crm_ticket", "broker_email", "call_transcript"],
+    "noiseProfile": "light",
+    "completeness": "mixed",
+    "variantsPerCase": 1
+  },
+  "records": [
+    {
+      "recordId": "ext_0001",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "noiseTags": ["shorthandInternal"],
+      "generationParams": {
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioTemplateId": "start_no_porting",
+        "completeness": "complete",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Zákazník: Veronika Jarošová | Tel: +420 774 551 008\nStav: NOVÝ\nPožadavek: Start 5G – 1 ks, závazek 24 měs., bez portace.",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_new_mobile_order",
+          "templateId": "start_no_porting",
+          "dto": {
+            "customerStatus": "new",
+            "customerName": "Veronika Jarošová",
+            "contactPhone": "+420 774 551 008",
+            "contactEmail": null,
+            "requestedServices": [{"serviceId": "svc_mobile_start_5g", "quantity": 1}],
+            "contractTermMonths": 24,
+            "portingRequested": false,
+            "portedNumbers": [],
+            "requestedDiscounts": []
+          },
+          "missingFieldPaths": []
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "Start 5G – 1 ks, závazek 24 měs., bez portace"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "contractTermMonths",
+          "portingRequested"
+        ],
+        "intentionallyOmittedFieldPaths": [
+          "contactEmail",
+          "portedNumbers",
+          "requestedDiscounts"
+        ],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "new",
+            "evidenceSnippets": ["NOVÝ"]
+          },
+          "customerName": {
+            "normalizedValue": "Veronika Jarošová",
+            "evidenceSnippets": ["Veronika Jarošová"]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 774 551 008",
+            "evidenceSnippets": ["+420 774 551 008"]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_mobile_start_5g",
+            "evidenceSnippets": ["Start 5G"]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": ["1 ks"]
+          },
+          "contractTermMonths": {
+            "normalizedValue": 24,
+            "evidenceSnippets": ["24 měs."]
+          },
+          "portingRequested": {
+            "normalizedValue": false,
+            "evidenceSnippets": ["bez portace"]
+          }
+        },
+        "distractorSnippets": [],
+        "generationNote": "Kompletní crm_ticket, heslovitý styl. Všechna povinná pole přítomna."
+      }
+    },
+    {
+      "recordId": "ext_0002",
+      "mode": "extraction",
+      "channel": "broker_email",
+      "noiseTags": ["greetingSignatureNoise", "partialOmission"],
+      "generationParams": {
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioTemplateId": "start_no_porting",
+        "completeness": "incomplete",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Dobrý den,\n\nzasílám poptávku od nového zákazníka pana Martina Čermáka. Zákazník má zájem o tarif Start 5G pro jednu linku, bez přenosu čísla. Kontaktní telefon: +420 725 118 443, e-mail: martin.cermak@centrum.cz.\n\nDélka závazku nebyla zatím upřesněna.\n\nS pozdravem,\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_new_mobile_order",
+          "templateId": "start_no_porting",
+          "dto": {
+            "customerStatus": "new",
+            "customerName": "Martin Čermák",
+            "contactPhone": "+420 725 118 443",
+            "contactEmail": "martin.cermak@centrum.cz",
+            "requestedServices": [{"serviceId": "svc_mobile_start_5g", "quantity": 1}],
+            "contractTermMonths": null,
+            "portingRequested": false,
+            "portedNumbers": [],
+            "requestedDiscounts": []
+          },
+          "missingFieldPaths": ["contractTermMonths"]
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zájem o tarif Start 5G pro jednu linku, bez přenosu čísla"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "contactEmail",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "portingRequested"
+        ],
+        "intentionallyOmittedFieldPaths": [
+          "contractTermMonths",
+          "portedNumbers",
+          "requestedDiscounts"
+        ],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "new",
+            "evidenceSnippets": ["nového zákazníka"]
+          },
+          "customerName": {
+            "normalizedValue": "Martin Čermák",
+            "evidenceSnippets": ["Martina Čermáka"]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 725 118 443",
+            "evidenceSnippets": ["+420 725 118 443"]
+          },
+          "contactEmail": {
+            "normalizedValue": "martin.cermak@centrum.cz",
+            "evidenceSnippets": ["martin.cermak@centrum.cz"]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_mobile_start_5g",
+            "evidenceSnippets": ["Start 5G"]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": ["jednu linku"]
+          },
+          "portingRequested": {
+            "normalizedValue": false,
+            "evidenceSnippets": ["bez přenosu čísla"]
+          }
+        },
+        "distractorSnippets": [
+          "Dobrý den,",
+          "S pozdravem,\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+          "Délka závazku nebyla zatím upřesněna."
+        ],
+        "generationNote": "Broker email bez délky závazku – záměrně vynecháno. Podpis a oslovení jsou distraktor."
+      }
+    },
+    {
+      "recordId": "ext_0003",
+      "mode": "extraction",
+      "channel": "call_transcript",
+      "noiseTags": ["hesitationDisfluency"],
+      "generationParams": {
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioTemplateId": "start_no_porting",
+        "completeness": "complete",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Operátor: Dobrý den, FuturaTel CZ, jak vám mohu pomoci?\nZákazník: Ehm, dobrý den. Jmenuji se Aleš Konečný, jsem nový zákazník. Chtěl bych objednat ten Start 5G tarif.\nOperátor: Dobře. Jaký závazek si přejete?\nZákazník: No, čtyřiadvacet měsíců, prosím. A bez přenosu čísla.\nOperátor: Výborně. Na jaké číslo vás máme kontaktovat?\nZákazník: +420 720 991 774.",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_new_mobile_order",
+          "templateId": "start_no_porting",
+          "dto": {
+            "customerStatus": "new",
+            "customerName": "Aleš Konečný",
+            "contactPhone": "+420 720 991 774",
+            "contactEmail": null,
+            "requestedServices": [{"serviceId": "svc_mobile_start_5g", "quantity": 1}],
+            "contractTermMonths": 24,
+            "portingRequested": false,
+            "portedNumbers": [],
+            "requestedDiscounts": []
+          },
+          "missingFieldPaths": []
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "Chtěl bych objednat ten Start 5G tarif",
+              "čtyřiadvacet měsíců",
+              "bez přenosu čísla"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "contractTermMonths",
+          "portingRequested"
+        ],
+        "intentionallyOmittedFieldPaths": [
+          "contactEmail",
+          "portedNumbers",
+          "requestedDiscounts"
+        ],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "new",
+            "evidenceSnippets": ["jsem nový zákazník"]
+          },
+          "customerName": {
+            "normalizedValue": "Aleš Konečný",
+            "evidenceSnippets": ["Aleš Konečný"]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 720 991 774",
+            "evidenceSnippets": ["+420 720 991 774"]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_mobile_start_5g",
+            "evidenceSnippets": ["Start 5G tarif"]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": ["Start 5G tarif"]
+          },
+          "contractTermMonths": {
+            "normalizedValue": 24,
+            "evidenceSnippets": ["čtyřiadvacet měsíců"]
+          },
+          "portingRequested": {
+            "normalizedValue": false,
+            "evidenceSnippets": ["bez přenosu čísla"]
+          }
+        },
+        "distractorSnippets": ["Ehm,", "No,"],
+        "generationNote": "Call transcript, kompletní pole. Hesitace slouží jako povrchový šum."
+      }
+    },
+    {
+      "recordId": "ext_0004",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "noiseTags": ["shorthandInternal", "partialOmission"],
+      "generationParams": {
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioTemplateId": "unlimited_with_porting",
+        "completeness": "incomplete",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Zákazník: Klára Horáková | stav: stávající\nPožadavek: Unlimited 5G, portace z T-Mobile (+420 734 220 111), sleva za portaci.\nZávazek: 24 měs.\nKontakt: zákaznice doplní.",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_new_mobile_order",
+          "templateId": "unlimited_with_porting",
+          "dto": {
+            "customerStatus": "existing",
+            "customerName": "Klára Horáková",
+            "contactPhone": null,
+            "contactEmail": null,
+            "requestedServices": [{"serviceId": "svc_mobile_unlimited_5g", "quantity": 1}],
+            "contractTermMonths": 24,
+            "portingRequested": true,
+            "portedNumbers": [{"number": "+420 734 220 111", "donorOperator": "T-Mobile"}],
+            "requestedDiscounts": [{"discountId": "disc_porting_mobile_200"}]
+          },
+          "missingFieldPaths": ["contactPhone"]
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "Unlimited 5G, portace z T-Mobile (+420 734 220 111), sleva za portaci"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "contractTermMonths",
+          "portingRequested",
+          "portedNumbers[0].number",
+          "portedNumbers[0].donorOperator",
+          "requestedDiscounts[0].discountId"
+        ],
+        "intentionallyOmittedFieldPaths": [
+          "contactPhone",
+          "contactEmail"
+        ],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "existing",
+            "evidenceSnippets": ["stávající"]
+          },
+          "customerName": {
+            "normalizedValue": "Klára Horáková",
+            "evidenceSnippets": ["Klára Horáková"]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_mobile_unlimited_5g",
+            "evidenceSnippets": ["Unlimited 5G"]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": ["Unlimited 5G"]
+          },
+          "contractTermMonths": {
+            "normalizedValue": 24,
+            "evidenceSnippets": ["24 měs."]
+          },
+          "portingRequested": {
+            "normalizedValue": true,
+            "evidenceSnippets": ["portace"]
+          },
+          "portedNumbers[0].number": {
+            "normalizedValue": "+420 734 220 111",
+            "evidenceSnippets": ["+420 734 220 111"]
+          },
+          "portedNumbers[0].donorOperator": {
+            "normalizedValue": "T-Mobile",
+            "evidenceSnippets": ["T-Mobile"]
+          },
+          "requestedDiscounts[0].discountId": {
+            "normalizedValue": "disc_porting_mobile_200",
+            "evidenceSnippets": ["sleva za portaci"]
+          }
+        },
+        "distractorSnippets": ["Kontakt: zákaznice doplní."],
+        "generationNote": "CRM ticket bez kontaktního telefonu – záměrně vynecháno. Portace s číslem a operátorem přítomna."
+      }
+    },
+    {
+      "recordId": "ext_0005",
+      "mode": "extraction",
+      "channel": "broker_email",
+      "noiseTags": ["greetingSignatureNoise"],
+      "generationParams": {
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioTemplateId": "unlimited_with_porting",
+        "completeness": "complete",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Dobrý den,\n\npřeposílám objednávku od stávajícího zákazníka pana Petra Urbana. Kontakt: +420 776 220 115, e-mail: petr.urban@atlas.cz.\n\nZákazník žádá o tarif Unlimited 5G pro jednu linku s přenosem čísla +420 733 645 928 od operátora Vodafone. Závazek 24 měsíců. K tomu požaduje slevu za přenos čísla 200 Kč.\n\nS pozdravem,\nTomáš Blaha\nobchodní manažer, FuturaTel CZ",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_new_mobile_order",
+          "templateId": "unlimited_with_porting",
+          "dto": {
+            "customerStatus": "existing",
+            "customerName": "Petr Urban",
+            "contactPhone": "+420 776 220 115",
+            "contactEmail": "petr.urban@atlas.cz",
+            "requestedServices": [{"serviceId": "svc_mobile_unlimited_5g", "quantity": 1}],
+            "contractTermMonths": 24,
+            "portingRequested": true,
+            "portedNumbers": [{"number": "+420 733 645 928", "donorOperator": "Vodafone"}],
+            "requestedDiscounts": [{"discountId": "disc_porting_mobile_200"}]
+          },
+          "missingFieldPaths": []
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "tarif Unlimited 5G pro jednu linku s přenosem čísla +420 733 645 928 od operátora Vodafone",
+              "slevu za přenos čísla 200 Kč"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "contactEmail",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "contractTermMonths",
+          "portingRequested",
+          "portedNumbers[0].number",
+          "portedNumbers[0].donorOperator",
+          "requestedDiscounts[0].discountId"
+        ],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "existing",
+            "evidenceSnippets": ["stávajícího zákazníka"]
+          },
+          "customerName": {
+            "normalizedValue": "Petr Urban",
+            "evidenceSnippets": ["Petra Urbana"]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 776 220 115",
+            "evidenceSnippets": ["+420 776 220 115"]
+          },
+          "contactEmail": {
+            "normalizedValue": "petr.urban@atlas.cz",
+            "evidenceSnippets": ["petr.urban@atlas.cz"]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_mobile_unlimited_5g",
+            "evidenceSnippets": ["Unlimited 5G"]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": ["jednu linku"]
+          },
+          "contractTermMonths": {
+            "normalizedValue": 24,
+            "evidenceSnippets": ["24 měsíců"]
+          },
+          "portingRequested": {
+            "normalizedValue": true,
+            "evidenceSnippets": ["přenosem čísla"]
+          },
+          "portedNumbers[0].number": {
+            "normalizedValue": "+420 733 645 928",
+            "evidenceSnippets": ["+420 733 645 928"]
+          },
+          "portedNumbers[0].donorOperator": {
+            "normalizedValue": "Vodafone",
+            "evidenceSnippets": ["Vodafone"]
+          },
+          "requestedDiscounts[0].discountId": {
+            "normalizedValue": "disc_porting_mobile_200",
+            "evidenceSnippets": ["slevu za přenos čísla 200 Kč"]
+          }
+        },
+        "distractorSnippets": [
+          "Dobrý den,",
+          "S pozdravem,\nTomáš Blaha\nobchodní manažer, FuturaTel CZ"
+        ],
+        "generationNote": "Broker email, kompletní. Všechna pole včetně portace a slevy přítomna."
+      }
+    },
+    {
+      "recordId": "ext_0006",
+      "mode": "extraction",
+      "channel": "call_transcript",
+      "noiseTags": ["hesitationDisfluency", "partialOmission"],
+      "generationParams": {
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioTemplateId": "unlimited_with_porting",
+        "completeness": "incomplete",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Operátor: Dobrý den, FuturaTel CZ.\nZákazník: Dobrý den, tady Lucie Dvořáková, jsem stávající zákaznice. Ehm, chtěla bych přejít na tarif Unlimited 5G a přenést si číslo. Závazek čtyřiadvacet měsíců, prosím. A taky bych chtěla tu slevu za přenos čísla 200 Kč.\nOperátor: Rozumím. Jaké číslo chcete přenést a od jakého operátora?\nZákazník: No, ehm, to vám pošlu písemně, teď ho nemám po ruce.\nOperátor: Dobře. Kontaktní telefon pro zpracování?\nZákazník: +420 603 515 902.",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_new_mobile_order",
+          "templateId": "unlimited_with_porting",
+          "dto": {
+            "customerStatus": "existing",
+            "customerName": "Lucie Dvořáková",
+            "contactPhone": "+420 603 515 902",
+            "contactEmail": null,
+            "requestedServices": [{"serviceId": "svc_mobile_unlimited_5g", "quantity": 1}],
+            "contractTermMonths": 24,
+            "portingRequested": true,
+            "portedNumbers": [],
+            "requestedDiscounts": [{"discountId": "disc_porting_mobile_200"}]
+          },
+          "missingFieldPaths": ["portedNumbers"]
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "přejít na tarif Unlimited 5G a přenést si číslo",
+              "slevu za přenos čísla 200 Kč"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "contractTermMonths",
+          "portingRequested",
+          "requestedDiscounts[0].discountId"
+        ],
+        "intentionallyOmittedFieldPaths": [
+          "portedNumbers",
+          "contactEmail"
+        ],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "existing",
+            "evidenceSnippets": ["stávající zákaznice"]
+          },
+          "customerName": {
+            "normalizedValue": "Lucie Dvořáková",
+            "evidenceSnippets": ["Lucie Dvořáková"]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 603 515 902",
+            "evidenceSnippets": ["+420 603 515 902"]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_mobile_unlimited_5g",
+            "evidenceSnippets": ["tarif Unlimited 5G"]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": ["tarif Unlimited 5G"]
+          },
+          "contractTermMonths": {
+            "normalizedValue": 24,
+            "evidenceSnippets": ["čtyřiadvacet měsíců"]
+          },
+          "portingRequested": {
+            "normalizedValue": true,
+            "evidenceSnippets": ["přenést si číslo"]
+          },
+          "requestedDiscounts[0].discountId": {
+            "normalizedValue": "disc_porting_mobile_200",
+            "evidenceSnippets": ["slevu za přenos čísla 200 Kč"]
+          }
+        },
+        "distractorSnippets": [
+          "Ehm,",
+          "No, ehm,",
+          "teď ho nemám po ruce"
+        ],
+        "generationNote": "Call transcript. portedNumbers záměrně vynechány – zákaznice je slíbila dodat písemně."
+      }
+    }
+  ]
+}

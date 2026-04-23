@@ -1,0 +1,689 @@
+{
+  "generatorVersion": "generate-telecom-benchmark-lean",
+  "generatedAt": "2026-04-23",
+  "generationRunParams": {
+    "mode": "classification",
+    "requestTypeIds": ["rt_new_mobile_order"],
+    "channels": ["crm_ticket", "broker_email", "call_transcript"],
+    "noiseProfile": "light",
+    "variantsPerCase": 1
+  },
+  "records": [
+    {
+      "recordId": "cls_0001",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": ["shorthandInternal"],
+      "generationParams": {
+        "scenarioKind": "singleKnownExact",
+        "requestTypeId": "rt_new_mobile_order",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Zákazník: Veronika Jarošová | Tel: +420 774 551 008 | NOVÝ zákazník\nPožadavek: Nová mobilní linka – tarif Start 5G, závazek 24 měs., bez portace.",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "Nová mobilní linka – tarif Start 5G, závazek 24 měs., bez portace"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [],
+        "generationNote": "Jednoznačná objednávka nové mobilní linky Start 5G. Heslovitý styl CRM ticketu."
+      }
+    },
+    {
+      "recordId": "cls_0002",
+      "mode": "classification",
+      "channel": "broker_email",
+      "noiseTags": ["greetingSignatureNoise"],
+      "generationParams": {
+        "scenarioKind": "singleKnownExact",
+        "requestTypeId": "rt_new_mobile_order",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Dobrý den,\n\nodesílám objednávku nového zákazníka Martina Čermáka na mobilní tarif Unlimited 5G s přenosem čísla od T-Mobile. Závazek 24 měsíců, sleva za portaci. Kontakt: +420 725 118 443.\n\nS pozdravem,\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "objednávku nového zákazníka Martina Čermáka na mobilní tarif Unlimited 5G s přenosem čísla od T-Mobile"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Dobrý den,",
+          "S pozdravem,\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ"
+        ],
+        "generationNote": "Jasná objednávka mobilního tarifu Unlimited 5G s portací. Broker email s oslovením a podpisem."
+      }
+    },
+    {
+      "recordId": "cls_0003",
+      "mode": "classification",
+      "channel": "call_transcript",
+      "noiseTags": ["hesitationDisfluency"],
+      "generationParams": {
+        "scenarioKind": "singleKnownExact",
+        "requestTypeId": "rt_new_mobile_order",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Operátor: Dobrý den, FuturaTel CZ.\nZákazník: Dobrý den. Jmenuji se Aleš Konečný, ehm, jsem nový zákazník. Chtěl bych si zřídit novou mobilní linku – tarif Start 5G na dva roky. Číslo přenášet nechci.\nOperátor: Dobře, zaeviduji. Jaký je váš kontaktní telefon?\nZákazník: +420 720 991 774.",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zřídit novou mobilní linku – tarif Start 5G na dva roky",
+              "Číslo přenášet nechci"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": ["ehm,"],
+        "generationNote": "Jasná objednávka nové mobilní linky v přepisu hovoru. Váhání jako povrchový šum."
+      }
+    },
+    {
+      "recordId": "cls_0004",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": ["shorthandInternal"],
+      "generationParams": {
+        "scenarioKind": "singleKnownPartial",
+        "requestTypeId": "rt_new_mobile_order",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Zákazník: Klára Horáková | stávající | Tel: +420 731 884 219\nZájem o novou mobilní linku, tarif a závazek upřesní osobně.",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "Zájem o novou mobilní linku"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [],
+        "generationNote": "Mobilní objednávka rozpoznatelná, ale bez konkrétního tarifu a délky závazku."
+      }
+    },
+    {
+      "recordId": "cls_0005",
+      "mode": "classification",
+      "channel": "broker_email",
+      "noiseTags": ["greetingSignatureNoise"],
+      "generationParams": {
+        "scenarioKind": "singleKnownPartial",
+        "requestTypeId": "rt_new_mobile_order",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Dobrý den,\n\nzákazník Petr Urban (stávající, +420 776 220 115) projevil zájem o mobilní tarif pro novou linku. Přesné parametry a délku závazku upřesní při osobním setkání.\n\nS pozdravem,\nTomáš Blaha\nobchodní manažer, FuturaTel CZ",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zájem o mobilní tarif pro novou linku"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Dobrý den,",
+          "S pozdravem,\nTomáš Blaha\nobchodní manažer, FuturaTel CZ"
+        ],
+        "generationNote": "Záměr objednat mobilní linku je zřejmý, konkrétní parametry chybí."
+      }
+    },
+    {
+      "recordId": "cls_0006",
+      "mode": "classification",
+      "channel": "call_transcript",
+      "noiseTags": ["hesitationDisfluency"],
+      "generationParams": {
+        "scenarioKind": "singleKnownPartial",
+        "requestTypeId": "rt_new_mobile_order",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Operátor: Dobrý den, FuturaTel CZ.\nZákazník: Dobrý den, Lucie Dvořáková, jsem stávající zákaznice. No, chtěla bych se zeptat na mobilní tarify – uvažuji o nové lince pro sebe, ale ještě nejsem rozhodnutá.\nOperátor: Rádi pomůžeme. Na jaké číslo vás máme kontaktovat?\nZákazník: +420 603 515 902.",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "uvažuji o nové lince pro sebe"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": ["No,"],
+        "generationNote": "Záměr pro mobilní objednávku rozpoznatelný i bez konkrétního tarifu."
+      }
+    },
+    {
+      "recordId": "cls_0007",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": ["shorthandInternal", "unknownTailSnippet"],
+      "generationParams": {
+        "scenarioKind": "singleKnownWithUnknownTail",
+        "requestTypeId": "rt_new_mobile_order",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Zákazník: Roman Beneš | nový | Tel: +420 605 996 341\nObjednávka: Unlimited 5G, závazek 24 měs., portace z Vodafone (+420 704 552 118), sleva za portaci.\nNavíc zákazník žádá o vystavení duplikátu faktury z předchozího roku.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "knownRequestTypeWithUnknownTail"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "Objednávka: Unlimited 5G, závazek 24 měs., portace z Vodafone"
+            ]
+          },
+          {
+            "requestTypeId": "unknown",
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "zákazník žádá o vystavení duplikátu faktury z předchozího roku"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "zákazník žádá o vystavení duplikátu faktury z předchozího roku"
+        ],
+        "generationNote": "Jasná mobilní objednávka + mimo-scope požadavek na fakturu. Celý záznam je unclassifiable."
+      }
+    },
+    {
+      "recordId": "cls_0008",
+      "mode": "classification",
+      "channel": "broker_email",
+      "noiseTags": ["greetingSignatureNoise", "unknownTailSnippet"],
+      "generationParams": {
+        "scenarioKind": "singleKnownWithUnknownTail",
+        "requestTypeId": "rt_new_mobile_order",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Dobrý den,\n\nzákaznice Jana Vacková (nová zákaznice, +420 739 411 270) žádá o mobilní tarif Start 5G bez závazku. Součástí zprávy je také prosba o výměnu poškozené SIM karty z předchozí objednávky.\n\nS pozdravem,\nJana Procházková\nobchodní zástupce, FuturaTel CZ",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "knownRequestTypeWithUnknownTail"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "žádá o mobilní tarif Start 5G bez závazku"
+            ]
+          },
+          {
+            "requestTypeId": "unknown",
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "prosba o výměnu poškozené SIM karty z předchozí objednávky"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Dobrý den,",
+          "prosba o výměnu poškozené SIM karty z předchozí objednávky",
+          "S pozdravem,\nJana Procházková\nobchodní zástupce, FuturaTel CZ"
+        ],
+        "generationNote": "Mobilní objednávka Start 5G + mimo-scope požadavek na výměnu SIM. Celý záznam je unclassifiable."
+      }
+    },
+    {
+      "recordId": "cls_0009",
+      "mode": "classification",
+      "channel": "call_transcript",
+      "noiseTags": ["hesitationDisfluency", "unknownTailSnippet"],
+      "generationParams": {
+        "scenarioKind": "singleKnownWithUnknownTail",
+        "requestTypeId": "rt_new_mobile_order",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Operátor: Dobrý den, FuturaTel CZ.\nZákazník: Dobrý den, Veronika Jarošová. Chtěla bych objednat nový mobilní tarif Unlimited 5G na 24 měsíců.\nOperátor: Dobře. Cokoliv dalšího?\nZákazník: Ehm, ano. Mám také reklamaci Wi-Fi výpadků u stávající smlouvy – to jde vyřídit najednou?\nOperátor: Reklamaci musím přesměrovat na technické oddělení, to nelze zpracovat jako součást objednávky.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "knownRequestTypeWithUnknownTail"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "objednat nový mobilní tarif Unlimited 5G na 24 měsíců"
+            ]
+          },
+          {
+            "requestTypeId": "unknown",
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "reklamaci Wi-Fi výpadků u stávající smlouvy"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Ehm,",
+          "reklamaci Wi-Fi výpadků u stávající smlouvy"
+        ],
+        "generationNote": "Mobilní objednávka Unlimited 5G + technická reklamace. Reklamace přesahuje scope. Celý záznam unclassifiable."
+      }
+    },
+    {
+      "recordId": "cls_0010",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": ["shorthandInternal"],
+      "generationParams": {
+        "scenarioKind": "multiKnownMixed",
+        "requestTypeIds": ["rt_new_mobile_order", "rt_retention_discount_request"],
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Zákazník: Martin Čermák | stávající | Tel: +420 725 118 443\nPožadavek 1: Nová mobilní linka Start 5G, závazek 24 měs., bez portace.\nPožadavek 2: Retenční sleva 15% na stávající internet Fiber 300 – hrozí odchod.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "multipleKnownRequestTypesPresent"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "Nová mobilní linka Start 5G, závazek 24 měs., bez portace"
+            ]
+          },
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "secondaryKnown",
+            "evidenceSnippets": [
+              "Retenční sleva 15% na stávající internet Fiber 300 – hrozí odchod"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [],
+        "generationNote": "Dva jasně rozlišitelné požadavky různých typů v jednom ticketu. unclassifiable – multipleKnownRequestTypesPresent."
+      }
+    },
+    {
+      "recordId": "cls_0011",
+      "mode": "classification",
+      "channel": "broker_email",
+      "noiseTags": ["greetingSignatureNoise"],
+      "generationParams": {
+        "scenarioKind": "multiKnownMixed",
+        "requestTypeIds": ["rt_new_mobile_order", "rt_retention_discount_request"],
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Dobrý den,\n\nzákazník Aleš Konečný (stávající, +420 720 991 774) má dva samostatné požadavky. Za prvé, žádá o objednávku nové mobilní linky Unlimited 5G s přenosem čísla ze sítě O2. Za druhé, požaduje retenční slevu 15% na svůj stávající mobilní tarif Unlimited 5G – zvažuje odchod ke konkurenci.\n\nS pozdravem,\nRadek Šimánek\nobchodní partner, FuturaTel CZ",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "multipleKnownRequestTypesPresent"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "objednávku nové mobilní linky Unlimited 5G s přenosem čísla ze sítě O2"
+            ]
+          },
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "secondaryKnown",
+            "evidenceSnippets": [
+              "retenční slevu 15% na svůj stávající mobilní tarif Unlimited 5G – zvažuje odchod ke konkurenci"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Dobrý den,",
+          "S pozdravem,\nRadek Šimánek\nobchodní partner, FuturaTel CZ"
+        ],
+        "generationNote": "Broker email se dvěma explicitními požadavky (objednávka + retence) od téhož zákazníka."
+      }
+    },
+    {
+      "recordId": "cls_0012",
+      "mode": "classification",
+      "channel": "call_transcript",
+      "noiseTags": ["hesitationDisfluency"],
+      "generationParams": {
+        "scenarioKind": "multiKnownMixed",
+        "requestTypeIds": ["rt_new_mobile_order", "rt_retention_discount_request"],
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Operátor: Dobrý den, FuturaTel CZ.\nZákazník: Dobrý den, Klára Horáková, stávající zákaznice. No, mám vlastně dva dotazy. Za prvé, chci přidat novou mobilní linku tarif Start 5G.\nOperátor: Dobře, to zaeviduji.\nZákazník: A za druhé – na mém stávajícím Unlimited 5G bych chtěla retenční slevu, jinak asi přejdu ke konkurenci. Kontakt: +420 731 884 219.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "multipleKnownRequestTypesPresent"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "přidat novou mobilní linku tarif Start 5G"
+            ]
+          },
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "secondaryKnown",
+            "evidenceSnippets": [
+              "na mém stávajícím Unlimited 5G bych chtěla retenční slevu"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": ["No,"],
+        "generationNote": "Hovor se dvěma požadavky: mobilní objednávka a retenční sleva. Oba jsou known request types."
+      }
+    },
+    {
+      "recordId": "cls_0013",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": ["shorthandInternal"],
+      "generationParams": {
+        "scenarioKind": "unknownOnly",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Zákazník: Petr Urban | Tel: +420 776 220 115\nReklamace faktury č. 2024-88712 – zákazník zpochybňuje účtovanou částku za říjen.\nŽádá o přezkoumání a vystavení opravného daňového dokladu.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "unknownOrOutOfScope"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "unknown",
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "Reklamace faktury č. 2024-88712",
+              "vystavení opravného daňového dokladu"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [],
+        "generationNote": "Fakturační reklamace – mimo scope systému. Žádný known request type přítomen."
+      }
+    },
+    {
+      "recordId": "cls_0014",
+      "mode": "classification",
+      "channel": "broker_email",
+      "noiseTags": ["greetingSignatureNoise"],
+      "generationParams": {
+        "scenarioKind": "unknownOnly",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Dobrý den,\n\nzákaznice Lucie Dvořáková (stávající, +420 603 515 902) si stěžuje na dlouhé čekací doby zákaznické linky a žádá o písemné vyjádření k poslednímu vyúčtování. Žádná objednávka nové služby ani změna tarifu není požadována.\n\nS pozdravem,\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "unknownOrOutOfScope"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "unknown",
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "stěžuje na dlouhé čekací doby zákaznické linky",
+              "žádá o písemné vyjádření k poslednímu vyúčtování"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Dobrý den,",
+          "S pozdravem,\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ"
+        ],
+        "generationNote": "Stížnost a požadavek na vyúčtování. Žádný known request type. E-mail explicitně vylučuje objednávku."
+      }
+    },
+    {
+      "recordId": "cls_0015",
+      "mode": "classification",
+      "channel": "call_transcript",
+      "noiseTags": ["hesitationDisfluency"],
+      "generationParams": {
+        "scenarioKind": "unknownOnly",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Operátor: Dobrý den, FuturaTel CZ.\nZákazník: Dobrý den, Roman Beneš. Volám kvůli výpadkům signálu – poslední tři dny mám v kanceláři skoro nulové pokrytí.\nOperátor: Rozumím, jde o reklamaci pokrytí sítě?\nZákazník: Ano, chci to nahlásit. Žádnou novou smlouvu ani tarif nepotřebuji.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "unknownOrOutOfScope"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "unknown",
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "výpadkům signálu – poslední tři dny mám v kanceláři skoro nulové pokrytí",
+              "Žádnou novou smlouvu ani tarif nepotřebuji"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [],
+        "generationNote": "Technická reklamace pokrytí sítě. Hovor explicitně vylučuje objednávku nového tarifu."
+      }
+    },
+    {
+      "recordId": "cls_0016",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": ["ambiguousWording"],
+      "generationParams": {
+        "scenarioKind": "ambiguousInsufficient",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Zákazník: Jana Vacková | Tel: +420 739 411 270\nZákaznice by chtěla něco změnit na svém účtu. Podrobnosti nebyly upřesněny.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "ambiguousOrInsufficientSignal"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "něco změnit na svém účtu"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [],
+        "generationNote": "Příliš vágní formulace. Nelze bezpečně přiřadit žádný request type."
+      }
+    },
+    {
+      "recordId": "cls_0017",
+      "mode": "classification",
+      "channel": "broker_email",
+      "noiseTags": ["ambiguousWording", "greetingSignatureNoise"],
+      "generationParams": {
+        "scenarioKind": "ambiguousInsufficient",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Dobrý den,\n\nzákazník Veronika Jarošová projevila zájem o vaše služby, ale prozatím nepopsala konkrétní požadavek. Prosím o kontakt ze strany FuturaTel CZ.\n\nS pozdravem,\nTomáš Blaha\nobchodní manažer, FuturaTel CZ",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "ambiguousOrInsufficientSignal"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zájem o vaše služby"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Dobrý den,",
+          "S pozdravem,\nTomáš Blaha\nobchodní manažer, FuturaTel CZ"
+        ],
+        "generationNote": "Zájem o služby bez jakékoli konkretizace. Nelze klasifikovat – chybí signál."
+      }
+    },
+    {
+      "recordId": "cls_0018",
+      "mode": "classification",
+      "channel": "call_transcript",
+      "noiseTags": ["hesitationDisfluency", "ambiguousWording"],
+      "generationParams": {
+        "scenarioKind": "ambiguousInsufficient",
+        "noiseProfile": "light",
+        "variantIndex": 0
+      },
+      "inputText": "Operátor: Dobrý den, FuturaTel CZ.\nZákazník: Dobrý den, Martin Čermák. Chtěl jsem se zeptat na vaše nabídky.\nOperátor: Rádi pomůžeme. Máte zájem o mobilní, internetové nebo televizní služby?\nZákazník: No, ehm, ještě přesně nevím. Asi o něco mobilního, ale ještě se rozhoduji.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "ambiguousOrInsufficientSignal"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "Asi o něco mobilního"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": ["No, ehm,"],
+        "generationNote": "Zákazník naznačuje zájem o mobilní službu, ale signál je příliš slabý pro bezpečnou klasifikaci."
+      }
+    }
+  ]
+}
