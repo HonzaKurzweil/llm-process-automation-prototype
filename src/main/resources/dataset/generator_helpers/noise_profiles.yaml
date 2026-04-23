@@ -1,12 +1,5 @@
-version: 2.0-lean-camelCase
+version: 2.1-final-camelCase
 purpose: Jednodušší noise model pro generování textových variant bez odděleného channelStyle.
-channels:
-- channel: crm_ticket
-  description: Krátký interní ticket, často polostrukturovaný a heslovitý.
-- channel: broker_email
-  description: Souvislý e-mail od obchodníka nebo partnera.
-- channel: call_transcript
-  description: Přepis hovoru s mluveným jazykem, opravami a váháním.
 noiseProfiles:
 - noiseProfile: clean
   description: Bez šumu, pouze přirozený styl kanálu.

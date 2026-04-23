@@ -1,8 +1,7 @@
-version: lean-1.0
+version: 1.1-final-camelCase
 notes:
 - Tyto pooly slouží ke generování konkrétních instancí nad strukturou request types.
-- Jména, telefony a adresy se mají losovat při generování a propsat jak do inputText,
-  tak do expectedExtractions.
+- Jména, telefony a adresy se mají losovat při generování a propsat jak do inputText, tak do expectedExtractions.
 customerProfiles:
 - customerName: Veronika Jarošová
   contactPhone: +420 774 551 008

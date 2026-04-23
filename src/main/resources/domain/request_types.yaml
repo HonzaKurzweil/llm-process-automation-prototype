@@ -1,7 +1,8 @@
-version: 4.0-lean-camelCase
+version: 5.0-final-camelCase
 purpose:
-- Zdrojová definice request types pro generování syntetických benchmark vstupů.
-- Zdrojová definice DTO tvarů pro budoucí mapování gold dat přímo do Java objektů.
+- Kanonická definice request types a jejich DTO tvarů.
+- Soubor slouží jako hlavní zdroj pro vysvětlení, co jednotlivé request types znamenají a jaká data mohou obsahovat.
+- Neobsahuje parametry pro prompting ani pravidla generování úplnosti; ty řeší skill a generator helpers.
 componentTypes:
   serviceSelection:
     javaClassName: ServiceSelectionDto
@@ -57,67 +58,45 @@ componentTypes:
 requestTypes:
 - requestTypeId: rt_new_mobile_order
   dtoClassName: SingleMobileOrderRequestDto
-  promptDirectory: read_prompts/extraction/rt_new_mobile_order
   title: Objednávka samostatné mobilní služby
-  description: Objednávka jedné mobilní služby pro nového nebo stávajícího zákazníka,
-    volitelně s přenosem čísla.
+  description: Objednávka jedné mobilní služby pro nového nebo stávajícího zákazníka, volitelně s přenosem čísla.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
     meaning: Status zákazníka vůči operátorovi.
-    requiredForComplete: true
-    allowedValues: &id001
+    allowedValues:
     - new
     - existing
   - path: customerName
     javaType: String
     meaning: Jméno a příjmení zákazníka nebo kontaktní osoby.
-    requiredForComplete: true
   - path: contactPhone
     javaType: String
     meaning: Primární kontaktní telefon pro zpracování požadavku.
-    requiredForComplete: true
   - path: contactEmail
     javaType: String
     meaning: Kontaktní e-mail, pokud je ve vstupu uveden.
-    requiredForComplete: false
   - path: requestedServices
     javaType: List<ServiceSelectionDto>
     meaning: Hlavní služby, které zákazník požaduje objednat.
-    requiredForComplete: true
     componentType: serviceSelection
   - path: contractTermMonths
     javaType: Integer
     meaning: Požadovaná délka závazku v měsících.
-    requiredForComplete: true
-    allowedValues: &id002
+    allowedValues:
     - 0
     - 24
   - path: portingRequested
     javaType: Boolean
     meaning: Indikátor, že zákazník požaduje přenos čísla od jiného operátora.
-    requiredForComplete: true
   - path: portedNumbers
     javaType: List<PortedNumberDto>
     meaning: Seznam čísel určených k portaci.
-    requiredForComplete: false
     componentType: portedNumber
   - path: requestedDiscounts
     javaType: List<DiscountSelectionDto>
     meaning: Slevy explicitně požadované nebo zmíněné ve vstupu.
-    requiredForComplete: false
     componentType: discountSelection
-  completeRequiredFields:
-  - customerStatus
-  - customerName
-  - contactPhone
-  - requestedServices
-  - contractTermMonths
-  - portingRequested
-  conditionalRequiredFields:
-  - when: portingRequested == true
-    fieldPaths:
-    - portedNumbers
   fieldConstraints:
   - path: requestedServices.serviceId
     allowedServiceIds:
@@ -134,96 +113,51 @@ requestTypes:
   - path: requestedDiscounts
     minItems: 0
     maxItems: 1
-  scenarioTemplates:
-  - templateId: start_no_porting
-    description: Jedna nová mobilní služba bez přenosu čísla.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_mobile_start_5g
-        quantity: 1
-      contractTermMonths: 24
-      portingRequested: false
-      requestedDiscounts: []
-  - templateId: unlimited_with_porting
-    description: Jedna prémiová mobilní služba s přenosem čísla a porting slevou.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_mobile_unlimited_5g
-        quantity: 1
-      contractTermMonths: 24
-      portingRequested: true
-      requestedDiscounts:
-      - discountId: disc_porting_mobile_200
-  generationSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    portedNumbers: entityPools.portedNumbers
 - requestTypeId: rt_family_mobile_order
   dtoClassName: FamilyMobileOrderRequestDto
-  promptDirectory: read_prompts/extraction/rt_family_mobile_order
   title: Rodinná mobilní objednávka
-  description: Objednávka rodinného mobilního tarifu s více linkami v rámci jednoho
-    požadavku.
+  description: Objednávka rodinného mobilního tarifu s více linkami v rámci jednoho požadavku.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
     meaning: Status zákazníka vůči operátorovi.
-    requiredForComplete: true
-    allowedValues: *id001
+    allowedValues:
+    - new
+    - existing
   - path: customerName
     javaType: String
     meaning: Jméno a příjmení zákazníka nebo kontaktní osoby.
-    requiredForComplete: true
   - path: contactPhone
     javaType: String
     meaning: Primární kontaktní telefon pro zpracování požadavku.
-    requiredForComplete: true
   - path: contactEmail
     javaType: String
     meaning: Kontaktní e-mail, pokud je ve vstupu uveden.
-    requiredForComplete: false
   - path: requestedServices
     javaType: List<ServiceSelectionDto>
     meaning: Hlavní služby, které zákazník požaduje objednat.
-    requiredForComplete: true
     componentType: serviceSelection
   - path: mobileLinesCount
     javaType: Integer
     meaning: Počet mobilních linek v rodinné mobilní objednávce.
-    requiredForComplete: true
   - path: mobileLines
     javaType: List<MobileLineDto>
     meaning: Detail jednotlivých linek v rodinné mobilní objednávce.
-    requiredForComplete: true
     componentType: mobileLine
   - path: portedNumbers
     javaType: List<PortedNumberDto>
     meaning: Seznam čísel určených k portaci.
-    requiredForComplete: false
     componentType: portedNumber
   - path: contractTermMonths
     javaType: Integer
     meaning: Požadovaná délka závazku v měsících.
-    requiredForComplete: true
-    allowedValues: *id002
+    allowedValues:
+    - 0
+    - 24
   - path: requestedDiscounts
     javaType: List<DiscountSelectionDto>
     meaning: Slevy explicitně požadované nebo zmíněné ve vstupu.
-    requiredForComplete: false
     componentType: discountSelection
-  completeRequiredFields:
-  - customerStatus
-  - customerName
-  - contactPhone
-  - requestedServices
-  - mobileLinesCount
-  - mobileLines
-  - contractTermMonths
-  conditionalRequiredFields:
-  - when: any mobileLines[].portingRequested == true
-    fieldPaths:
-    - portedNumbers
   fieldConstraints:
   - path: requestedServices.serviceId
     allowedServiceIds:
@@ -245,102 +179,43 @@ requestTypes:
   - path: requestedDiscounts
     minItems: 0
     maxItems: 2
-  scenarioTemplates:
-  - templateId: family_two_lines
-    description: Rodinný tarif pro dvě linky bez přenosu čísel.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_mobile_family_plus
-        quantity: 2
-      mobileLinesCount: 2
-      mobileLines:
-      - label: hlavní linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: false
-      - label: druhá linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: false
-      contractTermMonths: 24
-      requestedDiscounts:
-      - discountId: disc_family_line_100
-  - templateId: family_three_lines_porting
-    description: Rodinný tarif pro tři linky, dvě z nich s přenosem čísla.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_mobile_family_plus
-        quantity: 3
-      mobileLinesCount: 3
-      mobileLines:
-      - label: hlavní linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: true
-      - label: druhá linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: true
-      - label: třetí linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: false
-      contractTermMonths: 24
-      requestedDiscounts:
-      - discountId: disc_family_line_100
-      - discountId: disc_porting_mobile_200
-  generationSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    portedNumbers: entityPools.portedNumbers
 - requestTypeId: rt_fixed_internet_with_hardware_order
   dtoClassName: FixedInternetHardwareOrderRequestDto
-  promptDirectory: read_prompts/extraction/rt_fixed_internet_with_hardware_order
   title: Objednávka pevného internetu s hardwarem
-  description: Objednávka jedné hlavní pevné internetové služby s doplňkovým hardwarem
-    nebo instalačním add-onem.
+  description: Objednávka jedné hlavní pevné internetové služby s doplňkovým hardwarem nebo instalačním add-onem.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
     meaning: Status zákazníka vůči operátorovi.
-    requiredForComplete: true
-    allowedValues: *id001
+    allowedValues:
+    - new
+    - existing
   - path: customerName
     javaType: String
     meaning: Jméno a příjmení zákazníka nebo kontaktní osoby.
-    requiredForComplete: true
   - path: contactPhone
     javaType: String
     meaning: Primární kontaktní telefon pro zpracování požadavku.
-    requiredForComplete: true
   - path: contactEmail
     javaType: String
     meaning: Kontaktní e-mail, pokud je ve vstupu uveden.
-    requiredForComplete: false
   - path: installationAddress
     javaType: String
     meaning: Instalační adresa pro pevný internet nebo domácí služby.
-    requiredForComplete: true
   - path: requestedServices
     javaType: List<ServiceSelectionDto>
     meaning: Hlavní služby, které zákazník požaduje objednat.
-    requiredForComplete: true
     componentType: serviceSelection
   - path: requestedProducts
     javaType: List<ProductSelectionDto>
     meaning: Doplňkové produkty nebo add-ony uvedené v požadavku.
-    requiredForComplete: true
     componentType: productSelection
   - path: contractTermMonths
     javaType: Integer
     meaning: Požadovaná délka závazku v měsících.
-    requiredForComplete: true
-    allowedValues: *id002
-  completeRequiredFields:
-  - customerStatus
-  - customerName
-  - contactPhone
-  - installationAddress
-  - requestedServices
-  - requestedProducts
-  - contractTermMonths
-  conditionalRequiredFields: []
+    allowedValues:
+    - 0
+    - 24
   fieldConstraints:
   - path: requestedServices.serviceId
     allowedServiceIds:
@@ -359,90 +234,47 @@ requestTypes:
     maxItems: 1
   - path: requestedProducts
     minItems: 1
-  scenarioTemplates:
-  - templateId: fiber_standard_router
-    description: Pevný optický internet se standardním routerem.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_fiber_300
-        quantity: 1
-      requestedProducts:
-      - productId: prod_router_standard
-        quantity: 1
-      contractTermMonths: 24
-  - templateId: dsl_router_pro_mesh
-    description: DSL internet s routerem Pro a jednou mesh jednotkou.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_dsl_100
-        quantity: 1
-      requestedProducts:
-      - productId: prod_router_pro
-        quantity: 1
-      - productId: prod_mesh_node
-        quantity: 1
-      contractTermMonths: 0
-  generationSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    installationAddress: entityPools.installationAddresses
 - requestTypeId: rt_internet_tv_bundle_order
   dtoClassName: InternetTvBundleOrderRequestDto
-  promptDirectory: read_prompts/extraction/rt_internet_tv_bundle_order
   title: Objednávka balíčku internet + televize
-  description: Kombinovaná objednávka jedné pevné internetové služby a jedné televizní
-    služby, volitelně s TV doplňky a bundle slevou.
+  description: Kombinovaná objednávka jedné pevné internetové služby a jedné televizní služby, volitelně s TV doplňky a bundle slevou.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
     meaning: Status zákazníka vůči operátorovi.
-    requiredForComplete: true
-    allowedValues: *id001
+    allowedValues:
+    - new
+    - existing
   - path: customerName
     javaType: String
     meaning: Jméno a příjmení zákazníka nebo kontaktní osoby.
-    requiredForComplete: true
   - path: contactPhone
     javaType: String
     meaning: Primární kontaktní telefon pro zpracování požadavku.
-    requiredForComplete: true
   - path: contactEmail
     javaType: String
     meaning: Kontaktní e-mail, pokud je ve vstupu uveden.
-    requiredForComplete: false
   - path: installationAddress
     javaType: String
     meaning: Instalační adresa pro pevný internet nebo domácí služby.
-    requiredForComplete: true
   - path: requestedServices
     javaType: List<ServiceSelectionDto>
     meaning: Hlavní služby, které zákazník požaduje objednat.
-    requiredForComplete: true
     componentType: serviceSelection
   - path: requestedProducts
     javaType: List<ProductSelectionDto>
     meaning: Doplňkové produkty nebo add-ony uvedené v požadavku.
-    requiredForComplete: false
     componentType: productSelection
   - path: contractTermMonths
     javaType: Integer
     meaning: Požadovaná délka závazku v měsících.
-    requiredForComplete: true
-    allowedValues: *id002
+    allowedValues:
+    - 0
+    - 24
   - path: requestedDiscounts
     javaType: List<DiscountSelectionDto>
     meaning: Slevy explicitně požadované nebo zmíněné ve vstupu.
-    requiredForComplete: false
     componentType: discountSelection
-  completeRequiredFields:
-  - customerStatus
-  - customerName
-  - contactPhone
-  - installationAddress
-  - requestedServices
-  - contractTermMonths
-  conditionalRequiredFields: []
   fieldConstraints:
   - path: requestedServices.serviceId
     allowedServiceIds:
@@ -469,110 +301,43 @@ requestTypes:
   - path: requestedDiscounts
     minItems: 0
     maxItems: 1
-  scenarioTemplates:
-  - templateId: family_bundle_discounted
-    description: Internet + TV Family se set-top boxem a bundle slevou.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_fiber_300
-        quantity: 1
-      - serviceId: svc_tv_family
-        quantity: 1
-      requestedProducts:
-      - productId: prod_set_top_box
-        quantity: 1
-      contractTermMonths: 24
-      requestedDiscounts:
-      - discountId: disc_bundle_10_new
-  - templateId: basic_bundle_with_router
-    description: Internet + TV Basic bez slevy, doplněné o router.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_wireless_50
-        quantity: 1
-      - serviceId: svc_tv_basic
-        quantity: 1
-      requestedProducts:
-      - productId: prod_router_standard
-        quantity: 1
-      contractTermMonths: 0
-      requestedDiscounts: []
-  - templateId: family_bundle_sports
-    description: Internet + TV Family s dvěma set-top boxy a sportovním balíčkem.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_fiber_1000
-        quantity: 1
-      - serviceId: svc_tv_family
-        quantity: 1
-      requestedProducts:
-      - productId: prod_set_top_box
-        quantity: 2
-      - productId: prod_tv_sports_pack
-        quantity: 1
-      contractTermMonths: 24
-      requestedDiscounts:
-      - discountId: disc_bundle_10_new
-  generationSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    installationAddress: entityPools.installationAddresses
 - requestTypeId: rt_retention_discount_request
   dtoClassName: RetentionDiscountRequestDto
-  promptDirectory: read_prompts/extraction/rt_retention_discount_request
   title: Požadavek na retenční slevu
-  description: Retenční jednání se stávajícím zákazníkem o konkrétní službě se žádostí
-    o retenční slevu.
+  description: Retenční jednání se stávajícím zákazníkem o konkrétní službě se žádostí o retenční slevu.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
     meaning: Status zákazníka vůči operátorovi.
-    requiredForComplete: true
-    allowedValues: *id001
+    allowedValues:
+    - new
+    - existing
   - path: customerName
     javaType: String
     meaning: Jméno a příjmení zákazníka nebo kontaktní osoby.
-    requiredForComplete: true
   - path: contactPhone
     javaType: String
     meaning: Primární kontaktní telefon pro zpracování požadavku.
-    requiredForComplete: true
   - path: retentionCase
     javaType: Boolean
     meaning: Indikátor, že jde o retenční jednání.
-    requiredForComplete: true
   - path: currentServices
     javaType: List<CurrentServiceRefDto>
     meaning: Služby, které zákazník aktuálně využívá.
-    requiredForComplete: true
     componentType: currentServiceRef
   - path: targetServiceId
     javaType: String
     meaning: Služba, ke které se retenční požadavek vztahuje.
-    requiredForComplete: true
   - path: requestedDiscounts
     javaType: List<DiscountSelectionDto>
     meaning: Slevy explicitně požadované nebo zmíněné ve vstupu.
-    requiredForComplete: true
     componentType: discountSelection
   - path: churnReason
     javaType: String
     meaning: Důvod zvažovaného odchodu nebo žádosti o lepší podmínky.
-    requiredForComplete: false
   - path: competitorOffer
     javaType: String
     meaning: Konkurenční nabídka zmíněná v retenčním kontextu.
-    requiredForComplete: false
-  completeRequiredFields:
-  - customerStatus
-  - customerName
-  - contactPhone
-  - retentionCase
-  - currentServices
-  - targetServiceId
-  - requestedDiscounts
-  conditionalRequiredFields: []
   fieldConstraints:
   - path: currentServices.serviceId
     allowedServiceIds:
@@ -604,36 +369,3 @@ requestTypes:
   - path: requestedDiscounts
     minItems: 1
     maxItems: 1
-  scenarioTemplates:
-  - templateId: retention_fixed_internet
-    description: Stávající zákazník chce retenční slevu na pevný internet.
-    fixedValues:
-      customerStatus: existing
-      retentionCase: true
-      currentServices:
-      - serviceId: svc_internet_fiber_300
-      targetServiceId: svc_internet_fiber_300
-      requestedDiscounts:
-      - discountId: disc_retention_15_existing
-    generatedFields:
-    - churnReason
-    - competitorOffer
-  - templateId: retention_mobile
-    description: Stávající zákazník vyjednává retenční slevu na mobilní tarif.
-    fixedValues:
-      customerStatus: existing
-      retentionCase: true
-      currentServices:
-      - serviceId: svc_mobile_unlimited_5g
-      targetServiceId: svc_mobile_unlimited_5g
-      requestedDiscounts:
-      - discountId: disc_retention_15_existing
-    generatedFields:
-    - churnReason
-    - competitorOffer
-  generationSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    churnReason: entityPools.churnReasons
-    competitorOffer: entityPools.competitorOffers

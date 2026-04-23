@@ -1,4 +1,4 @@
-version: lean-1.0
+version: final-1.0
 operator: FuturaTel CZ
 products:
 - productId: prod_router_standard

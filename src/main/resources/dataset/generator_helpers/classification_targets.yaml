@@ -1,4 +1,4 @@
-version: 1.0-lean-camelCase
+version: 1.1-final-camelCase
 runtimeAlignment:
   enumClassName: RequestType
   resolutionMethod: RequestType.fromRequestTypeIdReference(String)
@@ -17,15 +17,13 @@ scenarioKinds:
   allowsUnknownTail: false
   allowsPartialKnownRequest: false
 - scenarioKind: singleKnownPartial
-  description: Input obsahuje právě jeden známý request type, ale některé jeho údaje
-    chybí.
+  description: Input obsahuje právě jeden známý request type, ale některé jeho údaje chybí.
   expectedClassification: known
   knownRequestCount: 1
   allowsUnknownTail: false
   allowsPartialKnownRequest: true
 - scenarioKind: singleKnownWithUnknownTail
-  description: Input obsahuje jeden známý request type a navíc další neznámý nebo
-    mimo-scope požadavek.
+  description: Input obsahuje jeden známý request type a navíc další neznámý nebo mimo-scope požadavek.
   expectedClassification: unclassifiable
   knownRequestCount: 1
   allowsUnknownTail: true
@@ -46,8 +44,7 @@ scenarioKinds:
   allowsPartialKnownRequest: false
   unclassifiableReason: unknownOrOutOfScope
 - scenarioKind: ambiguousInsufficient
-  description: Input obsahuje příliš málo nebo příliš neurčitých informací pro bezpečné
-    přiřazení jednoho typu.
+  description: Input obsahuje příliš málo nebo příliš neurčitých informací pro bezpečné přiřazení jednoho typu.
   expectedClassification: unclassifiable
   knownRequestCount: 0-1
   allowsUnknownTail: false

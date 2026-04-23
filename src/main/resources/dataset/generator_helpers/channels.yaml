@@ -1,0 +1,27 @@
+version: 1.0-final-camelCase
+purpose: Krátké vysvětlení kanálů používaných při generování vstupních textů.
+channels:
+- channel: crm_ticket
+  description: Stručný interní ticket nebo poznámka v CRM.
+  styleCharacteristics:
+  - krátké nebo polostrukturované zápisy
+  - časté zkratky a heslovité formulace
+  - bez oslovení a bez podpisu
+  - důraz na věcné položky požadavku
+- channel: broker_email
+  description: Souvislý e-mail od obchodníka nebo partnera.
+  styleCharacteristics:
+  - celé věty a souvislý text
+  - může obsahovat oslovení a podpis
+  - často zprostředkovává požadavek zákazníka nepřímo
+  - vhodný pro redundanci a zdvořilostní text
+- channel: call_transcript
+  description: Přepis hovoru mezi zákazníkem a operátorem.
+  styleCharacteristics:
+  - musí obsahovat promluvy zákazníka i operátora
+  - střídání replik ve formě dialogu
+  - přirozený mluvený jazyk, opravy a váhání
+  - informace se mohou rozpadat do více kratších replik
+  requiredSpeakers:
+  - Zákazník
+  - Operátor

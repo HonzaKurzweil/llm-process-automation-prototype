@@ -1,4 +1,4 @@
-version: lean-1.0
+version: final-1.0
 operator: FuturaTel CZ
 discounts:
 - discountId: disc_bundle_10_new

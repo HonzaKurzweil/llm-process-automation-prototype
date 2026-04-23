@@ -1,4 +1,4 @@
-version: lean-1.0
+version: final-1.0
 operator: FuturaTel CZ
 services:
 - serviceId: svc_mobile_start_5g
@@ -7,7 +7,6 @@ services:
   - Start 5G
   - mobil start
   - start 5g
-  category: mobile
   allowedContractTermMonths:
   - 0
   - 24
@@ -19,7 +18,6 @@ services:
   - Neomezeně 5G
   - mobil neomezeně
   - unlimited 5g
-  category: mobile
   allowedContractTermMonths:
   - 0
   - 24
@@ -31,7 +29,6 @@ services:
   - Rodina Plus
   - rodinný tarif
   - rodina plus
-  category: mobile
   allowedContractTermMonths:
   - 0
   - 24
@@ -43,7 +40,6 @@ services:
   - Optika 300
   - optika domů 300
   - fiber 300
-  category: fixedInternet
   allowedContractTermMonths:
   - 0
   - 24
@@ -56,7 +52,6 @@ services:
   aliases:
   - Optika 1000
   - fiber 1000
-  category: fixedInternet
   allowedContractTermMonths:
   - 0
   - 24
@@ -69,7 +64,6 @@ services:
   aliases:
   - DSL 100
   - internet 100 dsl
-  category: fixedInternet
   allowedContractTermMonths:
   - 0
   - 24
@@ -82,7 +76,6 @@ services:
   aliases:
   - Bezdrát 50
   - wireless 50
-  category: fixedInternet
   allowedContractTermMonths:
   - 0
   - 24
@@ -95,7 +88,6 @@ services:
   aliases:
   - TV Basic
   - televize basic
-  category: tv
   allowedContractTermMonths:
   - 0
   - 24
@@ -107,7 +99,6 @@ services:
   aliases:
   - TV Family
   - televize family
-  category: tv
   allowedContractTermMonths:
   - 0
   - 24

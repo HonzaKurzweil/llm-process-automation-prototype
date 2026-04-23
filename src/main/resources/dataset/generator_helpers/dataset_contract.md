@@ -1,6 +1,6 @@
-# Lean dataset contract
+# Final dataset contract
 
-Tento kontrakt sjednocuje všechny tři režimy generování do jednoho jednoduchého envelope.
+Tento kontrakt popisuje výstup generátoru benchmark dat. Patří do `generator_helpers`, protože je součástí specifikace generovaného datasetu, nikoli pouze interní dokumentace skillu.
 
 ## Společná struktura záznamu
 
@@ -13,9 +13,8 @@ Tento kontrakt sjednocuje všechny tři režimy generování do jednoho jednoduc
   "generationParams": { "...": "..." },
   "inputText": "...",
   "expectedClassification": {
-    "expectedRequestTypeId": "rt_* | unclassifiable",
-    "unclassifiableReason": null,
-    "containedRequestTypeIds": ["rt_*", "..."]
+    "requestTypeId": "rt_* | unclassifiable",
+    "unclassifiableReason": null
   },
   "expectedExtractions": [
     {
@@ -59,5 +58,5 @@ Tento kontrakt sjednocuje všechny tři režimy generování do jednoho jednoduc
 ## Doporučené vyhodnocení
 
 - Extrakce: porovnávat pouze `expectedExtractions[*].dto` a `missingFieldPaths`.
-- Klasifikace: porovnávat pouze `expectedClassification`.
+- Klasifikace: porovnávat pouze `expectedClassification.requestTypeId` a případně `unclassifiableReason`.
 - `evidence` a `generationParams` nevstupují do skóre, slouží pro audit a stratifikaci datasetu.
