@@ -8,7 +8,6 @@ public record RunSummary(
         long invocationFailures,
         Map<String, OutcomeCounter> byRequestType,
         Map<String, OutcomeCounter> byChannel,
-        Map<String, OutcomeCounter> byReferenceKind,
         Map<String, OutcomeCounter> byPromptVariant,
         Map<String, OutcomeCounter> byModel
 ) {

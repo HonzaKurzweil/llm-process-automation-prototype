@@ -20,11 +20,10 @@ public class StatisticsUtils {
 
         Map<String, OutcomeCounter> byRequestType = aggregateBy(recordResults, ExtractionValidationRecordResult::requestTypeId);
         Map<String, OutcomeCounter> byChannel = aggregateBy(recordResults, ExtractionValidationRecordResult::channel);
-        Map<String, OutcomeCounter> byReferenceKind = aggregateBy(recordResults, ExtractionValidationRecordResult::referenceKind);
         Map<String, OutcomeCounter> byPromptVariant = aggregateBy(recordResults, ExtractionValidationRecordResult::promptVariant);
         Map<String, OutcomeCounter> byModel = aggregateBy(recordResults, ExtractionValidationRecordResult::modelId);
 
-        return new RunSummary(totalRecords, exactMatches, invocationFailures, byRequestType, byChannel, byReferenceKind, byPromptVariant, byModel);
+        return new RunSummary(totalRecords, exactMatches, invocationFailures, byRequestType, byChannel, byPromptVariant, byModel);
     }
 
     private static Map<String, OutcomeCounter> aggregateBy(

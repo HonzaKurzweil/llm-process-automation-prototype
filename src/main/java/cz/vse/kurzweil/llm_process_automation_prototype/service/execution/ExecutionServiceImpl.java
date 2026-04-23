@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ExtractionDataSetBundleReader;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ResultExporter;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.TreeComparator;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.*;
@@ -14,24 +15,20 @@ import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
-
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.EXTRACTION_TYPE;
 
 @RequiredArgsConstructor
 @Slf4j
 @Service
 public class ExecutionServiceImpl implements ExecutionService {
 
+    private final ExtractionDataSetBundleReader bundleReader;
     private final TreeComparator treeComparator;
     private final ResultExporter resultExporter;
     private final StructuredExtractionService structuredExtractionService;
     private final ObjectMapper objectMapper = new ObjectMapper();
-
 
     @Override
     public void validateExtractionService(Path inputFile, PromptVariant variant, ModelType model) {
@@ -45,43 +42,47 @@ public class ExecutionServiceImpl implements ExecutionService {
     }
 
     private ExtractionValidationRunResult runExtractionValidation(Path inputFile, PromptVariant variant, ModelType model) {
-        ExtractionDatasetBundle bundle = readBundle(inputFile);
-        List<ExtractionValidationRecordResult> recordResults = getBundleRecordsInExtractionMode(bundle).stream()
-                .map(record -> evaluateSingleRecord(record, variant, model))
+        List<ExtractionRecord> records = bundleReader.read(inputFile);
+        List<ExtractionValidationRecordResult> recordResults = getExtractableRecords(records).stream()
+                .flatMap(record -> evaluateRecord(record, variant, model).stream())
                 .toList();
-
         return new ExtractionValidationRunResult(
                 inputFile.toAbsolutePath().toString(),
-                bundle.datasetVersion(),
                 variant.name(),
                 model.getModelId(),
                 recordResults
         );
     }
 
-    private @NonNull List<ExtractionRecord> getBundleRecordsInExtractionMode(ExtractionDatasetBundle bundle) {
-        return bundle.records().stream()
-                .filter(record -> EXTRACTION_TYPE.equalsIgnoreCase(record.mode()))
+    private @NonNull List<ExtractionRecord> getExtractableRecords(List<ExtractionRecord> records) {
+        return records.stream()
+                .filter(r -> r.expectedExtractions() != null && !r.expectedExtractions().isEmpty())
                 .toList();
     }
 
-    private ExtractionValidationRecordResult evaluateSingleRecord(
+    private List<ExtractionValidationRecordResult> evaluateRecord(ExtractionRecord record, PromptVariant variant, ModelType model) {
+        return record.expectedExtractions().stream()
+                .map(expectation -> evaluateSingleExpectation(record, expectation, variant, model))
+                .toList();
+    }
+
+    private ExtractionValidationRecordResult evaluateSingleExpectation(
             ExtractionRecord record,
+            ExtractionExpectation expectation,
             PromptVariant variant,
             ModelType model
     ) {
-        RequestType requestType = RequestType.fromRequestTypeIdReference(record.source().requestTypeId());
-        RecordExecutionContext ctx = new RecordExecutionContext(record, requestType, variant, model);
+        RequestType requestType = RequestType.fromRequestTypeIdReference(expectation.requestTypeId());
+        RecordExecutionContext ctx = new RecordExecutionContext(record, expectation, requestType, variant, model);
         if (requestType == RequestType.UNCLASSIFIABLE || requestType.getDtoClass() == null) {
             return generateUnknownDtoResult(ctx);
         }
-        Object expectedDto = deserializeExpectedDto(ctx.record(), ctx.requestType().getDtoClass());
-
+        Object expectedDto = deserializeExpectedDto(ctx);
         Object actualDto;
         try {
-            actualDto = structuredExtractionService.extract(ctx.record().inputText(), ctx.requestType(), ctx.variant(), ctx.model());
+            actualDto = structuredExtractionService.extract(record.inputText(), requestType, variant, model);
         } catch (Exception exception) {
-            return generateExceptionResult(ctx, exception, expectedDto);
+            return generateExceptionResult(ctx, expectedDto, exception);
         }
         JsonNode expectedTree = treeComparator.canonicalize(objectMapper.valueToTree(expectedDto));
         JsonNode actualTree = treeComparator.canonicalize(objectMapper.valueToTree(actualDto));
@@ -89,73 +90,58 @@ public class ExecutionServiceImpl implements ExecutionService {
         return generateResult(ctx, comparisonResult, expectedTree, actualTree);
     }
 
-    private Object deserializeExpectedDto(ExtractionRecord record, Class<?> dtoClass) {
-        Map<String, Object> extractedFields = record.goldAnnotation().extraction().extractedFields();
+    private Object deserializeExpectedDto(RecordExecutionContext ctx) {
+        Map<String, Object> dtoFields = ctx.expectation().dto();
         try {
-            return objectMapper.convertValue(extractedFields, dtoClass);
+            return objectMapper.convertValue(dtoFields, ctx.requestType().getDtoClass());
         } catch (IllegalArgumentException exception) {
             throw new IllegalStateException(
-                    "Failed to materialize expected DTO for record " + record.recordId() + " into " + dtoClass.getSimpleName(),
+                    "Failed to materialize expected DTO for record " + ctx.record().recordId()
+                            + " into " + ctx.requestType().getDtoClass().getSimpleName(),
                     exception
             );
         }
     }
 
-    private ExtractionDatasetBundle readBundle(Path inputFile) {
-        try {
-            return objectMapper.readValue(inputFile.toFile(), ExtractionDatasetBundle.class);
-        } catch (IOException exception) {
-            throw new UncheckedIOException("Failed to read extraction bundle: " + inputFile, exception);
-        }
-    }
-
-    private @NonNull ExtractionValidationRecordResult generateResult(RecordExecutionContext ctx,
-                                                                            ComparisonResult comparisonResult,
-                                                                            JsonNode expectedTree,
-                                                                            JsonNode actualTree) {
+    private @NonNull ExtractionValidationRecordResult generateResult(
+            RecordExecutionContext ctx,
+            ComparisonResult comparison,
+            JsonNode expectedTree,
+            JsonNode actualTree
+    ) {
         return new ExtractionValidationRecordResult(
                 ctx.record().recordId(),
                 ctx.requestType().getRequestTypeIdReference(),
                 ctx.record().channel(),
-                ctx.record().channelStyle(),
                 ctx.record().noiseTags(),
-                ctx.record().businessPerturbationTags(),
-                ctx.record().source().referenceId(),
-                ctx.record().source().referenceKind(),
                 ctx.variant().name(),
                 ctx.model().getModelId(),
                 true,
-                comparisonResult.exactMatch(),
-                ctx.record().goldAnnotation().extraction().missingRequiredFields(),
-                ctx.record().goldAnnotation().extraction().missingRequiredPaths(),
-                ctx.record().goldAnnotation().extraction().expectedRuleViolations(),
-                comparisonResult.totalComparedPaths(),
-                comparisonResult.matchedPaths(),
-                comparisonResult.matchRate(),
-                comparisonResult.differences(),
+                comparison.exactMatch(),
+                ctx.expectation().missingFieldPaths(),
+                comparison.totalComparedPaths(),
+                comparison.matchedPaths(),
+                comparison.matchRate(),
+                comparison.differences(),
                 expectedTree,
                 actualTree,
                 null
         );
     }
 
-    private @NonNull ExtractionValidationRecordResult generateExceptionResult(RecordExecutionContext ctx,
-                                                                              Exception exception,
-                                                                              Object expectedDto) {
+    private @NonNull ExtractionValidationRecordResult generateExceptionResult(
+            RecordExecutionContext ctx,
+            Object expectedDto,
+            Exception exception
+    ) {
         return ExtractionValidationRecordResult.failureAfterInvocation(
                 ctx.record().recordId(),
                 ctx.requestType().getRequestTypeIdReference(),
                 ctx.record().channel(),
-                ctx.record().channelStyle(),
                 ctx.record().noiseTags(),
-                ctx.record().businessPerturbationTags(),
-                ctx.record().source().referenceId(),
-                ctx.record().source().referenceKind(),
                 ctx.variant().name(),
                 ctx.model().getModelId(),
-                ctx.record().goldAnnotation().extraction().missingRequiredFields(),
-                ctx.record().goldAnnotation().extraction().missingRequiredPaths(),
-                ctx.record().goldAnnotation().extraction().expectedRuleViolations(),
+                ctx.expectation().missingFieldPaths(),
                 objectMapper.valueToTree(expectedDto),
                 exception.getClass().getSimpleName() + ": " + exception.getMessage()
         );
@@ -164,13 +150,9 @@ public class ExecutionServiceImpl implements ExecutionService {
     private @NonNull ExtractionValidationRecordResult generateUnknownDtoResult(RecordExecutionContext ctx) {
         return ExtractionValidationRecordResult.failureWithoutInvocation(
                 ctx.record().recordId(),
-                ctx.requestType().name(),
+                ctx.expectation().requestTypeId(),
                 ctx.record().channel(),
-                ctx.record().channelStyle(),
                 ctx.record().noiseTags(),
-                ctx.record().businessPerturbationTags(),
-                ctx.record().source().referenceId(),
-                ctx.record().source().referenceKind(),
                 ctx.variant().name(),
                 ctx.model().getModelId(),
                 "Dataset record does not map to a concrete extraction DTO class."

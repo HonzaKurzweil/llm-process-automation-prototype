@@ -8,18 +8,12 @@ public record ExtractionValidationRecordResult(
         String recordId,
         String requestTypeId,
         String channel,
-        String channelStyle,
         List<String> noiseTags,
-        List<String> businessPerturbationTags,
-        String referenceId,
-        String referenceKind,
         String promptVariant,
         String modelId,
         boolean invocationSucceeded,
         boolean exactMatch,
-        List<String> missingRequiredFields,
-        List<String> missingRequiredPaths,
-        List<String> expectedRuleViolations,
+        List<String> missingFieldPaths,
         int totalComparedPaths,
         int matchedPaths,
         double matchRate,
@@ -32,38 +26,15 @@ public record ExtractionValidationRecordResult(
             String recordId,
             String requestTypeId,
             String channel,
-            String channelStyle,
             List<String> noiseTags,
-            List<String> businessPerturbationTags,
-            String referenceId,
-            String referenceKind,
             String promptVariant,
             String modelId,
             String errorMessage
     ) {
         return new ExtractionValidationRecordResult(
-                recordId,
-                requestTypeId,
-                channel,
-                channelStyle,
-                defaultList(noiseTags),
-                defaultList(businessPerturbationTags),
-                referenceId,
-                referenceKind,
-                promptVariant,
-                modelId,
-                false,
-                false,
-                List.of(),
-                List.of(),
-                List.of(),
-                0,
-                0,
-                0.0d,
-                List.of(),
-                null,
-                null,
-                errorMessage
+                recordId, requestTypeId, channel, defaultList(noiseTags),
+                promptVariant, modelId,
+                false, false, List.of(), 0, 0, 0.0d, List.of(), null, null, errorMessage
         );
     }
 
@@ -71,51 +42,23 @@ public record ExtractionValidationRecordResult(
             String recordId,
             String requestTypeId,
             String channel,
-            String channelStyle,
             List<String> noiseTags,
-            List<String> businessPerturbationTags,
-            String referenceId,
-            String referenceKind,
             String promptVariant,
             String modelId,
-            List<String> missingRequiredFields,
-            List<String> missingRequiredPaths,
-            List<String> expectedRuleViolations,
+            List<String> missingFieldPaths,
             JsonNode expectedDto,
             String errorMessage
     ) {
         return new ExtractionValidationRecordResult(
-                recordId,
-                requestTypeId,
-                channel,
-                channelStyle,
-                defaultList(noiseTags),
-                defaultList(businessPerturbationTags),
-                referenceId,
-                referenceKind,
-                promptVariant,
-                modelId,
-                false,
-                false,
-                defaultList(missingRequiredFields),
-                defaultList(missingRequiredPaths),
-                defaultList(expectedRuleViolations),
-                0,
-                0,
-                0.0d,
-                List.of(),
-                expectedDto,
-                null,
-                errorMessage
+                recordId, requestTypeId, channel, defaultList(noiseTags),
+                promptVariant, modelId,
+                false, false, defaultList(missingFieldPaths), 0, 0, 0.0d, List.of(), expectedDto, null, errorMessage
         );
     }
 
     public ExtractionValidationRecordResult {
         noiseTags = defaultList(noiseTags);
-        businessPerturbationTags = defaultList(businessPerturbationTags);
-        missingRequiredFields = defaultList(missingRequiredFields);
-        missingRequiredPaths = defaultList(missingRequiredPaths);
-        expectedRuleViolations = defaultList(expectedRuleViolations);
+        missingFieldPaths = defaultList(missingFieldPaths);
         differences = defaultList(differences);
     }
 

@@ -10,12 +10,11 @@ public record ExtractionRecord(
         String recordId,
         String mode,
         String channel,
-        String channelStyle,
         List<String> noiseTags,
-        List<String> businessPerturbationTags,
-        RecordSource source,
+        Map<String, Object> generationParams,
         String inputText,
-        GoldAnnotation goldAnnotation,
-        Map<String, Object> observability
+        ExpectedClassification expectedClassification,
+        List<ExtractionExpectation> expectedExtractions,
+        Map<String, Object> evidence
 ) {
 }

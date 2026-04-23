@@ -4,7 +4,6 @@ import java.util.List;
 
 public record ExtractionValidationRunResult(
         String inputFile,
-        Integer datasetVersion,
         String promptVariant,
         String modelId,
         List<ExtractionValidationRecordResult> records
