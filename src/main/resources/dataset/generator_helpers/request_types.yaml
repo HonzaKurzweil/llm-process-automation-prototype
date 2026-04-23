@@ -2,8 +2,6 @@ version: 4.0-lean-camelCase
 purpose:
 - Zdrojová definice request types pro generování syntetických benchmark vstupů.
 - Zdrojová definice DTO tvarů pro budoucí mapování gold dat přímo do Java objektů.
-- 'Náhrada za reference outputs: místo fixních referencí používá per-request-type
-  scenario templates a entity pools.'
 componentTypes:
   serviceSelection:
     javaClassName: ServiceSelectionDto
@@ -63,8 +61,6 @@ requestTypes:
   title: Objednávka samostatné mobilní služby
   description: Objednávka jedné mobilní služby pro nového nebo stávajícího zákazníka,
     volitelně s přenosem čísla.
-  classificationSummary: Objednávka jedné mobilní služby pro nového nebo stávajícího
-    zákazníka, volitelně s přenosem čísla.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
@@ -169,8 +165,6 @@ requestTypes:
   title: Rodinná mobilní objednávka
   description: Objednávka rodinného mobilního tarifu s více linkami v rámci jednoho
     požadavku.
-  classificationSummary: Objednávka rodinného mobilního tarifu s více linkami v rámci
-    jednoho požadavku.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
@@ -301,8 +295,6 @@ requestTypes:
   title: Objednávka pevného internetu s hardwarem
   description: Objednávka jedné hlavní pevné internetové služby s doplňkovým hardwarem
     nebo instalačním add-onem.
-  classificationSummary: Objednávka jedné hlavní pevné internetové služby s doplňkovým
-    hardwarem nebo instalačním add-onem.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
@@ -401,8 +393,6 @@ requestTypes:
   title: Objednávka balíčku internet + televize
   description: Kombinovaná objednávka jedné pevné internetové služby a jedné televizní
     služby, volitelně s TV doplňky a bundle slevou.
-  classificationSummary: Kombinovaná objednávka jedné pevné internetové služby a jedné
-    televizní služby, volitelně s TV doplňky a bundle slevou.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
@@ -534,8 +524,6 @@ requestTypes:
   title: Požadavek na retenční slevu
   description: Retenční jednání se stávajícím zákazníkem o konkrétní službě se žádostí
     o retenční slevu.
-  classificationSummary: Retenční jednání se stávajícím zákazníkem o konkrétní službě
-    se žádostí o retenční slevu.
   fields:
   - path: customerStatus
     javaType: CustomerStatus
