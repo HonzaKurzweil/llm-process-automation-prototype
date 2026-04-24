@@ -1,82 +1,82 @@
 version: 1.1-final-camelCase
 notes:
-- Tyto pooly slouží ke generování konkrétních instancí nad strukturou request types.
-- Jména, telefony a adresy se mají losovat při generování a propsat jak do inputText, tak do expectedExtractions.
+  - Tyto pooly slouží ke generování konkrétních instancí nad strukturou request types.
+  - Jména, telefony a adresy se mají losovat při generování a propsat jak do inputText, tak do expectedExtractions.
 customerProfiles:
-- customerName: Veronika Jarošová
-  contactPhone: +420 774 551 008
-  contactEmail: veronika.jarosova@email.cz
-  defaultCustomerStatus: new
-- customerName: Martin Čermák
-  contactPhone: +420 725 118 443
-  contactEmail: martin.cermak@centrum.cz
-  defaultCustomerStatus: new
-- customerName: Aleš Konečný
-  contactPhone: +420 720 991 774
-  contactEmail: ales.konecny@seznam.cz
-  defaultCustomerStatus: new
-- customerName: Klára Horáková
-  contactPhone: +420 731 884 219
-  contactEmail: klara.horakova@volny.cz
-  defaultCustomerStatus: existing
-- customerName: Petr Urban
-  contactPhone: +420 776 220 115
-  contactEmail: petr.urban@atlas.cz
-  defaultCustomerStatus: existing
-- customerName: Lucie Dvořáková
-  contactPhone: +420 603 515 902
-  contactEmail: lucie.dvorakova@post.cz
-  defaultCustomerStatus: existing
-- customerName: Roman Beneš
-  contactPhone: +420 605 996 341
-  contactEmail: roman.benes@email.cz
-  defaultCustomerStatus: existing
-- customerName: Jana Vacková
-  contactPhone: +420 739 411 270
-  contactEmail: jana.vackova@email.cz
-  defaultCustomerStatus: new
+  - customerName: Veronika Jarošová
+    contactPhone: +420 774 551 008
+    contactEmail: veronika.jarosova@email.cz
+    defaultCustomerStatus: new
+  - customerName: Martin Čermák
+    contactPhone: +420 725 118 443
+    contactEmail: martin.cermak@centrum.cz
+    defaultCustomerStatus: new
+  - customerName: Aleš Konečný
+    contactPhone: +420 720 991 774
+    contactEmail: ales.konecny@seznam.cz
+    defaultCustomerStatus: new
+  - customerName: Klára Horáková
+    contactPhone: +420 731 884 219
+    contactEmail: klara.horakova@volny.cz
+    defaultCustomerStatus: existing
+  - customerName: Petr Urban
+    contactPhone: +420 776 220 115
+    contactEmail: petr.urban@atlas.cz
+    defaultCustomerStatus: existing
+  - customerName: Lucie Dvořáková
+    contactPhone: +420 603 515 902
+    contactEmail: lucie.dvorakova@post.cz
+    defaultCustomerStatus: existing
+  - customerName: Roman Beneš
+    contactPhone: +420 605 996 341
+    contactEmail: roman.benes@email.cz
+    defaultCustomerStatus: existing
+  - customerName: Jana Vacková
+    contactPhone: +420 739 411 270
+    contactEmail: jana.vackova@email.cz
+    defaultCustomerStatus: new
 installationAddresses:
-- Praha 9, Vysočany, Sokolovská 188
-- Brno, Královo Pole, Purkyňova 97
-- Olomouc, Nové Sady, Rooseveltova 61
-- Plzeň, Bolevec, Gerská 14
-- Pardubice, Polabiny, Mozartova 22
-- České Budějovice, Pražské předměstí, Pekárenská 48
+  - Praha 9, Vysočany, Sokolovská 188
+  - Brno, Královo Pole, Purkyňova 97
+  - Olomouc, Nové Sady, Rooseveltova 61
+  - Plzeň, Bolevec, Gerská 14
+  - Pardubice, Polabiny, Mozartova 22
+  - České Budějovice, Pražské předměstí, Pekárenská 48
 portedNumbers:
-- number: +420 734 220 111
-  donorOperator: T-Mobile
-- number: +420 733 645 928
-  donorOperator: Vodafone
-- number: +420 721 884 573
-  donorOperator: O2
-- number: +420 704 552 118
-  donorOperator: Vodafone
+  - number: +420 734 220 111
+    donorOperator: T-Mobile
+  - number: +420 733 645 928
+    donorOperator: Vodafone
+  - number: +420 721 884 573
+    donorOperator: O2
+  - number: +420 704 552 118
+    donorOperator: Vodafone
 brokerSignatures:
-- senderName: Petra Kovářová
-  senderRole: obchodní zastoupení FuturaTel CZ
-- senderName: Tomáš Blaha
-  senderRole: obchodní manažer, FuturaTel CZ
-- senderName: Jana Procházková
-  senderRole: obchodní zástupce, FuturaTel CZ
-- senderName: Radek Šimánek
-  senderRole: obchodní partner, FuturaTel CZ
+  - senderName: Petra Kovářová
+    senderRole: obchodní zastoupení FuturaTel CZ
+  - senderName: Tomáš Blaha
+    senderRole: obchodní manažer, FuturaTel CZ
+  - senderName: Jana Procházková
+    senderRole: obchodní zástupce, FuturaTel CZ
+  - senderName: Radek Šimánek
+    senderRole: obchodní partner, FuturaTel CZ
 churnReasons:
-- zákazník zvažuje odchod kvůli ceně
-- zákazník dostal výhodnější nabídku od konkurence
-- zákazník dlouhodobě řeší nespokojenost s cenou
-- zákazník chce lepší podmínky při prodloužení smlouvy
+  - zákazník zvažuje odchod kvůli ceně
+  - zákazník dostal výhodnější nabídku od konkurence
+  - zákazník dlouhodobě řeší nespokojenost s cenou
+  - zákazník chce lepší podmínky při prodloužení smlouvy
 competitorOffers:
-- konkurence nabízí podobnou službu o 150 Kč levněji
-- konkurence nabízí internet 500 Mb/s za nižší cenu
-- konkurence nabízí neomezený tarif se slevou na 6 měsíců
-- konkurence dává retenční bonus bez závazku
+  - konkurence nabízí podobnou službu o 150 Kč levněji
+  - konkurence nabízí internet 500 Mb/s za nižší cenu
+  - konkurence nabízí neomezený tarif se slevou na 6 měsíců
+  - konkurence dává retenční bonus bez závazku
 unknownRequestSnippets:
-- zákazník zároveň žádá o vystavení duplikátu staré faktury
-- součástí zprávy je i požadavek na reklamaci posledního vyúčtování
-- v závěru je navíc prosba o výměnu poškozené SIM karty
-- součástí hovoru je také technická reklamace Wi‑Fi výpadků
+  - zákazník zároveň žádá o vystavení duplikátu staré faktury
+  - součástí zprávy je i požadavek na reklamaci posledního vyúčtování
+  - v závěru je navíc prosba o výměnu poškozené SIM karty
+  - součástí hovoru je také technická reklamace Wi‑Fi výpadků
 smalltalkSnippets:
-- Dobrý den, jen rychle prosím.
-- Ještě se omlouvám za zdržení.
-- To je asi vše, děkuji.
-- Hezký den a díky.
+  - Dobrý den, jen rychle prosím.
+  - Ještě se omlouvám za zdržení.
+  - To je asi vše, děkuji.
+  - Hezký den a díky.

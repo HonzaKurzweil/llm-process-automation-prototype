@@ -1,189 +1,189 @@
 version: 1.0-final-camelCase
 purpose:
-- Generační šablony pro syntetická benchmark data.
-- Odděluje generování konkrétních scénářů od kanonické definice request types.
+  - Generační šablony pro syntetická benchmark data.
+  - Odděluje generování konkrétních scénářů od kanonické definice request types.
 requestTypeGeneration:
-- requestTypeId: rt_new_mobile_order
-  scenarioTemplates:
-  - templateId: start_no_porting
-    description: Jedna nová mobilní služba bez přenosu čísla.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_mobile_start_5g
-        quantity: 1
-      contractTermMonths: 24
-      portingRequested: false
-      requestedDiscounts: []
-  - templateId: unlimited_with_porting
-    description: Jedna prémiová mobilní služba s přenosem čísla a porting slevou.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_mobile_unlimited_5g
-        quantity: 1
-      contractTermMonths: 24
-      portingRequested: true
-      requestedDiscounts:
-      - discountId: disc_porting_mobile_200
-  helperSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    portedNumbers: entityPools.portedNumbers
-- requestTypeId: rt_family_mobile_order
-  scenarioTemplates:
-  - templateId: family_two_lines
-    description: Rodinný tarif pro dvě linky bez přenosu čísel.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_mobile_family_plus
-        quantity: 2
-      mobileLinesCount: 2
-      mobileLines:
-      - label: hlavní linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: false
-      - label: druhá linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: false
-      contractTermMonths: 24
-      requestedDiscounts:
-      - discountId: disc_family_line_100
-  - templateId: family_three_lines_porting
-    description: Rodinný tarif pro tři linky, dvě z nich s přenosem čísla.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_mobile_family_plus
-        quantity: 3
-      mobileLinesCount: 3
-      mobileLines:
-      - label: hlavní linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: true
-      - label: druhá linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: true
-      - label: třetí linka
-        planServiceId: svc_mobile_family_plus
-        portingRequested: false
-      contractTermMonths: 24
-      requestedDiscounts:
-      - discountId: disc_family_line_100
-      - discountId: disc_porting_mobile_200
-  helperSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    portedNumbers: entityPools.portedNumbers
-- requestTypeId: rt_fixed_internet_with_hardware_order
-  scenarioTemplates:
-  - templateId: fiber_standard_router
-    description: Pevný optický internet se standardním routerem.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_fiber_300
-        quantity: 1
-      requestedProducts:
-      - productId: prod_router_standard
-        quantity: 1
-      contractTermMonths: 24
-  - templateId: dsl_router_pro_mesh
-    description: DSL internet s routerem Pro a jednou mesh jednotkou.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_dsl_100
-        quantity: 1
-      requestedProducts:
-      - productId: prod_router_pro
-        quantity: 1
-      - productId: prod_mesh_node
-        quantity: 1
-      contractTermMonths: 0
-  helperSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    installationAddress: entityPools.installationAddresses
-- requestTypeId: rt_internet_tv_bundle_order
-  scenarioTemplates:
-  - templateId: family_bundle_discounted
-    description: Internet + TV Family se set-top boxem a bundle slevou.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_fiber_300
-        quantity: 1
-      - serviceId: svc_tv_family
-        quantity: 1
-      requestedProducts:
-      - productId: prod_set_top_box
-        quantity: 1
-      contractTermMonths: 24
-      requestedDiscounts:
-      - discountId: disc_bundle_10_new
-  - templateId: basic_bundle_with_router
-    description: Internet + TV Basic bez slevy, doplněné o router.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_wireless_50
-        quantity: 1
-      - serviceId: svc_tv_basic
-        quantity: 1
-      requestedProducts:
-      - productId: prod_router_standard
-        quantity: 1
-      contractTermMonths: 0
-      requestedDiscounts: []
-  - templateId: family_bundle_sports
-    description: Internet + TV Family s dvěma set-top boxy a sportovním balíčkem.
-    fixedValues:
-      requestedServices:
-      - serviceId: svc_internet_fiber_1000
-        quantity: 1
-      - serviceId: svc_tv_family
-        quantity: 1
-      requestedProducts:
-      - productId: prod_set_top_box
-        quantity: 2
-      - productId: prod_tv_sports_pack
-        quantity: 1
-      contractTermMonths: 24
-      requestedDiscounts:
-      - discountId: disc_bundle_10_new
-  helperSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    installationAddress: entityPools.installationAddresses
-- requestTypeId: rt_retention_discount_request
-  scenarioTemplates:
-  - templateId: retention_fixed_internet
-    description: Stávající zákazník chce retenční slevu na pevný internet.
-    fixedValues:
-      customerStatus: existing
-      retentionCase: true
-      currentServices:
-      - serviceId: svc_internet_fiber_300
-      targetServiceId: svc_internet_fiber_300
-      requestedDiscounts:
-      - discountId: disc_retention_15_existing
-    generatedFields:
-    - churnReason
-    - competitorOffer
-  - templateId: retention_mobile
-    description: Stávající zákazník vyjednává retenční slevu na mobilní tarif.
-    fixedValues:
-      customerStatus: existing
-      retentionCase: true
-      currentServices:
-      - serviceId: svc_mobile_unlimited_5g
-      targetServiceId: svc_mobile_unlimited_5g
-      requestedDiscounts:
-      - discountId: disc_retention_15_existing
-    generatedFields:
-    - churnReason
-    - competitorOffer
-  helperSources:
-    customerName: entityPools.customerProfiles.customerName
-    contactPhone: entityPools.customerProfiles.contactPhone
-    contactEmail: entityPools.customerProfiles.contactEmail
-    churnReason: entityPools.churnReasons
-    competitorOffer: entityPools.competitorOffers
+  - requestTypeId: rt_new_mobile_order
+    scenarioTemplates:
+      - templateId: start_no_porting
+        description: Jedna nová mobilní služba bez přenosu čísla.
+        fixedValues:
+          requestedServices:
+            - serviceId: svc_mobile_start_5g
+              quantity: 1
+          contractTermMonths: 24
+          portingRequested: false
+          requestedDiscounts: [ ]
+      - templateId: unlimited_with_porting
+        description: Jedna prémiová mobilní služba s přenosem čísla a porting slevou.
+        fixedValues:
+          requestedServices:
+            - serviceId: svc_mobile_unlimited_5g
+              quantity: 1
+          contractTermMonths: 24
+          portingRequested: true
+          requestedDiscounts:
+            - discountId: disc_porting_mobile_200
+    helperSources:
+      customerName: entityPools.customerProfiles.customerName
+      contactPhone: entityPools.customerProfiles.contactPhone
+      contactEmail: entityPools.customerProfiles.contactEmail
+      portedNumbers: entityPools.portedNumbers
+  - requestTypeId: rt_family_mobile_order
+    scenarioTemplates:
+      - templateId: family_two_lines
+        description: Rodinný tarif pro dvě linky bez přenosu čísel.
+        fixedValues:
+          requestedServices:
+            - serviceId: svc_mobile_family_plus
+              quantity: 2
+          mobileLinesCount: 2
+          mobileLines:
+            - label: hlavní linka
+              planServiceId: svc_mobile_family_plus
+              portingRequested: false
+            - label: druhá linka
+              planServiceId: svc_mobile_family_plus
+              portingRequested: false
+          contractTermMonths: 24
+          requestedDiscounts:
+            - discountId: disc_family_line_100
+      - templateId: family_three_lines_porting
+        description: Rodinný tarif pro tři linky, dvě z nich s přenosem čísla.
+        fixedValues:
+          requestedServices:
+            - serviceId: svc_mobile_family_plus
+              quantity: 3
+          mobileLinesCount: 3
+          mobileLines:
+            - label: hlavní linka
+              planServiceId: svc_mobile_family_plus
+              portingRequested: true
+            - label: druhá linka
+              planServiceId: svc_mobile_family_plus
+              portingRequested: true
+            - label: třetí linka
+              planServiceId: svc_mobile_family_plus
+              portingRequested: false
+          contractTermMonths: 24
+          requestedDiscounts:
+            - discountId: disc_family_line_100
+            - discountId: disc_porting_mobile_200
+    helperSources:
+      customerName: entityPools.customerProfiles.customerName
+      contactPhone: entityPools.customerProfiles.contactPhone
+      contactEmail: entityPools.customerProfiles.contactEmail
+      portedNumbers: entityPools.portedNumbers
+  - requestTypeId: rt_fixed_internet_with_hardware_order
+    scenarioTemplates:
+      - templateId: fiber_standard_router
+        description: Pevný optický internet se standardním routerem.
+        fixedValues:
+          requestedServices:
+            - serviceId: svc_internet_fiber_300
+              quantity: 1
+          requestedProducts:
+            - productId: prod_router_standard
+              quantity: 1
+          contractTermMonths: 24
+      - templateId: dsl_router_pro_mesh
+        description: DSL internet s routerem Pro a jednou mesh jednotkou.
+        fixedValues:
+          requestedServices:
+            - serviceId: svc_internet_dsl_100
+              quantity: 1
+          requestedProducts:
+            - productId: prod_router_pro
+              quantity: 1
+            - productId: prod_mesh_node
+              quantity: 1
+          contractTermMonths: 0
+    helperSources:
+      customerName: entityPools.customerProfiles.customerName
+      contactPhone: entityPools.customerProfiles.contactPhone
+      contactEmail: entityPools.customerProfiles.contactEmail
+      installationAddress: entityPools.installationAddresses
+  - requestTypeId: rt_internet_tv_bundle_order
+    scenarioTemplates:
+      - templateId: family_bundle_discounted
+        description: Internet + TV Family se set-top boxem a bundle slevou.
+        fixedValues:
+          requestedServices:
+            - serviceId: svc_internet_fiber_300
+              quantity: 1
+            - serviceId: svc_tv_family
+              quantity: 1
+          requestedProducts:
+            - productId: prod_set_top_box
+              quantity: 1
+          contractTermMonths: 24
+          requestedDiscounts:
+            - discountId: disc_bundle_10_new
+      - templateId: basic_bundle_with_router
+        description: Internet + TV Basic bez slevy, doplněné o router.
+        fixedValues:
+          requestedServices:
+            - serviceId: svc_internet_wireless_50
+              quantity: 1
+            - serviceId: svc_tv_basic
+              quantity: 1
+          requestedProducts:
+            - productId: prod_router_standard
+              quantity: 1
+          contractTermMonths: 0
+          requestedDiscounts: [ ]
+      - templateId: family_bundle_sports
+        description: Internet + TV Family s dvěma set-top boxy a sportovním balíčkem.
+        fixedValues:
+          requestedServices:
+            - serviceId: svc_internet_fiber_1000
+              quantity: 1
+            - serviceId: svc_tv_family
+              quantity: 1
+          requestedProducts:
+            - productId: prod_set_top_box
+              quantity: 2
+            - productId: prod_tv_sports_pack
+              quantity: 1
+          contractTermMonths: 24
+          requestedDiscounts:
+            - discountId: disc_bundle_10_new
+    helperSources:
+      customerName: entityPools.customerProfiles.customerName
+      contactPhone: entityPools.customerProfiles.contactPhone
+      contactEmail: entityPools.customerProfiles.contactEmail
+      installationAddress: entityPools.installationAddresses
+  - requestTypeId: rt_retention_discount_request
+    scenarioTemplates:
+      - templateId: retention_fixed_internet
+        description: Stávající zákazník chce retenční slevu na pevný internet.
+        fixedValues:
+          customerStatus: existing
+          retentionCase: true
+          currentServices:
+            - serviceId: svc_internet_fiber_300
+          targetServiceId: svc_internet_fiber_300
+          requestedDiscounts:
+            - discountId: disc_retention_15_existing
+        generatedFields:
+          - churnReason
+          - competitorOffer
+      - templateId: retention_mobile
+        description: Stávající zákazník vyjednává retenční slevu na mobilní tarif.
+        fixedValues:
+          customerStatus: existing
+          retentionCase: true
+          currentServices:
+            - serviceId: svc_mobile_unlimited_5g
+          targetServiceId: svc_mobile_unlimited_5g
+          requestedDiscounts:
+            - discountId: disc_retention_15_existing
+        generatedFields:
+          - churnReason
+          - competitorOffer
+    helperSources:
+      customerName: entityPools.customerProfiles.customerName
+      contactPhone: entityPools.customerProfiles.contactPhone
+      contactEmail: entityPools.customerProfiles.contactEmail
+      churnReason: entityPools.churnReasons
+      competitorOffer: entityPools.competitorOffers

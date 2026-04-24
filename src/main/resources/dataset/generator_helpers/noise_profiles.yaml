@@ -1,50 +1,50 @@
 version: 3.0
 purpose: Noise model pro generování textových variant. Počet rušivých prvků se zadává číselně; konkrétní tagy se vybírají náhodně ze seznamu noiseTags. Maximální povolená hodnota noiseCount se rovná celkovému počtu noiseTags.
 noiseTags:
-- noiseTag: shorthandInternal
-  appliesTo:
-  - crm_ticket
-  effect: surfaceOnly
-  description: Interní zkratky a heslovité zápisy.
-- noiseTag: greetingSignatureNoise
-  appliesTo:
-  - broker_email
-  effect: surfaceOnly
-  description: Oslovení, podpis a kontaktní blok.
-- noiseTag: hesitationDisfluency
-  appliesTo:
-  - call_transcript
-  effect: surfaceOnly
-  description: Ehm, no, vlastně a další váhání.
-- noiseTag: smalltalkNoise
-  appliesTo:
-  - call_transcript
-  effect: surfaceOnly
-  description: Krátká nesouvisející zdvořilostní výměna.
-- noiseTag: irrelevantInfo
-  appliesTo:
-  - crm_ticket
-  - broker_email
-  - call_transcript
-  effect: surfaceOnly
-  description: Vedlejší poznámka, která nemění očekávaný výstup.
-- noiseTag: ambiguousWording
-  appliesTo:
-  - crm_ticket
-  - broker_email
-  - call_transcript
-  effect: classificationDifficulty
-  description: Nejednoznačné vyjádření zvyšující obtížnost klasifikace.
-- noiseTag: unknownTailSnippet
-  appliesTo:
-  - broker_email
-  - call_transcript
-  - crm_ticket
-  effect: classificationDifficulty
-  description: Přidaný mimo-scope požadavek pro unclassifiable scénáře.
-- noiseTag: typosAndMisspellings
-  appliesTo:
-  - crm_ticket
-  - broker_email
-  effect: surfaceOnly
-  description: Překlepy a pravopisné chyby, které nemění sémantiku požadavku.
+  - noiseTag: shorthandInternal
+    appliesTo:
+      - crm_ticket
+    effect: surfaceOnly
+    description: Interní zkratky a heslovité zápisy.
+  - noiseTag: greetingSignatureNoise
+    appliesTo:
+      - broker_email
+    effect: surfaceOnly
+    description: Oslovení, podpis a kontaktní blok.
+  - noiseTag: hesitationDisfluency
+    appliesTo:
+      - call_transcript
+    effect: surfaceOnly
+    description: Ehm, no, vlastně a další váhání.
+  - noiseTag: smalltalkNoise
+    appliesTo:
+      - call_transcript
+    effect: surfaceOnly
+    description: Krátká nesouvisející zdvořilostní výměna.
+  - noiseTag: irrelevantInfo
+    appliesTo:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+    effect: surfaceOnly
+    description: Vedlejší poznámka, která nemění očekávaný výstup.
+  - noiseTag: ambiguousWording
+    appliesTo:
+      - crm_ticket
+      - broker_email
+      - call_transcript
+    effect: classificationDifficulty
+    description: Nejednoznačné vyjádření zvyšující obtížnost klasifikace.
+  - noiseTag: unknownTailSnippet
+    appliesTo:
+      - broker_email
+      - call_transcript
+      - crm_ticket
+    effect: classificationDifficulty
+    description: Přidaný mimo-scope požadavek pro unclassifiable scénáře.
+  - noiseTag: typosAndMisspellings
+    appliesTo:
+      - crm_ticket
+      - broker_email
+    effect: surfaceOnly
+    description: Překlepy a pravopisné chyby, které nemění sémantiku požadavku.

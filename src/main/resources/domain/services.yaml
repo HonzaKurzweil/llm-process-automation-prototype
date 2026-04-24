@@ -1,107 +1,107 @@
 version: final-1.0
 operator: FuturaTel CZ
 services:
-- serviceId: svc_mobile_start_5g
-  name: Mobil Start 5G
-  aliases:
-  - Start 5G
-  - mobil start
-  - start 5g
-  allowedContractTermMonths:
-  - 0
-  - 24
-  usedByRequestTypes:
-  - rt_new_mobile_order
-- serviceId: svc_mobile_unlimited_5g
-  name: Mobil Neomezeně 5G
-  aliases:
-  - Neomezeně 5G
-  - mobil neomezeně
-  - unlimited 5g
-  allowedContractTermMonths:
-  - 0
-  - 24
-  usedByRequestTypes:
-  - rt_new_mobile_order
-- serviceId: svc_mobile_family_plus
-  name: Mobil Rodina Plus
-  aliases:
-  - Rodina Plus
-  - rodinný tarif
-  - rodina plus
-  allowedContractTermMonths:
-  - 0
-  - 24
-  usedByRequestTypes:
-  - rt_family_mobile_order
-- serviceId: svc_internet_fiber_300
-  name: Optika Domů 300
-  aliases:
-  - Optika 300
-  - optika domů 300
-  - fiber 300
-  allowedContractTermMonths:
-  - 0
-  - 24
-  usedByRequestTypes:
-  - rt_fixed_internet_with_hardware_order
-  - rt_internet_tv_bundle_order
-  - rt_retention_discount_request
-- serviceId: svc_internet_fiber_1000
-  name: Optika Domů 1000
-  aliases:
-  - Optika 1000
-  - fiber 1000
-  allowedContractTermMonths:
-  - 0
-  - 24
-  usedByRequestTypes:
-  - rt_fixed_internet_with_hardware_order
-  - rt_internet_tv_bundle_order
-  - rt_retention_discount_request
-- serviceId: svc_internet_dsl_100
-  name: Internet Domů 100 DSL
-  aliases:
-  - DSL 100
-  - internet 100 dsl
-  allowedContractTermMonths:
-  - 0
-  - 24
-  usedByRequestTypes:
-  - rt_fixed_internet_with_hardware_order
-  - rt_internet_tv_bundle_order
-  - rt_retention_discount_request
-- serviceId: svc_internet_wireless_50
-  name: Internet Domů Bezdrát 50
-  aliases:
-  - Bezdrát 50
-  - wireless 50
-  allowedContractTermMonths:
-  - 0
-  - 24
-  usedByRequestTypes:
-  - rt_fixed_internet_with_hardware_order
-  - rt_internet_tv_bundle_order
-  - rt_retention_discount_request
-- serviceId: svc_tv_basic
-  name: Televize Basic
-  aliases:
-  - TV Basic
-  - televize basic
-  allowedContractTermMonths:
-  - 0
-  - 24
-  usedByRequestTypes:
-  - rt_internet_tv_bundle_order
-  - rt_retention_discount_request
-- serviceId: svc_tv_family
-  name: Televize Family
-  aliases:
-  - TV Family
-  - televize family
-  allowedContractTermMonths:
-  - 0
-  - 24
-  usedByRequestTypes:
-  - rt_internet_tv_bundle_order
-  - rt_retention_discount_request
+  - serviceId: svc_mobile_start_5g
+    name: Mobil Start 5G
+    aliases:
+      - Start 5G
+      - mobil start
+      - start 5g
+    allowedContractTermMonths:
+      - 0
+      - 24
+    usedByRequestTypes:
+      - rt_new_mobile_order
+  - serviceId: svc_mobile_unlimited_5g
+    name: Mobil Neomezeně 5G
+    aliases:
+      - Neomezeně 5G
+      - mobil neomezeně
+      - unlimited 5g
+    allowedContractTermMonths:
+      - 0
+      - 24
+    usedByRequestTypes:
+      - rt_new_mobile_order
+  - serviceId: svc_mobile_family_plus
+    name: Mobil Rodina Plus
+    aliases:
+      - Rodina Plus
+      - rodinný tarif
+      - rodina plus
+    allowedContractTermMonths:
+      - 0
+      - 24
+    usedByRequestTypes:
+      - rt_family_mobile_order
+  - serviceId: svc_internet_fiber_300
+    name: Optika Domů 300
+    aliases:
+      - Optika 300
+      - optika domů 300
+      - fiber 300
+    allowedContractTermMonths:
+      - 0
+      - 24
+    usedByRequestTypes:
+      - rt_fixed_internet_with_hardware_order
+      - rt_internet_tv_bundle_order
+      - rt_retention_discount_request
+  - serviceId: svc_internet_fiber_1000
+    name: Optika Domů 1000
+    aliases:
+      - Optika 1000
+      - fiber 1000
+    allowedContractTermMonths:
+      - 0
+      - 24
+    usedByRequestTypes:
+      - rt_fixed_internet_with_hardware_order
+      - rt_internet_tv_bundle_order
+      - rt_retention_discount_request
+  - serviceId: svc_internet_dsl_100
+    name: Internet Domů 100 DSL
+    aliases:
+      - DSL 100
+      - internet 100 dsl
+    allowedContractTermMonths:
+      - 0
+      - 24
+    usedByRequestTypes:
+      - rt_fixed_internet_with_hardware_order
+      - rt_internet_tv_bundle_order
+      - rt_retention_discount_request
+  - serviceId: svc_internet_wireless_50
+    name: Internet Domů Bezdrát 50
+    aliases:
+      - Bezdrát 50
+      - wireless 50
+    allowedContractTermMonths:
+      - 0
+      - 24
+    usedByRequestTypes:
+      - rt_fixed_internet_with_hardware_order
+      - rt_internet_tv_bundle_order
+      - rt_retention_discount_request
+  - serviceId: svc_tv_basic
+    name: Televize Basic
+    aliases:
+      - TV Basic
+      - televize basic
+    allowedContractTermMonths:
+      - 0
+      - 24
+    usedByRequestTypes:
+      - rt_internet_tv_bundle_order
+      - rt_retention_discount_request
+  - serviceId: svc_tv_family
+    name: Televize Family
+    aliases:
+      - TV Family
+      - televize family
+    allowedContractTermMonths:
+      - 0
+      - 24
+    usedByRequestTypes:
+      - rt_internet_tv_bundle_order
+      - rt_retention_discount_request

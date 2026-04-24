@@ -122,7 +122,8 @@ The output file must use this structure:
 }
 ```
 
-The example above is valid JSON and shows the required structure. Generated files may contain different values, different record counts, and different modes, but they must preserve the same envelope and field names.
+The example above is valid JSON and shows the required structure. Generated files may contain different values,
+different record counts, and different modes, but they must preserve the same envelope and field names.
 
 ## Top-level fields
 
@@ -189,7 +190,8 @@ Rules:
 - `requestTypeId` must contain exactly one value.
 - It must be one known `rt_*` request type ID or `unclassifiable`.
 - If `requestTypeId` is a known `rt_*`, `unclassifiableReason` must be `null`.
-- If `requestTypeId` is `unclassifiable`, `unclassifiableReason` must be one of the reason IDs from `classification_targets.yaml`.
+- If `requestTypeId` is `unclassifiable`, `unclassifiableReason` must be one of the reason IDs from
+  `classification_targets.yaml`.
 
 ## `expectedExtractions`
 
@@ -227,7 +229,8 @@ For every expected extraction object:
 1. Compute the expected DTO field paths from `request_types.yaml` and the generated DTO object.
 2. Include every materialized field path in `materializedFieldPaths`.
 3. Include every intentionally absent field path in `intentionallyOmittedFieldPaths`.
-4. The union of `materializedFieldPaths` and `intentionallyOmittedFieldPaths` must cover all field paths of the expected DTO object.
+4. The union of `materializedFieldPaths` and `intentionallyOmittedFieldPaths` must cover all field paths of the expected
+   DTO object.
 5. A field path must not appear in both lists.
 6. `evidenceByFieldPath` keys must correspond to materialized field paths.
 7. For nested list values, use indexed paths such as `requestedServices[0].serviceId`.
@@ -249,4 +252,5 @@ For every expected extraction object:
 
 - Extraction evaluation compares `expectedExtractions[*].dto` and `missingFieldPaths`.
 - Classification evaluation compares `expectedClassification.requestTypeId` and optionally `unclassifiableReason`.
-- `evidence` and `generationParams` are for audit, debugging, and manual validation. They do not enter the primary score unless an additional dataset-quality check is implemented.
+- `evidence` and `generationParams` are for audit, debugging, and manual validation. They do not enter the primary score
+  unless an additional dataset-quality check is implemented.
