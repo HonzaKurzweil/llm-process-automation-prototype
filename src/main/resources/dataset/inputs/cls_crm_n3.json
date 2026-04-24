@@ -1,0 +1,309 @@
+{
+  "generatedAt": "2026-04-24",
+  "generationRunParams": {
+    "mode": "classification",
+    "requestTypeIds": [
+      "rt_new_mobile_order",
+      "rt_family_mobile_order",
+      "rt_fixed_internet_with_hardware_order",
+      "rt_internet_tv_bundle_order",
+      "rt_retention_discount_request"
+    ],
+    "channels": [
+      "crm_ticket"
+    ],
+    "noiseCount": 3,
+    "variantsPerCase": 1,
+    "outputPath": "src/main/resources/dataset/inputs/cls_crm_n3.json",
+    "scenarioKinds": [
+      "singleKnownExact",
+      "singleKnownPartial",
+      "singleKnownWithUnknownTail",
+      "multiKnownMixed",
+      "unknownOnly",
+      "ambiguousInsufficient"
+    ]
+  },
+  "records": [
+    {
+      "recordId": "cls_0001",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "shorthandInternal",
+        "irrelevantInfo",
+        "ambiguousWording"
+      ],
+      "generationParams": {
+        "requestTypeId": "rt_new_mobile_order",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "noiseCount": 3,
+        "variantIndex": 0
+      },
+      "inputText": "CRM | typ Objednávka samostatné mobilní služby | zák. Roman Beneš | tel. +420 605 996 341 | stav stávající zákazník | mail roman.benes@email.cz | služba 1× Mobil Start 5G; závazek 24 měsíců; bez přenosu čísla; bez další slevy | Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne. | Formulace je místy nejasná, ale hlavní požadavek je uveden níže.",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "služba 1× Mobil Start 5G; závazek 24 měsíců; bez přenosu čísla; bez další slevy"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne.",
+          "Formulace je místy nejasná, ale hlavní požadavek je uveden níže."
+        ],
+        "generationNote": "crm_ticket classification scenario singleKnownExact."
+      }
+    },
+    {
+      "recordId": "cls_0002",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "shorthandInternal",
+        "irrelevantInfo",
+        "ambiguousWording"
+      ],
+      "generationParams": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "noiseCount": 3,
+        "variantIndex": 0
+      },
+      "inputText": "CRM | typ Objednávka pevného internetu s hardwarem | zák. Jana Vacková | tel. +420 739 411 270 | stav nový zákazník | mail jana.vackova@email.cz | pevný internet 1× Internet Domů 100 DSL; instalační adresa zatím neuvedena; produkty 1× Wi‑Fi Router Pro, 1× Mesh Wi‑Fi jednotka; závazek bez závazku | Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne. | Formulace je místy nejasná, ale hlavní požadavek je uveden níže.",
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "pevný internet 1× Internet Domů 100 DSL; instalační adresa zatím neuvedena; produkty 1× Wi‑Fi Router Pro, 1× Mesh Wi‑Fi jednotka; závazek bez závazku"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne.",
+          "Formulace je místy nejasná, ale hlavní požadavek je uveden níže."
+        ],
+        "generationNote": "crm_ticket classification scenario singleKnownPartial."
+      }
+    },
+    {
+      "recordId": "cls_0003",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "unknownTailSnippet",
+        "shorthandInternal",
+        "irrelevantInfo"
+      ],
+      "generationParams": {
+        "requestTypeId": "rt_retention_discount_request",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "scenarioKind": "singleKnownWithUnknownTail",
+        "completenessMode": null,
+        "noiseCount": 3,
+        "variantIndex": 0
+      },
+      "inputText": "CRM | typ Požadavek na retenční slevu | zák. Klára Horáková | tel. +420 731 884 219 | stav stávající zákazník | retenční případ; aktuální služba Optika Domů 300; cílová služba Optika Domů 300; požadovaná sleva Retenční sleva 15 %; důvod: zákazník zvažuje odchod kvůli ceně; konkurenční nabídka: konkurence nabízí podobnou službu o 150 Kč levněji | Mimo hlavní požadavek: zákazník zároveň žádá o vystavení duplikátu staré faktury. | Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "knownRequestTypeWithUnknownTail"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "retenční případ; aktuální služba Optika Domů 300; cílová služba Optika Domů 300; požadovaná sleva Retenční sleva 15 %; důvod: zákazník zvažuje odchod kvůli ceně; konkurenční nabídka: konkurence nabízí podobnou službu o 150 Kč levněji"
+            ]
+          },
+          {
+            "requestTypeId": "unclassifiable",
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "zákazník zároveň žádá o vystavení duplikátu staré faktury"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne.",
+          "zákazník zároveň žádá o vystavení duplikátu staré faktury"
+        ],
+        "generationNote": "crm_ticket classification scenario singleKnownWithUnknownTail."
+      }
+    },
+    {
+      "recordId": "cls_0004",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "shorthandInternal",
+        "irrelevantInfo",
+        "ambiguousWording"
+      ],
+      "generationParams": {
+        "requestTypeId": null,
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order",
+          "rt_retention_discount_request"
+        ],
+        "scenarioKind": "multiKnownMixed",
+        "completenessMode": null,
+        "noiseCount": 3,
+        "variantIndex": 0
+      },
+      "inputText": "CRM | Požadavek 1: typ Objednávka pevného internetu s hardwarem | zák. Petr Urban | tel. +420 776 220 115 | stav stávající zákazník | mail petr.urban@atlas.cz | pevný internet 1× Internet Domů 100 DSL; instalační adresa Plzeň, Bolevec, Gerská 14; produkty 1× Wi‑Fi Router Pro, 1× Mesh Wi‑Fi jednotka; závazek bez závazku | Druhý samostatný požadavek: CRM ticket | Požadavek 2: typ požadavku: Požadavek na retenční slevu | zákazník Petr Urban | telefon +420 776 220 115 | stávající zákazník | retenční případ; aktuální služba Optika Domů 300; cílová služba Optika Domů 300; požadovaná sleva Retenční sleva 15 %; důvod: zákazník dlouhodobě řeší nespokojenost s cenou; konkurenční nabídka: konkurence nabízí neomezený tarif se slevou na 6 měsíců | Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne. | Formulace je místy nejasná, ale hlavní požadavek je uveden níže.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "multipleKnownRequestTypesPresent"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "pevný internet 1× Internet Domů 100 DSL; instalační adresa Plzeň, Bolevec, Gerská 14; produkty 1× Wi‑Fi Router Pro, 1× Mesh Wi‑Fi jednotka; závazek bez závazku"
+            ]
+          },
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "secondaryKnown",
+            "evidenceSnippets": [
+              "retenční případ; aktuální služba Optika Domů 300; cílová služba Optika Domů 300; požadovaná sleva Retenční sleva 15 %; důvod: zákazník dlouhodobě řeší nespokojenost s cenou; konkurenční nabídka: konkurence nabízí neomezený tarif se slevou na 6 měsíců"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne.",
+          "Formulace je místy nejasná, ale hlavní požadavek je uveden níže."
+        ],
+        "generationNote": "crm_ticket classification scenario multiKnownMixed."
+      }
+    },
+    {
+      "recordId": "cls_0005",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "unknownTailSnippet",
+        "shorthandInternal",
+        "irrelevantInfo"
+      ],
+      "generationParams": {
+        "requestTypeId": null,
+        "requestTypeIds": [],
+        "scenarioKind": "unknownOnly",
+        "completenessMode": null,
+        "noiseCount": 3,
+        "variantIndex": 0
+      },
+      "inputText": "CRM ticket | mimo katalog známých požadavků | v závěru je navíc prosba o výměnu poškozené SIM karty | Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "unknownOrOutOfScope"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "unclassifiable",
+            "segmentRole": "unknownOnly",
+            "evidenceSnippets": [
+              "v závěru je navíc prosba o výměnu poškozené SIM karty"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne."
+        ],
+        "generationNote": "crm_ticket classification scenario unknownOnly."
+      }
+    },
+    {
+      "recordId": "cls_0006",
+      "mode": "classification",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "shorthandInternal",
+        "irrelevantInfo",
+        "ambiguousWording"
+      ],
+      "generationParams": {
+        "requestTypeId": null,
+        "requestTypeIds": [],
+        "scenarioKind": "ambiguousInsufficient",
+        "completenessMode": null,
+        "noiseCount": 3,
+        "variantIndex": 0
+      },
+      "inputText": "CRM ticket | neurčité zadání | Zákazník chce něco změnit u služeb, ale neuvedl zda jde o novou objednávku, balíček, internet, mobil ani retenci. | Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne. | Formulace je místy nejasná, ale hlavní požadavek je uveden níže.",
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "ambiguousOrInsufficientSignal"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "unclassifiable",
+            "segmentRole": "ambiguousInsufficient",
+            "evidenceSnippets": [
+              "Zákazník chce něco změnit u služeb, ale neuvedl zda jde o novou objednávku, balíček, internet, mobil ani retenci."
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Poznámka mimo požadavek: zákazník preferuje kontakt odpoledne.",
+          "Formulace je místy nejasná, ale hlavní požadavek je uveden níže."
+        ],
+        "generationNote": "crm_ticket classification scenario ambiguousInsufficient."
+      }
+    }
+  ]
+}

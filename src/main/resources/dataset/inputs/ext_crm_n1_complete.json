@@ -1,0 +1,841 @@
+{
+  "generatedAt": "2026-04-24",
+  "generationRunParams": {
+    "mode": "extraction",
+    "requestTypeIds": [
+      "rt_new_mobile_order",
+      "rt_family_mobile_order",
+      "rt_fixed_internet_with_hardware_order",
+      "rt_internet_tv_bundle_order",
+      "rt_retention_discount_request"
+    ],
+    "channels": [
+      "crm_ticket"
+    ],
+    "noiseCount": 1,
+    "variantsPerCase": 1,
+    "outputPath": "src/main/resources/dataset/inputs/ext_crm_n1_complete.json",
+    "completenessMode": "complete"
+  },
+  "records": [
+    {
+      "recordId": "ext_0001",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "generationParams": {
+        "requestTypeId": "rt_new_mobile_order",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "scenarioKind": null,
+        "completenessMode": "complete",
+        "noiseCount": 1,
+        "variantIndex": 0
+      },
+      "inputText": "CRM | typ Objednávka samostatné mobilní služby | zák. Aleš Konečný | tel. +420 720 991 774 | stav nový zákazník | mail ales.konecny@seznam.cz | služba 1× Mobil Start 5G; závazek 24 měsíců; bez přenosu čísla; bez další slevy",
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_new_mobile_order",
+          "dto": {
+            "customerStatus": "new",
+            "customerName": "Aleš Konečný",
+            "contactPhone": "+420 720 991 774",
+            "contactEmail": "ales.konecny@seznam.cz",
+            "requestedServices": [
+              {
+                "serviceId": "svc_mobile_start_5g",
+                "quantity": 1
+              }
+            ],
+            "contractTermMonths": 24,
+            "portingRequested": false,
+            "portedNumbers": [],
+            "requestedDiscounts": []
+          },
+          "missingFieldPaths": []
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "služba 1× Mobil Start 5G; závazek 24 měsíců; bez přenosu čísla; bez další slevy"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "contactEmail",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "contractTermMonths",
+          "portingRequested",
+          "portedNumbers",
+          "requestedDiscounts"
+        ],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "new",
+            "evidenceSnippets": [
+              "nový zákazník"
+            ]
+          },
+          "customerName": {
+            "normalizedValue": "Aleš Konečný",
+            "evidenceSnippets": [
+              "Aleš Konečný"
+            ]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 720 991 774",
+            "evidenceSnippets": [
+              "+420 720 991 774"
+            ]
+          },
+          "contactEmail": {
+            "normalizedValue": "ales.konecny@seznam.cz",
+            "evidenceSnippets": [
+              "ales.konecny@seznam.cz"
+            ]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_mobile_start_5g",
+            "evidenceSnippets": [
+              "Mobil Start 5G"
+            ]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": [
+              "1× Mobil Start 5G"
+            ]
+          },
+          "contractTermMonths": {
+            "normalizedValue": 24,
+            "evidenceSnippets": [
+              "24 měsíců"
+            ]
+          },
+          "portingRequested": {
+            "normalizedValue": false,
+            "evidenceSnippets": [
+              "bez přenosu čísla"
+            ]
+          },
+          "portedNumbers": {
+            "normalizedValue": [],
+            "evidenceSnippets": [
+              "bez přenosu čísla"
+            ]
+          },
+          "requestedDiscounts": {
+            "normalizedValue": [],
+            "evidenceSnippets": [
+              "bez další slevy"
+            ]
+          }
+        },
+        "distractorSnippets": [],
+        "generationNote": "crm_ticket extraction case generated from canonical request type rt_new_mobile_order."
+      }
+    },
+    {
+      "recordId": "ext_0002",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "generationParams": {
+        "requestTypeId": "rt_family_mobile_order",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "scenarioKind": null,
+        "completenessMode": "complete",
+        "noiseCount": 1,
+        "variantIndex": 0
+      },
+      "inputText": "CRM | typ Rodinná mobilní objednávka | zák. Klára Horáková | tel. +420 731 884 219 | stav stávající zákazník | mail klara.horakova@volny.cz | rodinný tarif 3× Mobil Rodina Plus; počet linek 3; linky: hlavní linka Mobil Rodina Plus s přenosem; druhá linka Mobil Rodina Plus s přenosem; třetí linka Mobil Rodina Plus bez přenosu; portovaná čísla +420 704 552 118 od Vodafone, +420 734 220 111 od T-Mobile; závazek 24 měsíců; slevy Rodinná linka -100 Kč, Přenos čísla 200 Kč na 6 měsíců",
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_family_mobile_order",
+          "dto": {
+            "customerStatus": "existing",
+            "customerName": "Klára Horáková",
+            "contactPhone": "+420 731 884 219",
+            "contactEmail": "klara.horakova@volny.cz",
+            "requestedServices": [
+              {
+                "serviceId": "svc_mobile_family_plus",
+                "quantity": 3
+              }
+            ],
+            "mobileLinesCount": 3,
+            "mobileLines": [
+              {
+                "label": "hlavní linka",
+                "planServiceId": "svc_mobile_family_plus",
+                "portingRequested": true
+              },
+              {
+                "label": "druhá linka",
+                "planServiceId": "svc_mobile_family_plus",
+                "portingRequested": true
+              },
+              {
+                "label": "třetí linka",
+                "planServiceId": "svc_mobile_family_plus",
+                "portingRequested": false
+              }
+            ],
+            "portedNumbers": [
+              {
+                "number": "+420 704 552 118",
+                "donorOperator": "Vodafone"
+              },
+              {
+                "number": "+420 734 220 111",
+                "donorOperator": "T-Mobile"
+              }
+            ],
+            "contractTermMonths": 24,
+            "requestedDiscounts": [
+              {
+                "discountId": "disc_family_line_100"
+              },
+              {
+                "discountId": "disc_porting_mobile_200"
+              }
+            ]
+          },
+          "missingFieldPaths": []
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "rodinný tarif 3× Mobil Rodina Plus; počet linek 3; linky: hlavní linka Mobil Rodina Plus s přenosem; druhá linka Mobil Rodina Plus s přenosem; třetí linka Mobil Rodina Plus bez přenosu; portovaná čísla +420 704 552 118 od Vodafone, +420 734 220 111 od T-Mobile; závazek 24 měsíců; slevy Rodinná linka -100 Kč, Přenos čísla 200 Kč na 6 měsíců"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "contactEmail",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "mobileLinesCount",
+          "mobileLines[0].label",
+          "mobileLines[0].planServiceId",
+          "mobileLines[0].portingRequested",
+          "mobileLines[1].label",
+          "mobileLines[1].planServiceId",
+          "mobileLines[1].portingRequested",
+          "mobileLines[2].label",
+          "mobileLines[2].planServiceId",
+          "mobileLines[2].portingRequested",
+          "portedNumbers[0].number",
+          "portedNumbers[0].donorOperator",
+          "portedNumbers[1].number",
+          "portedNumbers[1].donorOperator",
+          "contractTermMonths",
+          "requestedDiscounts[0].discountId",
+          "requestedDiscounts[1].discountId"
+        ],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "existing",
+            "evidenceSnippets": [
+              "stávající zákazník"
+            ]
+          },
+          "customerName": {
+            "normalizedValue": "Klára Horáková",
+            "evidenceSnippets": [
+              "Klára Horáková"
+            ]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 731 884 219",
+            "evidenceSnippets": [
+              "+420 731 884 219"
+            ]
+          },
+          "contactEmail": {
+            "normalizedValue": "klara.horakova@volny.cz",
+            "evidenceSnippets": [
+              "klara.horakova@volny.cz"
+            ]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_mobile_family_plus",
+            "evidenceSnippets": [
+              "Mobil Rodina Plus"
+            ]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 3,
+            "evidenceSnippets": [
+              "3× Mobil Rodina Plus"
+            ]
+          },
+          "mobileLinesCount": {
+            "normalizedValue": 3,
+            "evidenceSnippets": [
+              "3"
+            ]
+          },
+          "mobileLines[0].label": {
+            "normalizedValue": "hlavní linka",
+            "evidenceSnippets": [
+              "hlavní linka"
+            ]
+          },
+          "mobileLines[0].planServiceId": {
+            "normalizedValue": "svc_mobile_family_plus",
+            "evidenceSnippets": [
+              "Mobil Rodina Plus"
+            ]
+          },
+          "mobileLines[0].portingRequested": {
+            "normalizedValue": true,
+            "evidenceSnippets": [
+              "s přenosem"
+            ]
+          },
+          "mobileLines[1].label": {
+            "normalizedValue": "druhá linka",
+            "evidenceSnippets": [
+              "druhá linka"
+            ]
+          },
+          "mobileLines[1].planServiceId": {
+            "normalizedValue": "svc_mobile_family_plus",
+            "evidenceSnippets": [
+              "Mobil Rodina Plus"
+            ]
+          },
+          "mobileLines[1].portingRequested": {
+            "normalizedValue": true,
+            "evidenceSnippets": [
+              "s přenosem"
+            ]
+          },
+          "mobileLines[2].label": {
+            "normalizedValue": "třetí linka",
+            "evidenceSnippets": [
+              "třetí linka"
+            ]
+          },
+          "mobileLines[2].planServiceId": {
+            "normalizedValue": "svc_mobile_family_plus",
+            "evidenceSnippets": [
+              "Mobil Rodina Plus"
+            ]
+          },
+          "mobileLines[2].portingRequested": {
+            "normalizedValue": false,
+            "evidenceSnippets": [
+              "bez přenosu"
+            ]
+          },
+          "portedNumbers[0].number": {
+            "normalizedValue": "+420 704 552 118",
+            "evidenceSnippets": [
+              "+420 704 552 118"
+            ]
+          },
+          "portedNumbers[0].donorOperator": {
+            "normalizedValue": "Vodafone",
+            "evidenceSnippets": [
+              "Vodafone"
+            ]
+          },
+          "portedNumbers[1].number": {
+            "normalizedValue": "+420 734 220 111",
+            "evidenceSnippets": [
+              "+420 734 220 111"
+            ]
+          },
+          "portedNumbers[1].donorOperator": {
+            "normalizedValue": "T-Mobile",
+            "evidenceSnippets": [
+              "T-Mobile"
+            ]
+          },
+          "contractTermMonths": {
+            "normalizedValue": 24,
+            "evidenceSnippets": [
+              "24 měsíců"
+            ]
+          },
+          "requestedDiscounts[0].discountId": {
+            "normalizedValue": "disc_family_line_100",
+            "evidenceSnippets": [
+              "Rodinná linka -100 Kč"
+            ]
+          },
+          "requestedDiscounts[1].discountId": {
+            "normalizedValue": "disc_porting_mobile_200",
+            "evidenceSnippets": [
+              "Přenos čísla 200 Kč na 6 měsíců"
+            ]
+          }
+        },
+        "distractorSnippets": [],
+        "generationNote": "crm_ticket extraction case generated from canonical request type rt_family_mobile_order."
+      }
+    },
+    {
+      "recordId": "ext_0003",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "generationParams": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "scenarioKind": null,
+        "completenessMode": "complete",
+        "noiseCount": 1,
+        "variantIndex": 0
+      },
+      "inputText": "CRM | typ Objednávka pevného internetu s hardwarem | zák. Petr Urban | tel. +420 776 220 115 | stav stávající zákazník | mail petr.urban@atlas.cz | pevný internet 1× Optika Domů 300; instalační adresa Praha 9, Vysočany, Sokolovská 188; produkty 1× Wi‑Fi Router Standard; závazek 24 měsíců",
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_fixed_internet_with_hardware_order",
+          "dto": {
+            "customerStatus": "existing",
+            "customerName": "Petr Urban",
+            "contactPhone": "+420 776 220 115",
+            "contactEmail": "petr.urban@atlas.cz",
+            "installationAddress": "Praha 9, Vysočany, Sokolovská 188",
+            "requestedServices": [
+              {
+                "serviceId": "svc_internet_fiber_300",
+                "quantity": 1
+              }
+            ],
+            "requestedProducts": [
+              {
+                "productId": "prod_router_standard",
+                "quantity": 1
+              }
+            ],
+            "contractTermMonths": 24
+          },
+          "missingFieldPaths": []
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "pevný internet 1× Optika Domů 300; instalační adresa Praha 9, Vysočany, Sokolovská 188; produkty 1× Wi‑Fi Router Standard; závazek 24 měsíců"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "contactEmail",
+          "installationAddress",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "requestedProducts[0].productId",
+          "requestedProducts[0].quantity",
+          "contractTermMonths"
+        ],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "existing",
+            "evidenceSnippets": [
+              "stávající zákazník"
+            ]
+          },
+          "customerName": {
+            "normalizedValue": "Petr Urban",
+            "evidenceSnippets": [
+              "Petr Urban"
+            ]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 776 220 115",
+            "evidenceSnippets": [
+              "+420 776 220 115"
+            ]
+          },
+          "contactEmail": {
+            "normalizedValue": "petr.urban@atlas.cz",
+            "evidenceSnippets": [
+              "petr.urban@atlas.cz"
+            ]
+          },
+          "installationAddress": {
+            "normalizedValue": "Praha 9, Vysočany, Sokolovská 188",
+            "evidenceSnippets": [
+              "Praha 9, Vysočany, Sokolovská 188"
+            ]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_internet_fiber_300",
+            "evidenceSnippets": [
+              "Optika Domů 300"
+            ]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": [
+              "1× Optika Domů 300"
+            ]
+          },
+          "requestedProducts[0].productId": {
+            "normalizedValue": "prod_router_standard",
+            "evidenceSnippets": [
+              "Wi‑Fi Router Standard"
+            ]
+          },
+          "requestedProducts[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": [
+              "1× Wi‑Fi Router Standard"
+            ]
+          },
+          "contractTermMonths": {
+            "normalizedValue": 24,
+            "evidenceSnippets": [
+              "24 měsíců"
+            ]
+          }
+        },
+        "distractorSnippets": [],
+        "generationNote": "crm_ticket extraction case generated from canonical request type rt_fixed_internet_with_hardware_order."
+      }
+    },
+    {
+      "recordId": "ext_0004",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "generationParams": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "scenarioKind": null,
+        "completenessMode": "complete",
+        "noiseCount": 1,
+        "variantIndex": 0
+      },
+      "inputText": "CRM | typ Objednávka balíčku internet + televize | zák. Lucie Dvořáková | tel. +420 603 515 902 | stav stávající zákazník | mail lucie.dvorakova@post.cz | balíček internet + TV: 1× Internet Domů Bezdrát 50, 1× Televize Basic; instalační adresa Brno, Královo Pole, Purkyňova 97; produkty 1× Wi‑Fi Router Standard; závazek bez závazku; bez další slevy",
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_internet_tv_bundle_order",
+          "dto": {
+            "customerStatus": "existing",
+            "customerName": "Lucie Dvořáková",
+            "contactPhone": "+420 603 515 902",
+            "contactEmail": "lucie.dvorakova@post.cz",
+            "installationAddress": "Brno, Královo Pole, Purkyňova 97",
+            "requestedServices": [
+              {
+                "serviceId": "svc_internet_wireless_50",
+                "quantity": 1
+              },
+              {
+                "serviceId": "svc_tv_basic",
+                "quantity": 1
+              }
+            ],
+            "requestedProducts": [
+              {
+                "productId": "prod_router_standard",
+                "quantity": 1
+              }
+            ],
+            "contractTermMonths": 0,
+            "requestedDiscounts": []
+          },
+          "missingFieldPaths": []
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "balíček internet + TV: 1× Internet Domů Bezdrát 50, 1× Televize Basic; instalační adresa Brno, Královo Pole, Purkyňova 97; produkty 1× Wi‑Fi Router Standard; závazek bez závazku; bez další slevy"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "contactEmail",
+          "installationAddress",
+          "requestedServices[0].serviceId",
+          "requestedServices[0].quantity",
+          "requestedServices[1].serviceId",
+          "requestedServices[1].quantity",
+          "requestedProducts[0].productId",
+          "requestedProducts[0].quantity",
+          "contractTermMonths",
+          "requestedDiscounts"
+        ],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "existing",
+            "evidenceSnippets": [
+              "stávající zákazník"
+            ]
+          },
+          "customerName": {
+            "normalizedValue": "Lucie Dvořáková",
+            "evidenceSnippets": [
+              "Lucie Dvořáková"
+            ]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 603 515 902",
+            "evidenceSnippets": [
+              "+420 603 515 902"
+            ]
+          },
+          "contactEmail": {
+            "normalizedValue": "lucie.dvorakova@post.cz",
+            "evidenceSnippets": [
+              "lucie.dvorakova@post.cz"
+            ]
+          },
+          "installationAddress": {
+            "normalizedValue": "Brno, Královo Pole, Purkyňova 97",
+            "evidenceSnippets": [
+              "Brno, Královo Pole, Purkyňova 97"
+            ]
+          },
+          "requestedServices[0].serviceId": {
+            "normalizedValue": "svc_internet_wireless_50",
+            "evidenceSnippets": [
+              "Internet Domů Bezdrát 50"
+            ]
+          },
+          "requestedServices[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": [
+              "1× Internet Domů Bezdrát 50"
+            ]
+          },
+          "requestedServices[1].serviceId": {
+            "normalizedValue": "svc_tv_basic",
+            "evidenceSnippets": [
+              "Televize Basic"
+            ]
+          },
+          "requestedServices[1].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": [
+              "1× Televize Basic"
+            ]
+          },
+          "requestedProducts[0].productId": {
+            "normalizedValue": "prod_router_standard",
+            "evidenceSnippets": [
+              "Wi‑Fi Router Standard"
+            ]
+          },
+          "requestedProducts[0].quantity": {
+            "normalizedValue": 1,
+            "evidenceSnippets": [
+              "1× Wi‑Fi Router Standard"
+            ]
+          },
+          "contractTermMonths": {
+            "normalizedValue": 0,
+            "evidenceSnippets": [
+              "bez závazku"
+            ]
+          },
+          "requestedDiscounts": {
+            "normalizedValue": [],
+            "evidenceSnippets": [
+              "bez další slevy"
+            ]
+          }
+        },
+        "distractorSnippets": [],
+        "generationNote": "crm_ticket extraction case generated from canonical request type rt_internet_tv_bundle_order."
+      }
+    },
+    {
+      "recordId": "ext_0005",
+      "mode": "extraction",
+      "channel": "crm_ticket",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "generationParams": {
+        "requestTypeId": "rt_retention_discount_request",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "scenarioKind": null,
+        "completenessMode": "complete",
+        "noiseCount": 1,
+        "variantIndex": 0
+      },
+      "inputText": "CRM | typ Požadavek na retenční slevu | zák. Lucie Dvořáková | tel. +420 603 515 902 | stav stávající zákazník | retenční případ; aktuální služba Optika Domů 300; cílová služba Optika Domů 300; požadovaná sleva Retenční sleva 15 %; důvod: zákazník dlouhodobě řeší nespokojenost s cenou; konkurenční nabídka: konkurence nabízí neomezený tarif se slevou na 6 měsíců",
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [
+        {
+          "requestTypeId": "rt_retention_discount_request",
+          "dto": {
+            "customerStatus": "existing",
+            "customerName": "Lucie Dvořáková",
+            "contactPhone": "+420 603 515 902",
+            "retentionCase": true,
+            "currentServices": [
+              {
+                "serviceId": "svc_internet_fiber_300"
+              }
+            ],
+            "targetServiceId": "svc_internet_fiber_300",
+            "requestedDiscounts": [
+              {
+                "discountId": "disc_retention_15_existing"
+              }
+            ],
+            "churnReason": "zákazník dlouhodobě řeší nespokojenost s cenou",
+            "competitorOffer": "konkurence nabízí neomezený tarif se slevou na 6 měsíců"
+          },
+          "missingFieldPaths": []
+        }
+      ],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "retenční případ; aktuální služba Optika Domů 300; cílová služba Optika Domů 300; požadovaná sleva Retenční sleva 15 %; důvod: zákazník dlouhodobě řeší nespokojenost s cenou; konkurenční nabídka: konkurence nabízí neomezený tarif se slevou na 6 měsíců"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [
+          "customerStatus",
+          "customerName",
+          "contactPhone",
+          "retentionCase",
+          "currentServices[0].serviceId",
+          "targetServiceId",
+          "requestedDiscounts[0].discountId",
+          "churnReason",
+          "competitorOffer"
+        ],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {
+          "customerStatus": {
+            "normalizedValue": "existing",
+            "evidenceSnippets": [
+              "stávající zákazník"
+            ]
+          },
+          "customerName": {
+            "normalizedValue": "Lucie Dvořáková",
+            "evidenceSnippets": [
+              "Lucie Dvořáková"
+            ]
+          },
+          "contactPhone": {
+            "normalizedValue": "+420 603 515 902",
+            "evidenceSnippets": [
+              "+420 603 515 902"
+            ]
+          },
+          "retentionCase": {
+            "normalizedValue": true,
+            "evidenceSnippets": [
+              "retenční případ"
+            ]
+          },
+          "currentServices[0].serviceId": {
+            "normalizedValue": "svc_internet_fiber_300",
+            "evidenceSnippets": [
+              "Optika Domů 300"
+            ]
+          },
+          "targetServiceId": {
+            "normalizedValue": "svc_internet_fiber_300",
+            "evidenceSnippets": [
+              "Optika Domů 300"
+            ]
+          },
+          "requestedDiscounts[0].discountId": {
+            "normalizedValue": "disc_retention_15_existing",
+            "evidenceSnippets": [
+              "Retenční sleva 15 %"
+            ]
+          },
+          "churnReason": {
+            "normalizedValue": "zákazník dlouhodobě řeší nespokojenost s cenou",
+            "evidenceSnippets": [
+              "zákazník dlouhodobě řeší nespokojenost s cenou"
+            ]
+          },
+          "competitorOffer": {
+            "normalizedValue": "konkurence nabízí neomezený tarif se slevou na 6 měsíců",
+            "evidenceSnippets": [
+              "konkurence nabízí neomezený tarif se slevou na 6 měsíců"
+            ]
+          }
+        },
+        "distractorSnippets": [],
+        "generationNote": "crm_ticket extraction case generated from canonical request type rt_retention_discount_request."
+      }
+    }
+  ]
+}
