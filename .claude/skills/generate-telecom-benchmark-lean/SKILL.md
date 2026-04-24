@@ -23,7 +23,7 @@ Generate benchmark records directly from:
 - `domain/request_types.yaml`
 - `dataset/generator_helpers/classification_targets.yaml`
 - `dataset/generator_helpers/entity_pools.yaml`
-- `dataset/generator_helpers/channel_profiles.yaml`
+- `dataset/generator_helpers/channels.yaml`
 - `dataset/generator_helpers/noise_profiles.yaml`
 
 Output directory default: `src/main/resources/dataset/inputs/`
@@ -115,7 +115,7 @@ Mode-specific:
    - classification: scenario kind × request type count
    - combined: scenario kind × request type count × scenario templates
 4. Materialize values from entity pools.
-5. Render text according to `channel_profiles.yaml`.
+5. Render text according to `channels.yaml`.
 6. Apply noise: randomly select `noiseCount` distinct tags from `noiseTags` (only those whose `appliesTo` includes the current channel); apply them and record which were used. Apply optional incompleteness.
 7. Build the common top-level envelope:
    - `generatedAt`
