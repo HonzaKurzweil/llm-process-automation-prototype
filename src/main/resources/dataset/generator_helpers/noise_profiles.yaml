@@ -1,15 +1,5 @@
-version: 2.1-final-camelCase
-purpose: Jednodušší noise model pro generování textových variant bez odděleného channelStyle.
-noiseProfiles:
-- noiseProfile: clean
-  description: Bez šumu, pouze přirozený styl kanálu.
-  maxNoiseTags: 0
-- noiseProfile: light
-  description: 1 až 2 lehké rušivé prvky bez změny základního významu.
-  maxNoiseTags: 2
-- noiseProfile: medium
-  description: 2 až 3 rušivé prvky, včetně částečné neúplnosti nebo nejasnosti.
-  maxNoiseTags: 3
+version: 3.0
+purpose: Noise model pro generování textových variant. Počet rušivých prvků se zadává číselně; konkrétní tagy se vybírají náhodně ze seznamu noiseTags. Maximální povolená hodnota noiseCount se rovná celkovému počtu noiseTags.
 noiseTags:
 - noiseTag: shorthandInternal
   appliesTo:

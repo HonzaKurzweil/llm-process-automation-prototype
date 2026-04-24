@@ -2,7 +2,7 @@
 name: generate-telecom-benchmark-final
 description: Generate Czech telecom benchmark datasets from request types, domain catalogs, entity pools, channel profiles, and noise profiles.
 when_to_use: Use this skill when the user asks to generate benchmark datasets for extraction, classification, or combined evaluation in the telecom prototype.
-argument-hint: "mode=<extraction|classification|combined> requestTypeIds=<id|all> channels=crm_ticket,broker_email,call_transcript noiseProfile=<clean|light|medium> variantsPerCase=1 outputPath=<path>"
+argument-hint: "mode=<extraction|classification|combined> requestTypeIds=<id|all> channels=crm_ticket,broker_email,call_transcript noiseCount=<0..N> variantsPerCase=1 outputPath=<path>"
 disable-model-invocation: true
 allowed-tools:
   - Read
@@ -88,7 +88,7 @@ Optional:
 
 - `requestTypeIds`: comma-separated list or `all`
 - `channels`: comma-separated subset of `crm_ticket`, `broker_email`, `call_transcript`
-- `noiseProfile`: `clean`, `light`, or `medium`
+- `noiseCount`: integer `0` to `N`, where `N` is the total number of `noiseTags` entries in `noise_profiles.yaml`; tags are chosen randomly; default `0`
 - `variantsPerCase`: integer, default `1`
 - `outputPath`: explicit output file path
 
@@ -116,7 +116,7 @@ Mode-specific:
    - combined: scenario kind × request type count × scenario templates
 4. Materialize values from entity pools.
 5. Render text according to `channel_profiles.yaml`.
-6. Apply requested noise and optional incompleteness.
+6. Apply noise: randomly select `noiseCount` distinct tags from `noiseTags` (only those whose `appliesTo` includes the current channel); apply them and record which were used. Apply optional incompleteness.
 7. Build the common top-level envelope:
    - `generatedAt`
    - `generationRunParams`
