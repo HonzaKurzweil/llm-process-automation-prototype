@@ -28,13 +28,6 @@ noiseTags:
   - call_transcript
   effect: surfaceOnly
   description: Vedlejší poznámka, která nemění očekávaný výstup.
-- noiseTag: partialOmission
-  appliesTo:
-  - crm_ticket
-  - broker_email
-  - call_transcript
-  effect: reducesCompleteness
-  description: Některé požadované údaje nejsou ve vstupu explicitně řečeny.
 - noiseTag: ambiguousWording
   appliesTo:
   - crm_ticket
@@ -49,3 +42,9 @@ noiseTags:
   - crm_ticket
   effect: classificationDifficulty
   description: Přidaný mimo-scope požadavek pro unclassifiable scénáře.
+- noiseTag: typosAndMisspellings
+  appliesTo:
+  - crm_ticket
+  - broker_email
+  effect: surfaceOnly
+  description: Překlepy a pravopisné chyby, které nemění sémantiku požadavku.
