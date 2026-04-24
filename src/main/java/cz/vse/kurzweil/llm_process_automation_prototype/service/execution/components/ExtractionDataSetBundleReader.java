@@ -1,6 +1,8 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ExtractionRecord;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -18,11 +20,19 @@ public class ExtractionDataSetBundleReader {
 
     public List<ExtractionRecord> read(Path inputFile) {
         try {
-            var listType = objectMapper.getTypeFactory()
+            JsonNode root = objectMapper.readTree(inputFile.toFile());
+            CollectionType listType = objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, ExtractionRecord.class);
-            List<ExtractionRecord> records = objectMapper.readValue(inputFile.toFile(), listType);
-            log.debug("Loaded {} records from {}", records.size(), inputFile.getFileName());
-            return records;
+
+            JsonNode recordsNode = root.get("records");
+            if (recordsNode != null && recordsNode.isArray()) {
+                List<ExtractionRecord> records = objectMapper.convertValue(recordsNode, listType);
+                log.debug("Loaded {} records from {} (wrapped format)", records.size(), inputFile.getFileName());
+                return records;
+            }
+
+            throw new IllegalArgumentException(
+                    "Dataset file has neither a top-level array nor a 'records' field: " + inputFile);
         } catch (IOException e) {
             throw new UncheckedIOException("Failed to read extraction dataset: " + inputFile, e);
         }
