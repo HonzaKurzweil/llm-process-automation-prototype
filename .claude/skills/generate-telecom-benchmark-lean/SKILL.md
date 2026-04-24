@@ -91,8 +91,6 @@ Optional:
 - `noiseProfile`: `clean`, `light`, or `medium`
 - `variantsPerCase`: integer, default `1`
 - `outputPath`: explicit output file path
-- `overwrite`: `true` or `false`, default `false`
-- `dryRun`: `true` or `false`, default `false`
 
 Mode-specific:
 
@@ -127,7 +125,6 @@ Mode-specific:
    - `expectedClassification`
    - `expectedExtractions`
    - `evidence`
-9. Write the dataset unless `dryRun=true`.
 
 ## Hard constraints
 
