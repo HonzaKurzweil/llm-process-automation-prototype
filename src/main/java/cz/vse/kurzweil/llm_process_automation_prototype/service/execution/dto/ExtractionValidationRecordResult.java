@@ -20,6 +20,8 @@ public record ExtractionValidationRecordResult(
         List<FieldDifference> differences,
         JsonNode expectedDto,
         JsonNode actualDto,
+        int promptTokens,
+        int completionTokens,
         String errorMessage
 ) {
     public static ExtractionValidationRecordResult failureWithoutInvocation(
@@ -34,7 +36,7 @@ public record ExtractionValidationRecordResult(
         return new ExtractionValidationRecordResult(
                 recordId, requestTypeId, channel, defaultList(noiseTags),
                 promptVariant, modelId,
-                false, false, List.of(), 0, 0, 0.0d, List.of(), null, null, errorMessage
+                false, false, List.of(), 0, 0, 0.0d, List.of(), null, null, 0, 0, errorMessage
         );
     }
 
@@ -52,7 +54,7 @@ public record ExtractionValidationRecordResult(
         return new ExtractionValidationRecordResult(
                 recordId, requestTypeId, channel, defaultList(noiseTags),
                 promptVariant, modelId,
-                false, false, defaultList(missingFieldPaths), 0, 0, 0.0d, List.of(), expectedDto, null, errorMessage
+                false, false, defaultList(missingFieldPaths), 0, 0, 0.0d, List.of(), expectedDto, null, 0, 0, errorMessage
         );
     }
 

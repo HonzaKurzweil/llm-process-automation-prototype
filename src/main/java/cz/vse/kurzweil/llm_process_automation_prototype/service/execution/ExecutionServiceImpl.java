@@ -13,11 +13,16 @@ import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.Struc
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
+import org.springframework.ai.chat.client.ResponseEntity;
+import org.springframework.ai.chat.metadata.ChatResponseMetadata;
+import org.springframework.ai.chat.metadata.Usage;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -78,16 +83,22 @@ public class ExecutionServiceImpl implements ExecutionService {
             return generateUnknownDtoResult(ctx);
         }
         Object expectedDto = deserializeExpectedDto(ctx);
-        Object actualDto;
+        ResponseEntity<ChatResponse, ?> responseEntity;
         try {
-            actualDto = structuredExtractionService.extract(record.inputText(), requestType, variant, model);
+            responseEntity = structuredExtractionService.extractResponseEntity(record.inputText(), requestType, variant, model);
         } catch (Exception exception) {
             return generateExceptionResult(ctx, expectedDto, exception);
         }
+        Object actualDto = responseEntity.entity();
+        Optional<Usage> usage = Optional.ofNullable(responseEntity.response())
+                .map(ChatResponse::getMetadata)
+                .map(ChatResponseMetadata::getUsage);
+        int promptTokens = usage.map(Usage::getPromptTokens).orElse(0);
+        int completionTokens = usage.map(Usage::getCompletionTokens).orElse(0);
         JsonNode expectedTree = treeComparator.canonicalize(objectMapper.valueToTree(expectedDto));
         JsonNode actualTree = treeComparator.canonicalize(objectMapper.valueToTree(actualDto));
         ComparisonResult comparisonResult = treeComparator.compareTrees(expectedTree, actualTree);
-        return generateResult(ctx, comparisonResult, expectedTree, actualTree);
+        return generateResult(ctx, comparisonResult, expectedTree, actualTree, promptTokens, completionTokens);
     }
 
     private Object deserializeExpectedDto(RecordExecutionContext ctx) {
@@ -107,7 +118,9 @@ public class ExecutionServiceImpl implements ExecutionService {
             RecordExecutionContext ctx,
             ComparisonResult comparison,
             JsonNode expectedTree,
-            JsonNode actualTree
+            JsonNode actualTree,
+            int promptTokens,
+            int completionTokens
     ) {
         return new ExtractionValidationRecordResult(
                 ctx.record().recordId(),
@@ -125,6 +138,8 @@ public class ExecutionServiceImpl implements ExecutionService {
                 comparison.differences(),
                 expectedTree,
                 actualTree,
+                promptTokens,
+                completionTokens,
                 null
         );
     }
