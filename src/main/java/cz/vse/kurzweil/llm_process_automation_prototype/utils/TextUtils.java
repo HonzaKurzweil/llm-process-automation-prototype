@@ -31,4 +31,8 @@ public class TextUtils {
                 + sanitize(model.getModelId())
                 + ".json";
     }
+
+    public static String quote(String value) {
+        return "\"" + (value == null ? "" : value) + "\"";
+    }
 }

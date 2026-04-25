@@ -8,6 +8,7 @@ public record ExtractionValidationRecordResult(
         String recordId,
         String requestTypeId,
         String channel,
+        String mode,
         List<String> noiseTags,
         String promptVariant,
         String modelId,
@@ -28,13 +29,14 @@ public record ExtractionValidationRecordResult(
             String recordId,
             String requestTypeId,
             String channel,
+            String mode,
             List<String> noiseTags,
             String promptVariant,
             String modelId,
             String errorMessage
     ) {
         return new ExtractionValidationRecordResult(
-                recordId, requestTypeId, channel, defaultList(noiseTags),
+                recordId, requestTypeId, channel, mode, defaultList(noiseTags),
                 promptVariant, modelId,
                 false, false, List.of(), 0, 0, 0.0d, List.of(), null, null, 0, 0, errorMessage
         );
@@ -44,6 +46,7 @@ public record ExtractionValidationRecordResult(
             String recordId,
             String requestTypeId,
             String channel,
+            String mode,
             List<String> noiseTags,
             String promptVariant,
             String modelId,
@@ -52,7 +55,7 @@ public record ExtractionValidationRecordResult(
             String errorMessage
     ) {
         return new ExtractionValidationRecordResult(
-                recordId, requestTypeId, channel, defaultList(noiseTags),
+                recordId, requestTypeId, channel, mode, defaultList(noiseTags),
                 promptVariant, modelId,
                 false, false, defaultList(missingFieldPaths), 0, 0, 0.0d, List.of(), expectedDto, null, 0, 0, errorMessage
         );
