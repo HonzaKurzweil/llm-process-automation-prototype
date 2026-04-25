@@ -18,7 +18,7 @@ Význam polí:
 - `mobileLinesCount` = celkový počet linek v požadavku.
 - `mobileLines` = detail jednotlivých linek. Každá položka obsahuje `label`, `planServiceId` a `portingRequested`.
 - `mobileLines[].label` = stabilní označení linky v rámci požadavku. Pokud text dává linkám pořadí, používej pro první
-  `hlavní_linka`, pro druhou `druha_linka`, pro třetí `treti_linka` a další obdobně podle pořadí.
+  `hlavní linka`, pro druhou `druhá linka`, pro třetí `třetí linka` a další obdobně podle pořadí.
 - `mobileLines[].planServiceId` = tarif dané linky. U tohoto request type jde o `svc_mobile_family_plus`.
 - `mobileLines[].portingRequested` = zda se konkrétní linka přenáší od jiného operátora.
 - `portedNumbers` = konkrétní čísla k přenosu. Každá položka obsahuje `number` a `donorOperator`. Vyplňuj jen linky, u

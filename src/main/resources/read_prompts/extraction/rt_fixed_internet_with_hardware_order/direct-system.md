@@ -14,8 +14,8 @@ Význam polí:
 - `customerName` = jméno a příjmení zákazníka.
 - `contactPhone` = hlavní kontaktní telefon. Česká čísla normalizuj do tvaru `+420 XXX XXX XXX`, pokud to jde.
 - `contactEmail` = kontaktní e-mail, pokud je uveden.
-- `installationAddress` = instalační adresa jako jeden textový řetězec. Pokud jsou části adresy ve vstupu v jiném
-  pořadí, sjednoť je do čitelného tvaru jedné adresy.
+- `installationAddress` = instalační adresa jako jeden textový řetězec ve formátu Město, Část/Čtvrť, Ulice číslo popisné.
+  Pokud jsou části adresy ve vstupu v jiném pořadí, sjednoť je do tohoto pořadí.
 - `requestedServices` = objednávaná hlavní pevná internetová služba. U tohoto request type očekávej jednu položku.
 - `requestedProducts` = požadovaný hardware nebo instalační add-on. Každá položka obsahuje `productId` a `quantity`.
 - `contractTermMonths` = požadovaná délka závazku v měsících. V této doméně dávej smysl hlavně hodnotám `0` nebo `24`.
