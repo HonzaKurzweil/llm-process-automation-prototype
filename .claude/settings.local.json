@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep:*)",
+      "Bash(find /c/Users/Jan/Desktop/projects/llm-process-automation-prototype/src/main/java -name \"*.java\" -exec grep -l \"@Component\\\\|@Bean\\\\|@Service\" {} \\\\;)",
+      "Bash(find /c/Users/Jan/Desktop/projects/llm-process-automation-prototype -name \"*.java\" -type f -exec grep -l \"withTemperature\\\\|setTemperature\\\\|\\\\.temperature\" {} \\\\;)",
+      "Bash(grep -E \"\\\\.\\(java|md\\)$\")",
+      "Bash(xargs find *)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:medium.com)"
+    ]
+  }
+}

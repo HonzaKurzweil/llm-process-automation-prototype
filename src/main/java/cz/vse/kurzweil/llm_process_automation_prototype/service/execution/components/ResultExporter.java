@@ -27,7 +27,7 @@ import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.q
 public class ResultExporter {
 
     private static final String SUMMARY_CSV = "summary.csv";
-    private static final String CSV_HEADER = "validationType,resultFileName,mode,channel,noiseCount,completenessMode,promptVariant,modelType,matchRate,promptTokens,completionTokens";
+    private static final String CSV_HEADER = "validationType,resultFileName,mode,channel,noiseCount,promptVariant,modelType,matchRate,promptTokens,completionTokens";
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -97,14 +97,12 @@ public class ResultExporter {
     }
 
     private String buildExtractionCsvRow(String resultFileName, ExtractionValidationRecordResult record) {
-        String completenessMode = record.missingFieldPaths().isEmpty() ? "FULL" : "PARTIAL";
         return String.join(",",
                 quote(EXTRACTION_TYPE.toUpperCase()),
                 quote(resultFileName),
                 quote(record.mode()),
                 quote(record.channel()),
                 String.valueOf(record.noiseTags().size()),
-                quote(completenessMode),
                 quote(record.promptVariant()),
                 quote(record.modelId()),
                 String.valueOf(record.matchRate()),
@@ -114,15 +112,12 @@ public class ResultExporter {
     }
 
     private String buildClassificationCsvRow(String resultFileName, ClassificationValidationRecordResult record) {
-        String completenessMode = record.correct() ? "CORRECT" : "INCORRECT";
         double matchRate = record.correct() ? 1.0 : 0.0;
         return String.join(",",
-                quote(CLASSIFICATION_TYPE.toUpperCase()),
                 quote(resultFileName),
                 quote(record.mode()),
                 quote(record.channel()),
                 String.valueOf(record.noiseTags().size()),
-                quote(completenessMode),
                 quote(record.promptVariant()),
                 quote(record.modelId()),
                 String.valueOf(matchRate),
