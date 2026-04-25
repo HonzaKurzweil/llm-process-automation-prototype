@@ -3,6 +3,7 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.classification.
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.LlmRateLimiter;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.classification.ClassificationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -18,18 +19,21 @@ public class ClassificationServiceImpl implements ClassificationService {
 
     private final Map<PromptVariant, ClassificationStrategy> strategies;
     private final Map<ModelType, ChatClient> clients;
+    private final LlmRateLimiter rateLimiter;
 
     public ClassificationServiceImpl(
             List<ClassificationStrategy> strategies,
-            Map<ModelType, ChatClient> clients) {
+            Map<ModelType, ChatClient> clients,
+            LlmRateLimiter rateLimiter) {
         this.strategies = strategies.stream()
                 .collect(Collectors.toMap(ClassificationStrategy::variant, s -> s));
         this.clients = clients;
+        this.rateLimiter = rateLimiter;
     }
 
     @Override
     public RequestType classify(String inputText, PromptVariant variant, ModelType model) {
         log.info("Classifying with prompt variant={}, model={}", variant, model);
-        return strategies.get(variant).classify(inputText, clients.get(model));
+        return rateLimiter.execute(() -> strategies.get(variant).classify(inputText, clients.get(model)));
     }
 }
