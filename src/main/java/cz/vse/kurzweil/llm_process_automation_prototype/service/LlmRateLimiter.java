@@ -13,19 +13,19 @@ import java.util.function.Supplier;
 @Component
 public class LlmRateLimiter {
 
-    @Value("${app.llm.rate-limiter.enabled:true}")
+    @Value("${app.llm.rate-limiter.enabled}")
     private boolean enabled;
 
-    @Value("${app.llm.rate-limiter.min-delay-ms:0}")
+    @Value("${app.llm.rate-limiter.min-delay-ms}")
     private long minDelayMs;
 
     @Value("${app.llm.rate-limiter.retry-max-attempts:3}")
     private int maxAttempts;
 
-    @Value("${app.llm.rate-limiter.retry-initial-delay-ms:10000}")
+    @Value("${app.llm.rate-limiter.retry-initial-delay-ms}")
     private long retryInitialDelayMs;
 
-    @Value("${app.llm.rate-limiter.retry-multiplier:2.0}")
+    @Value("${app.llm.rate-limiter.retry-multiplier}")
     private double retryMultiplier;
 
     private final AtomicLong lastCallTime = new AtomicLong(0);
