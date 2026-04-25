@@ -28,9 +28,10 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
     @Override
     @SuppressWarnings("unchecked")
     public <T> T extract(String inputText, RequestType requestType, ChatClient client) {
-        String systemPrompt = resolveSystemPrompt(requestType);
+        String template = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md");
+        String catalogMappings = catalogService.generateCatalogMappings(requestType);
         return client.prompt()
-                .system(systemPrompt)
+                .system(s -> s.text(template).param("catalog_mappings", catalogMappings))
                 .user(inputText)
                 .call()
                 .entity((Class<T>) requestType.getDtoClass());
@@ -39,16 +40,12 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
     @Override
     @SuppressWarnings("unchecked")
     public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
-        String systemPrompt = resolveSystemPrompt(requestType);
+        String template = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md");
+        String catalogMappings = catalogService.generateCatalogMappings(requestType);
         return client.prompt()
-                .system(systemPrompt)
+                .system(s -> s.text(template).param("catalog_mappings", catalogMappings))
                 .user(inputText)
                 .call()
                 .responseEntity((Class<T>) requestType.getDtoClass());
-    }
-
-    private String resolveSystemPrompt(RequestType requestType) {
-        String template = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md");
-        return template.replace("{catalog_mappings}", catalogService.generateCatalogMappings(requestType));
     }
 }

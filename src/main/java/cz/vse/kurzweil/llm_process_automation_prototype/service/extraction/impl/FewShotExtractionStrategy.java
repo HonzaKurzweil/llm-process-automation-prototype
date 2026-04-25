@@ -28,9 +28,11 @@ public class FewShotExtractionStrategy implements ExtractionStrategy {
     @Override
     @SuppressWarnings("unchecked")
     public <T> T extract(String inputText, RequestType requestType, ChatClient client) {
-        String systemPrompt = resolveSystemPrompt(requestType);
+        String dir = requestType.getPromptDirectory();
+        String template = promptLoader.load(dir + "/direct-system.md") + "\n\n" + promptLoader.load(dir + "/few-shot-examples.md");
+        String catalogMappings = catalogService.generateCatalogMappings(requestType);
         return client.prompt()
-                .system(systemPrompt)
+                .system(s -> s.text(template).param("catalog_mappings", catalogMappings))
                 .user(inputText)
                 .call()
                 .entity((Class<T>) requestType.getDtoClass());
@@ -39,18 +41,13 @@ public class FewShotExtractionStrategy implements ExtractionStrategy {
     @Override
     @SuppressWarnings("unchecked")
     public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
-        String systemPrompt = resolveSystemPrompt(requestType);
+        String dir = requestType.getPromptDirectory();
+        String template = promptLoader.load(dir + "/direct-system.md") + "\n\n" + promptLoader.load(dir + "/few-shot-examples.md");
+        String catalogMappings = catalogService.generateCatalogMappings(requestType);
         return client.prompt()
-                .system(systemPrompt)
+                .system(s -> s.text(template).param("catalog_mappings", catalogMappings))
                 .user(inputText)
                 .call()
                 .responseEntity((Class<T>) requestType.getDtoClass());
-    }
-
-    private String resolveSystemPrompt(RequestType requestType) {
-        String dir = requestType.getPromptDirectory();
-        String systemTemplate = promptLoader.load(dir + "/direct-system.md")
-                .replace("{catalog_mappings}", catalogService.generateCatalogMappings(requestType));
-        return systemTemplate + "\n\n" + promptLoader.load(dir + "/few-shot-examples.md");
     }
 }
