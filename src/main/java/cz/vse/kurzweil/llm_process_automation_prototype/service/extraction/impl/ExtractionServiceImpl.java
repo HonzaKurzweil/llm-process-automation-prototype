@@ -4,7 +4,7 @@ import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.LlmRateLimiter;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.ExtractionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ResponseEntity;
@@ -17,13 +17,13 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class StructuredExtractionServiceImpl implements StructuredExtractionService {
+public class ExtractionServiceImpl implements ExtractionService {
 
     private final Map<PromptVariant, ExtractionStrategy> strategies;
     private final Map<ModelType, ChatClient> clients;
     private final LlmRateLimiter rateLimiter;
 
-    public StructuredExtractionServiceImpl(
+    public ExtractionServiceImpl(
             List<ExtractionStrategy> strategies,
             Map<ModelType, ChatClient> clients,
             LlmRateLimiter rateLimiter) {

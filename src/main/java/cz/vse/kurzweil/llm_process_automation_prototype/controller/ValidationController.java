@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.nio.file.Path;
 
 @RestController
-@RequestMapping("/api/execution")
+@RequestMapping("/api/validation")
 @RequiredArgsConstructor
-public class ExecutionServiceController {
+public class ValidationController {
 
     private final ExtractionValidationService extractionValidationService;
     private final ClassificationValidationService classificationValidationService;

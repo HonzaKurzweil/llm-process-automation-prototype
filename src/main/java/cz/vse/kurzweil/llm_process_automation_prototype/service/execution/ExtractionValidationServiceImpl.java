@@ -9,7 +9,7 @@ import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.compon
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ResultExporter;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.TreeComparator;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.*;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.ExtractionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
@@ -32,7 +32,7 @@ public class ExtractionValidationServiceImpl implements ExtractionValidationServ
     private final ExtractionDataSetBundleReader bundleReader;
     private final TreeComparator treeComparator;
     private final ResultExporter resultExporter;
-    private final StructuredExtractionService structuredExtractionService;
+    private final ExtractionService extractionService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
@@ -85,7 +85,7 @@ public class ExtractionValidationServiceImpl implements ExtractionValidationServ
         Object expectedDto = deserializeExpectedDto(ctx);
         ResponseEntity<ChatResponse, ?> responseEntity;
         try {
-            responseEntity = structuredExtractionService.extractResponseEntity(record.inputText(), requestType, variant, model);
+            responseEntity = extractionService.extractResponseEntity(record.inputText(), requestType, variant, model);
         } catch (Exception exception) {
             return generateExceptionResult(ctx, expectedDto, exception);
         }
