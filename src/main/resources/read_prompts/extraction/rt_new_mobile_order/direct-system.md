@@ -22,7 +22,3 @@ Význam polí:
   portace zmíněna, ale konkrétní číslo nebo donor operátor chybí, `portedNumbers` nevyplňuj.
 - `requestedDiscounts` = slevy, které jsou ve vstupu explicitně zmíněné nebo výslovně požadované. Slevu neodvozuj jen z
   toho, že by na ni zákazník mohl mít nárok.
-
-Mapování katalogových ID:
-
-{catalog_mappings}

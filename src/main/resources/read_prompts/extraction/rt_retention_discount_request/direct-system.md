@@ -25,7 +25,3 @@ Význam polí:
   způsobilosti.
 - `churnReason` = stručně zachycený důvod nespokojenosti nebo zvažovaného odchodu, pokud je ve vstupu uveden.
 - `competitorOffer` = stručně zachycená konkurenční nabídka, pokud je ve vstupu uvedena.
-
-Mapování katalogových ID:
-
-{catalog_mappings}

@@ -20,7 +20,3 @@ Význam polí:
 - `requestedServices` = objednávaná hlavní pevná internetová služba. U tohoto request type očekávej jednu položku.
 - `requestedProducts` = požadovaný hardware nebo instalační add-on. Každá položka obsahuje `productId` a `quantity`.
 - `contractTermMonths` = požadovaná délka závazku v měsících. V této doméně dávej smysl hlavně hodnotám `0` nebo `24`.
-
-Mapování katalogových ID:
-
-{catalog_mappings}

@@ -31,10 +31,10 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
     @SuppressWarnings("unchecked")
     public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
         log.debug("Extracting using DIRECT strategy for requestType={}, inputLength={}", requestType, inputText.length());
-        String template = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md");
-        String catalogMappings = catalogService.generateCatalogMappings();
+        String resolvedSystem = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md")
+                + "\n\n" + catalogService.generateCatalogMappings();
         ResponseEntity<ChatResponse, T> response = client.prompt()
-                .system(s -> s.text(template).param("catalog_mappings", catalogMappings))
+                .system(resolvedSystem)
                 .user(inputText)
                 .call()
                 .responseEntity((Class<T>) requestType.getDtoClass());

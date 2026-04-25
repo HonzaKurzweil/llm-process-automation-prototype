@@ -31,6 +31,7 @@ public class CatalogService {
     public String generateCatalogMappings() {
         StringBuilder sb = new StringBuilder();
 
+        sb.append("Mapování katalogových ID:\n\n");
         sb.append("Services:\n");
         for (Map.Entry<String, String> e : serviceNames.entrySet()) {
             appendEntry(sb, e.getKey(), e.getValue(), serviceAliases.get(e.getKey()));

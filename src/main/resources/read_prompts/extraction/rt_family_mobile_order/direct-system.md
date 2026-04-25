@@ -27,7 +27,3 @@ Význam polí:
 - `contractTermMonths` = požadovaná délka závazku v měsících. V této doméně dávej smysl hlavně hodnotám `0` nebo `24`.
 - `requestedDiscounts` = slevy explicitně uvedené nebo výslovně požadované ve vstupu. Slevu neodvozuj jen z domnělé
   způsobilosti.
-
-Mapování katalogových ID:
-
-{catalog_mappings}
