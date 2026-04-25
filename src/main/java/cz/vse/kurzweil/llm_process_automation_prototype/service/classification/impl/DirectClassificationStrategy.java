@@ -1,6 +1,7 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service.classification.impl;
 
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptResourceLoader;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -24,14 +25,14 @@ public class DirectClassificationStrategy implements ClassificationStrategy {
     }
 
     @Override
-    public ResponseEntity<ChatResponse, ClassificationResponse> classify(String inputText, ChatClient client) {
+    public ResponseEntity<ChatResponse, RequestType> classify(String inputText, ChatClient client) {
         log.debug("Classifying using DIRECT strategy, inputLength={}", inputText.length());
-        ResponseEntity<ChatResponse, ClassificationResponse> response = client.prompt()
+        ResponseEntity<ChatResponse, RequestType> response = client.prompt()
                 .system(systemPrompt)
                 .user(inputText)
                 .call()
-                .responseEntity(ClassificationResponse.class);
-        log.debug("Classification result using DIRECT strategy: {}", response.entity().requestType());
+                .responseEntity(RequestType.class);
+        log.debug("Classification result using DIRECT strategy: {}", response.entity());
         return response;
     }
 }

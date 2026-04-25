@@ -5,6 +5,8 @@ import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.fixedi
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.internettvbundle.InternetTvBundleOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.newmobileorder.SingleMobileOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.retentiondiscount.RetentionDiscountRequestDto;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +24,12 @@ public enum RequestType {
     private final Class<?> dtoClass;
     private final String promptDirectory;
 
+    @JsonValue
+    public String getRequestTypeIdReference() {
+        return requestTypeIdReference;
+    }
 
+    @JsonCreator
     public static RequestType fromRequestTypeIdReference(String requestTypeIdReference) {
         for (RequestType type : values()) {
             if (type.requestTypeIdReference.equalsIgnoreCase(requestTypeIdReference)) {
