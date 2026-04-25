@@ -1,0 +1,304 @@
+{
+  "inputFile" : "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\src\\main\\resources\\dataset\\inputs\\ext_crm_n3_complete.json",
+  "promptVariant" : "DIRECT",
+  "modelId" : "gpt-5-nano",
+  "records" : [ {
+    "recordId" : "ext_0001",
+    "requestTypeId" : "rt_new_mobile_order",
+    "channel" : "crm_ticket",
+    "mode" : "extraction",
+    "noiseTags" : [ "shorthandInternal", "irrelevantInfo", "ambiguousWording" ],
+    "promptVariant" : "DIRECT",
+    "modelId" : "gpt-5-nano",
+    "invocationSucceeded" : true,
+    "exactMatch" : true,
+    "missingFieldPaths" : [ ],
+    "totalComparedPaths" : 10,
+    "matchedPaths" : 10,
+    "matchRate" : 1.0,
+    "differences" : [ ],
+    "expectedDto" : {
+      "contactEmail" : "roman.benes@email.cz",
+      "contactPhone" : "+420 605 996 341",
+      "contractTermMonths" : 24,
+      "customerName" : "Roman Beneš",
+      "customerStatus" : "existing",
+      "portedNumbers" : [ ],
+      "portingRequested" : false,
+      "requestedDiscounts" : [ ],
+      "requestedServices" : [ {
+        "quantity" : 1,
+        "serviceId" : "svc_mobile_start_5g"
+      } ]
+    },
+    "actualDto" : {
+      "contactEmail" : "roman.benes@email.cz",
+      "contactPhone" : "+420 605 996 341",
+      "contractTermMonths" : 24,
+      "customerName" : "Roman Beneš",
+      "customerStatus" : "existing",
+      "portedNumbers" : [ ],
+      "portingRequested" : false,
+      "requestedDiscounts" : [ ],
+      "requestedServices" : [ {
+        "quantity" : 1,
+        "serviceId" : "svc_mobile_start_5g"
+      } ]
+    },
+    "promptTokens" : 1743,
+    "completionTokens" : 110,
+    "errorMessage" : null
+  }, {
+    "recordId" : "ext_0002",
+    "requestTypeId" : "rt_family_mobile_order",
+    "channel" : "crm_ticket",
+    "mode" : "extraction",
+    "noiseTags" : [ "shorthandInternal", "irrelevantInfo", "ambiguousWording" ],
+    "promptVariant" : "DIRECT",
+    "modelId" : "gpt-5-nano",
+    "invocationSucceeded" : true,
+    "exactMatch" : true,
+    "missingFieldPaths" : [ ],
+    "totalComparedPaths" : 23,
+    "matchedPaths" : 23,
+    "matchRate" : 1.0,
+    "differences" : [ ],
+    "expectedDto" : {
+      "contactEmail" : "jana.vackova@email.cz",
+      "contactPhone" : "+420 739 411 270",
+      "contractTermMonths" : 24,
+      "customerName" : "Jana Vacková",
+      "customerStatus" : "new",
+      "mobileLines" : [ {
+        "label" : "druhá linka",
+        "planServiceId" : "svc_mobile_family_plus",
+        "portingRequested" : true
+      }, {
+        "label" : "hlavní linka",
+        "planServiceId" : "svc_mobile_family_plus",
+        "portingRequested" : true
+      }, {
+        "label" : "třetí linka",
+        "planServiceId" : "svc_mobile_family_plus",
+        "portingRequested" : false
+      } ],
+      "mobileLinesCount" : 3,
+      "portedNumbers" : [ {
+        "donorOperator" : "Vodafone",
+        "number" : "+420 704 552 118"
+      }, {
+        "donorOperator" : "T-Mobile",
+        "number" : "+420 734 220 111"
+      } ],
+      "requestedDiscounts" : [ {
+        "discountId" : "disc_family_line_100"
+      }, {
+        "discountId" : "disc_porting_mobile_200"
+      } ],
+      "requestedServices" : [ {
+        "quantity" : 3,
+        "serviceId" : "svc_mobile_family_plus"
+      } ]
+    },
+    "actualDto" : {
+      "contactEmail" : "jana.vackova@email.cz",
+      "contactPhone" : "+420 739 411 270",
+      "contractTermMonths" : 24,
+      "customerName" : "Jana Vacková",
+      "customerStatus" : "new",
+      "mobileLines" : [ {
+        "label" : "druhá linka",
+        "planServiceId" : "svc_mobile_family_plus",
+        "portingRequested" : true
+      }, {
+        "label" : "hlavní linka",
+        "planServiceId" : "svc_mobile_family_plus",
+        "portingRequested" : true
+      }, {
+        "label" : "třetí linka",
+        "planServiceId" : "svc_mobile_family_plus",
+        "portingRequested" : false
+      } ],
+      "mobileLinesCount" : 3,
+      "portedNumbers" : [ {
+        "donorOperator" : "Vodafone",
+        "number" : "+420 704 552 118"
+      }, {
+        "donorOperator" : "T-Mobile",
+        "number" : "+420 734 220 111"
+      } ],
+      "requestedDiscounts" : [ {
+        "discountId" : "disc_family_line_100"
+      }, {
+        "discountId" : "disc_porting_mobile_200"
+      } ],
+      "requestedServices" : [ {
+        "quantity" : 3,
+        "serviceId" : "svc_mobile_family_plus"
+      } ]
+    },
+    "promptTokens" : 2070,
+    "completionTokens" : 315,
+    "errorMessage" : null
+  }, {
+    "recordId" : "ext_0003",
+    "requestTypeId" : "rt_fixed_internet_with_hardware_order",
+    "channel" : "crm_ticket",
+    "mode" : "extraction",
+    "noiseTags" : [ "shorthandInternal", "irrelevantInfo", "ambiguousWording" ],
+    "promptVariant" : "DIRECT",
+    "modelId" : "gpt-5-nano",
+    "invocationSucceeded" : true,
+    "exactMatch" : true,
+    "missingFieldPaths" : [ ],
+    "totalComparedPaths" : 10,
+    "matchedPaths" : 10,
+    "matchRate" : 1.0,
+    "differences" : [ ],
+    "expectedDto" : {
+      "contactEmail" : "veronika.jarosova@email.cz",
+      "contactPhone" : "+420 774 551 008",
+      "contractTermMonths" : 24,
+      "customerName" : "Veronika Jarošová",
+      "customerStatus" : "new",
+      "installationAddress" : "Olomouc, Nové Sady, Rooseveltova 61",
+      "requestedProducts" : [ {
+        "productId" : "prod_router_standard",
+        "quantity" : 1
+      } ],
+      "requestedServices" : [ {
+        "quantity" : 1,
+        "serviceId" : "svc_internet_fiber_300"
+      } ]
+    },
+    "actualDto" : {
+      "contactEmail" : "veronika.jarosova@email.cz",
+      "contactPhone" : "+420 774 551 008",
+      "contractTermMonths" : 24,
+      "customerName" : "Veronika Jarošová",
+      "customerStatus" : "new",
+      "installationAddress" : "Olomouc, Nové Sady, Rooseveltova 61",
+      "requestedProducts" : [ {
+        "productId" : "prod_router_standard",
+        "quantity" : 1
+      } ],
+      "requestedServices" : [ {
+        "quantity" : 1,
+        "serviceId" : "svc_internet_fiber_300"
+      } ]
+    },
+    "promptTokens" : 1580,
+    "completionTokens" : 144,
+    "errorMessage" : null
+  }, {
+    "recordId" : "ext_0004",
+    "requestTypeId" : "rt_internet_tv_bundle_order",
+    "channel" : "crm_ticket",
+    "mode" : "extraction",
+    "noiseTags" : [ "shorthandInternal", "irrelevantInfo", "ambiguousWording" ],
+    "promptVariant" : "DIRECT",
+    "modelId" : "gpt-5-nano",
+    "invocationSucceeded" : true,
+    "exactMatch" : true,
+    "missingFieldPaths" : [ ],
+    "totalComparedPaths" : 13,
+    "matchedPaths" : 13,
+    "matchRate" : 1.0,
+    "differences" : [ ],
+    "expectedDto" : {
+      "contactEmail" : "martin.cermak@centrum.cz",
+      "contactPhone" : "+420 725 118 443",
+      "contractTermMonths" : 24,
+      "customerName" : "Martin Čermák",
+      "customerStatus" : "new",
+      "installationAddress" : "Plzeň, Bolevec, Gerská 14",
+      "requestedDiscounts" : [ {
+        "discountId" : "disc_bundle_10_new"
+      } ],
+      "requestedProducts" : [ {
+        "productId" : "prod_set_top_box",
+        "quantity" : 1
+      } ],
+      "requestedServices" : [ {
+        "quantity" : 1,
+        "serviceId" : "svc_internet_fiber_300"
+      }, {
+        "quantity" : 1,
+        "serviceId" : "svc_tv_family"
+      } ]
+    },
+    "actualDto" : {
+      "contactEmail" : "martin.cermak@centrum.cz",
+      "contactPhone" : "+420 725 118 443",
+      "contractTermMonths" : 24,
+      "customerName" : "Martin Čermák",
+      "customerStatus" : "new",
+      "installationAddress" : "Plzeň, Bolevec, Gerská 14",
+      "requestedDiscounts" : [ {
+        "discountId" : "disc_bundle_10_new"
+      } ],
+      "requestedProducts" : [ {
+        "productId" : "prod_set_top_box",
+        "quantity" : 1
+      } ],
+      "requestedServices" : [ {
+        "quantity" : 1,
+        "serviceId" : "svc_internet_fiber_300"
+      }, {
+        "quantity" : 1,
+        "serviceId" : "svc_tv_family"
+      } ]
+    },
+    "promptTokens" : 1739,
+    "completionTokens" : 187,
+    "errorMessage" : null
+  }, {
+    "recordId" : "ext_0005",
+    "requestTypeId" : "rt_retention_discount_request",
+    "channel" : "crm_ticket",
+    "mode" : "extraction",
+    "noiseTags" : [ "shorthandInternal", "irrelevantInfo", "ambiguousWording" ],
+    "promptVariant" : "DIRECT",
+    "modelId" : "gpt-5-nano",
+    "invocationSucceeded" : true,
+    "exactMatch" : true,
+    "missingFieldPaths" : [ ],
+    "totalComparedPaths" : 9,
+    "matchedPaths" : 9,
+    "matchRate" : 1.0,
+    "differences" : [ ],
+    "expectedDto" : {
+      "churnReason" : "zákazník dlouhodobě řeší nespokojenost s cenou",
+      "competitorOffer" : "konkurence nabízí neomezený tarif se slevou na 6 měsíců",
+      "contactPhone" : "+420 603 515 902",
+      "currentServices" : [ {
+        "serviceId" : "svc_internet_fiber_300"
+      } ],
+      "customerName" : "Lucie Dvořáková",
+      "customerStatus" : "existing",
+      "requestedDiscounts" : [ {
+        "discountId" : "disc_retention_15_existing"
+      } ],
+      "retentionCase" : true,
+      "targetServiceId" : "svc_internet_fiber_300"
+    },
+    "actualDto" : {
+      "churnReason" : "zákazník dlouhodobě řeší nespokojenost s cenou",
+      "competitorOffer" : "konkurence nabízí neomezený tarif se slevou na 6 měsíců",
+      "contactPhone" : "+420 603 515 902",
+      "currentServices" : [ {
+        "serviceId" : "svc_internet_fiber_300"
+      } ],
+      "customerName" : "Lucie Dvořáková",
+      "customerStatus" : "existing",
+      "requestedDiscounts" : [ {
+        "discountId" : "disc_retention_15_existing"
+      } ],
+      "retentionCase" : true,
+      "targetServiceId" : "svc_internet_fiber_300"
+    },
+    "promptTokens" : 1771,
+    "completionTokens" : 168,
+    "errorMessage" : null
+  } ]
+}
