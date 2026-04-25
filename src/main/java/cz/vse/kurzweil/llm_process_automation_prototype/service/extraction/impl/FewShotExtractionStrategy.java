@@ -30,7 +30,7 @@ public class FewShotExtractionStrategy implements ExtractionStrategy {
     public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
         String dir = requestType.getPromptDirectory();
         String template = promptLoader.load(dir + "/direct-system.md") + "\n\n" + promptLoader.load(dir + "/few-shot-examples.md");
-        String catalogMappings = catalogService.generateCatalogMappings(requestType);
+        String catalogMappings = catalogService.generateCatalogMappings();
         return client.prompt()
                 .system(s -> s.text(template).param("catalog_mappings", catalogMappings))
                 .user(inputText)

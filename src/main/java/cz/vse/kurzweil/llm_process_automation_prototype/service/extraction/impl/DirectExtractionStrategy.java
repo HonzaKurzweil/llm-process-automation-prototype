@@ -29,7 +29,7 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
     @SuppressWarnings("unchecked")
     public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
         String template = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md");
-        String catalogMappings = catalogService.generateCatalogMappings(requestType);
+        String catalogMappings = catalogService.generateCatalogMappings();
         return client.prompt()
                 .system(s -> s.text(template).param("catalog_mappings", catalogMappings))
                 .user(inputText)
