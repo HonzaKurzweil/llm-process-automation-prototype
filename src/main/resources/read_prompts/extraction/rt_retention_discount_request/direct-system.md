@@ -13,7 +13,7 @@ Význam polí:
 - `customerStatus` = vztah zákazníka k operátorovi. U retenčních případů typicky půjde o `existing`, pokud text zjevně
   mluví o aktuálním zákazníkovi. Jinak vycházej jen z uvedené informace.
 - `customerName` = jméno a příjmení zákazníka.
-- `contactPhone` = hlavní kontaktní telefon. Česká čísla normalizuj do tvaru `+420 XXX XXX XXX`, pokud to jde.
+- `contactPhone` = hlavní kontaktní telefon.
 - `retentionCase` = boolean hodnota. Nastav `true`, pokud text jasně popisuje retenční jednání, hrozbu odchodu nebo
   snahu zákazníka zůstat jen za lepších podmínek. Nastav `false`, pokud text naopak výslovně ukazuje, že nejde o
   retenční situaci. Pokud to ze vstupu nevyplývá, ponech pole prázdné/null.

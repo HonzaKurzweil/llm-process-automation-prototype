@@ -12,14 +12,13 @@ Význam polí:
 
 - `customerStatus` = vztah zákazníka k operátorovi. Používej `new` nebo `existing`.
 - `customerName` = jméno a příjmení zákazníka.
-- `contactPhone` = hlavní kontaktní telefon. Česká čísla normalizuj do tvaru `+420 XXX XXX XXX`, pokud to jde.
+- `contactPhone` = hlavní kontaktní telefon.
 - `contactEmail` = kontaktní e-mail, pokud je uveden.
 - `requestedServices` = objednávaný rodinný tarif. U tohoto request type očekávej právě jednu položku.
   `requestedServices[0].quantity` vyjadřuje počet linek objednávaných v rámci rodinného tarifu.
 - `mobileLinesCount` = celkový počet linek v požadavku.
 - `mobileLines` = detail jednotlivých linek. Každá položka obsahuje `label`, `planServiceId` a `portingRequested`.
-- `mobileLines[].label` = stabilní označení linky v rámci požadavku. Pokud text dává linkám pořadí, používej pro první
-  `hlavní linka`, pro druhou `druhá linka`, pro třetí `třetí linka` a další obdobně podle pořadí.
+- `mobileLines[].label` = stabilní označení linky v rámci požadavku.
 - `mobileLines[].planServiceId` = tarif dané linky. U tohoto request type jde o `svc_mobile_family_plus`.
 - `mobileLines[].portingRequested` = zda se konkrétní linka přenáší od jiného operátora.
 - `portedNumbers` = konkrétní čísla k přenosu. Každá položka obsahuje `number` a `donorOperator`. Vyplňuj jen linky, u

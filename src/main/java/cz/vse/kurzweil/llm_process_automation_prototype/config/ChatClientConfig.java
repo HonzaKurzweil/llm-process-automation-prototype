@@ -26,6 +26,7 @@ public class ChatClientConfig {
                     ChatClient.Builder b = builder.defaultOptions(
                             OpenAiChatOptions.builder()
                                     .model(m.getModelId())
+                                    .temperature(0.1)
                                     .build()
                     );
                     if (logAdvisorEnabled) {

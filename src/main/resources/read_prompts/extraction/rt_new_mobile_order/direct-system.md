@@ -12,7 +12,7 @@ Význam polí:
 
 - `customerStatus` = vztah zákazníka k operátorovi. Používej `new` nebo `existing`.
 - `customerName` = jméno a příjmení zákazníka.
-- `contactPhone` = hlavní kontaktní telefon. Česká čísla normalizuj do tvaru `+420 XXX XXX XXX`, pokud to jde.
+- `contactPhone` = hlavní kontaktní telefon.
 - `contactEmail` = kontaktní e-mail, pokud je uveden.
 - `requestedServices` = požadovaná hlavní mobilní služba. U tohoto request type očekávej právě jeden tarif.
 - `contractTermMonths` = požadovaná délka závazku v měsících. V této doméně dávej smysl hlavně hodnotám `0` nebo `24`.

@@ -1,3 +1,6 @@
+Formátovací pravidla demonstrovaná v příkladech:
+- `contactPhone`: česká čísla ve tvaru `+420 XXX XXX XXX`.
+
 --- EXAMPLE 1 (CRM ticket — incomplete reference) ---
 INPUT:
 Retence
