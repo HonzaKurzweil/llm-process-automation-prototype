@@ -5,6 +5,6 @@ import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 
 import java.nio.file.Path;
 
-public interface ExecutionService {
+public interface ExtractionValidationService {
     void validateExtractionService(Path inputFile, PromptVariant variant, ModelType model);
 }

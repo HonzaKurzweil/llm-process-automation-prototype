@@ -1,10 +1,11 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.execution;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.ExtractionValidationService;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ExtractionDataSetBundleReader;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ResultExporter;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.TreeComparator;
@@ -27,7 +28,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 @Service
-public class ExecutionServiceImpl implements ExecutionService {
+public class ExtractionValidationServiceImpl implements ExtractionValidationService {
 
     private final ExtractionDataSetBundleReader bundleReader;
     private final TreeComparator treeComparator;
@@ -39,7 +40,7 @@ public class ExecutionServiceImpl implements ExecutionService {
     public void validateExtractionService(Path inputFile, PromptVariant variant, ModelType model) {
         try {
             ExtractionValidationRunResult runResult = runExtractionValidation(inputFile, variant, model);
-            resultExporter.exportResults(inputFile, variant, model, runResult);
+            resultExporter.exportExtractionResults(inputFile, variant, model, runResult);
         } catch (Exception e) {
             log.error("Extraction validation failed", e);
             throw new RuntimeException(e);

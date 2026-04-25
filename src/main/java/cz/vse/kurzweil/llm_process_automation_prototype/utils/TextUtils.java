@@ -23,9 +23,9 @@ public class TextUtils {
         return raw.replaceAll("[^a-zA-Z0-9._-]", "_");
     }
 
-    public static @NonNull String generateOutputFileName(PromptVariant variant, ModelType model, String baseName) {
+    public static @NonNull String generateOutputFileName(String type, PromptVariant variant, ModelType model, String baseName) {
         return baseName
-                + "__validation__"
+                + "__" + type + "__"
                 + variant.name().toLowerCase()
                 + "__"
                 + sanitize(model.getModelId())
