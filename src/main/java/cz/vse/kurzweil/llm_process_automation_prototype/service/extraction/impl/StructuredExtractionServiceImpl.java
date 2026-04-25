@@ -30,10 +30,9 @@ public class StructuredExtractionServiceImpl implements StructuredExtractionServ
     }
 
     @Override
-    public <T> T extract(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
+    public <T> T extractJustDto(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
         log.info("Extracting with requestType={}, variant={}, model={}", requestType, variant, model);
-        Object extract = strategies.get(variant).extract(inputText, requestType, clients.get(model));
-        return (T) extract;
+        return strategies.get(variant).extract(inputText, requestType, clients.get(model));
     }
 
     @Override
