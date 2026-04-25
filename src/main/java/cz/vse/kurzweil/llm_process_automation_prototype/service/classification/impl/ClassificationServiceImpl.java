@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -39,7 +38,8 @@ public class ClassificationServiceImpl implements ClassificationService {
         log.info("Classifying with prompt variant={}, model={}", variant, model);
         ResponseEntity<ChatResponse, ClassificationResponse> response =
                 rateLimiter.execute(() -> strategies.get(variant).classify(inputText, clients.get(model)));
-        RequestType requestType = Objects.requireNonNull(response.entity(), "Classification response entity was null").requestType();
+        ClassificationResponse entity = response.entity();
+        RequestType requestType = entity != null ? entity.requestType() : RequestType.UNCLASSIFIABLE;
         log.debug("Classification result: {}", requestType);
         return new ResponseEntity<>(response.response(), requestType);
     }
