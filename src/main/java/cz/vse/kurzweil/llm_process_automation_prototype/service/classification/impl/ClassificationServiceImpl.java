@@ -4,20 +4,16 @@ import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.LlmRateLimiter;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.classification.ClassificationResult;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.classification.ClassificationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ResponseEntity;
-import org.springframework.ai.chat.metadata.ChatResponseMetadata;
-import org.springframework.ai.chat.metadata.Usage;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -39,18 +35,12 @@ public class ClassificationServiceImpl implements ClassificationService {
     }
 
     @Override
-    public ClassificationResult classify(String inputText, PromptVariant variant, ModelType model) {
+    public ResponseEntity<ChatResponse, RequestType> classify(String inputText, PromptVariant variant, ModelType model) {
         log.info("Classifying with prompt variant={}, model={}", variant, model);
         ResponseEntity<ChatResponse, ClassificationResponse> response =
                 rateLimiter.execute(() -> strategies.get(variant).classify(inputText, clients.get(model)));
         RequestType requestType = Objects.requireNonNull(response.entity(), "Classification response entity was null").requestType();
-        Optional<Usage> usage = Optional.ofNullable(response.response())
-                .map(ChatResponse::getMetadata)
-                .map(ChatResponseMetadata::getUsage);
-        return new ClassificationResult(
-                requestType,
-                usage.map(Usage::getPromptTokens).orElse(0),
-                usage.map(Usage::getCompletionTokens).orElse(0)
-        );
+        log.debug("Classification result: {}", requestType);
+        return new ResponseEntity<>(response.response(), requestType);
     }
 }

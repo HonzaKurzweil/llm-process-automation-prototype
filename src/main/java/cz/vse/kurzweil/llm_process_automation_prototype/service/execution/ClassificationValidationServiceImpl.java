@@ -1,21 +1,26 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.impl;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.execution;
 
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.classification.ClassificationResult;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.classification.ClassificationService;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.ClassificationValidationService;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ExtractionDataSetBundleReader;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ResultExporter;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.*;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ClassificationValidationRecordResult;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ClassificationValidationRunResult;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ExtractionRecord;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
+import org.springframework.ai.chat.client.ResponseEntity;
+import org.springframework.ai.chat.metadata.ChatResponseMetadata;
+import org.springframework.ai.chat.metadata.Usage;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -57,11 +62,10 @@ public class ClassificationValidationServiceImpl implements ClassificationValida
     }
 
     private ClassificationValidationRecordResult evaluateRecord(ExtractionRecord record, PromptVariant variant, ModelType model) {
-        ExpectedClassification expected = record.expectedClassification();
-        String expectedRequestTypeId = expected.requestTypeId();
-        ClassificationResult result;
+        RequestType expectedRequestType = RequestType.fromRequestTypeIdReference(record.expectedClassification().requestTypeId());
+        ResponseEntity<ChatResponse, RequestType> responseEntity;
         try {
-            result = classificationService.classify(record.inputText(), variant, model);
+            responseEntity = classificationService.classify(record.inputText(), variant, model);
         } catch (Exception exception) {
             return ClassificationValidationRecordResult.failure(
                     record.recordId(),
@@ -70,14 +74,15 @@ public class ClassificationValidationServiceImpl implements ClassificationValida
                     record.noiseTags(),
                     variant.name(),
                     model.getModelId(),
-                    expectedRequestTypeId,
+                    expectedRequestType,
                     exception.getClass().getSimpleName() + ": " + exception.getMessage()
             );
         }
-        RequestType actualRequestType = result.requestType();
-        String actualRequestTypeId = actualRequestType == RequestType.UNCLASSIFIABLE
-                ? null : actualRequestType.getRequestTypeIdReference();
-        boolean correct = expectedRequestTypeId != null && expectedRequestTypeId.equals(actualRequestTypeId);
+        RequestType actualRequestType = responseEntity.entity();
+        boolean correct = expectedRequestType == actualRequestType;
+        Optional<Usage> usage = Optional.ofNullable(responseEntity.response())
+                .map(ChatResponse::getMetadata)
+                .map(ChatResponseMetadata::getUsage);
         return new ClassificationValidationRecordResult(
                 record.recordId(),
                 record.channel(),
@@ -86,11 +91,11 @@ public class ClassificationValidationServiceImpl implements ClassificationValida
                 variant.name(),
                 model.getModelId(),
                 true,
-                expectedRequestTypeId,
-                actualRequestTypeId,
+                expectedRequestType,
+                actualRequestType,
                 correct,
-                result.promptTokens(),
-                result.completionTokens(),
+                usage.map(Usage::getPromptTokens).orElse(0),
+                usage.map(Usage::getCompletionTokens).orElse(0),
                 null
         );
     }

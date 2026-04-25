@@ -1,5 +1,7 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto;
 
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
+
 import java.util.List;
 
 public record ClassificationValidationRecordResult(
@@ -10,8 +12,8 @@ public record ClassificationValidationRecordResult(
         String promptVariant,
         String modelId,
         boolean invocationSucceeded,
-        String expectedRequestTypeId,
-        String actualRequestTypeId,
+        RequestType expectedRequestType,
+        RequestType actualRequestType,
         boolean correct,
         int promptTokens,
         int completionTokens,
@@ -24,12 +26,12 @@ public record ClassificationValidationRecordResult(
             List<String> noiseTags,
             String promptVariant,
             String modelId,
-            String expectedRequestTypeId,
+            RequestType expectedRequestType,
             String errorMessage
     ) {
         return new ClassificationValidationRecordResult(
                 recordId, channel, mode, noiseTags == null ? List.of() : List.copyOf(noiseTags),
-                promptVariant, modelId, false, expectedRequestTypeId, null, false, 0, 0, errorMessage
+                promptVariant, modelId, false, expectedRequestType, null, false, 0, 0, errorMessage
         );
     }
 

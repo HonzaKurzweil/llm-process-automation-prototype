@@ -4,7 +4,6 @@ import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.classification.ClassificationService;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.classification.ClassificationResult;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.StructuredExtractionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +21,11 @@ public class StructuredOutputController {
     private final StructuredExtractionService structuredExtractionService;
 
     @PostMapping("/classify")
-    public ResponseEntity<ClassificationResult> classify(
+    public ResponseEntity<RequestType> classify(
             @RequestParam String input,
             @RequestParam(defaultValue = "DIRECT") PromptVariant variant,
             @RequestParam(defaultValue = "GPT_4O_MINI") ModelType model) {
-        return ResponseEntity.ok(classificationService.classify(input, variant, model));
+        return ResponseEntity.ok(classificationService.classify(input, variant, model).entity());
     }
 
     @PostMapping("/extractResponseEntity")
