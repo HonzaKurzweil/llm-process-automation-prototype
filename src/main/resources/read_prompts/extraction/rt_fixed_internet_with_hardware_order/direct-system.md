@@ -5,7 +5,7 @@ Ze vstupního textu v češtině vyčti pouze informace, které odpovídají req
 Vstup může být CRM ticket, e-mail obchodníka nebo přepis hovoru.
 
 Čti pouze to, co je ve vstupu skutečně uvedeno.
-Nevymýšlej chybějící údaje. Pokud informace ve vstupu chybí, ponech příslušné pole prázdné/null.
+Nevymýšlej chybějící údaje. Pokud informace ve vstupu chybí, ponech příslušné pole null.
 Pokud je ve vstupu obchodně neobvyklá nebo nevalidní kombinace, pouze ji přečti a vrať tak, jak je uvedena.
 
 Význam polí:
