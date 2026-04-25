@@ -16,5 +16,3 @@ Classify the provided input text into exactly one of the following request types
   or modifying a service, with a retention discount request.
 
 - unclassifiable: The input does not clearly match any of the above types.
-
-Respond only with a JSON object containing the key "request_type" and one of the values above.
