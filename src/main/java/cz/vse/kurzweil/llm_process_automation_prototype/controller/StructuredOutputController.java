@@ -28,12 +28,12 @@ public class StructuredOutputController {
         return ResponseEntity.ok(classificationService.classify(input, variant, model).entity());
     }
 
-    @PostMapping("/extractResponseEntity")
-    public ResponseEntity<Object> extractResponseEntity(
+    @PostMapping("/extract")
+    public ResponseEntity<Object> extract(
             @RequestParam String input,
             @RequestParam(defaultValue = "RT_NEW_MOBILE_ORDER") RequestType requestType,
             @RequestParam(defaultValue = "DIRECT") PromptVariant variant,
             @RequestParam(defaultValue = "GPT_4O_MINI") ModelType model) {
-        return ResponseEntity.ok(extractionService.extractResponseEntity(input, requestType, variant, model));
+        return ResponseEntity.ok(extractionService.extract(input, requestType, variant, model));
     }
 }

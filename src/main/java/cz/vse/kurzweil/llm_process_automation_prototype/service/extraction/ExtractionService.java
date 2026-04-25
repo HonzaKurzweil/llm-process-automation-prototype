@@ -8,5 +8,5 @@ import org.springframework.ai.chat.model.ChatResponse;
 
 public interface ExtractionService {
 
-    <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, PromptVariant variant, ModelType model);
+    <T> ResponseEntity<ChatResponse, T> extract(String inputText, RequestType requestType, PromptVariant variant, ModelType model);
 }

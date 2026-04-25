@@ -34,7 +34,7 @@ public class ExtractionServiceImpl implements ExtractionService {
     }
 
     @Override
-    public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
+    public <T> ResponseEntity<ChatResponse, T> extract(String inputText, RequestType requestType, PromptVariant variant, ModelType model) {
         log.info("Extracting with responseEntity, requestType={}, variant={}, model={}", requestType, variant, model);
         return rateLimiter.execute(() -> strategies.get(variant).extractResponseEntity(inputText, requestType, clients.get(model)));
     }

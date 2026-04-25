@@ -85,7 +85,7 @@ public class ExtractionValidationServiceImpl implements ExtractionValidationServ
         Object expectedDto = deserializeExpectedDto(ctx);
         ResponseEntity<ChatResponse, ?> responseEntity;
         try {
-            responseEntity = extractionService.extractResponseEntity(record.inputText(), requestType, variant, model);
+            responseEntity = extractionService.extract(record.inputText(), requestType, variant, model);
         } catch (Exception exception) {
             return generateExceptionResult(ctx, expectedDto, exception);
         }
