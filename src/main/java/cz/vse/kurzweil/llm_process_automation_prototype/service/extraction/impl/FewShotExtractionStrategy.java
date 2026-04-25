@@ -2,6 +2,7 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.impl
 
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.CatalogService;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptResourceLoader;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ResponseEntity;
@@ -12,9 +13,11 @@ import org.springframework.stereotype.Component;
 public class FewShotExtractionStrategy implements ExtractionStrategy {
 
     private final PromptResourceLoader promptLoader;
+    private final CatalogService catalogService;
 
-    public FewShotExtractionStrategy(PromptResourceLoader promptLoader) {
+    public FewShotExtractionStrategy(PromptResourceLoader promptLoader, CatalogService catalogService) {
         this.promptLoader = promptLoader;
+        this.catalogService = catalogService;
     }
 
     @Override
@@ -25,9 +28,7 @@ public class FewShotExtractionStrategy implements ExtractionStrategy {
     @Override
     @SuppressWarnings("unchecked")
     public <T> T extract(String inputText, RequestType requestType, ChatClient client) {
-        String dir = requestType.getPromptDirectory();
-        String systemPrompt = promptLoader.load(dir + "/direct-system.md") + "\n\n"
-                + promptLoader.load(dir + "/few-shot-examples.md");
+        String systemPrompt = resolveSystemPrompt(requestType);
         return client.prompt()
                 .system(systemPrompt)
                 .user(inputText)
@@ -38,13 +39,18 @@ public class FewShotExtractionStrategy implements ExtractionStrategy {
     @Override
     @SuppressWarnings("unchecked")
     public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
-        String dir = requestType.getPromptDirectory();
-        String systemPrompt = promptLoader.load(dir + "/direct-system.md") + "\n\n"
-                + promptLoader.load(dir + "/few-shot-examples.md");
+        String systemPrompt = resolveSystemPrompt(requestType);
         return client.prompt()
                 .system(systemPrompt)
                 .user(inputText)
                 .call()
                 .responseEntity((Class<T>) requestType.getDtoClass());
+    }
+
+    private String resolveSystemPrompt(RequestType requestType) {
+        String dir = requestType.getPromptDirectory();
+        String systemTemplate = promptLoader.load(dir + "/direct-system.md")
+                .replace("{catalog_mappings}", catalogService.generateCatalogMappings(requestType));
+        return systemTemplate + "\n\n" + promptLoader.load(dir + "/few-shot-examples.md");
     }
 }

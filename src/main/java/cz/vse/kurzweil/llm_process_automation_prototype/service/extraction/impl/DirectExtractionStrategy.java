@@ -2,6 +2,7 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.impl
 
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.CatalogService;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptResourceLoader;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ResponseEntity;
@@ -12,9 +13,11 @@ import org.springframework.stereotype.Component;
 public class DirectExtractionStrategy implements ExtractionStrategy {
 
     private final PromptResourceLoader promptLoader;
+    private final CatalogService catalogService;
 
-    public DirectExtractionStrategy(PromptResourceLoader promptLoader) {
+    public DirectExtractionStrategy(PromptResourceLoader promptLoader, CatalogService catalogService) {
         this.promptLoader = promptLoader;
+        this.catalogService = catalogService;
     }
 
     @Override
@@ -25,7 +28,7 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
     @Override
     @SuppressWarnings("unchecked")
     public <T> T extract(String inputText, RequestType requestType, ChatClient client) {
-        String systemPrompt = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md");
+        String systemPrompt = resolveSystemPrompt(requestType);
         return client.prompt()
                 .system(systemPrompt)
                 .user(inputText)
@@ -36,11 +39,16 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
     @Override
     @SuppressWarnings("unchecked")
     public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
-        String systemPrompt = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md");
+        String systemPrompt = resolveSystemPrompt(requestType);
         return client.prompt()
                 .system(systemPrompt)
                 .user(inputText)
                 .call()
                 .responseEntity((Class<T>) requestType.getDtoClass());
+    }
+
+    private String resolveSystemPrompt(RequestType requestType) {
+        String template = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md");
+        return template.replace("{catalog_mappings}", catalogService.generateCatalogMappings(requestType));
     }
 }

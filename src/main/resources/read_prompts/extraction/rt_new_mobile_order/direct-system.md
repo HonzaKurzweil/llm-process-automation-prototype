@@ -24,6 +24,4 @@ Význam polí:
 
 Mapování katalogových ID:
 
-- `svc_mobile_start_5g` = Mobil Start 5G
-- `svc_mobile_unlimited_5g` = Mobil Neomezeně 5G
-- `disc_porting_mobile_200` = sleva za přenos čísla 200 Kč měsíčně na 6 měsíců
+{catalog_mappings}

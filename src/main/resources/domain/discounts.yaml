@@ -6,27 +6,18 @@ discounts:
     aliases:
       - balíček 10 %
       - bundle sleva
-    usedByRequestTypes:
-      - rt_internet_tv_bundle_order
   - discountId: disc_porting_mobile_200
     name: Přenos čísla 200 Kč na 6 měsíců
     aliases:
       - sleva za přenos čísla
       - porting bonus
-    usedByRequestTypes:
-      - rt_new_mobile_order
-      - rt_family_mobile_order
   - discountId: disc_retention_15_existing
     name: Retenční sleva 15 %
     aliases:
       - retenční sleva 15 %
       - retence 15 %
-    usedByRequestTypes:
-      - rt_retention_discount_request
   - discountId: disc_family_line_100
     name: Rodinná linka -100 Kč
     aliases:
       - rodinná linka minus 100
       - sleva na další linku
-    usedByRequestTypes:
-      - rt_family_mobile_order

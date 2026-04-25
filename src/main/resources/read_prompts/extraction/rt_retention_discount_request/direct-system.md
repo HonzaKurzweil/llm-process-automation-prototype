@@ -27,13 +27,4 @@ Význam polí:
 
 Mapování katalogových ID:
 
-- `svc_mobile_start_5g` = Mobil Start 5G
-- `svc_mobile_unlimited_5g` = Mobil Neomezeně 5G
-- `svc_mobile_family_plus` = Mobil Family Plus / rodinný tarif
-- `svc_internet_fiber_300` = optický internet 300 Mb/s
-- `svc_internet_fiber_1000` = optický internet 1000 Mb/s
-- `svc_internet_dsl_100` = DSL internet 100 Mb/s
-- `svc_internet_wireless_50` = bezdrátový internet 50 Mb/s
-- `svc_tv_basic` = TV Basic
-- `svc_tv_family` = TV Family
-- `disc_retention_15_existing` = retenční sleva 15 % pro stávajícího zákazníka
+;{catalog_mappings}

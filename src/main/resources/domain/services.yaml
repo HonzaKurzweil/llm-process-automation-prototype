@@ -10,8 +10,6 @@ services:
     allowedContractTermMonths:
       - 0
       - 24
-    usedByRequestTypes:
-      - rt_new_mobile_order
   - serviceId: svc_mobile_unlimited_5g
     name: Mobil Neomezeně 5G
     aliases:
@@ -21,8 +19,6 @@ services:
     allowedContractTermMonths:
       - 0
       - 24
-    usedByRequestTypes:
-      - rt_new_mobile_order
   - serviceId: svc_mobile_family_plus
     name: Mobil Rodina Plus
     aliases:
@@ -32,8 +28,6 @@ services:
     allowedContractTermMonths:
       - 0
       - 24
-    usedByRequestTypes:
-      - rt_family_mobile_order
   - serviceId: svc_internet_fiber_300
     name: Optika Domů 300
     aliases:
@@ -43,10 +37,6 @@ services:
     allowedContractTermMonths:
       - 0
       - 24
-    usedByRequestTypes:
-      - rt_fixed_internet_with_hardware_order
-      - rt_internet_tv_bundle_order
-      - rt_retention_discount_request
   - serviceId: svc_internet_fiber_1000
     name: Optika Domů 1000
     aliases:
@@ -55,10 +45,6 @@ services:
     allowedContractTermMonths:
       - 0
       - 24
-    usedByRequestTypes:
-      - rt_fixed_internet_with_hardware_order
-      - rt_internet_tv_bundle_order
-      - rt_retention_discount_request
   - serviceId: svc_internet_dsl_100
     name: Internet Domů 100 DSL
     aliases:
@@ -67,10 +53,6 @@ services:
     allowedContractTermMonths:
       - 0
       - 24
-    usedByRequestTypes:
-      - rt_fixed_internet_with_hardware_order
-      - rt_internet_tv_bundle_order
-      - rt_retention_discount_request
   - serviceId: svc_internet_wireless_50
     name: Internet Domů Bezdrát 50
     aliases:
@@ -79,10 +61,6 @@ services:
     allowedContractTermMonths:
       - 0
       - 24
-    usedByRequestTypes:
-      - rt_fixed_internet_with_hardware_order
-      - rt_internet_tv_bundle_order
-      - rt_retention_discount_request
   - serviceId: svc_tv_basic
     name: Televize Basic
     aliases:
@@ -91,9 +69,6 @@ services:
     allowedContractTermMonths:
       - 0
       - 24
-    usedByRequestTypes:
-      - rt_internet_tv_bundle_order
-      - rt_retention_discount_request
   - serviceId: svc_tv_family
     name: Televize Family
     aliases:
@@ -102,6 +77,3 @@ services:
     allowedContractTermMonths:
       - 0
       - 24
-    usedByRequestTypes:
-      - rt_internet_tv_bundle_order
-      - rt_retention_discount_request

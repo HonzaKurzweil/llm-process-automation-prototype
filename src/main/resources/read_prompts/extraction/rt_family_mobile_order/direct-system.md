@@ -29,6 +29,4 @@ Význam polí:
 
 Mapování katalogových ID:
 
-- `svc_mobile_family_plus` = Mobil Family Plus / rodinný tarif
-- `disc_family_line_100` = sleva 100 Kč na další linku v rodinném tarifu
-- `disc_porting_mobile_200` = sleva za přenos čísla 200 Kč měsíčně na 6 měsíců
+{catalog_mappings}

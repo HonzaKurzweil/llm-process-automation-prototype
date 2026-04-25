@@ -6,41 +6,27 @@ products:
     aliases:
       - router standard
       - standardní router
-    usedByRequestTypes:
-      - rt_fixed_internet_with_hardware_order
-      - rt_internet_tv_bundle_order
   - productId: prod_router_pro
     name: Wi‑Fi Router Pro
     aliases:
       - router pro
       - wi-fi 6 router
-    usedByRequestTypes:
-      - rt_fixed_internet_with_hardware_order
-      - rt_internet_tv_bundle_order
   - productId: prod_mesh_node
     name: Mesh Wi‑Fi jednotka
     aliases:
       - mesh node
       - mesh jednotka
-    usedByRequestTypes:
-      - rt_fixed_internet_with_hardware_order
   - productId: prod_set_top_box
     name: Set-top box
     aliases:
       - set-top box
       - stb
-    usedByRequestTypes:
-      - rt_internet_tv_bundle_order
   - productId: prod_installation_express
     name: Expresní instalace
     aliases:
       - expresní instalace
-    usedByRequestTypes:
-      - rt_fixed_internet_with_hardware_order
   - productId: prod_tv_sports_pack
     name: Sport Plus
     aliases:
       - sport plus
       - sportovní balíček
-    usedByRequestTypes:
-      - rt_internet_tv_bundle_order

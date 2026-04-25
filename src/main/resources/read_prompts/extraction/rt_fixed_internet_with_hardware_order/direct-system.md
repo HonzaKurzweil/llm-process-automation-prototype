@@ -22,11 +22,4 @@ Význam polí:
 
 Mapování katalogových ID:
 
-- `svc_internet_fiber_300` = optický internet 300 Mb/s
-- `svc_internet_fiber_1000` = optický internet 1000 Mb/s
-- `svc_internet_dsl_100` = DSL internet 100 Mb/s
-- `svc_internet_wireless_50` = bezdrátový internet 50 Mb/s
-- `prod_router_standard` = standardní router
-- `prod_router_pro` = výkonnější / pro router
-- `prod_mesh_node` = mesh node / Wi-Fi extender
-- `prod_installation_express` = expresní instalace
+{catalog_mappings}

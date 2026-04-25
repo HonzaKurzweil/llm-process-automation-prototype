@@ -24,14 +24,4 @@ Význam polí:
 
 Mapování katalogových ID:
 
-- `svc_internet_fiber_300` = optický internet 300 Mb/s
-- `svc_internet_fiber_1000` = optický internet 1000 Mb/s
-- `svc_internet_dsl_100` = DSL internet 100 Mb/s
-- `svc_internet_wireless_50` = bezdrátový internet 50 Mb/s
-- `svc_tv_basic` = TV Basic
-- `svc_tv_family` = TV Family
-- `prod_set_top_box` = set-top box
-- `prod_tv_sports_pack` = sportovní TV balíček / Sport Plus
-- `prod_router_standard` = standardní router
-- `prod_router_pro` = výkonnější / pro router
-- `disc_bundle_10_new` = sleva na nový bundle 10 %
+{catalog_mappings}
