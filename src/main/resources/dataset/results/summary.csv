@@ -179,3 +179,8 @@ resultFileName,mode,channel,noiseCount,completenessMode,promptVariant,modelType,
 "ext_crm_n5_incomplete__validation__direct__gpt-5-nano.json","extraction","crm_ticket",4,"PARTIAL","DIRECT","gpt-5-nano",1.0,1591,131
 "ext_crm_n5_incomplete__validation__direct__gpt-5-nano.json","extraction","crm_ticket",4,"PARTIAL","DIRECT","gpt-5-nano",1.0,1760,186
 "ext_crm_n5_incomplete__validation__direct__gpt-5-nano.json","extraction","crm_ticket",4,"PARTIAL","DIRECT","gpt-5-nano",1.0,1776,149
+"ext_crm_n5_complete__validation__few_shot__gpt-5-nano.json","extraction","crm_ticket",4,"FULL","FEW_SHOT","gpt-5-nano",1.0,2412,114
+"ext_crm_n5_complete__validation__few_shot__gpt-5-nano.json","extraction","crm_ticket",4,"FULL","FEW_SHOT","gpt-5-nano",1.0,2885,319
+"ext_crm_n5_complete__validation__few_shot__gpt-5-nano.json","extraction","crm_ticket",4,"FULL","FEW_SHOT","gpt-5-nano",1.0,2258,139
+"ext_crm_n5_complete__validation__few_shot__gpt-5-nano.json","extraction","crm_ticket",4,"FULL","FEW_SHOT","gpt-5-nano",1.0,2534,226
+"ext_crm_n5_complete__validation__few_shot__gpt-5-nano.json","extraction","crm_ticket",4,"FULL","FEW_SHOT","gpt-5-nano",1.0,2452,166
