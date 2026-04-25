@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BASE_URL="http://localhost:8080/api/execution/extraction-validation"
+BASE_URL="http://localhost:8080/api/validation/extraction-validation"
 VARIANT="${1:-DIRECT}"
 MODEL="${2:-GPT_5_NANO}"
 
