@@ -2,7 +2,7 @@
 
 BASE_URL="http://localhost:8080/api/execution/extraction-validation"
 VARIANT="DIRECT"
-MODEL="GPT_4O_MINI"
+MODEL="GPT_5_NANO"
 
 files=(
 "C:\Users\Jan\Desktop\projects\llm-process-automation-prototype\src\main\resources\dataset\inputs\ext_broker_n1_complete.json"
