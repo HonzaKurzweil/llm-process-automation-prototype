@@ -166,23 +166,23 @@ For each record:
 4. In extraction mode, generate exactly one known request type per record.
 5. In classification mode, keep `expectedExtractions` empty.
 6. `expectedClassification.requestTypeId` must always contain exactly one value.
-8. If the classification result is not safely one known request type, use `unclassifiable`.
-9. If `expectedClassification.requestTypeId` is `unclassifiable`, `unclassifiableReason` must be one of the reason IDs
+7. If the classification result is not safely one known request type, use `unclassifiable`.
+8. If `expectedClassification.requestTypeId` is `unclassifiable`, `unclassifiableReason` must be one of the reason IDs
    from `classification_targets.yaml`.
-10. `call_transcript` must always contain both `Operátor:` and `Zákazník:` turns.
-11. `crm_ticket` must not contain greeting or signature.
-12. `broker_email` may contain greeting and signature.
-13. For incomplete cases, omit selected field values from the rendered text and represent them as `null` or empty arrays
+9. `call_transcript` must always contain both `Operátor:` and `Zákazník:` turns.
+10. `crm_ticket` must not contain greeting or signature.
+11. `broker_email` may contain greeting and signature.
+12. For incomplete cases, omit selected field values from the rendered text and represent them as `null` or empty arrays
     in the expected DTO. Do not violate the DTO schema.
-14. `evidenceByFieldPath` should use literal snippets from `inputText` whenever possible.
-15. `materializedFieldPaths` must list only fields actually supported by the rendered text.
-16. `intentionallyOmittedFieldPaths` must list only fields intentionally absent from the rendered text.
-17. For every expected extraction object, the union of `materializedFieldPaths` and `intentionallyOmittedFieldPaths`
+13. `evidenceByFieldPath` should use literal snippets from `inputText` whenever possible.
+14. `materializedFieldPaths` must list only fields actually supported by the rendered text.
+15. `intentionallyOmittedFieldPaths` must list only fields intentionally absent from the rendered text.
+16. For every expected extraction object, the union of `materializedFieldPaths` and `intentionallyOmittedFieldPaths`
     must cover all field paths of that expected DTO object. A field path must not appear in both lists.
-18. For nested list objects, use indexed field paths such as `requestedServices[0].serviceId` and
+17. For nested list objects, use indexed field paths such as `requestedServices[0].serviceId` and
     `portedNumbers[0].donorOperator`.
-19. `evidenceByFieldPath` keys must correspond to materialized field paths.
-20. `normalizedValue` in `evidenceByFieldPath` must use the same JSON value type as the DTO value whenever possible, for
+18. `evidenceByFieldPath` keys must correspond to materialized field paths.
+19. `normalizedValue` in `evidenceByFieldPath` must use the same JSON value type as the DTO value whenever possible, for
     example number for `24` and boolean for `true`.
-21. The output file must never be a bare array.
-22. The output JSON must be valid RFC8259 JSON. Do not use placeholders such as `...`.
+20. The output file must never be a bare array.
+21. The output JSON must be valid RFC8259 JSON. Do not use placeholders such as `...`.
