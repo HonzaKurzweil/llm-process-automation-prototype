@@ -1,4 +1,4 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.utils;
+package cz.vse.kurzweil.llm_process_automation_prototype.commons;
 
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ExtractionValidationRecordResult;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.OutcomeCounter;

@@ -1,4 +1,4 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.components;
 
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;

@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.*;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.appendPath;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.normalizePath;
+import static cz.vse.kurzweil.llm_process_automation_prototype.commons.Constants.*;
+import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.appendPath;
+import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.normalizePath;
 
 @Slf4j
 @Component

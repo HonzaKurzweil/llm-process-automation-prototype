@@ -2,7 +2,7 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.classification.
 
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.PromptResourceLoader;
+import cz.vse.kurzweil.llm_process_automation_prototype.commons.PromptResourceLoader;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ResponseEntity;

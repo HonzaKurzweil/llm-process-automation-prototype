@@ -1,4 +1,4 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service;
+package cz.vse.kurzweil.llm_process_automation_prototype.commons;
 
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import lombok.extern.slf4j.Slf4j;

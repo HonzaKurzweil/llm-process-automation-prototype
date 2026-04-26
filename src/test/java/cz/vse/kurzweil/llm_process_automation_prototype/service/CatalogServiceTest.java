@@ -1,5 +1,6 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service;
 
+import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.components.CatalogService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.DefaultResourceLoader;

@@ -18,9 +18,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.Constants.*;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.generateOutputFileName;
-import static cz.vse.kurzweil.llm_process_automation_prototype.utils.TextUtils.quote;
+import static cz.vse.kurzweil.llm_process_automation_prototype.commons.Constants.*;
+import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.generateOutputFileName;
+import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.quote;
 
 @Slf4j
 @Component

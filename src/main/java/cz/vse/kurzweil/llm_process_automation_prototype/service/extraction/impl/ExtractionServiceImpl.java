@@ -3,7 +3,7 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.impl
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.LlmRateLimiter;
+import cz.vse.kurzweil.llm_process_automation_prototype.commons.LlmRateLimiter;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.ExtractionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
