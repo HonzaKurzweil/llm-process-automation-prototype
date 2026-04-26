@@ -24,11 +24,6 @@ public enum RequestType {
     private final Class<?> dtoClass;
     private final String promptDirectory;
 
-    @JsonValue
-    public String getRequestTypeIdReference() {
-        return requestTypeIdReference;
-    }
-
     @JsonCreator
     public static RequestType fromRequestTypeIdReference(String requestTypeIdReference) {
         for (RequestType type : values()) {
