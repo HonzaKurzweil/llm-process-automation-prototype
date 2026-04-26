@@ -1,4 +1,5 @@
 Formátovací pravidla demonstrovaná v příkladech:
+
 - `contactPhone`: česká čísla ve tvaru `+420 XXX XXX XXX`.
 - `mobileLines[].label`: první linka `hlavní linka`, druhá `druhá linka`, třetí `třetí linka` atd.
 

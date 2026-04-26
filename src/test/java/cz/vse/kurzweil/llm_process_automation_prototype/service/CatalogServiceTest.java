@@ -27,8 +27,8 @@ class CatalogServiceTest {
 
     @Test
     void sectionsAppearInCorrectOrder() {
-        int servicesIdx  = output.indexOf("Services:");
-        int productsIdx  = output.indexOf("Products:");
+        int servicesIdx = output.indexOf("Services:");
+        int productsIdx = output.indexOf("Products:");
         int discountsIdx = output.indexOf("Discounts:");
         assertThat(servicesIdx).isLessThan(productsIdx);
         assertThat(productsIdx).isLessThan(discountsIdx);
@@ -68,8 +68,8 @@ class CatalogServiceTest {
 
     @Test
     void serviceIdsAreInServicesSection() {
-        int servicesIdx  = output.indexOf("Services:");
-        int productsIdx  = output.indexOf("Products:");
+        int servicesIdx = output.indexOf("Services:");
+        int productsIdx = output.indexOf("Products:");
         String servicesSection = output.substring(servicesIdx, productsIdx);
         assertThat(servicesSection)
                 .contains("svc_mobile_start_5g")
@@ -103,7 +103,7 @@ class CatalogServiceTest {
 
     @Test
     void productIdsAreInProductsSection() {
-        int productsIdx  = output.indexOf("Products:");
+        int productsIdx = output.indexOf("Products:");
         int discountsIdx = output.indexOf("Discounts:");
         String productsSection = output.substring(productsIdx, discountsIdx);
         assertThat(productsSection)

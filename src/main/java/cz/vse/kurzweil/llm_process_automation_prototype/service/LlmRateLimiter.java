@@ -2,9 +2,7 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Supplier;

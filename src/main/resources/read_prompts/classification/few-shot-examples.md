@@ -30,12 +30,14 @@ RT_RETENTION_DISCOUNT_REQUEST
 
 --- EXAMPLE 6 ---
 INPUT:
-Zákazník Jan Procházka, stávající zákazník, žádá o retenční slevu na Optiku Domů 300. Důvod: konkurence nabízí stejnou rychlost o 200 Kč levněji. Zákazník zároveň žádá o vystavení duplikátu staré faktury.
+Zákazník Jan Procházka, stávající zákazník, žádá o retenční slevu na Optiku Domů 300. Důvod: konkurence nabízí stejnou
+rychlost o 200 Kč levněji. Zákazník zároveň žádá o vystavení duplikátu staré faktury.
 OUTPUT:
 UNCLASSIFIABLE
 
 --- EXAMPLE 7 ---
 INPUT:
-Požadavek 1: Petr Urban, stávající zákazník, objednávka pevného internetu DSL s Wi-Fi routerem Pro, instalace Brno. Požadavek 2: tentýž zákazník žádá o retenční slevu na stávající mobilní tarif.
+Požadavek 1: Petr Urban, stávající zákazník, objednávka pevného internetu DSL s Wi-Fi routerem Pro, instalace Brno.
+Požadavek 2: tentýž zákazník žádá o retenční slevu na stávající mobilní tarif.
 OUTPUT:
 UNCLASSIFIABLE

@@ -16,6 +16,7 @@ Classify the provided input text into exactly one of the following request types
   or modifying a service, with a retention discount request.
 
 - unclassifiable: Use this type in any of the following situations:
-  - The input does not clearly match any of the above types.
-  - The input matches exactly one known type but also contains an additional request that does not belong to any known type.
-  - The input contains two or more distinct known request types.
+    - The input does not clearly match any of the above types.
+    - The input matches exactly one known type but also contains an additional request that does not belong to any known
+      type.
+    - The input contains two or more distinct known request types.

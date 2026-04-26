@@ -1,12 +1,12 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.familymobileorder.FamilyMobileOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.fixedinternetorder.FixedInternetHardwareOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.internettvbundle.InternetTvBundleOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.newmobileorder.SingleMobileOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.retentiondiscount.RetentionDiscountRequestDto;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

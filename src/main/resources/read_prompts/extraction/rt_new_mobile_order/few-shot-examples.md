@@ -1,4 +1,5 @@
 Formátovací pravidla demonstrovaná v příkladech:
+
 - `contactPhone`: česká čísla ve tvaru `+420 XXX XXX XXX`.
 
 --- EXAMPLE 1 (broker email — complete valid reference) ---

@@ -1,4 +1,5 @@
 Formátovací pravidla demonstrovaná v příkladech:
+
 - `contactPhone`: česká čísla ve tvaru `+420 XXX XXX XXX`.
 - `installationAddress`: formát Město, Část/Čtvrť, Ulice číslo popisné — viz příklad 3, kde je vstup v jiném pořadí.
 

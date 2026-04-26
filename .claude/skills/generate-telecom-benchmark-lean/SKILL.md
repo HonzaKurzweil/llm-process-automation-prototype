@@ -66,8 +66,12 @@ For every mode (`extraction`, `classification`, `combined`), write one JSON obje
   "generatedAt": "2026-04-24",
   "generationRunParams": {
     "mode": "extraction",
-    "requestTypeIds": ["rt_new_mobile_order"],
-    "channels": ["crm_ticket"],
+    "requestTypeIds": [
+      "rt_new_mobile_order"
+    ],
+    "channels": [
+      "crm_ticket"
+    ],
     "noiseCount": 1,
     "completenessMode": "mixed",
     "variantsPerCase": 1,

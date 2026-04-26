@@ -9,6 +9,6 @@ import org.springframework.ai.chat.model.ChatResponse;
 public interface ExtractionStrategy {
 
     PromptVariant variant();
-    
+
     <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client);
 }
