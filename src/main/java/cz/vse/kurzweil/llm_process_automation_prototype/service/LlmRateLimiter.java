@@ -1,5 +1,6 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.service;
 
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -34,6 +35,13 @@ public class LlmRateLimiter {
         }
         applyMinDelay();
         return executeWithRetry(call);
+    }
+
+    public <T> T execute(ModelType model, Supplier<T> call) {
+        if (model.getProvider() == ModelType.Provider.OLLAMA) {
+            return call.get();
+        }
+        return execute(call);
     }
 
     private void applyMinDelay() {

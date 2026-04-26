@@ -37,7 +37,7 @@ public class ClassificationServiceImpl implements ClassificationService {
     public ResponseEntity<ChatResponse, RequestType> classify(String inputText, PromptVariant variant, ModelType model) {
         log.info("Classifying with prompt variant={}, model={}", variant, model);
         ResponseEntity<ChatResponse, RequestType> response =
-                rateLimiter.execute(() -> strategies.get(variant).classify(inputText, clients.get(model)));
+                rateLimiter.execute(model, () -> strategies.get(variant).classify(inputText, clients.get(model)));
         RequestType requestType = response.entity() != null ? response.entity() : RequestType.UNCLASSIFIABLE;
         return new ResponseEntity<>(response.response(), requestType);
     }
