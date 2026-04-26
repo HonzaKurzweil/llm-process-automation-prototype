@@ -27,7 +27,7 @@ import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils
 public class ResultExporter {
 
     private static final String SUMMARY_CSV = "summary.csv";
-    private static final String CSV_HEADER = "validationType,resultFileName,mode,channel,noiseCount,promptVariant,modelType,matchRate,promptTokens,completionTokens";
+    private static final String CSV_HEADER = "resultFileName,mode,channel,noiseCount,promptVariant,modelType,matchRate,promptTokens,completionTokens";
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
