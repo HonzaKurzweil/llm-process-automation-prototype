@@ -1,8 +1,8 @@
 ---
 name: generate-telecom-benchmark-final
 description: Generate Czech telecom benchmark datasets from request types, domain catalogs, entity pools, channel profiles, and noise profiles.
-when_to_use: Use this skill when the user asks to generate benchmark datasets for extraction, classification, or combined evaluation in the telecom prototype.
-argument-hint: "mode=<extraction|classification|combined> requestTypeIds=<id|all> channels=crm_ticket,broker_email,call_transcript noiseCount=<0..N> completenessMode=<complete|incomplete|mixed> variantsPerCase=1 outputPath=<path>"
+when_to_use: Use this skill when the user asks to generate benchmark datasets for extraction or classification evaluation in the telecom prototype.
+argument-hint: "mode=<extraction|classification> requestTypeIds=<id|all> channels=crm_ticket,broker_email,call_transcript noiseCount=<0..N> completenessMode=<complete|incomplete|mixed> variantsPerCase=1 outputPath=<path>"
 disable-model-invocation: true
 allowed-tools:
   - Read
@@ -16,7 +16,7 @@ allowed-tools:
 # Generate Telecom Benchmark Final
 
 Generate Czech benchmark datasets for the telecom prototype. The generator creates structured benchmark records for
-three modes: extraction, classification, and combined classification-plus-extraction.
+two modes: extraction and classification.
 
 ## Required input files
 
@@ -59,7 +59,7 @@ Use the files as follows:
 
 ## Global output rule
 
-For every mode (`extraction`, `classification`, `combined`), write one JSON object with this top-level envelope:
+For every mode (`extraction`, `classification`), write one JSON object with this top-level envelope:
 
 ```json
 {
@@ -88,7 +88,7 @@ Never output a raw top-level array. Never include `generatorVersion`. The full r
 
 Required:
 
-- `mode`: one of `extraction`, `classification`, `combined`
+- `mode`: one of `extraction`, `classification`
 
 Optional:
 
@@ -105,11 +105,6 @@ Mode-specific optional parameters:
 - `classification`:
     - `scenarioKinds`: comma-separated subset of `singleKnownExact`, `singleKnownPartial`, `singleKnownWithUnknownTail`,
       `multiKnownMixed`, `unknownOnly`, `ambiguousInsufficient`.
-    - `knownRequestCount`: integer or range such as `1` or `2-3`.
-
-- `combined`:
-    - `scenarioKinds`: comma-separated subset of `singleKnownExact`, `singleKnownPartial`, `singleKnownWithUnknownTail`,
-      `multiKnownMixed`.
     - `knownRequestCount`: integer or range such as `1` or `2-3`.
 
 ## Supported modes
@@ -144,29 +139,13 @@ For each record:
 - set `expectedClassification.requestTypeId` to exactly one value: one known `rt_*` ID or `unclassifiable`;
 - if the result is `unclassifiable`, set `unclassifiableReason` using the IDs from `classification_targets.yaml`.
 
-### 3. `combined`
-
-Generate classification input that also contains extraction gold objects for every known request present in the text.
-
-For each record:
-
-- choose a classification scenario kind supported for combined data;
-- generate one or more known request fragments according to the chosen scenario kind;
-- for every known request fragment present in the input text, create one item in `expectedExtractions`;
-- if multiple known request types are mixed in one input text, set `expectedClassification.requestTypeId` to
-  `unclassifiable` and `unclassifiableReason` to `multipleKnownRequestTypesPresent`;
-- if one known request is mixed with an unknown tail, set `expectedClassification.requestTypeId` to `unclassifiable` and
-  `unclassifiableReason` to `knownRequestTypeWithUnknownTail`;
-- use the same top-level envelope as the other modes.
-
 ## Generation workflow
 
 1. Load all required files.
 2. Validate requested IDs, channels, scenario kinds, and numeric parameters.
 3. Resolve generation cases:
     - extraction: request type × channel × variant;
-    - classification: scenario kind × channel × variant;
-    - combined: scenario kind × known request count × channel × variant.
+    - classification: scenario kind × channel × variant.
 4. For every known request, build a DTO instance directly from `request_types.yaml`.
 5. Use `fieldConstraints` to select valid service, product, and discount IDs from the domain catalogs.
 6. Use `entity_pools.yaml` for names, phones, emails, addresses, churn reasons, competitor offers, signatures, and
@@ -186,8 +165,7 @@ For each record:
 3. Use only IDs available in the loaded domain catalogs and allowed by the selected request type constraints.
 4. In extraction mode, generate exactly one known request type per record.
 5. In classification mode, keep `expectedExtractions` empty.
-6. In combined mode, include one extraction gold object for every known request present in the text.
-7. `expectedClassification.requestTypeId` must always contain exactly one value.
+6. `expectedClassification.requestTypeId` must always contain exactly one value.
 8. If the classification result is not safely one known request type, use `unclassifiable`.
 9. If `expectedClassification.requestTypeId` is `unclassifiable`, `unclassifiableReason` must be one of the reason IDs
    from `classification_targets.yaml`.
@@ -206,5 +184,5 @@ For each record:
 19. `evidenceByFieldPath` keys must correspond to materialized field paths.
 20. `normalizedValue` in `evidenceByFieldPath` must use the same JSON value type as the DTO value whenever possible, for
     example number for `24` and boolean for `true`.
-21. The output file must never be a bare array, including in `combined` mode.
+21. The output file must never be a bare array.
 22. The output JSON must be valid RFC8259 JSON. Do not use placeholders such as `...`.

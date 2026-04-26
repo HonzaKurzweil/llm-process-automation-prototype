@@ -137,7 +137,7 @@ different record counts, and different modes, but they must preserve the same en
 
 Recommended fields:
 
-- `mode`: `extraction`, `classification`, or `combined`.
+- `mode`: `extraction` or `classification`.
 - `requestTypeIds`: list of requested known request type IDs, or `all` if the invocation used `all`.
 - `channels`: list of channels used in the generation run.
 - `noiseCount`: numeric number of noise tags requested.
@@ -199,7 +199,6 @@ Mode rules:
 
 - `extraction`: exactly one item per record.
 - `classification`: empty array.
-- `combined`: one item for every known request present in `inputText`.
 
 Each item must contain:
 
