@@ -14,8 +14,12 @@ The output file must use this structure:
   "generatedAt": "2026-04-24",
   "generationRunParams": {
     "mode": "extraction",
-    "requestTypeIds": ["rt_new_mobile_order"],
-    "channels": ["crm_ticket"],
+    "requestTypeIds": [
+      "rt_new_mobile_order"
+    ],
+    "channels": [
+      "crm_ticket"
+    ],
     "noiseCount": 1,
     "completenessMode": "mixed",
     "variantsPerCase": 1,
@@ -26,10 +30,14 @@ The output file must use this structure:
       "recordId": "ext_0001",
       "mode": "extraction",
       "channel": "crm_ticket",
-      "noiseTags": ["shorthandInternal"],
+      "noiseTags": [
+        "shorthandInternal"
+      ],
       "generationParams": {
         "requestTypeId": "rt_new_mobile_order",
-        "requestTypeIds": ["rt_new_mobile_order"],
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
         "scenarioKind": null,
         "completenessMode": "complete",
         "noiseCount": 1,
@@ -67,7 +75,9 @@ The output file must use this structure:
           {
             "requestTypeId": "rt_new_mobile_order",
             "segmentRole": "primaryKnown",
-            "evidenceSnippets": ["Start 5G, závazek 24 měs., bez portace"]
+            "evidenceSnippets": [
+              "Start 5G, závazek 24 měs., bez portace"
+            ]
           }
         ],
         "materializedFieldPaths": [
@@ -87,31 +97,45 @@ The output file must use this structure:
         "evidenceByFieldPath": {
           "customerStatus": {
             "normalizedValue": "new",
-            "evidenceSnippets": ["NOVÝ"]
+            "evidenceSnippets": [
+              "NOVÝ"
+            ]
           },
           "customerName": {
             "normalizedValue": "Veronika Jarošová",
-            "evidenceSnippets": ["Veronika Jarošová"]
+            "evidenceSnippets": [
+              "Veronika Jarošová"
+            ]
           },
           "contactPhone": {
             "normalizedValue": "+420 774 551 008",
-            "evidenceSnippets": ["+420 774 551 008"]
+            "evidenceSnippets": [
+              "+420 774 551 008"
+            ]
           },
           "requestedServices[0].serviceId": {
             "normalizedValue": "svc_mobile_start_5g",
-            "evidenceSnippets": ["Start 5G"]
+            "evidenceSnippets": [
+              "Start 5G"
+            ]
           },
           "requestedServices[0].quantity": {
             "normalizedValue": 1,
-            "evidenceSnippets": ["Start 5G"]
+            "evidenceSnippets": [
+              "Start 5G"
+            ]
           },
           "contractTermMonths": {
             "normalizedValue": 24,
-            "evidenceSnippets": ["24 měs."]
+            "evidenceSnippets": [
+              "24 měs."
+            ]
           },
           "portingRequested": {
             "normalizedValue": false,
-            "evidenceSnippets": ["bez portace"]
+            "evidenceSnippets": [
+              "bez portace"
+            ]
           }
         },
         "distractorSnippets": [],

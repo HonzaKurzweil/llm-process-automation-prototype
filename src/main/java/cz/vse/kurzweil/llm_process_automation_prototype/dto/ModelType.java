@@ -17,5 +17,5 @@ public enum ModelType {
     private final String modelId;
     private final Provider provider;
 
-    public enum Provider { OPENAI, OLLAMA }
+    public enum Provider {OPENAI, OLLAMA}
 }

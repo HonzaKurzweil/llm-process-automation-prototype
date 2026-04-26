@@ -1,90 +1,121 @@
 {
-  "inputFile" : "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\cls_crm_n3.json",
-  "promptVariant" : "FEW_SHOT",
-  "modelId" : "gemma3:27b",
-  "records" : [ {
-    "recordId" : "cls_0001",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal", "irrelevantInfo", "ambiguousWording" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1118,
-    "completionTokens" : 12,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0002",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal", "irrelevantInfo", "ambiguousWording" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1137,
-    "completionTokens" : 20,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0003",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet", "shorthandInternal", "irrelevantInfo" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1163,
-    "completionTokens" : 10,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0004",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal", "irrelevantInfo", "ambiguousWording" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1306,
-    "completionTokens" : 10,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0005",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet", "shorthandInternal", "irrelevantInfo" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1037,
-    "completionTokens" : 10,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0006",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal", "irrelevantInfo", "ambiguousWording" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1074,
-    "completionTokens" : 10,
-    "errorMessage" : null
-  } ]
+  "inputFile": "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\cls_crm_n3.json",
+  "promptVariant": "FEW_SHOT",
+  "modelId": "gemma3:27b",
+  "records": [
+    {
+      "recordId": "cls_0001",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal",
+        "irrelevantInfo",
+        "ambiguousWording"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1118,
+      "completionTokens": 12,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0002",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal",
+        "irrelevantInfo",
+        "ambiguousWording"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1137,
+      "completionTokens": 20,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0003",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet",
+        "shorthandInternal",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1163,
+      "completionTokens": 10,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0004",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal",
+        "irrelevantInfo",
+        "ambiguousWording"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1306,
+      "completionTokens": 10,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0005",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet",
+        "shorthandInternal",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1037,
+      "completionTokens": 10,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0006",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal",
+        "irrelevantInfo",
+        "ambiguousWording"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1074,
+      "completionTokens": 10,
+      "errorMessage": null
+    }
+  ]
 }

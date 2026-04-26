@@ -1,90 +1,121 @@
 {
-  "inputFile" : "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\cls_call_n3.json",
-  "promptVariant" : "FEW_SHOT",
-  "modelId" : "gemma3:27b",
-  "records" : [ {
-    "recordId" : "cls_0001",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency", "smalltalkNoise", "irrelevantInfo" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1165,
-    "completionTokens" : 15,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0002",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency", "smalltalkNoise", "irrelevantInfo" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1182,
-    "completionTokens" : 22,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0003",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet", "hesitationDisfluency", "smalltalkNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1210,
-    "completionTokens" : 12,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0004",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency", "smalltalkNoise", "irrelevantInfo" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1409,
-    "completionTokens" : 10,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0005",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet", "hesitationDisfluency", "smalltalkNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1066,
-    "completionTokens" : 12,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0006",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency", "smalltalkNoise", "irrelevantInfo" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1087,
-    "completionTokens" : 12,
-    "errorMessage" : null
-  } ]
+  "inputFile": "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\cls_call_n3.json",
+  "promptVariant": "FEW_SHOT",
+  "modelId": "gemma3:27b",
+  "records": [
+    {
+      "recordId": "cls_0001",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency",
+        "smalltalkNoise",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1165,
+      "completionTokens": 15,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0002",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency",
+        "smalltalkNoise",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1182,
+      "completionTokens": 22,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0003",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet",
+        "hesitationDisfluency",
+        "smalltalkNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1210,
+      "completionTokens": 12,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0004",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency",
+        "smalltalkNoise",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1409,
+      "completionTokens": 10,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0005",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet",
+        "hesitationDisfluency",
+        "smalltalkNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1066,
+      "completionTokens": 12,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0006",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency",
+        "smalltalkNoise",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1087,
+      "completionTokens": 12,
+      "errorMessage": null
+    }
+  ]
 }
