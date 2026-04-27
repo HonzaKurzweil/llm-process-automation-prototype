@@ -1,13 +1,13 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.validation.components;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ClassificationValidationRecordResult;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ClassificationValidationRunResult;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ExtractionValidationRecordResult;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ExtractionValidationRunResult;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ClassificationValidationRecordResult;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ClassificationValidationRunResult;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ExtractionValidationRecordResult;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ExtractionValidationRunResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

@@ -1,11 +1,11 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.validation.components;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ComparisonResult;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.FieldDifference;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ComparisonResult;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.FieldDifference;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

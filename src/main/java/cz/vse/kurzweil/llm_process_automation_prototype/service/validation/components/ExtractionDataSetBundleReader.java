@@ -1,9 +1,9 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.validation.components;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ExtractionRecord;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ExtractionRecord;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

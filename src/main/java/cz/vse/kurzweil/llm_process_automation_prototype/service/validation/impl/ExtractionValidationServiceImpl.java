@@ -1,16 +1,17 @@
-package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.impl;
+package cz.vse.kurzweil.llm_process_automation_prototype.service.validation.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.ExtractionValidationService;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ExtractionDataSetBundleReader;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.ResultExporter;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.components.TreeComparator;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.ExtractionValidationService;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.components.ExtractionDataSetBundleReader;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.components.ResultExporter;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.components.TreeComparator;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.*;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.extraction.ExtractionService;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;

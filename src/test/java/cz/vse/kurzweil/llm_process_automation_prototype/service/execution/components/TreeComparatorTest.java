@@ -2,7 +2,8 @@ package cz.vse.kurzweil.llm_process_automation_prototype.service.execution.compo
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.dto.ComparisonResult;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.components.TreeComparator;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ComparisonResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

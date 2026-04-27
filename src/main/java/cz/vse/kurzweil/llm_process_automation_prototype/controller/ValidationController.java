@@ -2,8 +2,8 @@ package cz.vse.kurzweil.llm_process_automation_prototype.controller;
 
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.PromptVariant;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.ClassificationValidationService;
-import cz.vse.kurzweil.llm_process_automation_prototype.service.execution.ExtractionValidationService;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.ClassificationValidationService;
+import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.ExtractionValidationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
