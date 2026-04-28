@@ -67,7 +67,7 @@ src/main/
 │   ├── service/
 │   │   ├── classification/                   # Direct & few-shot classification strategies
 │   │   ├── extraction/                       # Direct & few-shot extraction strategies
-│   │   └── execution/                        # Validation orchestration & result comparison
+│   │   └── validation/                       # Validation orchestration & result comparison
 │   ├── dto/
 │   │   ├── ModelType.java                    # Supported model enum
 │   │   ├── PromptVariant.java                # DIRECT, FEW_SHOT
