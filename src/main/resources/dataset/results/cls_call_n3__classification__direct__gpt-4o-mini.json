@@ -1,0 +1,121 @@
+{
+  "inputFile": "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\cls_call_n3.json",
+  "promptVariant": "DIRECT",
+  "modelId": "gpt-4o-mini",
+  "records": [
+    {
+      "recordId": "cls_0001",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency",
+        "smalltalkNoise",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "RT_NEW_MOBILE_ORDER",
+      "correct": true,
+      "promptTokens": 573,
+      "completionTokens": 7,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0002",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency",
+        "smalltalkNoise",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "correct": true,
+      "promptTokens": 589,
+      "completionTokens": 12,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0003",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet",
+        "hesitationDisfluency",
+        "smalltalkNoise"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 619,
+      "completionTokens": 6,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0004",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency",
+        "smalltalkNoise",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 806,
+      "completionTokens": 6,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0005",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet",
+        "hesitationDisfluency",
+        "smalltalkNoise"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 487,
+      "completionTokens": 6,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0006",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency",
+        "smalltalkNoise",
+        "irrelevantInfo"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 509,
+      "completionTokens": 6,
+      "errorMessage": null
+    }
+  ]
+}

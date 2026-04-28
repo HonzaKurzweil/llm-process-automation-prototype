@@ -1,0 +1,109 @@
+{
+  "inputFile": "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\cls_crm_n1.json",
+  "promptVariant": "DIRECT",
+  "modelId": "gpt-4o-mini",
+  "records": [
+    {
+      "recordId": "cls_0001",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "RT_NEW_MOBILE_ORDER",
+      "correct": true,
+      "promptTokens": 491,
+      "completionTokens": 7,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0002",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "correct": true,
+      "promptTokens": 513,
+      "completionTokens": 12,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0003",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 558,
+      "completionTokens": 6,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0004",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 670,
+      "completionTokens": 6,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0005",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 442,
+      "completionTokens": 6,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0006",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-4o-mini",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 455,
+      "completionTokens": 6,
+      "errorMessage": null
+    }
+  ]
+}
