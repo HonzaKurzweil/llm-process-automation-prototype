@@ -8,6 +8,7 @@ import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.C
 import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ClassificationValidationRunResult;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ExtractionValidationRecordResult;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ExtractionValidationRunResult;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,7 @@ import static cz.vse.kurzweil.llm_process_automation_prototype.commons.Constants
 import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.generateOutputFileName;
 import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.quote;
 
+@RequiredArgsConstructor
 @Slf4j
 @Component
 public class ResultExporter {
@@ -29,7 +31,7 @@ public class ResultExporter {
     private static final String SUMMARY_CSV = "summary.csv";
     private static final String CSV_HEADER = "resultFileName,mode,channel,noiseCount,promptVariant,modelType,matchRate,promptTokens,completionTokens";
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     public void exportExtractionResults(Path inputFile,
                                         PromptVariant variant,

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ComparisonResult;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.FieldDifference;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -14,13 +15,15 @@ import java.util.stream.Collectors;
 
 import static cz.vse.kurzweil.llm_process_automation_prototype.commons.Constants.*;
 import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.appendPath;
+import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.indexedPath;
 import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.normalizePath;
 
+@RequiredArgsConstructor
 @Slf4j
 @Component
 public class TreeComparator {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     public ComparisonResult compareTrees(JsonNode expectedTree, JsonNode actualTree) {
         JsonNode canonicalExpected = canonicalize(expectedTree);
@@ -125,7 +128,7 @@ public class TreeComparator {
             for (int index = 0; index < maxSize; index++) {
                 JsonNode expectedItem = index < expected.size() ? expected.get(index) : null;
                 JsonNode actualItem = index < actual.size() ? actual.get(index) : null;
-                compareNodes(normalizedPath + "[" + index + "]", expectedItem, actualItem, differences);
+                compareNodes(indexedPath(normalizedPath, index), expectedItem, actualItem, differences);
             }
             return;
         }
@@ -162,7 +165,7 @@ public class TreeComparator {
                 return;
             }
             for (int index = 0; index < node.size(); index++) {
-                collectLeafPaths(node.get(index), normalizedPath + "[" + index + "]", output);
+                collectLeafPaths(node.get(index), indexedPath(normalizedPath, index), output);
             }
         }
     }

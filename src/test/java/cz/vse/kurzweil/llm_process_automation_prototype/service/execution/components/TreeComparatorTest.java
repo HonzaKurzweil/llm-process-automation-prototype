@@ -16,8 +16,8 @@ class TreeComparatorTest {
 
     @BeforeEach
     void setUp() {
-        comparator = new TreeComparator();
         mapper = new ObjectMapper();
+        comparator = new TreeComparator(mapper);
     }
 
     // --- exactMatch: identical trees ---

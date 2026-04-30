@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import cz.vse.kurzweil.llm_process_automation_prototype.service.validation.dto.ExtractionRecord;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +13,12 @@ import java.io.UncheckedIOException;
 import java.nio.file.Path;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Slf4j
 @Component
 public class ExtractionDataSetBundleReader {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     public List<ExtractionRecord> read(Path inputFile) {
         try {

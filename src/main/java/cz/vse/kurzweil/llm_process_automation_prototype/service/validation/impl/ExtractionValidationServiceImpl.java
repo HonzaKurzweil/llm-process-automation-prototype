@@ -34,7 +34,7 @@ public class ExtractionValidationServiceImpl implements ExtractionValidationServ
     private final TreeComparator treeComparator;
     private final ResultExporter resultExporter;
     private final ExtractionService extractionService;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     @Override
     public void validateExtractionService(Path inputFile, PromptVariant variant, ModelType model) {

@@ -35,4 +35,8 @@ public class TextUtils {
     public static String quote(String value) {
         return "\"" + (value == null ? "" : value) + "\"";
     }
+
+    public static String indexedPath(String base, int index) {
+        return base + "[" + index + "]";
+    }
 }
