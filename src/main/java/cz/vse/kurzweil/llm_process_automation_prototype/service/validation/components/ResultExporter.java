@@ -98,7 +98,6 @@ public class ResultExporter {
 
     private String buildExtractionCsvRow(String resultFileName, ExtractionValidationRecordResult record) {
         return String.join(",",
-                quote(EXTRACTION_TYPE.toUpperCase()),
                 quote(resultFileName),
                 quote(record.mode()),
                 quote(record.channel()),
