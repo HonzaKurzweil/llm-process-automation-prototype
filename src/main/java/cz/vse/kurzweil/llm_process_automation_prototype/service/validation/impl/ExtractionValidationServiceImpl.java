@@ -38,13 +38,8 @@ public class ExtractionValidationServiceImpl implements ExtractionValidationServ
 
     @Override
     public void validateExtractionService(Path inputFile, PromptVariant variant, ModelType model) {
-        try {
-            ExtractionValidationRunResult runResult = runExtractionValidation(inputFile, variant, model);
-            resultExporter.exportExtractionResults(inputFile, variant, model, runResult);
-        } catch (Exception e) {
-            log.error("Extraction validation failed", e);
-            throw new RuntimeException(e);
-        }
+        ExtractionValidationRunResult runResult = runExtractionValidation(inputFile, variant, model);
+        resultExporter.exportExtractionResults(inputFile, variant, model, runResult);
     }
 
     private ExtractionValidationRunResult runExtractionValidation(Path inputFile, PromptVariant variant, ModelType model) {

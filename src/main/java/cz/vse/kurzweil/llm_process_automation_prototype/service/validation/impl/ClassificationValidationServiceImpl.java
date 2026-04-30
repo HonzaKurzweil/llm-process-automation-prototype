@@ -34,13 +34,8 @@ public class ClassificationValidationServiceImpl implements ClassificationValida
 
     @Override
     public void validateClassificationService(Path inputFile, PromptVariant variant, ModelType model) {
-        try {
-            ClassificationValidationRunResult runResult = runClassificationValidation(inputFile, variant, model);
-            resultExporter.exportClassificationResults(inputFile, variant, model, runResult);
-        } catch (Exception e) {
-            log.error("Classification validation failed", e);
-            throw new RuntimeException(e);
-        }
+        ClassificationValidationRunResult runResult = runClassificationValidation(inputFile, variant, model);
+        resultExporter.exportClassificationResults(inputFile, variant, model, runResult);
     }
 
     private ClassificationValidationRunResult runClassificationValidation(Path inputFile, PromptVariant variant, ModelType model) {
