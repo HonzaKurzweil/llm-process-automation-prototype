@@ -12,22 +12,25 @@ import java.util.function.Supplier;
 @Component
 public class LlmRateLimiter {
 
-    @Value("${app.llm.rate-limiter.enabled}")
-    private boolean enabled;
-
-    @Value("${app.llm.rate-limiter.min-delay-ms}")
-    private long minDelayMs;
-
-    @Value("${app.llm.rate-limiter.retry-max-attempts:3}")
-    private int maxAttempts;
-
-    @Value("${app.llm.rate-limiter.retry-initial-delay-ms}")
-    private long retryInitialDelayMs;
-
-    @Value("${app.llm.rate-limiter.retry-multiplier}")
-    private double retryMultiplier;
-
+    private final boolean enabled;
+    private final long minDelayMs;
+    private final int maxAttempts;
+    private final long retryInitialDelayMs;
+    private final double retryMultiplier;
     private final AtomicLong lastCallTime = new AtomicLong(0);
+
+    public LlmRateLimiter(
+            @Value("${app.llm.rate-limiter.enabled}") boolean enabled,
+            @Value("${app.llm.rate-limiter.min-delay-ms}") long minDelayMs,
+            @Value("${app.llm.rate-limiter.retry-max-attempts:3}") int maxAttempts,
+            @Value("${app.llm.rate-limiter.retry-initial-delay-ms}") long retryInitialDelayMs,
+            @Value("${app.llm.rate-limiter.retry-multiplier}") double retryMultiplier) {
+        this.enabled = enabled;
+        this.minDelayMs = minDelayMs;
+        this.maxAttempts = maxAttempts;
+        this.retryInitialDelayMs = retryInitialDelayMs;
+        this.retryMultiplier = retryMultiplier;
+    }
 
     public <T> T execute(Supplier<T> call) {
         if (!enabled) {
