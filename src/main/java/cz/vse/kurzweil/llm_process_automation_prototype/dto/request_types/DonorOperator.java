@@ -1,19 +1,27 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types;
 
+import com.fasterxml.jackson.annotation.JsonClassDescription;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
+
+@RequiredArgsConstructor
+@JsonClassDescription("Původní operátor přenášeného telefonního čísla. Hodnotu vybírej pouze z doménového kontextu operátorů.")
 public enum DonorOperator {
+
+    @JsonPropertyDescription("Operátor O2.")
     O2("o2"),
+    @JsonPropertyDescription("Operátor Vodafone.")
     VODAFONE("vodafone"),
+    @JsonPropertyDescription("Operátor T-Mobile.")
     T_MOBILE("t_mobile"),
+    @JsonPropertyDescription("Původní operátor není ve vstupu uveden nebo není rozpoznatelný.")
     UNKNOWN("unknown");
 
     private final String value;
-
-    DonorOperator(String value) {
-        this.value = value;
-    }
 
     @JsonValue
     public String getValue() {
@@ -22,15 +30,9 @@ public enum DonorOperator {
 
     @JsonCreator
     public static DonorOperator fromValue(String value) {
-        if (value == null) {
-            return null;
-        }
-        String normalized = value.trim().toLowerCase();
-        for (DonorOperator operator : values()) {
-            if (operator.value.equals(normalized)) {
-                return operator;
-            }
-        }
-        throw new IllegalArgumentException("Unknown donorOperator: " + value);
+        return Arrays.stream(values())
+                .filter(operator -> operator.value.equalsIgnoreCase(value.trim()))
+                .findFirst()
+                .orElse(UNKNOWN);
     }
 }
