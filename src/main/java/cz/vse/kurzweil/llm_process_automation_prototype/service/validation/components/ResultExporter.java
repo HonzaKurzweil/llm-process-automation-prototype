@@ -29,7 +29,7 @@ import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils
 public class ResultExporter {
 
     private static final String SUMMARY_CSV = "summary.csv";
-    private static final String CSV_HEADER = "resultFileName,mode,channel,noiseCount,promptVariant,modelType,matchRate,promptTokens,completionTokens";
+    private static final String CSV_HEADER = "resultFileName,recordId,mode,channel,noiseCount,promptVariant,modelType,matchRate,promptTokens,completionTokens";
 
     private final ObjectMapper objectMapper;
 
@@ -101,6 +101,7 @@ public class ResultExporter {
     private String buildExtractionCsvRow(String resultFileName, ExtractionValidationRecordResult record) {
         return String.join(",",
                 quote(resultFileName),
+                quote(record.recordId()),
                 quote(record.mode()),
                 quote(record.channel()),
                 String.valueOf(record.noiseTags().size()),
@@ -116,6 +117,7 @@ public class ResultExporter {
         double matchRate = record.correct() ? 1.0 : 0.0;
         return String.join(",",
                 quote(resultFileName),
+                quote(record.recordId()),
                 quote(record.mode()),
                 quote(record.channel()),
                 String.valueOf(record.noiseTags().size()),
