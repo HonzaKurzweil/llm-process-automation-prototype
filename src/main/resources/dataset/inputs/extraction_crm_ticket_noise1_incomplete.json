@@ -29,7 +29,7 @@
         "noiseCount": 1,
         "variantIndex": 0
       },
-      "inputText": "CRM poznámka | REQ: zákazník Veronika Jarošová, nový zákazník, tel. +420 999 000 001; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; sleva sleva za přenos čísla.\n\nCRM zkratky: urg. zprac.; bez změny priority.",
+      "inputText": "CRM poznámka | REQ: zákazník Veronika Jarošová, nový zákazník, tel. +420 9999 000 001; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; sleva sleva za přenos čísla.\n\nCRM zkratky: urg. zprac.; bez změny priority.",
       "expectedClassification": {
         "requestTypeId": "rt_new_mobile_order",
         "unclassifiableReason": null
@@ -40,7 +40,7 @@
           "dto": {
             "customerStatus": "new",
             "customerName": "Veronika Jarošová",
-            "contactPhone": "+420 999 000 001",
+            "contactPhone": "+420 9999 000 001",
             "contactEmail": null,
             "requestedServices": [
               {
@@ -69,7 +69,7 @@
             "requestTypeId": "rt_new_mobile_order",
             "segmentRole": "primaryKnown",
             "evidenceSnippets": [
-              "zákazník Veronika Jarošová, nový zákazník, tel. +420 999 000 001; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; sleva sleva za přenos čísla."
+              "zákazník Veronika Jarošová, nový zákazník, tel. +420 9999 000 001; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; sleva sleva za přenos čísla."
             ]
           }
         ],
@@ -101,9 +101,9 @@
             ]
           },
           "contactPhone": {
-            "normalizedValue": "+420 999 000 001",
+            "normalizedValue": "+420 9999 000 001",
             "evidenceSnippets": [
-              "+420 999 000 001"
+              "+420 9999 000 001"
             ]
           },
           "contractTermMonths": {

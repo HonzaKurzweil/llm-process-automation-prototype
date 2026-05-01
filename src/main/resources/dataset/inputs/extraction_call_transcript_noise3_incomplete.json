@@ -31,7 +31,7 @@
         "noiseCount": 3,
         "variantIndex": 0
       },
-      "inputText": "Operátor: Dobrý den, jaký požadavek mám zadat?\nZákazník: zákazník Veronika Jarošová, nový zákazník, tel. +420 999 000 001; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; sleva sleva za přenos čísla.\nOperátor: Rozumím, zapíšu požadavek k dalšímu zpracování.\nZákazník: Ehm, no, říkám to trochu narychlo.\nVedlejší poznámka: zákazník se ptal na otevírací dobu pobočky.\nOperátor: Potvrzuji zápis. Zákazník: Dobrý den, jen rychle prosím.",
+      "inputText": "Operátor: Dobrý den, jaký požadavek mám zadat?\nZákazník: zákazník Veronika Jarošová, nový zákazník, tel. +420 9999 000 001; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; sleva sleva za přenos čísla.\nOperátor: Rozumím, zapíšu požadavek k dalšímu zpracování.\nZákazník: Ehm, no, říkám to trochu narychlo.\nVedlejší poznámka: zákazník se ptal na otevírací dobu pobočky.\nOperátor: Potvrzuji zápis. Zákazník: Dobrý den, jen rychle prosím.",
       "expectedClassification": {
         "requestTypeId": "rt_new_mobile_order",
         "unclassifiableReason": null
@@ -42,7 +42,7 @@
           "dto": {
             "customerStatus": "new",
             "customerName": "Veronika Jarošová",
-            "contactPhone": "+420 999 000 001",
+            "contactPhone": "+420 9999 000 001",
             "contactEmail": null,
             "requestedServices": [
               {
@@ -71,7 +71,7 @@
             "requestTypeId": "rt_new_mobile_order",
             "segmentRole": "primaryKnown",
             "evidenceSnippets": [
-              "zákazník Veronika Jarošová, nový zákazník, tel. +420 999 000 001; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; sleva sleva za přenos čísla."
+              "zákazník Veronika Jarošová, nový zákazník, tel. +420 9999 000 001; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; sleva sleva za přenos čísla."
             ]
           }
         ],
@@ -103,9 +103,9 @@
             ]
           },
           "contactPhone": {
-            "normalizedValue": "+420 999 000 001",
+            "normalizedValue": "+420 9999 000 001",
             "evidenceSnippets": [
-              "+420 999 000 001"
+              "+420 9999 000 001"
             ]
           },
           "contractTermMonths": {

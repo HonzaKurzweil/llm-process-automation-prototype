@@ -8,7 +8,7 @@ notes:
 
 customerProfiles:
   - customerName: Veronika Jarošová
-    contactPhone: +420 999 000 001
+    contactPhone: +420 9999 000 001
     contactEmail: customer001@example.com
     defaultCustomerStatus: new
   - customerName: Martin Čermák

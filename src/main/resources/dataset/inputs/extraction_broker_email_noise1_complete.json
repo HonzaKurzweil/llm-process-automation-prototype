@@ -29,7 +29,7 @@
         "noiseCount": 1,
         "variantIndex": 0
       },
-      "inputText": "Dobrý den,\n\nprosím o zpracování požadavku: zákazník Veronika Jarošová, nový zákazník, tel. +420 999 000 001, e-mail customer001@example.com; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; portované číslo +420 9999 100 001 od T-Mobile; sleva sleva za přenos čísla.\n\nDěkuji.\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+      "inputText": "Dobrý den,\n\nprosím o zpracování požadavku: zákazník Veronika Jarošová, nový zákazník, tel. +420 9999 000 001, e-mail customer001@example.com; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; portované číslo +420 9999 100 001 od T-Mobile; sleva sleva za přenos čísla.\n\nDěkuji.\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
       "expectedClassification": {
         "requestTypeId": "rt_new_mobile_order",
         "unclassifiableReason": null
@@ -40,7 +40,7 @@
           "dto": {
             "customerStatus": "new",
             "customerName": "Veronika Jarošová",
-            "contactPhone": "+420 999 000 001",
+            "contactPhone": "+420 9999 000 001",
             "contactEmail": "customer001@example.com",
             "requestedServices": [
               {
@@ -71,7 +71,7 @@
             "requestTypeId": "rt_new_mobile_order",
             "segmentRole": "primaryKnown",
             "evidenceSnippets": [
-              "zákazník Veronika Jarošová, nový zákazník, tel. +420 999 000 001, e-mail customer001@example.com; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; portované číslo +420 9999 100 001 od T-Mobile; sleva sleva za přenos čísla."
+              "zákazník Veronika Jarošová, nový zákazník, tel. +420 9999 000 001, e-mail customer001@example.com; objednává samostatný mobilní tarif Start 5G; závazek 24 měsíců; portace ano; portované číslo +420 9999 100 001 od T-Mobile; sleva sleva za přenos čísla."
             ]
           }
         ],
@@ -103,9 +103,9 @@
             ]
           },
           "contactPhone": {
-            "normalizedValue": "+420 999 000 001",
+            "normalizedValue": "+420 9999 000 001",
             "evidenceSnippets": [
-              "+420 999 000 001"
+              "+420 9999 000 001"
             ]
           },
           "contactEmail": {
