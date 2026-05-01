@@ -1,16 +1,15 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.familymobileorder.FamilyMobileOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.fixedinternetorder.FixedInternetHardwareOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.internettvbundle.InternetTvBundleOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.newmobileorder.SingleMobileOrderRequestDto;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.retentiondiscount.RetentionDiscountRequestDto;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 public enum RequestType {
     RT_NEW_MOBILE_ORDER("rt_new_mobile_order", SingleMobileOrderRequestDto.class, "read_prompts/extraction/rt_new_mobile_order"),
     RT_FAMILY_MOBILE_ORDER("rt_family_mobile_order", FamilyMobileOrderRequestDto.class, "read_prompts/extraction/rt_family_mobile_order"),
@@ -23,10 +22,20 @@ public enum RequestType {
     private final Class<?> dtoClass;
     private final String promptDirectory;
 
+    RequestType(String requestTypeIdReference, Class<?> dtoClass, String promptDirectory) {
+        this.requestTypeIdReference = requestTypeIdReference;
+        this.dtoClass = dtoClass;
+        this.promptDirectory = promptDirectory;
+    }
+
+
     @JsonCreator
     public static RequestType fromRequestTypeIdReference(String requestTypeIdReference) {
+        if (requestTypeIdReference == null) {
+            return UNCLASSIFIABLE;
+        }
         for (RequestType type : values()) {
-            if (type.requestTypeIdReference.equalsIgnoreCase(requestTypeIdReference)) {
+            if (type.requestTypeIdReference.equalsIgnoreCase(requestTypeIdReference.trim())) {
                 return type;
             }
         }

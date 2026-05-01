@@ -1,0 +1,75 @@
+version: 6.3
+enums:
+  - enumName: RequestType
+    javaClassName: cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType
+    values:
+      - value: rt_new_mobile_order
+        javaEnumConstant: RT_NEW_MOBILE_ORDER
+        aliases:
+          - objednávka samostatné mobilní služby
+          - nový mobilní tarif
+      - value: rt_family_mobile_order
+        javaEnumConstant: RT_FAMILY_MOBILE_ORDER
+        aliases:
+          - rodinná mobilní objednávka
+          - rodinný tarif
+      - value: rt_fixed_internet_with_hardware_order
+        javaEnumConstant: RT_FIXED_INTERNET_WITH_HARDWARE_ORDER
+        aliases:
+          - pevný internet s hardwarem
+          - objednávka internetu s routerem
+      - value: rt_internet_tv_bundle_order
+        javaEnumConstant: RT_INTERNET_TV_BUNDLE_ORDER
+        aliases:
+          - balíček internet a televize
+          - internet s televizí
+      - value: rt_retention_discount_request
+        javaEnumConstant: RT_RETENTION_DISCOUNT_REQUEST
+        aliases:
+          - retenční sleva
+          - retenční požadavek
+      - value: unclassifiable
+        javaEnumConstant: UNCLASSIFIABLE
+        aliases:
+          - neklasifikovatelné
+          - mimo rozsah
+  - enumName: CustomerStatus
+    javaClassName: cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.CustomerStatus
+    values:
+      - value: new
+        javaEnumConstant: NEW
+        aliases:
+          - nový zákazník
+          - nový klient
+      - value: existing
+        javaEnumConstant: EXISTING
+        aliases:
+          - stávající zákazník
+          - existující klient
+  - enumName: MobileLineRole
+    javaClassName: cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.familymobileorder.MobileLineRole
+    values:
+      - value: primary
+        javaEnumConstant: PRIMARY
+        aliases:
+          - hlavní linka
+          - primární linka
+      - value: partner
+        javaEnumConstant: PARTNER
+        aliases:
+          - partnerská linka
+          - druhá linka
+      - value: child
+        javaEnumConstant: CHILD
+        aliases:
+          - dětská linka
+          - linka pro dítě
+      - value: additional
+        javaEnumConstant: ADDITIONAL
+        aliases:
+          - další linka
+          - doplňková linka
+      - value: unknown
+        javaEnumConstant: UNKNOWN
+        aliases:
+          - role neuvedena

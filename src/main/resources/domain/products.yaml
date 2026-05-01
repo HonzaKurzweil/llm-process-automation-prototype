@@ -1,21 +1,22 @@
-version: final-1.0
+version: 6.3
 operator: FuturaTel CZ
 products:
   - productId: prod_router_standard
-    name: Wi‑Fi Router Standard
+    name: Wi-Fi Router Standard
     aliases:
       - router standard
       - standardní router
   - productId: prod_router_pro
-    name: Wi‑Fi Router Pro
+    name: Wi-Fi Router Pro
     aliases:
       - router pro
       - wi-fi 6 router
   - productId: prod_mesh_node
-    name: Mesh Wi‑Fi jednotka
+    name: Mesh Wi-Fi jednotka
     aliases:
       - mesh node
       - mesh jednotka
+      - mesh wi-fi jednotka
   - productId: prod_set_top_box
     name: Set-top box
     aliases:
@@ -25,6 +26,7 @@ products:
     name: Expresní instalace
     aliases:
       - expresní instalace
+      - rychlá instalace
   - productId: prod_tv_sports_pack
     name: Sport Plus
     aliases:

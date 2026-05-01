@@ -1,0 +1,17 @@
+version: 6.3
+componentTypes:
+  mobileLine:
+    javaClassName: MobileLineDto
+    fields:
+      - path: lineIndex
+        javaType: Integer
+      - path: lineRole
+        javaType: MobileLineRole
+      - path: planServiceId
+        javaType: String
+      - path: portingRequested
+        javaType: Boolean
+      - path: portedNumber
+        javaType: String
+      - path: donorOperator
+        javaType: DonorOperator

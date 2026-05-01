@@ -1,4 +1,4 @@
-version: final-1.0
+version: 6.3
 operator: FuturaTel CZ
 services:
   - serviceId: svc_mobile_start_5g
@@ -41,6 +41,7 @@ services:
     name: Optika Domů 1000
     aliases:
       - Optika 1000
+      - optika domů 1000
       - fiber 1000
     allowedContractTermMonths:
       - 0
