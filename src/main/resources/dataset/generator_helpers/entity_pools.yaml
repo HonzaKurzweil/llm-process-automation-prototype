@@ -1,4 +1,4 @@
-version: 6.3
+version: 6.4
 notes:
   - Tyto pooly slouží ke generování konkrétních syntetických instancí nad strukturou request types.
   - Kontaktní údaje jsou záměrně syntetické: e-maily používají doménu example.com a telefonní čísla začínají bezpečným prefixem 9999.

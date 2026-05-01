@@ -1,4 +1,4 @@
-version: 6.3
+version: 6.4
 operator: FuturaTel CZ
 products:
   - productId: prod_router_standard

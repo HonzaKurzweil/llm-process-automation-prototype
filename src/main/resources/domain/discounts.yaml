@@ -1,4 +1,4 @@
-version: 6.3
+version: 6.4
 operator: FuturaTel CZ
 discounts:
   - discountId: disc_bundle_10_new

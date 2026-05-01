@@ -1,4 +1,4 @@
-version: 6.3
+version: 6.4
 operator: FuturaTel CZ
 services:
   - serviceId: svc_mobile_start_5g

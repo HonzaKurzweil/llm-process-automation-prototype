@@ -1,4 +1,4 @@
-version: 6.3
+version: 6.4
 runtimeAlignment:
   enumClassName: RequestType
   enumPackage: cz.vse.kurzweil.llm_process_automation_prototype.dto

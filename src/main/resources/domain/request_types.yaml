@@ -1,4 +1,4 @@
-version: 6.3
+version: 6.4
 requestTypes:
   - requestTypeId: rt_new_mobile_order
     dtoClassName: SingleMobileOrderRequestDto

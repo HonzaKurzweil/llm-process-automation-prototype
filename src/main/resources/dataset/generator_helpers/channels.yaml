@@ -1,4 +1,4 @@
-version: 6.3
+version: 6.4
 channels:
   - channel: crm_ticket
     label: CRM ticket
