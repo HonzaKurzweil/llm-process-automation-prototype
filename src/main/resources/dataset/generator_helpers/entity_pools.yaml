@@ -3,7 +3,6 @@ notes:
   - Tyto pooly slouží ke generování konkrétních syntetických instancí nad strukturou request types.
   - Kontaktní údaje jsou záměrně syntetické: e-maily používají doménu example.com a telefonní čísla začínají bezpečným prefixem 9999.
   - Doména example.com je vyhrazena pro příklady a nepředstavuje reálnou zákaznickou schránku.
-  - Adresy jsou vedené v samostatném domain/addresses.yaml a jsou záměrně fiktivní.
 customerProfiles:
   - customerName: Veronika Jarošová
     contactPhone: +420 9999 000 001

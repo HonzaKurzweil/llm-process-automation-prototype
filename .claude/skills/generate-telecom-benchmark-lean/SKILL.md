@@ -27,7 +27,6 @@ Load these files from the project resources:
 - `src/main/resources/domain/products.yaml`
 - `src/main/resources/domain/discounts.yaml`
 - `src/main/resources/domain/operators.yaml`
-- `src/main/resources/domain/addresses.yaml`
 - `src/main/resources/domain/enums.yaml`
 - `src/main/resources/domain/component_types.yaml`
 - `src/main/resources/domain/request_types.yaml`
@@ -44,7 +43,7 @@ Default output directory: `src/main/resources/dataset/inputs/`.
 
 - `request_types.yaml` defines known request types and their target DTO field shapes.
 - `component_types.yaml` defines reusable nested DTO components.
-- `services.yaml`, `products.yaml`, `discounts.yaml`, `operators.yaml`, `addresses.yaml`, and `enums.yaml` define domain values that may be used in generated inputs and expected DTOs.
+- `services.yaml`, `products.yaml`, `discounts.yaml`, `operators.yaml`, and `enums.yaml` define domain values that may be used in generated inputs and expected DTOs.
 - `entity_pools.yaml` provides concrete synthetic customers, phone numbers, emails, broker signatures, retention-context phrases, out-of-scope snippets, and smalltalk snippets.
 - `channels.yaml` defines supported input channels and their style metadata.
 - `noise_profiles.yaml` lists supported noise tags and their applicable channels.
@@ -154,7 +153,7 @@ Use these field-to-catalog mappings when building extraction DTOs:
 - Service ID fields use `services.yaml`: `mobileTariffId`, `familyTariffId`, `mobileLines[].planServiceId`, `internetServiceId`, `tvServiceId`, `currentServiceIds`, and `targetServiceId`.
 - Product-backed fields use `products.yaml`: `routerProductId`, `meshNodeQuantity`, `expressInstallationRequested`, `setTopBoxQuantity`, and `sportsPackRequested`.
 - Discount ID fields use `discounts.yaml`: `requestedDiscountIds`.
-- Address fields (`installationAddress`) are not catalog-backed. Generate a random Czech address as a structured object `{psc, city, street, houseNumber}`. Use the sample addresses in `addresses.yaml` as representative examples of the expected format and variety.
+- Address fields (`installationAddress`) are not catalog-backed. Generate a random plausible Czech address as a structured object `{psc, city, street, houseNumber}` with a realistic Czech PSČ (e.g. `190 00`), city name, street name, and house number.
 - Operator enum fields use `operators.yaml`: `donorOperator` and `mobileLines[].donorOperator`.
 - Other enum-backed fields use `enums.yaml`.
 

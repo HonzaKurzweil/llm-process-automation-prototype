@@ -25,7 +25,6 @@ class CatalogServiceTest {
                 .contains("Products:\n")
                 .contains("Discounts:\n")
                 .contains("Operators:\n")
-                .contains("Addresses:\n")
                 .contains("Enums:\n");
     }
 
@@ -35,13 +34,11 @@ class CatalogServiceTest {
         int productsIdx = output.indexOf("Products:");
         int discountsIdx = output.indexOf("Discounts:");
         int operatorsIdx = output.indexOf("Operators:");
-        int addressesIdx = output.indexOf("Addresses:");
         int enumsIdx = output.indexOf("Enums:");
         assertThat(servicesIdx).isLessThan(productsIdx);
         assertThat(productsIdx).isLessThan(discountsIdx);
         assertThat(discountsIdx).isLessThan(operatorsIdx);
-        assertThat(operatorsIdx).isLessThan(addressesIdx);
-        assertThat(addressesIdx).isLessThan(enumsIdx);
+        assertThat(operatorsIdx).isLessThan(enumsIdx);
     }
 
     @Test
@@ -175,48 +172,10 @@ class CatalogServiceTest {
     @Test
     void operatorIdsAreInOperatorsSection() {
         int operatorsIdx = output.indexOf("Operators:");
-        int addressesIdx = output.indexOf("Addresses:");
-        String operatorsSection = output.substring(operatorsIdx, addressesIdx);
+        int enumsIdx = output.indexOf("Enums:");
+        String operatorsSection = output.substring(operatorsIdx, enumsIdx);
         assertThat(operatorsSection)
                 .contains("vodafone")
-                .doesNotContain("svc_")
-                .doesNotContain("disc_")
-                .doesNotContain("prod_")
-                .doesNotContain("addr_");
-    }
-
-    // --- Addresses ---
-
-    @Test
-    void containsAllAddressCities() {
-        int addressesIdx = output.indexOf("Addresses:");
-        int enumsIdx = output.indexOf("Enums:");
-        String addressesSection = output.substring(addressesIdx, enumsIdx);
-        assertThat(addressesSection).contains(
-                "Praha 9",
-                "Brno",
-                "Olomouc",
-                "Plzeň",
-                "Pardubice",
-                "České Budějovice"
-        );
-    }
-
-    @Test
-    void addressEntryFormatIsCorrect() {
-        assertThat(output).contains("- psc: 323 00, city: Plzeň, street: Gerská, houseNumber: 14");
-    }
-
-    @Test
-    void addressEntriesAreInAddressesSection() {
-        int addressesIdx = output.indexOf("Addresses:");
-        int enumsIdx = output.indexOf("Enums:");
-        String addressesSection = output.substring(addressesIdx, enumsIdx);
-        assertThat(addressesSection)
-                .contains("psc:")
-                .contains("city:")
-                .contains("street:")
-                .contains("houseNumber:")
                 .doesNotContain("svc_")
                 .doesNotContain("disc_")
                 .doesNotContain("prod_");
