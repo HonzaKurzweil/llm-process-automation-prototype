@@ -167,8 +167,9 @@ Generate enough text signal to support all DTO fields.
 
 For dependent or absence-based fields:
 
-- If `portingRequested` is `false`, explicitly render an absence signal such as `bez přenosu čísla`; dependent fields
-  such as `portedNumber` and `donorOperator` may be `null` and are not considered missing.
+- If `portingRequested` is `false`, explicitly render an absence signal such as `bez přenosu čísla`; `portedNumber`
+  must be `null` and is not considered missing; `donorOperator` must be `"unknown"` (not `null`) because the extraction
+  service maps any absent or unidentified operator to the `UNKNOWN` enum value.
 - If a requested discount list is empty, explicitly render an absence signal such as `bez další slevy` and use `[]`.
 - If `meshNodeQuantity` is `0`, explicitly render an absence signal such as `bez mesh jednotek`.
 - If `sportsPackRequested` or `expressInstallationRequested` is `false`, explicitly render an absence signal.
@@ -282,7 +283,8 @@ Do not use initials or incomplete names if the full expected name would not be r
 - Customer names must use `Jméno Příjmení`; remove salutation and normalize reversed order only when both parts are
   present.
 - Catalog-backed fields must use IDs from the corresponding domain YAML file.
-- Operator-backed fields must use operator IDs from `operators.yaml`.
+- Operator-backed fields must use operator IDs from `operators.yaml`. When no donor operator is applicable (i.e.
+  `portingRequested` is `false`), set `donorOperator` to `"unknown"`, never `null`.
 - Enum-backed fields must use values from `enums.yaml`.
 - `installationAddress` must be a structured object with normalized `psc`, `city`, `street`, and `houseNumber` values.
 - `contractTermMonths` must use `0` for no fixed commitment and `24` for a 24-month commitment.
