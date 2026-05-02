@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.Arrays;
 
 @RequiredArgsConstructor
-@JsonClassDescription("Výsledek klasifikace zákaznického požadavku FuturaTel CZ. rt_new_mobile_order je samostatná mobilní objednávka jedné linky. rt_family_mobile_order je rodinná mobilní objednávka více linek. rt_fixed_internet_with_hardware_order je objednávka pevného internetu s hardwarem nebo instalací. rt_internet_tv_bundle_order je balíček pevného internetu a televize. rt_retention_discount_request je požadavek stávajícího zákazníka na retenční slevu nebo udržení služby. unclassifiable použij, pokud text neodpovídá žádnému podporovanému typu, obsahuje více samostatných podporovaných typů, nebo kombinuje podporovaný typ s dalším požadavkem mimo rozsah.")
+@JsonClassDescription("Výsledek klasifikace zákaznického požadavku FuturaTel CZ.")
 public enum RequestType {
 
     @JsonPropertyDescription("Samostatná mobilní objednávka jedné mobilní linky pro nového nebo stávajícího zákazníka.")

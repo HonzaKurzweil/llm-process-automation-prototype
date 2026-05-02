@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.Arrays;
 
 @RequiredArgsConstructor
-@JsonClassDescription("Stav zákazníka ve vztahu k FuturaTel CZ. new znamená nový zákazník, existing znamená stávající zákazník.")
+@JsonClassDescription("Stav zákazníka ve vztahu k FuturaTel CZ.")
 public enum CustomerStatus {
 
     @JsonPropertyDescription("Nový zákazník.")
