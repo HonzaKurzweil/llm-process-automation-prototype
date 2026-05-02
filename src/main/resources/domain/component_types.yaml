@@ -1,4 +1,4 @@
-version: 6.4
+version: 6.5
 componentTypes:
   installationAddress:
     javaClassName: InstallationAddressDto
@@ -11,6 +11,7 @@ componentTypes:
         javaType: String
       - path: houseNumber
         javaType: String
+
   mobileLine:
     javaClassName: MobileLineDto
     fields:

@@ -1,44 +1,52 @@
-version: 6.4
+version: 6.5
 noiseTags:
   - noiseTag: shorthandInternal
     appliesTo:
       - crm_ticket
     effect: surfaceOnly
+
   - noiseTag: greetingSignatureNoise
     appliesTo:
       - broker_email
     effect: surfaceOnly
+
   - noiseTag: hesitationDisfluency
     appliesTo:
       - call_transcript
     effect: surfaceOnly
+
   - noiseTag: smalltalkNoise
     appliesTo:
       - call_transcript
     effect: surfaceOnly
+
   - noiseTag: irrelevantInfo
     appliesTo:
       - crm_ticket
       - broker_email
       - call_transcript
     effect: surfaceOnly
+
   - noiseTag: ambiguousWording
     appliesTo:
       - crm_ticket
       - broker_email
       - call_transcript
     effect: classificationDifficulty
+
   - noiseTag: unknownTailSnippet
     appliesTo:
       - broker_email
       - call_transcript
       - crm_ticket
     effect: classificationDifficulty
+
   - noiseTag: typosAndMisspellings
     appliesTo:
       - crm_ticket
       - broker_email
     effect: surfaceOnly
+
   - noiseTag: entityFormattingVariation
     appliesTo:
       - crm_ticket

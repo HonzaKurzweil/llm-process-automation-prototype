@@ -1,8 +1,9 @@
-version: 6.4
+version: 6.5
 notes:
   - Tyto pooly slouží ke generování konkrétních syntetických instancí nad strukturou request types.
   - Kontaktní údaje jsou záměrně syntetické: e-maily používají doménu example.com a telefonní čísla začínají bezpečným prefixem 9999.
   - Doména example.com je vyhrazena pro příklady a nepředstavuje reálnou zákaznickou schránku.
+
 customerProfiles:
   - customerName: Veronika Jarošová
     contactPhone: +420 9999 000 001
@@ -36,6 +37,23 @@ customerProfiles:
     contactPhone: +420 9999 000 008
     contactEmail: customer008@example.com
     defaultCustomerStatus: new
+  - customerName: David Malý
+    contactPhone: +420 9999 000 009
+    contactEmail: customer009@example.com
+    defaultCustomerStatus: new
+  - customerName: Eva Němcová
+    contactPhone: +420 9999 000 010
+    contactEmail: customer010@example.com
+    defaultCustomerStatus: existing
+  - customerName: Tomáš Svoboda
+    contactPhone: +420 9999 000 011
+    contactEmail: customer011@example.com
+    defaultCustomerStatus: existing
+  - customerName: Barbora Králová
+    contactPhone: +420 9999 000 012
+    contactEmail: customer012@example.com
+    defaultCustomerStatus: new
+
 portedNumbers:
   - number: +420 9999 100 001
     donorOperatorId: t_mobile
@@ -45,6 +63,83 @@ portedNumbers:
     donorOperatorId: o2
   - number: +420 9999 100 004
     donorOperatorId: vodafone
+  - number: +420 9999 100 005
+    donorOperatorId: t_mobile
+  - number: +420 9999 100 006
+    donorOperatorId: o2
+  - number: +420 9999 100 007
+    donorOperatorId: vodafone
+  - number: +420 9999 100 008
+    donorOperatorId: t_mobile
+  - number: +420 9999 100 009
+    donorOperatorId: o2
+  - number: +420 9999 100 010
+    donorOperatorId: vodafone
+
+addressPools:
+  - city: Praha
+    pscValues:
+      - 190 00
+      - 140 00
+      - 160 00
+    streets:
+      - Sokolovská
+      - Českomoravská
+      - Evropská
+      - Nuselská
+  - city: Brno
+    pscValues:
+      - 612 00
+      - 602 00
+      - 616 00
+    streets:
+      - Purkyňova
+      - Křenová
+      - Veveří
+      - Vídeňská
+  - city: Olomouc
+    pscValues:
+      - 779 00
+      - 772 00
+    streets:
+      - Rooseveltova
+      - Wolkerova
+      - tř. Kosmonautů
+  - city: Plzeň
+    pscValues:
+      - 323 00
+      - 301 00
+    streets:
+      - Gerská
+      - Klatovská
+      - Slovanská
+  - city: Pardubice
+    pscValues:
+      - 530 09
+      - 530 02
+    streets:
+      - Mozartova
+      - Palackého třída
+      - Dašická
+  - city: České Budějovice
+    pscValues:
+      - 370 04
+      - 370 01
+    streets:
+      - Pekárenská
+      - Lidická třída
+      - Pražská třída
+
+houseNumberSeeds:
+  - '14'
+  - '22'
+  - '48'
+  - '61'
+  - '97'
+  - '188/12'
+  - '215'
+  - '34a'
+
 brokerSignatures:
   - senderName: Petra Kovářová
     senderRole: obchodní zastoupení FuturaTel CZ
@@ -54,21 +149,25 @@ brokerSignatures:
     senderRole: obchodní zástupce, FuturaTel CZ
   - senderName: Radek Šimánek
     senderRole: obchodní partner, FuturaTel CZ
-churnReasons:
+
+retentionContextSnippets:
   - zákazník zvažuje odchod kvůli ceně
   - zákazník dostal výhodnější nabídku od konkurence
   - zákazník dlouhodobě řeší nespokojenost s cenou
   - zákazník chce lepší podmínky při prodloužení smlouvy
-competitorOffers:
+
+competitorContextSnippets:
   - konkurence nabízí podobnou službu o 150 Kč levněji
   - konkurence nabízí internet 500 Mb/s za nižší cenu
   - konkurence nabízí neomezený tarif se slevou na 6 měsíců
   - konkurence dává retenční bonus bez závazku
+
 unknownRequestSnippets:
   - zákazník zároveň žádá o vystavení duplikátu staré faktury
   - součástí zprávy je i požadavek na reklamaci posledního vyúčtování
   - v závěru je navíc prosba o výměnu poškozené SIM karty
   - součástí hovoru je také technická reklamace Wi-Fi výpadků
+
 smalltalkSnippets:
   - Dobrý den, jen rychle prosím.
   - Ještě se omlouvám za zdržení.

@@ -1,4 +1,4 @@
-version: 6.4
+version: 6.5
 enums:
   - enumName: RequestType
     javaClassName: cz.vse.kurzweil.llm_process_automation_prototype.dto.RequestType
@@ -8,31 +8,43 @@ enums:
         aliases:
           - objednávka samostatné mobilní služby
           - nový mobilní tarif
+          - samostatný mobil
+
       - value: rt_family_mobile_order
         javaEnumConstant: RT_FAMILY_MOBILE_ORDER
         aliases:
           - rodinná mobilní objednávka
           - rodinný tarif
+          - rodinný mobil
+
       - value: rt_fixed_internet_with_hardware_order
         javaEnumConstant: RT_FIXED_INTERNET_WITH_HARDWARE_ORDER
         aliases:
           - pevný internet s hardwarem
           - objednávka internetu s routerem
+          - internet s instalací
+
       - value: rt_internet_tv_bundle_order
         javaEnumConstant: RT_INTERNET_TV_BUNDLE_ORDER
         aliases:
           - balíček internet a televize
           - internet s televizí
+          - internet tv balíček
+
       - value: rt_retention_discount_request
         javaEnumConstant: RT_RETENTION_DISCOUNT_REQUEST
         aliases:
           - retenční sleva
           - retenční požadavek
+          - sleva pro stávajícího zákazníka
+
       - value: unclassifiable
         javaEnumConstant: UNCLASSIFIABLE
         aliases:
           - neklasifikovatelné
           - mimo rozsah
+          - neurčitý požadavek
+
   - enumName: CustomerStatus
     javaClassName: cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.CustomerStatus
     values:
@@ -41,11 +53,27 @@ enums:
         aliases:
           - nový zákazník
           - nový klient
+          - nová smlouva
+
       - value: existing
         javaEnumConstant: EXISTING
         aliases:
           - stávající zákazník
           - existující klient
+          - současný zákazník
+
+  - enumName: DonorOperator
+    javaClassName: cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.DonorOperator
+    values:
+      - value: o2
+        javaEnumConstant: O2
+      - value: vodafone
+        javaEnumConstant: VODAFONE
+      - value: t_mobile
+        javaEnumConstant: T_MOBILE
+      - value: unknown
+        javaEnumConstant: UNKNOWN
+
   - enumName: MobileLineRole
     javaClassName: cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.familymobileorder.MobileLineRole
     values:
@@ -54,22 +82,31 @@ enums:
         aliases:
           - hlavní linka
           - primární linka
+          - hlavní číslo
+
       - value: partner
         javaEnumConstant: PARTNER
         aliases:
           - partnerská linka
           - druhá linka
+          - linka pro partnera
+
       - value: child
         javaEnumConstant: CHILD
         aliases:
           - dětská linka
           - linka pro dítě
+          - dětské číslo
+
       - value: additional
         javaEnumConstant: ADDITIONAL
         aliases:
           - další linka
           - doplňková linka
+          - další číslo
+
       - value: unknown
         javaEnumConstant: UNKNOWN
         aliases:
           - role neuvedena
+          - nespecifikovaná linka

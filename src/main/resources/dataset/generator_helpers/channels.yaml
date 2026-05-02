@@ -1,4 +1,4 @@
-version: 6.4
+version: 6.5
 channels:
   - channel: crm_ticket
     label: CRM ticket
@@ -7,6 +7,7 @@ channels:
       - časté zkratky a heslovité formulace
       - bez oslovení a bez podpisu
       - důraz na věcné položky požadavku
+
   - channel: broker_email
     label: Broker email
     styleCharacteristics:
@@ -14,6 +15,7 @@ channels:
       - může obsahovat oslovení a podpis
       - často zprostředkovává požadavek zákazníka nepřímo
       - vhodný pro redundanci a zdvořilostní text
+
   - channel: call_transcript
     label: Call transcript
     styleCharacteristics:

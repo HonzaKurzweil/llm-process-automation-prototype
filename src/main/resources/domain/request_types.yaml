@@ -1,4 +1,4 @@
-version: 6.4
+version: 6.5
 requestTypes:
   - requestTypeId: rt_new_mobile_order
     dtoClassName: SingleMobileOrderRequestDto
@@ -23,7 +23,8 @@ requestTypes:
       - path: donorOperator
         javaType: DonorOperator
       - path: requestedDiscountIds
-        javaType: List<String>
+        javaType: List
+        itemJavaType: String
 
   - requestTypeId: rt_family_mobile_order
     dtoClassName: FamilyMobileOrderRequestDto
@@ -42,12 +43,13 @@ requestTypes:
       - path: mobileLinesCount
         javaType: Integer
       - path: mobileLines
-        javaType: List<MobileLineDto>
+        javaType: List
         componentType: mobileLine
       - path: contractTermMonths
         javaType: Integer
       - path: requestedDiscountIds
-        javaType: List<String>
+        javaType: List
+        itemJavaType: String
 
   - requestTypeId: rt_fixed_internet_with_hardware_order
     dtoClassName: FixedInternetHardwareOrderRequestDto
@@ -103,7 +105,8 @@ requestTypes:
       - path: contractTermMonths
         javaType: Integer
       - path: requestedDiscountIds
-        javaType: List<String>
+        javaType: List
+        itemJavaType: String
 
   - requestTypeId: rt_retention_discount_request
     dtoClassName: RetentionDiscountRequestDto
@@ -118,8 +121,10 @@ requestTypes:
       - path: retentionCase
         javaType: Boolean
       - path: currentServiceIds
-        javaType: List<String>
+        javaType: List
+        itemJavaType: String
       - path: targetServiceId
         javaType: String
       - path: requestedDiscountIds
-        javaType: List<String>
+        javaType: List
+        itemJavaType: String
