@@ -65,9 +65,9 @@ public class ClassificationValidationServiceImpl implements ClassificationValida
         } catch (Exception exception) {
             return ClassificationValidationRecordResult.failure(
                     record.recordId(),
-                    record.channel(),
-                    record.mode(),
-                    record.noiseTags(),
+                    record.metadata().channel(),
+                    record.metadata().mode(),
+                    record.metadata().noiseTags(),
                     variant.name(),
                     model.getModelId(),
                     expectedRequestType,
@@ -81,9 +81,9 @@ public class ClassificationValidationServiceImpl implements ClassificationValida
                 .map(ChatResponseMetadata::getUsage);
         return new ClassificationValidationRecordResult(
                 record.recordId(),
-                record.channel(),
-                record.mode(),
-                record.noiseTags(),
+                record.metadata().channel(),
+                record.metadata().mode(),
+                record.metadata().noiseTags(),
                 variant.name(),
                 model.getModelId(),
                 true,
