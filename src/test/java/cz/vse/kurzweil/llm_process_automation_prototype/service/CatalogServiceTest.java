@@ -19,11 +19,14 @@ class CatalogServiceTest {
     // --- Section structure ---
 
     @Test
-    void containsAllThreeSectionHeaders() {
+    void containsAllSectionHeaders() {
         assertThat(output)
                 .contains("Services:\n")
                 .contains("Products:\n")
-                .contains("Discounts:\n");
+                .contains("Discounts:\n")
+                .contains("Operators:\n")
+                .contains("Addresses:\n")
+                .contains("Enums:\n");
     }
 
     @Test
@@ -31,8 +34,14 @@ class CatalogServiceTest {
         int servicesIdx = output.indexOf("Services:");
         int productsIdx = output.indexOf("Products:");
         int discountsIdx = output.indexOf("Discounts:");
+        int operatorsIdx = output.indexOf("Operators:");
+        int addressesIdx = output.indexOf("Addresses:");
+        int enumsIdx = output.indexOf("Enums:");
         assertThat(servicesIdx).isLessThan(productsIdx);
         assertThat(productsIdx).isLessThan(discountsIdx);
+        assertThat(discountsIdx).isLessThan(operatorsIdx);
+        assertThat(operatorsIdx).isLessThan(addressesIdx);
+        assertThat(addressesIdx).isLessThan(enumsIdx);
     }
 
     @Test
@@ -94,12 +103,12 @@ class CatalogServiceTest {
 
     @Test
     void productEntryFormatIsCorrect() {
-        assertThat(output).contains("- `prod_router_standard` = Wi‑Fi Router Standard");
+        assertThat(output).contains("- `prod_router_standard` = Wi-Fi Router Standard");
     }
 
     @Test
     void productEntryIncludesAliases() {
-        assertThat(output).contains("(aliases: router standard, standardní router)");
+        assertThat(output).contains("- `prod_router_standard` = Wi-Fi Router Standard (aliases: router standard, standardní router)");
     }
 
     @Test
@@ -132,16 +141,117 @@ class CatalogServiceTest {
 
     @Test
     void discountEntryIncludesAliases() {
-        assertThat(output).contains("(aliases: balíček 10 %, bundle sleva)");
+        assertThat(output).contains("- `disc_bundle_10_new` = Balíček 10 % pro nové zákazníky (aliases: balíček 10 %, bundle sleva, sleva na balíček)");
     }
 
     @Test
     void discountIdsAreInDiscountsSection() {
         int discountsIdx = output.indexOf("Discounts:");
-        String discountsSection = output.substring(discountsIdx);
+        int operatorsIdx = output.indexOf("Operators:");
+        String discountsSection = output.substring(discountsIdx, operatorsIdx);
         assertThat(discountsSection)
                 .contains("disc_bundle_10_new")
                 .doesNotContain("svc_")
                 .doesNotContain("prod_");
+    }
+
+    // --- Operators ---
+
+    @Test
+    void containsAllOperatorIds() {
+        assertThat(output).contains("`o2`", "`vodafone`", "`t_mobile`", "`unknown`");
+    }
+
+    @Test
+    void operatorEntryFormatIsCorrect() {
+        assertThat(output).contains("- `o2` = O2");
+    }
+
+    @Test
+    void operatorEntryIncludesAliases() {
+        assertThat(output).contains("- `t_mobile` = T-Mobile (aliases: T-Mobile, T Mobile, t-mobile, t mobile)");
+    }
+
+    @Test
+    void operatorIdsAreInOperatorsSection() {
+        int operatorsIdx = output.indexOf("Operators:");
+        int addressesIdx = output.indexOf("Addresses:");
+        String operatorsSection = output.substring(operatorsIdx, addressesIdx);
+        assertThat(operatorsSection)
+                .contains("vodafone")
+                .doesNotContain("svc_")
+                .doesNotContain("disc_")
+                .doesNotContain("prod_")
+                .doesNotContain("addr_");
+    }
+
+    // --- Addresses ---
+
+    @Test
+    void containsAllAddressIds() {
+        assertThat(output).contains(
+                "addr_praha_vysocany_sokolovska_188",
+                "addr_brno_kralovo_pole_purkynova_97",
+                "addr_olomouc_nove_sady_rooseveltova_61",
+                "addr_plzen_bolevec_gerska_14",
+                "addr_pardubice_polabiny_mozartova_22",
+                "addr_ceske_budejovice_prazske_predmesti_pekarenska_48"
+        );
+    }
+
+    @Test
+    void addressEntryFormatIsCorrect() {
+        assertThat(output).contains("- `addr_plzen_bolevec_gerska_14` = Plzeň, Bolevec, Gerská 14");
+    }
+
+    @Test
+    void addressEntryIncludesAliases() {
+        assertThat(output).contains("- `addr_plzen_bolevec_gerska_14` = Plzeň, Bolevec, Gerská 14 (aliases: Gerská 14, Plzeň Bolevec, Plzeň Bolevec Gerská 14)");
+    }
+
+    @Test
+    void addressIdsAreInAddressesSection() {
+        int addressesIdx = output.indexOf("Addresses:");
+        int enumsIdx = output.indexOf("Enums:");
+        String addressesSection = output.substring(addressesIdx, enumsIdx);
+        assertThat(addressesSection)
+                .contains("addr_praha_vysocany_sokolovska_188")
+                .doesNotContain("svc_")
+                .doesNotContain("disc_")
+                .doesNotContain("prod_");
+    }
+
+    // --- Enums ---
+
+    @Test
+    void containsAllEnumSectionNames() {
+        int enumsIdx = output.indexOf("Enums:");
+        String enumsSection = output.substring(enumsIdx);
+        assertThat(enumsSection)
+                .contains("RequestType:\n")
+                .contains("CustomerStatus:\n")
+                .contains("MobileLineRole:\n");
+    }
+
+    @Test
+    void enumEntryFormatIsCorrect() {
+        assertThat(output).contains("- `new` = NEW");
+    }
+
+    @Test
+    void enumEntryIncludesAliases() {
+        assertThat(output).contains("- `new` = NEW (aliases: nový zákazník, nový klient)");
+    }
+
+    @Test
+    void enumValuesAreInEnumsSection() {
+        int enumsIdx = output.indexOf("Enums:");
+        String enumsSection = output.substring(enumsIdx);
+        assertThat(enumsSection)
+                .contains("rt_new_mobile_order")
+                .doesNotContain("svc_")
+                .doesNotContain("disc_")
+                .doesNotContain("prod_")
+                .doesNotContain("addr_");
     }
 }
