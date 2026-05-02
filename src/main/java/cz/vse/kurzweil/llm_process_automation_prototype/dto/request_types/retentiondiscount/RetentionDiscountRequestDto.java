@@ -6,21 +6,21 @@ import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.Custom
 
 import java.util.List;
 
-@JsonClassDescription("Procesní DTO pro retenční požadavek stávajícího zákazníka. DTO neobsahuje volný důvod odchodu ani text konkurenční nabídky; extrahuje pouze procesně použitelné hodnoty.")
+@JsonClassDescription("Procesní DTO pro retenční požadavek stávajícího zákazníka.")
 public record RetentionDiscountRequestDto(
 
         CustomerStatus customerStatus,
-        @JsonPropertyDescription("Jméno zákazníka bez oslovení a titulů. Zachovej úplné jméno, pokud je ve vstupu uvedeno.")
+        @JsonPropertyDescription("Jméno zákazníka.")
         String customerName,
-        @JsonPropertyDescription("Hlavní kontaktní telefon zákazníka normalizovaný do syntetického procesního formátu +420 XXXX XXX XXX. Pokud není uveden, vrať null.")
+        @JsonPropertyDescription("Hlavní kontaktní telefon zákazníka.")
         String contactPhone,
-        @JsonPropertyDescription("True, pokud jde o retenční případ nebo požadavek na udržení zákazníka. Pokud to ze vstupu nevyplývá, vrať null.")
+        @JsonPropertyDescription("Indikátor, zda se jedná o retenční případ nebo požadavek na udržení zákazníka.")
         Boolean retentionCase,
-        @JsonPropertyDescription("Seznam katalogových ID současných služeb zákazníka uvedených ve vstupu podle doménového kontextu služeb. Pokud žádná současná služba není uvedena, vrať prázdný seznam.")
+        @JsonPropertyDescription("Seznam katalogových ID současných služeb zákazníka.")
         List<String> currentServiceIds,
-        @JsonPropertyDescription("Katalogové ID služby, které se požadovaná retenční úprava nebo sleva týká. Pokud nelze jednoznačně určit, vrať null.")
+        @JsonPropertyDescription("Katalogové ID služby, které se požadovaná retenční úprava nebo sleva týká.")
         String targetServiceId,
-        @JsonPropertyDescription("Seznam katalogových ID retenčních nebo jiných slev explicitně požadovaných ve vstupu. Pokud žádná sleva není uvedena, vrať prázdný seznam.")
+        @JsonPropertyDescription("Seznam katalogových ID retenčních nebo jiných slev požadovaných ve vstupu.")
         List<String> requestedDiscountIds
 ) {
 }

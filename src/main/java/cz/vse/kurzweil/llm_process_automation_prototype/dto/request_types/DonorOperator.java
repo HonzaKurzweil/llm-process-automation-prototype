@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.Arrays;
 
 @RequiredArgsConstructor
-@JsonClassDescription("Původní operátor přenášeného telefonního čísla. Hodnotu vybírej pouze z doménového kontextu operátorů.")
+@JsonClassDescription("Původní operátor přenášeného telefonního čísla.")
 public enum DonorOperator {
 
     @JsonPropertyDescription("Operátor O2.")
@@ -18,7 +18,7 @@ public enum DonorOperator {
     VODAFONE("vodafone"),
     @JsonPropertyDescription("Operátor T-Mobile.")
     T_MOBILE("t_mobile"),
-    @JsonPropertyDescription("Původní operátor není ve vstupu uveden nebo není rozpoznatelný.")
+    @JsonPropertyDescription("Původní operátor uveden nebo není rozpoznatelný.")
     UNKNOWN("unknown");
 
     private final String value;

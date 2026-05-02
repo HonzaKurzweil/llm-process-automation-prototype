@@ -8,23 +8,23 @@ import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.Custom
 public record FixedInternetHardwareOrderRequestDto(
 
         CustomerStatus customerStatus,
-        @JsonPropertyDescription("Jméno zákazníka bez oslovení a titulů. Zachovej úplné jméno, pokud je ve vstupu uvedeno.")
+        @JsonPropertyDescription("Jméno zákazníka.")
         String customerName,
-        @JsonPropertyDescription("Hlavní kontaktní telefon zákazníka normalizovaný do syntetického procesního formátu +420 XXXX XXX XXX. Pokud není uveden, vrať null.")
+        @JsonPropertyDescription("Hlavní kontaktní telefon zákazníka.")
         String contactPhone,
-        @JsonPropertyDescription("Kontaktní e-mail zákazníka normalizovaný na malá písmena. Pokud není uveden, vrať null.")
+        @JsonPropertyDescription("Kontaktní e-mail zákazníka.")
         String contactEmail,
-        @JsonPropertyDescription("Katalogové ID instalační adresy podle doménového kontextu adres. Pokud adresa není uvedena nebo nelze jednoznačně určit, vrať null.")
+        @JsonPropertyDescription("Katalogové ID instalační adresy.")
         String installationAddressId,
-        @JsonPropertyDescription("Katalogové ID objednávané internetové služby podle doménového kontextu služeb. Pokud nelze jednoznačně určit, vrať null.")
+        @JsonPropertyDescription("Katalogové ID objednávané internetové služby.")
         String internetServiceId,
-        @JsonPropertyDescription("Katalogové ID routeru podle doménového kontextu produktů. Pokud router není uveden nebo nelze jednoznačně určit, vrať null.")
+        @JsonPropertyDescription("Katalogové ID routeru.")
         String routerProductId,
-        @JsonPropertyDescription("Počet mesh jednotek. Pokud mesh jednotky nejsou požadovány, vrať 0. Pokud údaj chybí, vrať null.")
+        @JsonPropertyDescription("Počet mesh jednotek.")
         Integer meshNodeQuantity,
-        @JsonPropertyDescription("True, pokud zákazník explicitně požaduje expresní nebo rychlou instalaci. False, pokud je zřejmé, že ji nepožaduje. Pokud údaj chybí, vrať null.")
+        @JsonPropertyDescription("Indikátor, zda zákazník požaduje expresní instalaci.")
         Boolean expressInstallationRequested,
-        @JsonPropertyDescription("Délka závazku v měsících, pokud je uvedena. Bez závazku reprezentuj hodnotou 0. Pokud údaj chybí, vrať null.")
+        @JsonPropertyDescription("Délka závazku v měsících.")
         Integer contractTermMonths
 ) {
 }
