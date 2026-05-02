@@ -1,6 +1,6 @@
 Ukázky obecného zacházení s formáty a nejasnostmi:
 
-- Telefonní čísla mohou být ve vstupu uvedena s mezerami, bez mezer, se spojovníky, v závorkách nebo bez předvolby. Pokud je celé číslo zřejmé, vrať normalizovaný tvar používaný v procesu.
+- Telefonní čísla mohou být ve vstupu uvedena různě deformovaná. Pokud je celé číslo zřejmé, vrať normalizovaný tvar používaný v procesu.
   - zápis ve vstupu: 9999000001
   - hodnota pro proces: +420 9999 000 001
   - zápis ve vstupu: +420-9999-100-003
