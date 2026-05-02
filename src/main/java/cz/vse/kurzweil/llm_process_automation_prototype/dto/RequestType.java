@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 
+@Getter
 @RequiredArgsConstructor
 @JsonClassDescription("Výsledek klasifikace zákaznického požadavku FuturaTel CZ.")
 public enum RequestType {
@@ -31,20 +32,16 @@ public enum RequestType {
     @JsonPropertyDescription("Text nelze jednoznačně zařadit do právě jednoho podporovaného request type.")
     UNCLASSIFIABLE("unclassifiable", null, null);
 
-    private final String requestTypeIdReference;
-    @Getter
-    private final Class<?> dtoClass;
-    @Getter
-    private final String promptDirectory;
 
-    @JsonValue
-    public String getRequestTypeIdReference() {
-        return requestTypeIdReference;
-    }
+    private final String requestTypeIdReference;
+    private final Class<?> dtoClass;
+    private final String promptDirectory;
 
     @JsonCreator
     public static RequestType fromRequestTypeIdReference(String requestTypeIdReference) {
-        if (requestTypeIdReference == null) return UNCLASSIFIABLE;
+        if (requestTypeIdReference == null) {
+            return UNCLASSIFIABLE;
+        }
         return Arrays.stream(values())
                 .filter(type -> type.requestTypeIdReference.equalsIgnoreCase(requestTypeIdReference.trim()))
                 .findFirst()
