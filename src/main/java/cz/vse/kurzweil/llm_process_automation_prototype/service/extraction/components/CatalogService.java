@@ -92,8 +92,7 @@ public class CatalogService {
     private Map<String, Object> loadYaml(ResourceLoader resourceLoader, Yaml yaml, String path) {
         try (InputStream is = resourceLoader.getResource(path).getInputStream()) {
             return yaml.load(is);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new IllegalStateException("Cannot load " + path, e);
         }
     }

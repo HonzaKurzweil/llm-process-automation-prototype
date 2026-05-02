@@ -31,7 +31,7 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> ResponseEntity<ChatResponse, T>  extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
+    public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
         log.debug("Extracting using DIRECT strategy for requestType={}, inputLength={}", requestType, inputText.length());
 
         String resolvedSystem = promptLoader.load(DIRECT_EXTRACTION_PROMPT)

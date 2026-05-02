@@ -1,980 +1,1247 @@
 {
-  "inputFile" : "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\extraction_crm_ticket_noise1_incomplete.json",
-  "promptVariant" : "DIRECT",
-  "modelId" : "gpt-5-nano",
-  "records" : [ {
-    "recordId" : "ext_0001",
-    "requestTypeId" : "rt_new_mobile_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : true,
-    "missingFieldPaths" : [ "contactEmail", "portedNumbers" ],
-    "totalComparedPaths" : 10,
-    "matchedPaths" : 10,
-    "matchRate" : 1.0,
-    "differences" : [ ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 001",
-      "contractTermMonths" : 24,
-      "customerName" : "Veronika Jarošová",
-      "customerStatus" : "new",
-      "portedNumbers" : [ ],
-      "portingRequested" : true,
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_mobile_start_5g"
-      } ]
+  "inputFile": "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\extraction_crm_ticket_noise1_incomplete.json",
+  "promptVariant": "DIRECT",
+  "modelId": "gpt-5-nano",
+  "records": [
+    {
+      "recordId": "ext_0001",
+      "requestTypeId": "rt_new_mobile_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": true,
+      "missingFieldPaths": [
+        "contactEmail",
+        "portedNumbers"
+      ],
+      "totalComparedPaths": 10,
+      "matchedPaths": 10,
+      "matchRate": 1.0,
+      "differences": [],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 001",
+        "contractTermMonths": 24,
+        "customerName": "Veronika Jarošová",
+        "customerStatus": "new",
+        "portedNumbers": [],
+        "portingRequested": true,
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_mobile_start_5g"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 001",
+        "contractTermMonths": 24,
+        "customerName": "Veronika Jarošová",
+        "customerStatus": "new",
+        "portedNumbers": [],
+        "portingRequested": true,
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_mobile_start_5g"
+          }
+        ]
+      },
+      "promptTokens": 1707,
+      "completionTokens": 127,
+      "errorMessage": null
     },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 001",
-      "contractTermMonths" : 24,
-      "customerName" : "Veronika Jarošová",
-      "customerStatus" : "new",
-      "portedNumbers" : [ ],
-      "portingRequested" : true,
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_mobile_start_5g"
-      } ]
+    {
+      "recordId": "ext_0002",
+      "requestTypeId": "rt_new_mobile_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": true,
+      "missingFieldPaths": [
+        "contactEmail",
+        "portedNumbers"
+      ],
+      "totalComparedPaths": 10,
+      "matchedPaths": 10,
+      "matchRate": 1.0,
+      "differences": [],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 002",
+        "contractTermMonths": 0,
+        "customerName": "Martin Čermák",
+        "customerStatus": "new",
+        "portedNumbers": [],
+        "portingRequested": true,
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_mobile_unlimited_5g"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 002",
+        "contractTermMonths": 0,
+        "customerName": "Martin Čermák",
+        "customerStatus": "new",
+        "portedNumbers": [],
+        "portingRequested": true,
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_mobile_unlimited_5g"
+          }
+        ]
+      },
+      "promptTokens": 1710,
+      "completionTokens": 125,
+      "errorMessage": null
     },
-    "promptTokens" : 1707,
-    "completionTokens" : 127,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0002",
-    "requestTypeId" : "rt_new_mobile_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : true,
-    "missingFieldPaths" : [ "contactEmail", "portedNumbers" ],
-    "totalComparedPaths" : 10,
-    "matchedPaths" : 10,
-    "matchRate" : 1.0,
-    "differences" : [ ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 002",
-      "contractTermMonths" : 0,
-      "customerName" : "Martin Čermák",
-      "customerStatus" : "new",
-      "portedNumbers" : [ ],
-      "portingRequested" : true,
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_mobile_unlimited_5g"
-      } ]
+    {
+      "recordId": "ext_0003",
+      "requestTypeId": "rt_new_mobile_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": true,
+      "missingFieldPaths": [
+        "contactEmail",
+        "portedNumbers"
+      ],
+      "totalComparedPaths": 10,
+      "matchedPaths": 10,
+      "matchRate": 1.0,
+      "differences": [],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 003",
+        "contractTermMonths": 24,
+        "customerName": "Aleš Konečný",
+        "customerStatus": "new",
+        "portedNumbers": [],
+        "portingRequested": true,
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_mobile_start_5g"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 003",
+        "contractTermMonths": 24,
+        "customerName": "Aleš Konečný",
+        "customerStatus": "new",
+        "portedNumbers": [],
+        "portingRequested": true,
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_mobile_start_5g"
+          }
+        ]
+      },
+      "promptTokens": 1699,
+      "completionTokens": 125,
+      "errorMessage": null
     },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 002",
-      "contractTermMonths" : 0,
-      "customerName" : "Martin Čermák",
-      "customerStatus" : "new",
-      "portedNumbers" : [ ],
-      "portingRequested" : true,
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_mobile_unlimited_5g"
-      } ]
+    {
+      "recordId": "ext_0004",
+      "requestTypeId": "rt_family_mobile_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": false,
+      "missingFieldPaths": [
+        "contactEmail",
+        "mobileLines"
+      ],
+      "totalComparedPaths": 22,
+      "matchedPaths": 18,
+      "matchRate": 0.8181818181818182,
+      "differences": [
+        {
+          "path": "$.mobileLines[0]",
+          "differenceType": "unexpected_field",
+          "expected": null,
+          "actual": {
+            "label": "line_1",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": true
+          }
+        },
+        {
+          "path": "$.mobileLines[1]",
+          "differenceType": "unexpected_field",
+          "expected": null,
+          "actual": {
+            "label": "line_2",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          }
+        },
+        {
+          "path": "$.mobileLines[2]",
+          "differenceType": "unexpected_field",
+          "expected": null,
+          "actual": {
+            "label": "line_3",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          }
+        },
+        {
+          "path": "$.requestedServices[0].quantity",
+          "differenceType": "value_mismatch",
+          "expected": 1,
+          "actual": 3
+        }
+      ],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 003",
+        "contractTermMonths": 24,
+        "customerName": "Aleš Konečný",
+        "customerStatus": "new",
+        "mobileLines": [],
+        "mobileLinesCount": 3,
+        "portedNumbers": [
+          {
+            "donorOperator": "Vodafone",
+            "number": "+420 9999 100 002"
+          }
+        ],
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_family_line_100"
+          },
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_mobile_family_plus"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 003",
+        "contractTermMonths": 24,
+        "customerName": "Aleš Konečný",
+        "customerStatus": "new",
+        "mobileLines": [
+          {
+            "label": "line_1",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": true
+          },
+          {
+            "label": "line_2",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          },
+          {
+            "label": "line_3",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          }
+        ],
+        "mobileLinesCount": 3,
+        "portedNumbers": [
+          {
+            "donorOperator": "Vodafone",
+            "number": "+420 9999 100 002"
+          }
+        ],
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_family_line_100"
+          },
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 3,
+            "serviceId": "svc_mobile_family_plus"
+          }
+        ]
+      },
+      "promptTokens": 1972,
+      "completionTokens": 277,
+      "errorMessage": null
     },
-    "promptTokens" : 1710,
-    "completionTokens" : 125,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0003",
-    "requestTypeId" : "rt_new_mobile_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : true,
-    "missingFieldPaths" : [ "contactEmail", "portedNumbers" ],
-    "totalComparedPaths" : 10,
-    "matchedPaths" : 10,
-    "matchRate" : 1.0,
-    "differences" : [ ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 003",
-      "contractTermMonths" : 24,
-      "customerName" : "Aleš Konečný",
-      "customerStatus" : "new",
-      "portedNumbers" : [ ],
-      "portingRequested" : true,
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_mobile_start_5g"
-      } ]
+    {
+      "recordId": "ext_0005",
+      "requestTypeId": "rt_family_mobile_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": false,
+      "missingFieldPaths": [
+        "contactEmail",
+        "mobileLines"
+      ],
+      "totalComparedPaths": 25,
+      "matchedPaths": 20,
+      "matchRate": 0.8,
+      "differences": [
+        {
+          "path": "$.mobileLines[0]",
+          "differenceType": "unexpected_field",
+          "expected": null,
+          "actual": {
+            "label": "line_1",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": true
+          }
+        },
+        {
+          "path": "$.mobileLines[1]",
+          "differenceType": "unexpected_field",
+          "expected": null,
+          "actual": {
+            "label": "line_2",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          }
+        },
+        {
+          "path": "$.mobileLines[2]",
+          "differenceType": "unexpected_field",
+          "expected": null,
+          "actual": {
+            "label": "line_3",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          }
+        },
+        {
+          "path": "$.mobileLines[3]",
+          "differenceType": "unexpected_field",
+          "expected": null,
+          "actual": {
+            "label": "line_4",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          }
+        },
+        {
+          "path": "$.requestedServices[0].quantity",
+          "differenceType": "value_mismatch",
+          "expected": 1,
+          "actual": 4
+        }
+      ],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 004",
+        "contractTermMonths": 24,
+        "customerName": "Klára Horáková",
+        "customerStatus": "existing",
+        "mobileLines": [],
+        "mobileLinesCount": 4,
+        "portedNumbers": [
+          {
+            "donorOperator": "O2",
+            "number": "+420 9999 100 003"
+          }
+        ],
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_family_line_100"
+          },
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_mobile_family_plus"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 004",
+        "contractTermMonths": 24,
+        "customerName": "Klára Horáková",
+        "customerStatus": "existing",
+        "mobileLines": [
+          {
+            "label": "line_1",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": true
+          },
+          {
+            "label": "line_2",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          },
+          {
+            "label": "line_3",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          },
+          {
+            "label": "line_4",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          }
+        ],
+        "mobileLinesCount": 4,
+        "portedNumbers": [
+          {
+            "donorOperator": "O2",
+            "number": "+420 9999 100 003"
+          }
+        ],
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_family_line_100"
+          },
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 4,
+            "serviceId": "svc_mobile_family_plus"
+          }
+        ]
+      },
+      "promptTokens": 1968,
+      "completionTokens": 310,
+      "errorMessage": null
     },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 003",
-      "contractTermMonths" : 24,
-      "customerName" : "Aleš Konečný",
-      "customerStatus" : "new",
-      "portedNumbers" : [ ],
-      "portingRequested" : true,
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_mobile_start_5g"
-      } ]
+    {
+      "recordId": "ext_0006",
+      "requestTypeId": "rt_family_mobile_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": false,
+      "missingFieldPaths": [
+        "contactEmail",
+        "mobileLines"
+      ],
+      "totalComparedPaths": 19,
+      "matchedPaths": 16,
+      "matchRate": 0.8421052631578947,
+      "differences": [
+        {
+          "path": "$.mobileLines[0]",
+          "differenceType": "unexpected_field",
+          "expected": null,
+          "actual": {
+            "label": "line_1",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": true
+          }
+        },
+        {
+          "path": "$.mobileLines[1]",
+          "differenceType": "unexpected_field",
+          "expected": null,
+          "actual": {
+            "label": "line_2",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          }
+        },
+        {
+          "path": "$.requestedServices[0].quantity",
+          "differenceType": "value_mismatch",
+          "expected": 1,
+          "actual": 2
+        }
+      ],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 005",
+        "contractTermMonths": 0,
+        "customerName": "Petr Urban",
+        "customerStatus": "existing",
+        "mobileLines": [],
+        "mobileLinesCount": 2,
+        "portedNumbers": [
+          {
+            "donorOperator": "Vodafone",
+            "number": "+420 9999 100 004"
+          }
+        ],
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_family_line_100"
+          },
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_mobile_family_plus"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 005",
+        "contractTermMonths": 0,
+        "customerName": "Petr Urban",
+        "customerStatus": "existing",
+        "mobileLines": [
+          {
+            "label": "line_1",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": true
+          },
+          {
+            "label": "line_2",
+            "planServiceId": "svc_mobile_family_plus",
+            "portingRequested": false
+          }
+        ],
+        "mobileLinesCount": 2,
+        "portedNumbers": [
+          {
+            "donorOperator": "Vodafone",
+            "number": "+420 9999 100 004"
+          }
+        ],
+        "requestedDiscounts": [
+          {
+            "discountId": "disc_family_line_100"
+          },
+          {
+            "discountId": "disc_porting_mobile_200"
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 2,
+            "serviceId": "svc_mobile_family_plus"
+          }
+        ]
+      },
+      "promptTokens": 1964,
+      "completionTokens": 242,
+      "errorMessage": null
     },
-    "promptTokens" : 1699,
-    "completionTokens" : 125,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0004",
-    "requestTypeId" : "rt_family_mobile_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : false,
-    "missingFieldPaths" : [ "contactEmail", "mobileLines" ],
-    "totalComparedPaths" : 22,
-    "matchedPaths" : 18,
-    "matchRate" : 0.8181818181818182,
-    "differences" : [ {
-      "path" : "$.mobileLines[0]",
-      "differenceType" : "unexpected_field",
-      "expected" : null,
-      "actual" : {
-        "label" : "line_1",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : true
-      }
-    }, {
-      "path" : "$.mobileLines[1]",
-      "differenceType" : "unexpected_field",
-      "expected" : null,
-      "actual" : {
-        "label" : "line_2",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      }
-    }, {
-      "path" : "$.mobileLines[2]",
-      "differenceType" : "unexpected_field",
-      "expected" : null,
-      "actual" : {
-        "label" : "line_3",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      }
-    }, {
-      "path" : "$.requestedServices[0].quantity",
-      "differenceType" : "value_mismatch",
-      "expected" : 1,
-      "actual" : 3
-    } ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 003",
-      "contractTermMonths" : 24,
-      "customerName" : "Aleš Konečný",
-      "customerStatus" : "new",
-      "mobileLines" : [ ],
-      "mobileLinesCount" : 3,
-      "portedNumbers" : [ {
-        "donorOperator" : "Vodafone",
-        "number" : "+420 9999 100 002"
-      } ],
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_family_line_100"
-      }, {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_mobile_family_plus"
-      } ]
+    {
+      "recordId": "ext_0007",
+      "requestTypeId": "rt_fixed_internet_with_hardware_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": true,
+      "missingFieldPaths": [
+        "contactEmail",
+        "installationAddress"
+      ],
+      "totalComparedPaths": 10,
+      "matchedPaths": 10,
+      "matchRate": 1.0,
+      "differences": [],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 005",
+        "contractTermMonths": 24,
+        "customerName": "Petr Urban",
+        "customerStatus": "existing",
+        "installationAddress": null,
+        "requestedProducts": [
+          {
+            "productId": "prod_router_standard",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_fiber_300"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 005",
+        "contractTermMonths": 24,
+        "customerName": "Petr Urban",
+        "customerStatus": "existing",
+        "installationAddress": null,
+        "requestedProducts": [
+          {
+            "productId": "prod_router_standard",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_fiber_300"
+          }
+        ]
+      },
+      "promptTokens": 1508,
+      "completionTokens": 120,
+      "errorMessage": null
     },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 003",
-      "contractTermMonths" : 24,
-      "customerName" : "Aleš Konečný",
-      "customerStatus" : "new",
-      "mobileLines" : [ {
-        "label" : "line_1",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : true
-      }, {
-        "label" : "line_2",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      }, {
-        "label" : "line_3",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      } ],
-      "mobileLinesCount" : 3,
-      "portedNumbers" : [ {
-        "donorOperator" : "Vodafone",
-        "number" : "+420 9999 100 002"
-      } ],
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_family_line_100"
-      }, {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 3,
-        "serviceId" : "svc_mobile_family_plus"
-      } ]
+    {
+      "recordId": "ext_0008",
+      "requestTypeId": "rt_fixed_internet_with_hardware_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": true,
+      "missingFieldPaths": [
+        "contactEmail",
+        "installationAddress"
+      ],
+      "totalComparedPaths": 12,
+      "matchedPaths": 12,
+      "matchRate": 1.0,
+      "differences": [],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 006",
+        "contractTermMonths": 24,
+        "customerName": "Lucie Dvořáková",
+        "customerStatus": "existing",
+        "installationAddress": null,
+        "requestedProducts": [
+          {
+            "productId": "prod_mesh_node",
+            "quantity": 2
+          },
+          {
+            "productId": "prod_router_pro",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_fiber_1000"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 006",
+        "contractTermMonths": 24,
+        "customerName": "Lucie Dvořáková",
+        "customerStatus": "existing",
+        "installationAddress": null,
+        "requestedProducts": [
+          {
+            "productId": "prod_mesh_node",
+            "quantity": 2
+          },
+          {
+            "productId": "prod_router_pro",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_fiber_1000"
+          }
+        ]
+      },
+      "promptTokens": 1524,
+      "completionTokens": 146,
+      "errorMessage": null
     },
-    "promptTokens" : 1972,
-    "completionTokens" : 277,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0005",
-    "requestTypeId" : "rt_family_mobile_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : false,
-    "missingFieldPaths" : [ "contactEmail", "mobileLines" ],
-    "totalComparedPaths" : 25,
-    "matchedPaths" : 20,
-    "matchRate" : 0.8,
-    "differences" : [ {
-      "path" : "$.mobileLines[0]",
-      "differenceType" : "unexpected_field",
-      "expected" : null,
-      "actual" : {
-        "label" : "line_1",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : true
-      }
-    }, {
-      "path" : "$.mobileLines[1]",
-      "differenceType" : "unexpected_field",
-      "expected" : null,
-      "actual" : {
-        "label" : "line_2",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      }
-    }, {
-      "path" : "$.mobileLines[2]",
-      "differenceType" : "unexpected_field",
-      "expected" : null,
-      "actual" : {
-        "label" : "line_3",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      }
-    }, {
-      "path" : "$.mobileLines[3]",
-      "differenceType" : "unexpected_field",
-      "expected" : null,
-      "actual" : {
-        "label" : "line_4",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      }
-    }, {
-      "path" : "$.requestedServices[0].quantity",
-      "differenceType" : "value_mismatch",
-      "expected" : 1,
-      "actual" : 4
-    } ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 004",
-      "contractTermMonths" : 24,
-      "customerName" : "Klára Horáková",
-      "customerStatus" : "existing",
-      "mobileLines" : [ ],
-      "mobileLinesCount" : 4,
-      "portedNumbers" : [ {
-        "donorOperator" : "O2",
-        "number" : "+420 9999 100 003"
-      } ],
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_family_line_100"
-      }, {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_mobile_family_plus"
-      } ]
+    {
+      "recordId": "ext_0009",
+      "requestTypeId": "rt_fixed_internet_with_hardware_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": true,
+      "missingFieldPaths": [
+        "contactEmail",
+        "installationAddress"
+      ],
+      "totalComparedPaths": 12,
+      "matchedPaths": 12,
+      "matchRate": 1.0,
+      "differences": [],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 007",
+        "contractTermMonths": 0,
+        "customerName": "Roman Beneš",
+        "customerStatus": "existing",
+        "installationAddress": null,
+        "requestedProducts": [
+          {
+            "productId": "prod_installation_express",
+            "quantity": 1
+          },
+          {
+            "productId": "prod_router_standard",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_dsl_100"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 007",
+        "contractTermMonths": 0,
+        "customerName": "Roman Beneš",
+        "customerStatus": "existing",
+        "installationAddress": null,
+        "requestedProducts": [
+          {
+            "productId": "prod_installation_express",
+            "quantity": 1
+          },
+          {
+            "productId": "prod_router_standard",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_dsl_100"
+          }
+        ]
+      },
+      "promptTokens": 1514,
+      "completionTokens": 143,
+      "errorMessage": null
     },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 004",
-      "contractTermMonths" : 24,
-      "customerName" : "Klára Horáková",
-      "customerStatus" : "existing",
-      "mobileLines" : [ {
-        "label" : "line_1",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : true
-      }, {
-        "label" : "line_2",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      }, {
-        "label" : "line_3",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      }, {
-        "label" : "line_4",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      } ],
-      "mobileLinesCount" : 4,
-      "portedNumbers" : [ {
-        "donorOperator" : "O2",
-        "number" : "+420 9999 100 003"
-      } ],
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_family_line_100"
-      }, {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 4,
-        "serviceId" : "svc_mobile_family_plus"
-      } ]
+    {
+      "recordId": "ext_0010",
+      "requestTypeId": "rt_internet_tv_bundle_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": true,
+      "missingFieldPaths": [
+        "contactEmail",
+        "requestedDiscounts"
+      ],
+      "totalComparedPaths": 15,
+      "matchedPaths": 15,
+      "matchRate": 1.0,
+      "differences": [],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 002",
+        "contractTermMonths": 24,
+        "customerName": "Martin Čermák",
+        "customerStatus": "new",
+        "installationAddress": "Olomouc, Nové Sady, Rooseveltova 61",
+        "requestedDiscounts": [],
+        "requestedProducts": [
+          {
+            "productId": "prod_set_top_box",
+            "quantity": 1
+          },
+          {
+            "productId": "prod_tv_sports_pack",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_fiber_300"
+          },
+          {
+            "quantity": 1,
+            "serviceId": "svc_tv_family"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 002",
+        "contractTermMonths": 24,
+        "customerName": "Martin Čermák",
+        "customerStatus": "new",
+        "installationAddress": "Olomouc, Nové Sady, Rooseveltova 61",
+        "requestedDiscounts": [],
+        "requestedProducts": [
+          {
+            "productId": "prod_set_top_box",
+            "quantity": 1
+          },
+          {
+            "productId": "prod_tv_sports_pack",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_fiber_300"
+          },
+          {
+            "quantity": 1,
+            "serviceId": "svc_tv_family"
+          }
+        ]
+      },
+      "promptTokens": 1689,
+      "completionTokens": 186,
+      "errorMessage": null
     },
-    "promptTokens" : 1968,
-    "completionTokens" : 310,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0006",
-    "requestTypeId" : "rt_family_mobile_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : false,
-    "missingFieldPaths" : [ "contactEmail", "mobileLines" ],
-    "totalComparedPaths" : 19,
-    "matchedPaths" : 16,
-    "matchRate" : 0.8421052631578947,
-    "differences" : [ {
-      "path" : "$.mobileLines[0]",
-      "differenceType" : "unexpected_field",
-      "expected" : null,
-      "actual" : {
-        "label" : "line_1",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : true
-      }
-    }, {
-      "path" : "$.mobileLines[1]",
-      "differenceType" : "unexpected_field",
-      "expected" : null,
-      "actual" : {
-        "label" : "line_2",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      }
-    }, {
-      "path" : "$.requestedServices[0].quantity",
-      "differenceType" : "value_mismatch",
-      "expected" : 1,
-      "actual" : 2
-    } ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 005",
-      "contractTermMonths" : 0,
-      "customerName" : "Petr Urban",
-      "customerStatus" : "existing",
-      "mobileLines" : [ ],
-      "mobileLinesCount" : 2,
-      "portedNumbers" : [ {
-        "donorOperator" : "Vodafone",
-        "number" : "+420 9999 100 004"
-      } ],
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_family_line_100"
-      }, {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_mobile_family_plus"
-      } ]
+    {
+      "recordId": "ext_0011",
+      "requestTypeId": "rt_internet_tv_bundle_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": true,
+      "missingFieldPaths": [
+        "contactEmail",
+        "requestedDiscounts"
+      ],
+      "totalComparedPaths": 15,
+      "matchedPaths": 15,
+      "matchRate": 1.0,
+      "differences": [],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 003",
+        "contractTermMonths": 0,
+        "customerName": "Aleš Konečný",
+        "customerStatus": "new",
+        "installationAddress": "Plzeň, Bolevec, Gerská 14",
+        "requestedDiscounts": [],
+        "requestedProducts": [
+          {
+            "productId": "prod_router_pro",
+            "quantity": 1
+          },
+          {
+            "productId": "prod_set_top_box",
+            "quantity": 2
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_fiber_1000"
+          },
+          {
+            "quantity": 1,
+            "serviceId": "svc_tv_basic"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 003",
+        "contractTermMonths": 0,
+        "customerName": "Aleš Konečný",
+        "customerStatus": "new",
+        "installationAddress": "Plzeň, Bolevec, Gerská 14",
+        "requestedDiscounts": [],
+        "requestedProducts": [
+          {
+            "productId": "prod_router_pro",
+            "quantity": 1
+          },
+          {
+            "productId": "prod_set_top_box",
+            "quantity": 2
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_fiber_1000"
+          },
+          {
+            "quantity": 1,
+            "serviceId": "svc_tv_basic"
+          }
+        ]
+      },
+      "promptTokens": 1687,
+      "completionTokens": 185,
+      "errorMessage": null
     },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 005",
-      "contractTermMonths" : 0,
-      "customerName" : "Petr Urban",
-      "customerStatus" : "existing",
-      "mobileLines" : [ {
-        "label" : "line_1",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : true
-      }, {
-        "label" : "line_2",
-        "planServiceId" : "svc_mobile_family_plus",
-        "portingRequested" : false
-      } ],
-      "mobileLinesCount" : 2,
-      "portedNumbers" : [ {
-        "donorOperator" : "Vodafone",
-        "number" : "+420 9999 100 004"
-      } ],
-      "requestedDiscounts" : [ {
-        "discountId" : "disc_family_line_100"
-      }, {
-        "discountId" : "disc_porting_mobile_200"
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 2,
-        "serviceId" : "svc_mobile_family_plus"
-      } ]
+    {
+      "recordId": "ext_0012",
+      "requestTypeId": "rt_internet_tv_bundle_order",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": true,
+      "missingFieldPaths": [
+        "contactEmail",
+        "requestedDiscounts"
+      ],
+      "totalComparedPaths": 15,
+      "matchedPaths": 15,
+      "matchRate": 1.0,
+      "differences": [],
+      "expectedDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 004",
+        "contractTermMonths": 24,
+        "customerName": "Klára Horáková",
+        "customerStatus": "existing",
+        "installationAddress": "Pardubice, Polabiny, Mozartova 22",
+        "requestedDiscounts": [],
+        "requestedProducts": [
+          {
+            "productId": "prod_router_standard",
+            "quantity": 1
+          },
+          {
+            "productId": "prod_set_top_box",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_wireless_50"
+          },
+          {
+            "quantity": 1,
+            "serviceId": "svc_tv_family"
+          }
+        ]
+      },
+      "actualDto": {
+        "contactEmail": null,
+        "contactPhone": "+420 9999 000 004",
+        "contractTermMonths": 24,
+        "customerName": "Klára Horáková",
+        "customerStatus": "existing",
+        "installationAddress": "Pardubice, Polabiny, Mozartova 22",
+        "requestedDiscounts": [],
+        "requestedProducts": [
+          {
+            "productId": "prod_router_standard",
+            "quantity": 1
+          },
+          {
+            "productId": "prod_set_top_box",
+            "quantity": 1
+          }
+        ],
+        "requestedServices": [
+          {
+            "quantity": 1,
+            "serviceId": "svc_internet_wireless_50"
+          },
+          {
+            "quantity": 1,
+            "serviceId": "svc_tv_family"
+          }
+        ]
+      },
+      "promptTokens": 1683,
+      "completionTokens": 185,
+      "errorMessage": null
     },
-    "promptTokens" : 1964,
-    "completionTokens" : 242,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0007",
-    "requestTypeId" : "rt_fixed_internet_with_hardware_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : true,
-    "missingFieldPaths" : [ "contactEmail", "installationAddress" ],
-    "totalComparedPaths" : 10,
-    "matchedPaths" : 10,
-    "matchRate" : 1.0,
-    "differences" : [ ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 005",
-      "contractTermMonths" : 24,
-      "customerName" : "Petr Urban",
-      "customerStatus" : "existing",
-      "installationAddress" : null,
-      "requestedProducts" : [ {
-        "productId" : "prod_router_standard",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_fiber_300"
-      } ]
+    {
+      "recordId": "ext_0013",
+      "requestTypeId": "rt_retention_discount_request",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": false,
+      "missingFieldPaths": [
+        "requestedDiscounts",
+        "competitorOffer"
+      ],
+      "totalComparedPaths": 9,
+      "matchedPaths": 8,
+      "matchRate": 0.8888888888888888,
+      "differences": [
+        {
+          "path": "$.churnReason",
+          "differenceType": "value_mismatch",
+          "expected": "zákazník zvažuje odchod kvůli ceně",
+          "actual": "zvažuje odchod kvůli ceně"
+        }
+      ],
+      "expectedDto": {
+        "churnReason": "zákazník zvažuje odchod kvůli ceně",
+        "competitorOffer": null,
+        "contactPhone": "+420 9999 000 004",
+        "currentServices": [
+          {
+            "serviceId": "svc_mobile_unlimited_5g"
+          }
+        ],
+        "customerName": "Klára Horáková",
+        "customerStatus": "existing",
+        "requestedDiscounts": [],
+        "retentionCase": true,
+        "targetServiceId": "svc_mobile_unlimited_5g"
+      },
+      "actualDto": {
+        "churnReason": "zvažuje odchod kvůli ceně",
+        "competitorOffer": null,
+        "contactPhone": "+420 9999 000 004",
+        "currentServices": [
+          {
+            "serviceId": "svc_mobile_unlimited_5g"
+          }
+        ],
+        "customerName": "Klára Horáková",
+        "customerStatus": "existing",
+        "requestedDiscounts": [],
+        "retentionCase": true,
+        "targetServiceId": "svc_mobile_unlimited_5g"
+      },
+      "promptTokens": 1691,
+      "completionTokens": 121,
+      "errorMessage": null
     },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 005",
-      "contractTermMonths" : 24,
-      "customerName" : "Petr Urban",
-      "customerStatus" : "existing",
-      "installationAddress" : null,
-      "requestedProducts" : [ {
-        "productId" : "prod_router_standard",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_fiber_300"
-      } ]
+    {
+      "recordId": "ext_0014",
+      "requestTypeId": "rt_retention_discount_request",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": false,
+      "missingFieldPaths": [
+        "requestedDiscounts",
+        "competitorOffer"
+      ],
+      "totalComparedPaths": 9,
+      "matchedPaths": 7,
+      "matchRate": 0.7777777777777778,
+      "differences": [
+        {
+          "path": "$.churnReason",
+          "differenceType": "value_mismatch",
+          "expected": "zákazník dostal výhodnější nabídku od konkurence",
+          "actual": ""
+        },
+        {
+          "path": "$.competitorOffer",
+          "differenceType": "null_mismatch",
+          "expected": null,
+          "actual": "zákazník dostal výhodnější nabídku od konkurence"
+        }
+      ],
+      "expectedDto": {
+        "churnReason": "zákazník dostal výhodnější nabídku od konkurence",
+        "competitorOffer": null,
+        "contactPhone": "+420 9999 000 005",
+        "currentServices": [
+          {
+            "serviceId": "svc_internet_fiber_1000"
+          }
+        ],
+        "customerName": "Petr Urban",
+        "customerStatus": "existing",
+        "requestedDiscounts": [],
+        "retentionCase": true,
+        "targetServiceId": "svc_internet_fiber_1000"
+      },
+      "actualDto": {
+        "churnReason": "",
+        "competitorOffer": "zákazník dostal výhodnější nabídku od konkurence",
+        "contactPhone": "+420 9999 000 005",
+        "currentServices": [
+          {
+            "serviceId": "svc_internet_fiber_1000"
+          }
+        ],
+        "customerName": "Petr Urban",
+        "customerStatus": "existing",
+        "requestedDiscounts": [],
+        "retentionCase": true,
+        "targetServiceId": "svc_internet_fiber_1000"
+      },
+      "promptTokens": 1688,
+      "completionTokens": 124,
+      "errorMessage": null
     },
-    "promptTokens" : 1508,
-    "completionTokens" : 120,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0008",
-    "requestTypeId" : "rt_fixed_internet_with_hardware_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : true,
-    "missingFieldPaths" : [ "contactEmail", "installationAddress" ],
-    "totalComparedPaths" : 12,
-    "matchedPaths" : 12,
-    "matchRate" : 1.0,
-    "differences" : [ ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 006",
-      "contractTermMonths" : 24,
-      "customerName" : "Lucie Dvořáková",
-      "customerStatus" : "existing",
-      "installationAddress" : null,
-      "requestedProducts" : [ {
-        "productId" : "prod_mesh_node",
-        "quantity" : 2
-      }, {
-        "productId" : "prod_router_pro",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_fiber_1000"
-      } ]
-    },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 006",
-      "contractTermMonths" : 24,
-      "customerName" : "Lucie Dvořáková",
-      "customerStatus" : "existing",
-      "installationAddress" : null,
-      "requestedProducts" : [ {
-        "productId" : "prod_mesh_node",
-        "quantity" : 2
-      }, {
-        "productId" : "prod_router_pro",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_fiber_1000"
-      } ]
-    },
-    "promptTokens" : 1524,
-    "completionTokens" : 146,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0009",
-    "requestTypeId" : "rt_fixed_internet_with_hardware_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : true,
-    "missingFieldPaths" : [ "contactEmail", "installationAddress" ],
-    "totalComparedPaths" : 12,
-    "matchedPaths" : 12,
-    "matchRate" : 1.0,
-    "differences" : [ ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 007",
-      "contractTermMonths" : 0,
-      "customerName" : "Roman Beneš",
-      "customerStatus" : "existing",
-      "installationAddress" : null,
-      "requestedProducts" : [ {
-        "productId" : "prod_installation_express",
-        "quantity" : 1
-      }, {
-        "productId" : "prod_router_standard",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_dsl_100"
-      } ]
-    },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 007",
-      "contractTermMonths" : 0,
-      "customerName" : "Roman Beneš",
-      "customerStatus" : "existing",
-      "installationAddress" : null,
-      "requestedProducts" : [ {
-        "productId" : "prod_installation_express",
-        "quantity" : 1
-      }, {
-        "productId" : "prod_router_standard",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_dsl_100"
-      } ]
-    },
-    "promptTokens" : 1514,
-    "completionTokens" : 143,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0010",
-    "requestTypeId" : "rt_internet_tv_bundle_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : true,
-    "missingFieldPaths" : [ "contactEmail", "requestedDiscounts" ],
-    "totalComparedPaths" : 15,
-    "matchedPaths" : 15,
-    "matchRate" : 1.0,
-    "differences" : [ ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 002",
-      "contractTermMonths" : 24,
-      "customerName" : "Martin Čermák",
-      "customerStatus" : "new",
-      "installationAddress" : "Olomouc, Nové Sady, Rooseveltova 61",
-      "requestedDiscounts" : [ ],
-      "requestedProducts" : [ {
-        "productId" : "prod_set_top_box",
-        "quantity" : 1
-      }, {
-        "productId" : "prod_tv_sports_pack",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_fiber_300"
-      }, {
-        "quantity" : 1,
-        "serviceId" : "svc_tv_family"
-      } ]
-    },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 002",
-      "contractTermMonths" : 24,
-      "customerName" : "Martin Čermák",
-      "customerStatus" : "new",
-      "installationAddress" : "Olomouc, Nové Sady, Rooseveltova 61",
-      "requestedDiscounts" : [ ],
-      "requestedProducts" : [ {
-        "productId" : "prod_set_top_box",
-        "quantity" : 1
-      }, {
-        "productId" : "prod_tv_sports_pack",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_fiber_300"
-      }, {
-        "quantity" : 1,
-        "serviceId" : "svc_tv_family"
-      } ]
-    },
-    "promptTokens" : 1689,
-    "completionTokens" : 186,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0011",
-    "requestTypeId" : "rt_internet_tv_bundle_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : true,
-    "missingFieldPaths" : [ "contactEmail", "requestedDiscounts" ],
-    "totalComparedPaths" : 15,
-    "matchedPaths" : 15,
-    "matchRate" : 1.0,
-    "differences" : [ ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 003",
-      "contractTermMonths" : 0,
-      "customerName" : "Aleš Konečný",
-      "customerStatus" : "new",
-      "installationAddress" : "Plzeň, Bolevec, Gerská 14",
-      "requestedDiscounts" : [ ],
-      "requestedProducts" : [ {
-        "productId" : "prod_router_pro",
-        "quantity" : 1
-      }, {
-        "productId" : "prod_set_top_box",
-        "quantity" : 2
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_fiber_1000"
-      }, {
-        "quantity" : 1,
-        "serviceId" : "svc_tv_basic"
-      } ]
-    },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 003",
-      "contractTermMonths" : 0,
-      "customerName" : "Aleš Konečný",
-      "customerStatus" : "new",
-      "installationAddress" : "Plzeň, Bolevec, Gerská 14",
-      "requestedDiscounts" : [ ],
-      "requestedProducts" : [ {
-        "productId" : "prod_router_pro",
-        "quantity" : 1
-      }, {
-        "productId" : "prod_set_top_box",
-        "quantity" : 2
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_fiber_1000"
-      }, {
-        "quantity" : 1,
-        "serviceId" : "svc_tv_basic"
-      } ]
-    },
-    "promptTokens" : 1687,
-    "completionTokens" : 185,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0012",
-    "requestTypeId" : "rt_internet_tv_bundle_order",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : true,
-    "missingFieldPaths" : [ "contactEmail", "requestedDiscounts" ],
-    "totalComparedPaths" : 15,
-    "matchedPaths" : 15,
-    "matchRate" : 1.0,
-    "differences" : [ ],
-    "expectedDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 004",
-      "contractTermMonths" : 24,
-      "customerName" : "Klára Horáková",
-      "customerStatus" : "existing",
-      "installationAddress" : "Pardubice, Polabiny, Mozartova 22",
-      "requestedDiscounts" : [ ],
-      "requestedProducts" : [ {
-        "productId" : "prod_router_standard",
-        "quantity" : 1
-      }, {
-        "productId" : "prod_set_top_box",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_wireless_50"
-      }, {
-        "quantity" : 1,
-        "serviceId" : "svc_tv_family"
-      } ]
-    },
-    "actualDto" : {
-      "contactEmail" : null,
-      "contactPhone" : "+420 9999 000 004",
-      "contractTermMonths" : 24,
-      "customerName" : "Klára Horáková",
-      "customerStatus" : "existing",
-      "installationAddress" : "Pardubice, Polabiny, Mozartova 22",
-      "requestedDiscounts" : [ ],
-      "requestedProducts" : [ {
-        "productId" : "prod_router_standard",
-        "quantity" : 1
-      }, {
-        "productId" : "prod_set_top_box",
-        "quantity" : 1
-      } ],
-      "requestedServices" : [ {
-        "quantity" : 1,
-        "serviceId" : "svc_internet_wireless_50"
-      }, {
-        "quantity" : 1,
-        "serviceId" : "svc_tv_family"
-      } ]
-    },
-    "promptTokens" : 1683,
-    "completionTokens" : 185,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0013",
-    "requestTypeId" : "rt_retention_discount_request",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : false,
-    "missingFieldPaths" : [ "requestedDiscounts", "competitorOffer" ],
-    "totalComparedPaths" : 9,
-    "matchedPaths" : 8,
-    "matchRate" : 0.8888888888888888,
-    "differences" : [ {
-      "path" : "$.churnReason",
-      "differenceType" : "value_mismatch",
-      "expected" : "zákazník zvažuje odchod kvůli ceně",
-      "actual" : "zvažuje odchod kvůli ceně"
-    } ],
-    "expectedDto" : {
-      "churnReason" : "zákazník zvažuje odchod kvůli ceně",
-      "competitorOffer" : null,
-      "contactPhone" : "+420 9999 000 004",
-      "currentServices" : [ {
-        "serviceId" : "svc_mobile_unlimited_5g"
-      } ],
-      "customerName" : "Klára Horáková",
-      "customerStatus" : "existing",
-      "requestedDiscounts" : [ ],
-      "retentionCase" : true,
-      "targetServiceId" : "svc_mobile_unlimited_5g"
-    },
-    "actualDto" : {
-      "churnReason" : "zvažuje odchod kvůli ceně",
-      "competitorOffer" : null,
-      "contactPhone" : "+420 9999 000 004",
-      "currentServices" : [ {
-        "serviceId" : "svc_mobile_unlimited_5g"
-      } ],
-      "customerName" : "Klára Horáková",
-      "customerStatus" : "existing",
-      "requestedDiscounts" : [ ],
-      "retentionCase" : true,
-      "targetServiceId" : "svc_mobile_unlimited_5g"
-    },
-    "promptTokens" : 1691,
-    "completionTokens" : 121,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0014",
-    "requestTypeId" : "rt_retention_discount_request",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : false,
-    "missingFieldPaths" : [ "requestedDiscounts", "competitorOffer" ],
-    "totalComparedPaths" : 9,
-    "matchedPaths" : 7,
-    "matchRate" : 0.7777777777777778,
-    "differences" : [ {
-      "path" : "$.churnReason",
-      "differenceType" : "value_mismatch",
-      "expected" : "zákazník dostal výhodnější nabídku od konkurence",
-      "actual" : ""
-    }, {
-      "path" : "$.competitorOffer",
-      "differenceType" : "null_mismatch",
-      "expected" : null,
-      "actual" : "zákazník dostal výhodnější nabídku od konkurence"
-    } ],
-    "expectedDto" : {
-      "churnReason" : "zákazník dostal výhodnější nabídku od konkurence",
-      "competitorOffer" : null,
-      "contactPhone" : "+420 9999 000 005",
-      "currentServices" : [ {
-        "serviceId" : "svc_internet_fiber_1000"
-      } ],
-      "customerName" : "Petr Urban",
-      "customerStatus" : "existing",
-      "requestedDiscounts" : [ ],
-      "retentionCase" : true,
-      "targetServiceId" : "svc_internet_fiber_1000"
-    },
-    "actualDto" : {
-      "churnReason" : "",
-      "competitorOffer" : "zákazník dostal výhodnější nabídku od konkurence",
-      "contactPhone" : "+420 9999 000 005",
-      "currentServices" : [ {
-        "serviceId" : "svc_internet_fiber_1000"
-      } ],
-      "customerName" : "Petr Urban",
-      "customerStatus" : "existing",
-      "requestedDiscounts" : [ ],
-      "retentionCase" : true,
-      "targetServiceId" : "svc_internet_fiber_1000"
-    },
-    "promptTokens" : 1688,
-    "completionTokens" : 124,
-    "errorMessage" : null
-  }, {
-    "recordId" : "ext_0015",
-    "requestTypeId" : "rt_retention_discount_request",
-    "channel" : "crm_ticket",
-    "mode" : "extraction",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "exactMatch" : false,
-    "missingFieldPaths" : [ "requestedDiscounts", "competitorOffer" ],
-    "totalComparedPaths" : 9,
-    "matchedPaths" : 8,
-    "matchRate" : 0.8888888888888888,
-    "differences" : [ {
-      "path" : "$.churnReason",
-      "differenceType" : "value_mismatch",
-      "expected" : "zákazník dlouhodobě řeší nespokojenost s cenou",
-      "actual" : "dlouhodobě řeší nespokojenost s cenou"
-    } ],
-    "expectedDto" : {
-      "churnReason" : "zákazník dlouhodobě řeší nespokojenost s cenou",
-      "competitorOffer" : null,
-      "contactPhone" : "+420 9999 000 006",
-      "currentServices" : [ {
-        "serviceId" : "svc_mobile_family_plus"
-      } ],
-      "customerName" : "Lucie Dvořáková",
-      "customerStatus" : "existing",
-      "requestedDiscounts" : [ ],
-      "retentionCase" : true,
-      "targetServiceId" : "svc_mobile_family_plus"
-    },
-    "actualDto" : {
-      "churnReason" : "dlouhodobě řeší nespokojenost s cenou",
-      "competitorOffer" : null,
-      "contactPhone" : "+420 9999 000 006",
-      "currentServices" : [ {
-        "serviceId" : "svc_mobile_family_plus"
-      } ],
-      "customerName" : "Lucie Dvořáková",
-      "customerStatus" : "existing",
-      "requestedDiscounts" : [ ],
-      "retentionCase" : true,
-      "targetServiceId" : "svc_mobile_family_plus"
-    },
-    "promptTokens" : 1691,
-    "completionTokens" : 122,
-    "errorMessage" : null
-  } ]
+    {
+      "recordId": "ext_0015",
+      "requestTypeId": "rt_retention_discount_request",
+      "channel": "crm_ticket",
+      "mode": "extraction",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "exactMatch": false,
+      "missingFieldPaths": [
+        "requestedDiscounts",
+        "competitorOffer"
+      ],
+      "totalComparedPaths": 9,
+      "matchedPaths": 8,
+      "matchRate": 0.8888888888888888,
+      "differences": [
+        {
+          "path": "$.churnReason",
+          "differenceType": "value_mismatch",
+          "expected": "zákazník dlouhodobě řeší nespokojenost s cenou",
+          "actual": "dlouhodobě řeší nespokojenost s cenou"
+        }
+      ],
+      "expectedDto": {
+        "churnReason": "zákazník dlouhodobě řeší nespokojenost s cenou",
+        "competitorOffer": null,
+        "contactPhone": "+420 9999 000 006",
+        "currentServices": [
+          {
+            "serviceId": "svc_mobile_family_plus"
+          }
+        ],
+        "customerName": "Lucie Dvořáková",
+        "customerStatus": "existing",
+        "requestedDiscounts": [],
+        "retentionCase": true,
+        "targetServiceId": "svc_mobile_family_plus"
+      },
+      "actualDto": {
+        "churnReason": "dlouhodobě řeší nespokojenost s cenou",
+        "competitorOffer": null,
+        "contactPhone": "+420 9999 000 006",
+        "currentServices": [
+          {
+            "serviceId": "svc_mobile_family_plus"
+          }
+        ],
+        "customerName": "Lucie Dvořáková",
+        "customerStatus": "existing",
+        "requestedDiscounts": [],
+        "retentionCase": true,
+        "targetServiceId": "svc_mobile_family_plus"
+      },
+      "promptTokens": 1691,
+      "completionTokens": 122,
+      "errorMessage": null
+    }
+  ]
 }

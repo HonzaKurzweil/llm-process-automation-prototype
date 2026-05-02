@@ -1,258 +1,313 @@
 {
-  "inputFile" : "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\classification_call_transcript_noise1.json",
-  "promptVariant" : "DIRECT",
-  "modelId" : "gpt-5-nano",
-  "records" : [ {
-    "recordId" : "cls_0001",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "RT_NEW_MOBILE_ORDER",
-    "correct" : true,
-    "promptTokens" : 497,
-    "completionTokens" : 7,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0002",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "RT_NEW_MOBILE_ORDER",
-    "correct" : true,
-    "promptTokens" : 502,
-    "completionTokens" : 7,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0003",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "RT_NEW_MOBILE_ORDER",
-    "correct" : true,
-    "promptTokens" : 492,
-    "completionTokens" : 7,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0004",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "correct" : true,
-    "promptTokens" : 501,
-    "completionTokens" : 8,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0005",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "correct" : true,
-    "promptTokens" : 499,
-    "completionTokens" : 8,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0006",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "correct" : true,
-    "promptTokens" : 498,
-    "completionTokens" : 8,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0007",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "correct" : true,
-    "promptTokens" : 494,
-    "completionTokens" : 12,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0008",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "correct" : true,
-    "promptTokens" : 497,
-    "completionTokens" : 12,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0009",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "correct" : true,
-    "promptTokens" : 494,
-    "completionTokens" : 12,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0010",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "correct" : true,
-    "promptTokens" : 501,
-    "completionTokens" : 11,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0011",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "correct" : true,
-    "promptTokens" : 501,
-    "completionTokens" : 11,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0012",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "correct" : true,
-    "promptTokens" : 498,
-    "completionTokens" : 11,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0013",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "correct" : true,
-    "promptTokens" : 504,
-    "completionTokens" : 8,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0014",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "correct" : true,
-    "promptTokens" : 497,
-    "completionTokens" : 8,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0015",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "correct" : true,
-    "promptTokens" : 501,
-    "completionTokens" : 8,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0016",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 539,
-    "completionTokens" : 6,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0017",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 511,
-    "completionTokens" : 6,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cls_0018",
-    "channel" : "call_transcript",
-    "mode" : "classification",
-    "noiseTags" : [ "hesitationDisfluency" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gpt-5-nano",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "correct" : false,
-    "promptTokens" : 500,
-    "completionTokens" : 8,
-    "errorMessage" : null
-  } ]
+  "inputFile": "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\classification_call_transcript_noise1.json",
+  "promptVariant": "DIRECT",
+  "modelId": "gpt-5-nano",
+  "records": [
+    {
+      "recordId": "cls_0001",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "RT_NEW_MOBILE_ORDER",
+      "correct": true,
+      "promptTokens": 497,
+      "completionTokens": 7,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0002",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "RT_NEW_MOBILE_ORDER",
+      "correct": true,
+      "promptTokens": 502,
+      "completionTokens": 7,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0003",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "RT_NEW_MOBILE_ORDER",
+      "correct": true,
+      "promptTokens": 492,
+      "completionTokens": 7,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0004",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "correct": true,
+      "promptTokens": 501,
+      "completionTokens": 8,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0005",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "correct": true,
+      "promptTokens": 499,
+      "completionTokens": 8,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0006",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "correct": true,
+      "promptTokens": 498,
+      "completionTokens": 8,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0007",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "correct": true,
+      "promptTokens": 494,
+      "completionTokens": 12,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0008",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "correct": true,
+      "promptTokens": 497,
+      "completionTokens": 12,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0009",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "correct": true,
+      "promptTokens": 494,
+      "completionTokens": 12,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0010",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "correct": true,
+      "promptTokens": 501,
+      "completionTokens": 11,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0011",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "correct": true,
+      "promptTokens": 501,
+      "completionTokens": 11,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0012",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "correct": true,
+      "promptTokens": 498,
+      "completionTokens": 11,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0013",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "correct": true,
+      "promptTokens": 504,
+      "completionTokens": 8,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0014",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "correct": true,
+      "promptTokens": 497,
+      "completionTokens": 8,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0015",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "correct": true,
+      "promptTokens": 501,
+      "completionTokens": 8,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0016",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 539,
+      "completionTokens": 6,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0017",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 511,
+      "completionTokens": 6,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cls_0018",
+      "channel": "call_transcript",
+      "mode": "classification",
+      "noiseTags": [
+        "hesitationDisfluency"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gpt-5-nano",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "correct": false,
+      "promptTokens": 500,
+      "completionTokens": 8,
+      "errorMessage": null
+    }
+  ]
 }
