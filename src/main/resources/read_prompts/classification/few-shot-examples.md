@@ -23,7 +23,14 @@ Vstup: „Zákazník se dotazuje na možnosti tarifu."
 Výsledek: unclassifiable
 Vysvětlení: Z textu nelze bezpečně určit konkrétní request type. Neurčuj typ pouze z jednoho slova bez kontextu.
 
-Příklad 5 – formát vstupu (přepis hovoru) neovlivňuje klasifikaci:
+Příklad 5 – text neobsahuje žádný podporovaný požadavek:
+Vstup: „Zákazník se ptá, zda může reklamovat poškozený telefon zakoupený v kamenné prodejně a jak
+dlouho trvá vyřízení reklamace."
+Výsledek: unclassifiable
+Vysvětlení: Text neobsahuje žádný z podporovaných request typů (objednávka tarifu, internetu, televize,
+rodinného tarifu ani retenční sleva). Reklamace zboží není v rozsahu systému.
+
+Příklad 6 – formát vstupu (přepis hovoru) neovlivňuje klasifikaci:
 Vstup: „Operátor: Dobrý den, jak vám mohu pomoci? Zákazník: Jsem u vás zákazník přes osm let
 a přemýšlím o odchodu. Mohl bych dostat výhodnější cenu za svůj tarif?"
 Výsledek: rt_retention_discount_request
