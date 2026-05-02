@@ -44,6 +44,7 @@ public enum RequestType {
 
     @JsonCreator
     public static RequestType fromRequestTypeIdReference(String requestTypeIdReference) {
+        if (requestTypeIdReference == null) return UNCLASSIFIABLE;
         return Arrays.stream(values())
                 .filter(type -> type.requestTypeIdReference.equalsIgnoreCase(requestTypeIdReference.trim()))
                 .findFirst()

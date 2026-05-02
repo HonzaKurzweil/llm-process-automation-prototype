@@ -26,6 +26,9 @@ public enum CustomerStatus {
 
     @JsonCreator
     public static CustomerStatus fromValue(String value) {
+        if (value == null) {
+            return null;
+        }
         return Arrays.stream(values())
                 .filter(status -> status.value.equalsIgnoreCase(value.trim()))
                 .findFirst()

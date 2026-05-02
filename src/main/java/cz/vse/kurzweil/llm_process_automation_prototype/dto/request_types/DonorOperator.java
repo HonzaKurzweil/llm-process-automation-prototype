@@ -30,6 +30,9 @@ public enum DonorOperator {
 
     @JsonCreator
     public static DonorOperator fromValue(String value) {
+        if (value == null) {
+            return UNKNOWN;
+        }
         return Arrays.stream(values())
                 .filter(operator -> operator.value.equalsIgnoreCase(value.trim()))
                 .findFirst()

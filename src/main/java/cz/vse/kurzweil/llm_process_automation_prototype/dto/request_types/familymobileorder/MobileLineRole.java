@@ -32,6 +32,9 @@ public enum MobileLineRole {
 
     @JsonCreator
     public static MobileLineRole fromValue(String value) {
+        if (value == null) {
+            return UNKNOWN;
+        }
         return Arrays.stream(values())
                 .filter(role -> role.value.equalsIgnoreCase(value.trim()))
                 .findFirst()
