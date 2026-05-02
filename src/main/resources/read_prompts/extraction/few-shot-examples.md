@@ -25,6 +25,22 @@ Ukázky obecného zacházení s formáty a nejasnostmi:
     - zápis ve vstupu: „adresa instalace je Šumperk"
     - hodnota pro proces: { psc: null, city: "Šumperk", street: null, houseNumber: null }
 
+- PSČ normalizuj vždy na formát NNN NN (tři číslice, mezera, dvě číslice). Pokud je ve vstupu bez mezery nebo
+  s odlišným formátováním, doplň mezeru na správné místo.
+    - zápis ve vstupu: „19000"
+    - hodnota pro proces: "190 00"
+    - zápis ve vstupu: „60200"
+    - hodnota pro proces: "602 00"
+    - zápis ve vstupu: „PSČ: 37001"
+    - hodnota pro proces: "370 01"
+
+- Název ulice zapisuj přesně tak, jak je uveden ve vstupním textu. Nerozpisuj zkratky (tř., nám., nábř. apod.)
+  a nezkracuj plné názvy.
+    - zápis ve vstupu: „tř. Kosmonautů 48"
+    - hodnota pro proces: street: "tř. Kosmonautů", houseNumber: "48"
+    - zápis ve vstupu: „Palackého třída 97"
+    - hodnota pro proces: street: "Palackého třída", houseNumber: "97"
+
 - Katalogové služby, produkty, slevy a operátory mapuj pouze podle doménového kontextu. Pokud text obsahuje synonymum
   nebo obchodní název z kontextu, vrať odpovídající ID. Pokud hodnota v kontextu není, nehádej nové ID, vrať null.
     - zápis ve vstupu: „chci tarif Rychlík 200" (název v doménovém kontextu není)

@@ -9,3 +9,5 @@ Obecná pravidla pro extrakci polí:
 - Telefonní čísla normalizuj na formát +420 XXXX XXX XXX
 - E-mailové adresy normalizuj na malá písmena
 - Jméno zákazníka uváděj bez oslovení a titulů
+- PSČ normalizuj na formát NNN NN (tři číslice, mezera, dvě číslice), například 19000 → 190 00
+- Ulici zapisuj přesně tak, jak je uvedena ve vstupu, včetně případných zkratek (např. tř., nám.)
