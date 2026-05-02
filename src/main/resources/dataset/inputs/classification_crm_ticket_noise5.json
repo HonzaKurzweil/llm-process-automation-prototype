@@ -1,0 +1,875 @@
+{
+  "generatedAt": "2026-05-02",
+  "generationRunParams": {
+    "mode": "classification",
+    "requestTypeIds": "all",
+    "channels": [
+      "crm_ticket"
+    ],
+    "noiseCount": 5,
+    "completenessMode": null,
+    "scenarioKinds": null,
+    "knownRequestCount": null,
+    "variantsPerCase": 3,
+    "outputPath": "src/main/resources/dataset/inputs/classification_crm_ticket_noise5.json"
+  },
+  "records": [
+    {
+      "recordId": "cls_crm_ticket_n5_001",
+      "inputText": "CRM zápis; zákazník chce objednat samostatný mobilní tarif Mobil Start 5G. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce objednat samostatný mobilní tarif Mobil Start 5G"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_002",
+      "inputText": "CRM zápis; zákazník chce nový samostatný mobilní tarif, ale zatím neuvedl závazek ani portaci. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce nový samostatný mobilní tarif, ale zatím neuvedl závazek ani portaci"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_003",
+      "inputText": "CRM zápis; jde o zřízení jednoho nového mobilního tarifu Mobil Start 5G. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o zřízení jednoho nového mobilního tarifu Mobil Start 5G"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_004",
+      "inputText": "CRM zápis; zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_005",
+      "inputText": "CRM zápis; zákazník chce rodinný mobil pro více linek, detaily čísel ještě nejsou známé. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce rodinný mobil pro více linek, detaily čísel ještě nejsou známé"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_006",
+      "inputText": "CRM zápis; jde o rodinnou mobilní objednávku Mobil Rodina Plus pro dvě linky. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o rodinnou mobilní objednávku Mobil Rodina Plus pro dvě linky"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_007",
+      "inputText": "CRM zápis; zákazník chce pevný internet Optika Domů 300 s routerem. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce pevný internet Optika Domů 300 s routerem"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_008",
+      "inputText": "CRM zápis; zákazník chce pevný internet s routerem, adresa instalace bude doplněna později. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce pevný internet s routerem, adresa instalace bude doplněna později"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_009",
+      "inputText": "CRM zápis; jde o pevný internet s hardwarem a instalací routeru. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o pevný internet s hardwarem a instalací routeru"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_010",
+      "inputText": "CRM zápis; zákazník chce balíček internet a televize s Televizí Basic. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce balíček internet a televize s Televizí Basic"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_011",
+      "inputText": "CRM zápis; zákazník chce společně internet a televizi, ale konkrétní TV balíček zatím chybí. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce společně internet a televizi, ale konkrétní TV balíček zatím chybí"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_012",
+      "inputText": "CRM zápis; jde o objednávku balíčku internet a TV. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o objednávku balíčku internet a TV"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_013",
+      "inputText": "CRM zápis; stávající zákazník žádá retenční slevu 15 %. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "stávající zákazník žádá retenční slevu 15 %"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_014",
+      "inputText": "CRM zápis; stávající zákazník řeší retenční zvýhodnění, přesná služba ještě není potvrzená. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "stávající zákazník řeší retenční zvýhodnění, přesná služba ještě není potvrzená"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_015",
+      "inputText": "CRM zápis; zákazník zvažuje odchod a žádá slevu za udržení zákazníka. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník zvažuje odchod a žádá slevu za udržení zákazníka"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_016",
+      "inputText": "CRM zápis; jde o objednávku balíčku internet a TV. zákazník zároveň žádá o vystavení duplikátu staré faktury. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownWithUnknownTail",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "unknownTailSnippet",
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "knownRequestTypeWithUnknownTail"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o objednávku balíčku internet a TV"
+            ]
+          },
+          {
+            "requestTypeId": null,
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "zákazník zároveň žádá o vystavení duplikátu staré faktury"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_017",
+      "inputText": "CRM zápis; zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky. Současně požadavek je na internet Optika Domů 1000 a Wi-Fi Router Pro. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné. Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [
+          "rt_family_mobile_order",
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": null,
+        "scenarioKind": "multiKnownMixed",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording",
+          "typosAndMisspellings"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "multipleKnownRequestTypesPresent"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky"
+            ]
+          },
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "secondaryKnown",
+            "evidenceSnippets": [
+              "požadavek je na internet Optika Domů 1000 a Wi-Fi Router Pro"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+          "Interní pozn.: drobné preklepy v puvodni zprave nemeni význam požadavku."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_crm_ticket_n5_018",
+      "inputText": "CRM zápis; součástí hovoru je také technická reklamace Wi-Fi výpadků. Pozn.: faktura za minulý měsíc je uhrazená. Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "crm_ticket",
+        "requestTypeIds": [],
+        "requestTypeId": null,
+        "scenarioKind": "unknownOnly",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "unknownTailSnippet",
+          "shorthandInternal",
+          "irrelevantInfo",
+          "entityFormattingVariation",
+          "ambiguousWording"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "unknownOrOutOfScope"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": null,
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "součástí hovoru je také technická reklamace Wi-Fi výpadků"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Pozn.: faktura za minulý měsíc je uhrazená.",
+          "Formulace zákazníka je místy nepřímá, ale níže uvedené údaje jsou rozhodné."
+        ]
+      }
+    }
+  ]
+}

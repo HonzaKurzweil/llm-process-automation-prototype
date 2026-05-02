@@ -1,0 +1,733 @@
+{
+  "generatedAt": "2026-05-02",
+  "generationRunParams": {
+    "mode": "classification",
+    "requestTypeIds": "all",
+    "channels": [
+      "broker_email"
+    ],
+    "noiseCount": 1,
+    "completenessMode": null,
+    "scenarioKinds": null,
+    "knownRequestCount": null,
+    "variantsPerCase": 3,
+    "outputPath": "src/main/resources/dataset/inputs/classification_broker_email_noise1.json"
+  },
+  "records": [
+    {
+      "recordId": "cls_broker_email_n1_001",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. zákazník chce objednat samostatný mobilní tarif Mobil Start 5G.\n\nS pozdravem\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce objednat samostatný mobilní tarif Mobil Start 5G"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_002",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. zákazník chce nový samostatný mobilní tarif, ale zatím neuvedl závazek ani portaci.\n\nS pozdravem\nTomáš Blaha\nobchodní manažer, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce nový samostatný mobilní tarif, ale zatím neuvedl závazek ani portaci"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_003",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. jde o zřízení jednoho nového mobilního tarifu Mobil Start 5G.\n\nS pozdravem\nJana Procházková\nobchodní zástupce, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o zřízení jednoho nového mobilního tarifu Mobil Start 5G"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_004",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky.\n\nS pozdravem\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_005",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. zákazník chce rodinný mobil pro více linek, detaily čísel ještě nejsou známé.\n\nS pozdravem\nTomáš Blaha\nobchodní manažer, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce rodinný mobil pro více linek, detaily čísel ještě nejsou známé"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_006",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. jde o rodinnou mobilní objednávku Mobil Rodina Plus pro dvě linky.\n\nS pozdravem\nJana Procházková\nobchodní zástupce, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o rodinnou mobilní objednávku Mobil Rodina Plus pro dvě linky"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_007",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. zákazník chce pevný internet Optika Domů 300 s routerem.\n\nS pozdravem\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce pevný internet Optika Domů 300 s routerem"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_008",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. zákazník chce pevný internet s routerem, adresa instalace bude doplněna později.\n\nS pozdravem\nTomáš Blaha\nobchodní manažer, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce pevný internet s routerem, adresa instalace bude doplněna později"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_009",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. jde o pevný internet s hardwarem a instalací routeru.\n\nS pozdravem\nJana Procházková\nobchodní zástupce, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o pevný internet s hardwarem a instalací routeru"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_010",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. zákazník chce balíček internet a televize s Televizí Basic.\n\nS pozdravem\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce balíček internet a televize s Televizí Basic"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_011",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. zákazník chce společně internet a televizi, ale konkrétní TV balíček zatím chybí.\n\nS pozdravem\nTomáš Blaha\nobchodní manažer, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce společně internet a televizi, ale konkrétní TV balíček zatím chybí"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_012",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. jde o objednávku balíčku internet a TV.\n\nS pozdravem\nJana Procházková\nobchodní zástupce, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o objednávku balíčku internet a TV"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_013",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. stávající zákazník žádá retenční slevu 15 %.\n\nS pozdravem\nPetra Kovářová\nobchodní zastoupení FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "stávající zákazník žádá retenční slevu 15 %"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_014",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. stávající zákazník řeší retenční zvýhodnění, přesná služba ještě není potvrzená.\n\nS pozdravem\nTomáš Blaha\nobchodní manažer, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "stávající zákazník řeší retenční zvýhodnění, přesná služba ještě není potvrzená"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_015",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. zákazník zvažuje odchod a žádá slevu za udržení zákazníka.\n\nS pozdravem\nJana Procházková\nobchodní zástupce, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník zvažuje odchod a žádá slevu za udržení zákazníka"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_016",
+      "inputText": "Zasílám požadavek zákazníka. zákazník chce objednat samostatný mobilní tarif Mobil Start 5G. zákazník zároveň žádá o vystavení duplikátu staré faktury.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownWithUnknownTail",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "unknownTailSnippet"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "knownRequestTypeWithUnknownTail"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce objednat samostatný mobilní tarif Mobil Start 5G"
+            ]
+          },
+          {
+            "requestTypeId": null,
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "zákazník zároveň žádá o vystavení duplikátu staré faktury"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_017",
+      "inputText": "Dobrý den,\n\nzasílám požadavek zákazníka. požadavek je na internet s televizí a set-top boxem. Současně zákazník zvažuje odchod a žádá slevu za udržení zákazníka.\n\nS pozdravem\nTomáš Blaha\nobchodní manažer, FuturaTel CZ",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order",
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": null,
+        "scenarioKind": "multiKnownMixed",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "greetingSignatureNoise"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "multipleKnownRequestTypesPresent"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "požadavek je na internet s televizí a set-top boxem"
+            ]
+          },
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "secondaryKnown",
+            "evidenceSnippets": [
+              "zákazník zvažuje odchod a žádá slevu za udržení zákazníka"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    },
+    {
+      "recordId": "cls_broker_email_n1_018",
+      "inputText": "Zasílám požadavek zákazníka. součástí hovoru je také technická reklamace Wi-Fi výpadků.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "broker_email",
+        "requestTypeIds": [],
+        "requestTypeId": null,
+        "scenarioKind": "unknownOnly",
+        "completenessMode": null,
+        "requestedNoiseCount": 1,
+        "noiseTags": [
+          "unknownTailSnippet"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "unknownOrOutOfScope"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": null,
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "součástí hovoru je také technická reklamace Wi-Fi výpadků"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": []
+      }
+    }
+  ]
+}

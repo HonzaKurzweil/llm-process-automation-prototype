@@ -1,0 +1,876 @@
+{
+  "generatedAt": "2026-05-02",
+  "generationRunParams": {
+    "mode": "classification",
+    "requestTypeIds": "all",
+    "channels": [
+      "call_transcript"
+    ],
+    "noiseCount": 5,
+    "completenessMode": null,
+    "scenarioKinds": null,
+    "knownRequestCount": null,
+    "variantsPerCase": 3,
+    "outputPath": "src/main/resources/dataset/inputs/classification_call_transcript_noise5.json"
+  },
+  "records": [
+    {
+      "recordId": "cls_call_transcript_n5_001",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník chce objednat samostatný mobilní tarif Mobil Start 5G.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Ještě se omlouvám za zdržení. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce objednat samostatný mobilní tarif Mobil Start 5G"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Ještě se omlouvám za zdržení.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_002",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník chce nový samostatný mobilní tarif, ale zatím neuvedl závazek ani portaci.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: To je asi vše, děkuji. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce nový samostatný mobilní tarif, ale zatím neuvedl závazek ani portaci"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "To je asi vše, děkuji.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_003",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, jde o zřízení jednoho nového mobilního tarifu Mobil Start 5G.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Hezký den a díky. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o zřízení jednoho nového mobilního tarifu Mobil Start 5G"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Hezký den a díky.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_004",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Ještě se omlouvám za zdržení. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Ještě se omlouvám za zdržení.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_005",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník chce rodinný mobil pro více linek, detaily čísel ještě nejsou známé.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: To je asi vše, děkuji. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce rodinný mobil pro více linek, detaily čísel ještě nejsou známé"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "To je asi vše, děkuji.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_006",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, jde o rodinnou mobilní objednávku Mobil Rodina Plus pro dvě linky.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Hezký den a díky. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o rodinnou mobilní objednávku Mobil Rodina Plus pro dvě linky"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Hezký den a díky.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_007",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník chce pevný internet Optika Domů 300 s routerem.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Ještě se omlouvám za zdržení. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce pevný internet Optika Domů 300 s routerem"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Ještě se omlouvám za zdržení.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_008",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník chce pevný internet s routerem, adresa instalace bude doplněna později.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: To je asi vše, děkuji. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce pevný internet s routerem, adresa instalace bude doplněna později"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "To je asi vše, děkuji.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_009",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, jde o pevný internet s hardwarem a instalací routeru.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Hezký den a díky. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o pevný internet s hardwarem a instalací routeru"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Hezký den a díky.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_010",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník chce balíček internet a televize s Televizí Basic.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Ještě se omlouvám za zdržení. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce balíček internet a televize s Televizí Basic"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Ještě se omlouvám za zdržení.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_011",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník chce společně internet a televizi, ale konkrétní TV balíček zatím chybí.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: To je asi vše, děkuji. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce společně internet a televizi, ale konkrétní TV balíček zatím chybí"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "To je asi vše, děkuji.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_012",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, jde o objednávku balíčku internet a TV.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Hezký den a díky. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "jde o objednávku balíčku internet a TV"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Hezký den a díky.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_013",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, stávající zákazník žádá retenční slevu 15 %.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Ještě se omlouvám za zdržení. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "stávající zákazník žádá retenční slevu 15 %"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Ještě se omlouvám za zdržení.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_014",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, stávající zákazník řeší retenční zvýhodnění, přesná služba ještě není potvrzená.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: To je asi vše, děkuji. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "stávající zákazník řeší retenční zvýhodnění, přesná služba ještě není potvrzená"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "To je asi vše, děkuji.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_015",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník zvažuje odchod a žádá slevu za udržení zákazníka.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Hezký den a díky. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník zvažuje odchod a žádá slevu za udržení zákazníka"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Hezký den a díky.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_016",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, z hovoru plyne pouze obecná nespokojenost a chybí konkrétní požadavek.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Ještě se omlouvám za zdržení. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [],
+        "requestTypeId": null,
+        "scenarioKind": "ambiguousInsufficient",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "ambiguousWording",
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "ambiguousOrInsufficientSignal"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": null,
+            "segmentRole": "ambiguousSignal",
+            "evidenceSnippets": [
+              "z hovoru plyne pouze obecná nespokojenost a chybí konkrétní požadavek"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Ještě se omlouvám za zdržení.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_017",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: v závěru je navíc prosba o výměnu poškozené SIM karty. Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: To je asi vše, děkuji.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownWithUnknownTail",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "unknownTailSnippet",
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "knownRequestTypeWithUnknownTail"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "zákazník chce rodinný tarif Mobil Rodina Plus pro tři linky"
+            ]
+          },
+          {
+            "requestTypeId": null,
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "v závěru je navíc prosba o výměnu poškozené SIM karty"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "To je asi vše, děkuji."
+        ]
+      }
+    },
+    {
+      "recordId": "cls_call_transcript_n5_018",
+      "inputText": "Operátor: Dobrý den, s čím mohu pomoci?\nZákazník: Ehm, požadavek je na retenční zvýhodnění pro existujícího zákazníka.\nOperátor: Rozumím, doplním údaje do žádosti.\nZákazník: Současně jde o zřízení jednoho nového mobilního tarifu Mobil Start 5G. Zákazník: Mimochodem, pobočka měla dnes delší frontu. Zákazník: Hezký den a díky. Operátor: Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_retention_discount_request",
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": null,
+        "scenarioKind": "multiKnownMixed",
+        "completenessMode": null,
+        "requestedNoiseCount": 5,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "entityFormattingVariation",
+          "irrelevantInfo",
+          "ambiguousWording"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "multipleKnownRequestTypesPresent"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "požadavek je na retenční zvýhodnění pro existujícího zákazníka"
+            ]
+          },
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "secondaryKnown",
+            "evidenceSnippets": [
+              "jde o zřízení jednoho nového mobilního tarifu Mobil Start 5G"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Mimochodem, pobočka měla dnes delší frontu.",
+          "Hezký den a díky.",
+          "Některé formulace jsou nepřímé, ale potvrzujeme rozhodné údaje."
+        ]
+      }
+    }
+  ]
+}
