@@ -1,11 +1,13 @@
 Ukázky obecného zacházení s formáty a nejasnostmi:
 
 - Telefonní čísla mohou být ve vstupu uvedena různě deformovaná. Pokud je celé číslo zřejmé, vrať normalizovaný tvar
-  používaný v procesu.
+  používaný v procesu. Pravidlo platí pro všechna pole s telefonním číslem, včetně portedNumber uvnitř mobileLines.
     - zápis ve vstupu: 9888000055
     - hodnota pro proces: +420 9888 000 055
     - zápis ve vstupu: +420-9888-100-099
     - hodnota pro proces: +420 9888 100 099
+    - zápis ve vstupu (portedNumber): 9999-100-006
+    - hodnota pro proces (portedNumber): +420 9999 100 006
 
 - E-mail může mít odlišnou velikost písmen. Pokud je adresa zřejmá, vrať ji v malých písmenech.
     - zápis ve vstupu: Zakaznik55@Prikladova.CZ
@@ -46,10 +48,27 @@ Ukázky obecného zacházení s formáty a nejasnostmi:
     - zápis ve vstupu: „chci tarif Rychlík 200" (název v doménovém kontextu není)
     - hodnota pro proces: null
 
-- Pokud je údaj ve vstupu chybějící, neodvozuj jej z běžných obchodních zvyklostí. Pro jednotlivou chybějící hodnotu
-  použij null. Pro chybějící seznam použij prázdný seznam.
-    - zákazník nezmíní žádnou slevu → requestedDiscountIds: []
+- Každé pole musí být podloženo vlastním signálem ve vstupním textu. Neodvozuj hodnotu jednoho pole z jiného.
+    - vstup obsahuje currentServiceIds: ["svc_mobile_unlimited_5g"], ale targetServiceId není zmíněn
+    - hodnota pro proces: targetServiceId: null
+    - vstup obsahuje mobileTariffId, ale contactEmail není zmíněn
+    - hodnota pro proces: contactEmail: null
+
+- Rozlišuj mezi explicitní absencí (signál v textu) a chybějícím údajem (pole vůbec není zmíněno):
+    - „bez závazku" → contractTermMonths: 0  (nula je platná hodnota podložená textem)
+    - contractTermMonths není ve vstupu zmíněn vůbec → contractTermMonths: null
+    - „bez mesh jednotek" → meshNodeQuantity: 0
+    - meshNodeQuantity není zmíněn → meshNodeQuantity: null
+    - „bez sportovního balíčku" → sportsPackRequested: false
+    - sportsPackRequested není zmíněn → sportsPackRequested: null
+
+- Rozlišuj mezi explicitně prázdným seznamem a chybějícím seznamem:
+    - „zákazník nepožaduje žádnou další slevu" → requestedDiscountIds: []  (prázdný seznam podložený textem)
+    - slevy nejsou ve vstupu zmíněny vůbec → requestedDiscountIds: null
+
+- Pokud je údaj ve vstupu chybějící, neodvozuj jej z běžných obchodních zvyklostí.
     - zákazník nezmíní e-mail → contactEmail: null
+    - zákazník nezmíní přenášené číslo a donor operátor není zmíněn → donorOperator: null
 
 - Pokud text obsahuje šum, poznámku operátora, smalltalk nebo interní zkratky, extrahuj jen procesně relevantní
   údaje odpovídající výstupnímu schématu.
