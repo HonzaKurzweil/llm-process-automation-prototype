@@ -68,7 +68,7 @@ Ukázky obecného zacházení s formáty a nejasnostmi:
 
 - Pokud je údaj ve vstupu chybějící, neodvozuj jej z běžných obchodních zvyklostí.
     - zákazník nezmíní e-mail → contactEmail: null
-    - zákazník nezmíní přenášené číslo a donor operátor není zmíněn → donorOperator: null
+    - zákazník nezmíní donor operátor → donorOperator: "unknown"  (nikdy null — chybějící operátor se vždy mapuje na unknown)
 
 - Pokud text obsahuje šum, poznámku operátora, smalltalk nebo interní zkratky, extrahuj jen procesně relevantní
   údaje odpovídající výstupnímu schématu.

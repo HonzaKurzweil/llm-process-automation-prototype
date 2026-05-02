@@ -183,6 +183,9 @@ Generate a realistic request where selected fields are absent from `inputText`.
 For omitted fields:
 
 - Scalar fields: set the DTO field to `null`.
+- `donorOperator` is an exception: set it to `"unknown"` even when omitted, because the extraction service coerces
+  any absent or unrecognised operator to the `UNKNOWN` enum value. List it in `missingFieldPaths` and
+  `intentionallyOmittedFieldPaths` as usual to document the intentional absence from `inputText`.
 - Boolean fields: set the DTO field to `null` unless the text explicitly supports `true` or `false`.
 - Numeric fields: set the DTO field to `null` unless the text explicitly supports a number or explicit zero.
 - List fields: set the DTO field to `null` when the whole list is unknown; use `[]` only when the text explicitly
