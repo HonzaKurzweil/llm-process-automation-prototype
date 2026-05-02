@@ -70,7 +70,7 @@ class CatalogServiceTest {
 
     @Test
     void serviceEntryIncludesAliases() {
-        assertThat(output).contains("- `svc_mobile_start_5g` = Mobil Start 5G (aliases: Start 5G, mobil start, start 5g)");
+        assertThat(output).contains("- `svc_mobile_start_5g` = Mobil Start 5G (aliases: Start 5G, mobil start, start 5g, základní mobilní tarif)");
     }
 
     @Test
@@ -105,7 +105,7 @@ class CatalogServiceTest {
 
     @Test
     void productEntryIncludesAliases() {
-        assertThat(output).contains("- `prod_router_standard` = Wi-Fi Router Standard (aliases: router standard, standardní router)");
+        assertThat(output).contains("- `prod_router_standard` = Wi-Fi Router Standard (aliases: router standard, standardní router, základní router)");
     }
 
     @Test
@@ -138,7 +138,7 @@ class CatalogServiceTest {
 
     @Test
     void discountEntryIncludesAliases() {
-        assertThat(output).contains("- `disc_bundle_10_new` = Balíček 10 % pro nové zákazníky (aliases: balíček 10 %, bundle sleva, sleva na balíček)");
+        assertThat(output).contains("- `disc_bundle_10_new` = Balíček 10 % pro nové zákazníky (aliases: balíček 10 %, bundle sleva, sleva na balíček, zvýhodnění za balíček)");
     }
 
     @Test
@@ -200,7 +200,7 @@ class CatalogServiceTest {
 
     @Test
     void enumEntryIncludesAliases() {
-        assertThat(output).contains("- `new` = NEW (aliases: nový zákazník, nový klient)");
+        assertThat(output).contains("- `new` = NEW (aliases: nový zákazník, nový klient, nová smlouva)");
     }
 
     @Test
