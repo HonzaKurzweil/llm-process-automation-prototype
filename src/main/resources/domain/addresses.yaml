@@ -1,32 +1,26 @@
 version: 6.4
 addresses:
-  - addressId: addr_praha_vysocany_sokolovska_188
-    addressText: Praha 9, Vysočany, Sokolovská 188
-    aliases:
-      - Sokolovská 188, Praha 9
-      - Praha Vysočany Sokolovská 188
-  - addressId: addr_brno_kralovo_pole_purkynova_97
-    addressText: Brno, Královo Pole, Purkyňova 97
-    aliases:
-      - Purkyňova 97, Brno Královo Pole
-      - Brno Královo Pole Purkyňova 97
-  - addressId: addr_olomouc_nove_sady_rooseveltova_61
-    addressText: Olomouc, Nové Sady, Rooseveltova 61
-    aliases:
-      - Rooseveltova 61, Olomouc Nové Sady
-      - Olomouc Nové Sady Rooseveltova 61
-  - addressId: addr_plzen_bolevec_gerska_14
-    addressText: Plzeň, Bolevec, Gerská 14
-    aliases:
-      - Gerská 14, Plzeň Bolevec
-      - Plzeň Bolevec Gerská 14
-  - addressId: addr_pardubice_polabiny_mozartova_22
-    addressText: Pardubice, Polabiny, Mozartova 22
-    aliases:
-      - Mozartova 22, Pardubice Polabiny
-      - Pardubice Polabiny Mozartova 22
-  - addressId: addr_ceske_budejovice_prazske_predmesti_pekarenska_48
-    addressText: České Budějovice, Pražské předměstí, Pekárenská 48
-    aliases:
-      - Pekárenská 48, České Budějovice
-      - České Budějovice Pražské předměstí Pekárenská 48
+  - psc: "190 00"
+    city: Praha 9
+    street: Sokolovská
+    houseNumber: "188"
+  - psc: "612 00"
+    city: Brno
+    street: Purkyňova
+    houseNumber: "97"
+  - psc: "779 00"
+    city: Olomouc
+    street: Rooseveltova
+    houseNumber: "61"
+  - psc: "323 00"
+    city: Plzeň
+    street: Gerská
+    houseNumber: "14"
+  - psc: "530 09"
+    city: Pardubice
+    street: Mozartova
+    houseNumber: "22"
+  - psc: "370 01"
+    city: České Budějovice
+    street: Pekárenská
+    houseNumber: "48"

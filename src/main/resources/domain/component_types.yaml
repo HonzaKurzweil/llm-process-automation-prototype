@@ -1,5 +1,16 @@
 version: 6.4
 componentTypes:
+  installationAddress:
+    javaClassName: InstallationAddressDto
+    fields:
+      - path: psc
+        javaType: String
+      - path: city
+        javaType: String
+      - path: street
+        javaType: String
+      - path: houseNumber
+        javaType: String
   mobileLine:
     javaClassName: MobileLineDto
     fields:

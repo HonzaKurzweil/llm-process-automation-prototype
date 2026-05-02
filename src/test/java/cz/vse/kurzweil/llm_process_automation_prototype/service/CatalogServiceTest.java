@@ -188,34 +188,35 @@ class CatalogServiceTest {
     // --- Addresses ---
 
     @Test
-    void containsAllAddressIds() {
-        assertThat(output).contains(
-                "addr_praha_vysocany_sokolovska_188",
-                "addr_brno_kralovo_pole_purkynova_97",
-                "addr_olomouc_nove_sady_rooseveltova_61",
-                "addr_plzen_bolevec_gerska_14",
-                "addr_pardubice_polabiny_mozartova_22",
-                "addr_ceske_budejovice_prazske_predmesti_pekarenska_48"
+    void containsAllAddressCities() {
+        int addressesIdx = output.indexOf("Addresses:");
+        int enumsIdx = output.indexOf("Enums:");
+        String addressesSection = output.substring(addressesIdx, enumsIdx);
+        assertThat(addressesSection).contains(
+                "Praha 9",
+                "Brno",
+                "Olomouc",
+                "Plzeň",
+                "Pardubice",
+                "České Budějovice"
         );
     }
 
     @Test
     void addressEntryFormatIsCorrect() {
-        assertThat(output).contains("- `addr_plzen_bolevec_gerska_14` = Plzeň, Bolevec, Gerská 14");
+        assertThat(output).contains("- psc: 323 00, city: Plzeň, street: Gerská, houseNumber: 14");
     }
 
     @Test
-    void addressEntryIncludesAliases() {
-        assertThat(output).contains("- `addr_plzen_bolevec_gerska_14` = Plzeň, Bolevec, Gerská 14 (aliases: Gerská 14, Plzeň Bolevec, Plzeň Bolevec Gerská 14)");
-    }
-
-    @Test
-    void addressIdsAreInAddressesSection() {
+    void addressEntriesAreInAddressesSection() {
         int addressesIdx = output.indexOf("Addresses:");
         int enumsIdx = output.indexOf("Enums:");
         String addressesSection = output.substring(addressesIdx, enumsIdx);
         assertThat(addressesSection)
-                .contains("addr_praha_vysocany_sokolovska_188")
+                .contains("psc:")
+                .contains("city:")
+                .contains("street:")
+                .contains("houseNumber:")
                 .doesNotContain("svc_")
                 .doesNotContain("disc_")
                 .doesNotContain("prod_");

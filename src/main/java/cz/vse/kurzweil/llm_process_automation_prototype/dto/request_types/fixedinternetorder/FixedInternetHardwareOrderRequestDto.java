@@ -3,6 +3,7 @@ package cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.fixed
 import com.fasterxml.jackson.annotation.JsonClassDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.CustomerStatus;
+import cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types.InstallationAddressDto;
 
 @JsonClassDescription("Procesní DTO pro objednávku pevného internetu s hardwarem nebo instalačním doplňkem.")
 public record FixedInternetHardwareOrderRequestDto(
@@ -14,8 +15,8 @@ public record FixedInternetHardwareOrderRequestDto(
         String contactPhone,
         @JsonPropertyDescription("Kontaktní e-mail zákazníka.")
         String contactEmail,
-        @JsonPropertyDescription("Katalogové ID instalační adresy.")
-        String installationAddressId,
+        @JsonPropertyDescription("Instalační adresa.")
+        InstallationAddressDto installationAddress,
         @JsonPropertyDescription("Katalogové ID objednávané internetové služby.")
         String internetServiceId,
         @JsonPropertyDescription("Katalogové ID routeru.")

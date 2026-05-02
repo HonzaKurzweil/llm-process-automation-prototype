@@ -6,6 +6,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ public class CatalogService {
     private final Map<String, CatalogEntry> products = new LinkedHashMap<>();
     private final Map<String, CatalogEntry> discounts = new LinkedHashMap<>();
     private final Map<String, CatalogEntry> operators = new LinkedHashMap<>();
-    private final Map<String, CatalogEntry> addresses = new LinkedHashMap<>();
+    private final List<AddressEntry> addresses = new ArrayList<>();
     private final Map<String, List<CatalogEntry>> enums = new LinkedHashMap<>();
 
     public CatalogService(ResourceLoader resourceLoader) {
@@ -39,7 +40,7 @@ public class CatalogService {
         appendSection(sb, "Products", products);
         appendSection(sb, "Discounts", discounts);
         appendSection(sb, "Operators", operators);
-        appendSection(sb, "Addresses", addresses);
+        appendAddressSection(sb);
         appendEnumSection(sb);
 
         return sb.toString().strip();
@@ -80,8 +81,12 @@ public class CatalogService {
     private void loadAddresses(ResourceLoader resourceLoader, Yaml yaml) {
         Map<String, Object> root = loadYaml(resourceLoader, yaml, "classpath:domain/addresses.yaml");
         for (Map<String, Object> entry : (List<Map<String, Object>>) root.get("addresses")) {
-            String id = (String) entry.get("addressId");
-            addresses.put(id, new CatalogEntry(id, (String) entry.get("addressText"), (List<String>) entry.getOrDefault("aliases", List.of())));
+            addresses.add(new AddressEntry(
+                    (String) entry.get("psc"),
+                    (String) entry.get("city"),
+                    (String) entry.get("street"),
+                    (String) entry.get("houseNumber")
+            ));
         }
     }
 
@@ -117,6 +122,18 @@ public class CatalogService {
         sb.append("\n");
     }
 
+    private void appendAddressSection(StringBuilder sb) {
+        sb.append("Addresses:\n");
+        for (AddressEntry a : addresses) {
+            sb.append("- psc: ").append(a.psc())
+              .append(", city: ").append(a.city())
+              .append(", street: ").append(a.street())
+              .append(", houseNumber: ").append(a.houseNumber())
+              .append("\n");
+        }
+        sb.append("\n");
+    }
+
     private void appendEnumSection(StringBuilder sb) {
         sb.append("Enums:\n");
         for (Map.Entry<String, List<CatalogEntry>> enumEntry : enums.entrySet()) {
@@ -136,5 +153,8 @@ public class CatalogService {
     }
 
     private record CatalogEntry(String id, String label, List<String> aliases) {
+    }
+
+    private record AddressEntry(String psc, String city, String street, String houseNumber) {
     }
 }

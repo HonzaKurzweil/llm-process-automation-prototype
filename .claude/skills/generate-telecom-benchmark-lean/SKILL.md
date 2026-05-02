@@ -154,7 +154,7 @@ Use these field-to-catalog mappings when building extraction DTOs:
 - Service ID fields use `services.yaml`: `mobileTariffId`, `familyTariffId`, `mobileLines[].planServiceId`, `internetServiceId`, `tvServiceId`, `currentServiceIds`, and `targetServiceId`.
 - Product-backed fields use `products.yaml`: `routerProductId`, `meshNodeQuantity`, `expressInstallationRequested`, `setTopBoxQuantity`, and `sportsPackRequested`.
 - Discount ID fields use `discounts.yaml`: `requestedDiscountIds`.
-- Address ID fields use `addresses.yaml`: `installationAddressId`.
+- Address fields (`installationAddress`) are not catalog-backed. Generate a random Czech address as a structured object `{psc, city, street, houseNumber}`. Use the sample addresses in `addresses.yaml` as representative examples of the expected format and variety.
 - Operator enum fields use `operators.yaml`: `donorOperator` and `mobileLines[].donorOperator`.
 - Other enum-backed fields use `enums.yaml`.
 
@@ -192,7 +192,7 @@ Noise tag behavior:
 - `typosAndMisspellings`: add minor Czech typos that do not change meaning.
 - `entityFormattingVariation`: change only the surface form of names, phones, emails, addresses, and operator names. Keep expected DTO values canonical.
 
-For `entityFormattingVariation`, permitted surface variation includes phone numbers without the country prefix, phone numbers with hyphens, parentheses or different spacing, e-mails with changed letter case or surrounding spaces, names with salutation or reversed order, address aliases from `addresses.yaml`, and operator aliases from `operators.yaml`.
+For `entityFormattingVariation`, permitted surface variation includes phone numbers without the country prefix, phone numbers with hyphens, parentheses or different spacing, e-mails with changed letter case or surrounding spaces, names with salutation or reversed order, address field surface variations (different PSČ formatting, street abbreviations), and operator aliases from `operators.yaml`.
 
 Do not use initials or incomplete names if the full expected name would not be recoverable from the input.
 
@@ -202,6 +202,7 @@ Do not use initials or incomplete names if the full expected name would not be r
 - E-mails must be lowercase and without surrounding whitespace.
 - Customer names must use `Jméno Příjmení`; remove salutation and normalize reversed order only when both parts are present.
 - Catalog-backed fields must use IDs from the corresponding domain YAML file.
+- `installationAddress` must be a structured object with `psc`, `city`, `street`, and `houseNumber` extracted from the input text.
 - Enum-backed fields must use values from `enums.yaml` or operator IDs from `operators.yaml`.
 - Counts must be numeric JSON values, not strings.
 - Booleans must be JSON booleans, not strings.
