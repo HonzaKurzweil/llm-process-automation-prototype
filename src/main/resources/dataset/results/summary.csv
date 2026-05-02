@@ -466,6 +466,7 @@ resultFileName,recordId,mode,channel,noiseCount,promptVariant,modelType,matchRat
 "extraction_complete_crm_ticket_noise1__extraction__few_shot__gpt-5-nano.json","ex_crm_ticket_n1_complete_014","extraction","crm_ticket",1,"FEW_SHOT","gpt-5-nano",1.0,3713,96
 "extraction_complete_crm_ticket_noise3__extraction__few_shot__gpt-5-nano.json","ex_crm_ticket_n3_complete_000","extraction","crm_ticket",3,"FEW_SHOT","gpt-5-nano",1.0,3843,127
 "extraction_complete_crm_ticket_noise3__extraction__few_shot__gpt-5-nano.json","ex_crm_ticket_n3_complete_001","extraction","crm_ticket",3,"FEW_SHOT","gpt-5-nano",1.0,3832,102
+"extraction_complete_crm_ticket_noise3__extraction__few_shot__gpt-5-nano.json","ex_crm_ticket_n3_complete_002","extraction","crm_ticket",3,"FEW_SHOT","gpt-5-nano",1.0,3844,132
 "extraction_complete_crm_ticket_noise3__extraction__few_shot__gpt-5-nano.json","ex_crm_ticket_n3_complete_003","extraction","crm_ticket",3,"FEW_SHOT","gpt-5-nano",1.0,4246,232
 "extraction_complete_crm_ticket_noise3__extraction__few_shot__gpt-5-nano.json","ex_crm_ticket_n3_complete_004","extraction","crm_ticket",3,"FEW_SHOT","gpt-5-nano",1.0,4293,296
 "extraction_complete_crm_ticket_noise3__extraction__few_shot__gpt-5-nano.json","ex_crm_ticket_n3_complete_005","extraction","crm_ticket",3,"FEW_SHOT","gpt-5-nano",1.0,4245,222
