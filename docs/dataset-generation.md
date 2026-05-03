@@ -11,12 +11,15 @@ The skill draws from two groups of source files:
 
 **Domain catalogs** (`src/main/resources/domain/`):
 
-| File                 | Purpose                                                        |
-|----------------------|----------------------------------------------------------------|
-| `request_types.yaml` | Canonical DTO definitions — allowed fields, types, constraints |
-| `services.yaml`      | Service catalog with IDs, names, and per-request-type scope    |
-| `products.yaml`      | Product catalog with IDs, names, and per-request-type scope    |
-| `discounts.yaml`     | Discount catalog with IDs, names, and per-request-type scope   |
+| File                  | Purpose                                                        |
+|-----------------------|----------------------------------------------------------------|
+| `request_types.yaml`  | Canonical DTO definitions — allowed fields, types, constraints |
+| `services.yaml`       | Service catalog with IDs, names, and per-request-type scope    |
+| `products.yaml`       | Product catalog with IDs, names, and per-request-type scope    |
+| `discounts.yaml`      | Discount catalog with IDs, names, and per-request-type scope   |
+| `component_types.yaml`| Component type definitions used across request types           |
+| `enums.yaml`          | Shared enum value definitions (e.g. customer status, roles)    |
+| `operators.yaml`      | Donor operator catalog for mobile number portability records   |
 
 **Generator helpers** (`src/main/resources/dataset/generator_helpers/`):
 

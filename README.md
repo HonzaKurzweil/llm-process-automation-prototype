@@ -181,10 +181,17 @@ The scripts automate benchmark runs across all dataset files. The application mu
 # Default: DIRECT GPT_5_NANO
 ```
 
-Example — run few-shot extraction with GPT-4o:
+**Full benchmark** (classification + extraction in one run):
 
 ```bash
-./scripts/runExtraction.sh FEW_SHOT GPT_4O
+./scripts/runAll.sh [VARIANT] [MODEL]
+# Default: DIRECT GPT_5_NANO
+```
+
+Example — run few-shot extraction with GPT-4o Mini:
+
+```bash
+./scripts/runExtraction.sh FEW_SHOT GPT_4O_MINI
 ```
 
 ---
@@ -242,18 +249,19 @@ See [docs/dataset-generation.md](docs/dataset-generation.md) for the full genera
 **Naming convention:**
 
 ```
-{task}_{channel}_{noise}[_{completeness}].json
+classification_{channel}_{noise}.json
+extraction_{completeness}_{channel}_{noise}.json
 
-cls_broker_n1.json                  # classification, broker channel, noise level 1
-ext_call_n3_incomplete.json         # extraction, call channel, noise level 3, incomplete data
+classification_broker_email_noise1.json          # classification, broker channel, noise level 1
+extraction_incomplete_call_transcript_noise3.json # extraction, call channel, noise level 3, incomplete data
 ```
 
-| Dimension                      | Values                                     |
-|--------------------------------|--------------------------------------------|
-| Task                           | `cls` (classification), `ext` (extraction) |
-| Channel                        | `broker`, `call`, `crm`                    |
-| Noise level                    | `n1`, `n3`, `n5`                           |
-| Completeness (extraction only) | `complete`, `incomplete`                   |
+| Dimension                      | Values                                                        |
+|--------------------------------|---------------------------------------------------------------|
+| Task                           | `classification`, `extraction`                                |
+| Channel                        | `broker_email`, `call_transcript`, `crm_ticket`               |
+| Noise level                    | `noise1`, `noise3`, `noise5`                                  |
+| Completeness (extraction only) | `complete`, `incomplete`                                      |
 
 ---
 

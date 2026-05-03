@@ -32,15 +32,14 @@ model.
 Current result filename examples:
 
 ```text
-cls_broker_n1__classification__direct__gpt-5-nano.json
-cls_crm_n5__classification__few_shot__gemma3_27b.json
-ext_call_n3_complete__validation__direct__gpt-4o-mini.json
-ext_crm_n5_complete__validation__few_shot__gpt-5-nano.json
+classification_broker_email_noise1__classification__direct__gpt-5-nano.json
+classification_crm_ticket_noise5__classification__few_shot__gemma3_27b.json
+extraction_complete_call_transcript_noise3__extraction__direct__gpt-4o-mini.json
+extraction_complete_crm_ticket_noise5__extraction__few_shot__gpt-5-nano.json
 ```
 
-In the committed result set, classification files use `__classification__` in the filename and extraction validation
-files use `__validation__`. For analysis, use the `mode` field in the JSON records or in `summary.csv` as the canonical
-task indicator.
+Classification result files use `__classification__` in the filename; extraction result files use `__extraction__`.
+For analysis, use the `mode` field in the JSON records or in `summary.csv` as the canonical task indicator.
 
 ### Top-level JSON fields
 
@@ -131,7 +130,7 @@ Current committed CSV header:
 resultFileName,mode,channel,noiseCount,promptVariant,modelType,matchRate,promptTokens,completionTokens
 ```
 
-The committed `summary.csv` has **456 physical lines**, including the header, and therefore **455 data rows**.
+The committed `summary.csv` has **3457 physical lines**, including the header, and therefore **3456 data rows**.
 
 ### Current CSV columns
 
@@ -163,39 +162,42 @@ The following tables summarize the currently committed `summary.csv` file.
 
 ### Rows by task
 
-| Mode             |    Rows |
-|------------------|--------:|
-| `classification` |     270 |
-| `extraction`     |     185 |
-| **Total**        | **455** |
+| Mode             |      Rows |
+|------------------|----------:|
+| `classification` |      1296 |
+| `extraction`     |      2160 |
+| **Total**        | **3456**  |
 
 ### Rows by model
 
 | Model         | Rows |
 |---------------|-----:|
-| `gpt-5-nano`  |  149 |
-| `gpt-4o-mini` |   90 |
-| `gemma3:12b`  |  108 |
-| `gemma3:27b`  |  108 |
+| `gpt-5-nano`  |  864 |
+| `gpt-4o-mini` |  864 |
+| `gemma3:12b`  |  864 |
+| `gemma3:27b`  |  864 |
 
 ### Rows by prompt variant
 
 | Prompt variant | Rows |
 |----------------|-----:|
-| `DIRECT`       |  342 |
-| `FEW_SHOT`     |  113 |
+| `DIRECT`       | 1728 |
+| `FEW_SHOT`     | 1728 |
 
 ### Classification results by model and prompt
 
 For classification, `matchRate` is equivalent to accuracy because each row is either `1.0` or `0.0`.
 
-| Model        | Prompt variant | Rows | Mean `matchRate` | Minimum | Maximum |
-|--------------|----------------|-----:|-----------------:|--------:|--------:|
-| `gpt-5-nano` | `DIRECT`       |   54 |            1.000 |   1.000 |   1.000 |
-| `gemma3:12b` | `DIRECT`       |   54 |            0.685 |   0.000 |   1.000 |
-| `gemma3:12b` | `FEW_SHOT`     |   54 |            0.667 |   0.000 |   1.000 |
-| `gemma3:27b` | `DIRECT`       |   54 |            0.667 |   0.000 |   1.000 |
-| `gemma3:27b` | `FEW_SHOT`     |   54 |            0.685 |   0.000 |   1.000 |
+| Model         | Prompt variant | Rows | Mean `matchRate` | Minimum | Maximum |
+|---------------|----------------|-----:|-----------------:|--------:|--------:|
+| `gpt-4o-mini` | `DIRECT`       |  162 |            0.944 |   0.000 |   1.000 |
+| `gpt-4o-mini` | `FEW_SHOT`     |  162 |            0.981 |   0.000 |   1.000 |
+| `gpt-5-nano`  | `DIRECT`       |  162 |            0.944 |   0.000 |   1.000 |
+| `gpt-5-nano`  | `FEW_SHOT`     |  162 |            0.981 |   0.000 |   1.000 |
+| `gemma3:12b`  | `DIRECT`       |  162 |            0.235 |   0.000 |   1.000 |
+| `gemma3:12b`  | `FEW_SHOT`     |  162 |            0.173 |   0.000 |   1.000 |
+| `gemma3:27b`  | `DIRECT`       |  162 |            0.167 |   0.000 |   1.000 |
+| `gemma3:27b`  | `FEW_SHOT`     |  162 |            0.167 |   0.000 |   1.000 |
 
 ### Extraction results by model and prompt
 
@@ -203,12 +205,14 @@ For extraction, `matchRate` is the field-level DTO comparison score.
 
 | Model         | Prompt variant | Rows | Mean `matchRate` | Minimum | Maximum |
 |---------------|----------------|-----:|-----------------:|--------:|--------:|
-| `gpt-4o-mini` | `DIRECT`       |   90 |            1.000 |   1.000 |   1.000 |
-| `gpt-5-nano`  | `DIRECT`       |   90 |            0.999 |   0.933 |   1.000 |
-| `gpt-5-nano`  | `FEW_SHOT`     |    5 |            1.000 |   1.000 |   1.000 |
-
-The few-shot extraction subset currently contains only 5 rows. It should therefore be treated as a small partial run,
-not as a full benchmark comparable to the 90-row direct-prompt extraction runs.
+| `gpt-4o-mini` | `DIRECT`       |  270 |            0.981 |   0.846 |   1.000 |
+| `gpt-4o-mini` | `FEW_SHOT`     |  270 |            0.986 |   0.857 |   1.000 |
+| `gpt-5-nano`  | `DIRECT`       |  270 |            0.975 |   0.000 |   1.000 |
+| `gpt-5-nano`  | `FEW_SHOT`     |  270 |            0.987 |   0.857 |   1.000 |
+| `gemma3:12b`  | `DIRECT`       |  270 |            0.941 |   0.714 |   1.000 |
+| `gemma3:12b`  | `FEW_SHOT`     |  270 |            0.760 |   0.000 |   1.000 |
+| `gemma3:27b`  | `DIRECT`       |  270 |            0.958 |   0.846 |   1.000 |
+| `gemma3:27b`  | `FEW_SHOT`     |  270 |            0.744 |   0.000 |   1.000 |
 
 ---
 
