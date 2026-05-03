@@ -1,17 +1,23 @@
 package cz.vse.kurzweil.llm_process_automation_prototype.dto.request_types;
 
+import com.fasterxml.jackson.annotation.JsonClassDescription;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
+
+@RequiredArgsConstructor
+@JsonClassDescription("Stav zákazníka ve vztahu k FuturaTel CZ.")
 public enum CustomerStatus {
+
+    @JsonPropertyDescription("Nový zákazník.")
     NEW("new"),
+    @JsonPropertyDescription("Stávající zákazník.")
     EXISTING("existing");
 
     private final String value;
-
-    CustomerStatus(String value) {
-        this.value = value;
-    }
 
     @JsonValue
     public String getValue() {
@@ -20,11 +26,12 @@ public enum CustomerStatus {
 
     @JsonCreator
     public static CustomerStatus fromValue(String value) {
-        for (CustomerStatus status : values()) {
-            if (status.value.equalsIgnoreCase(value)) {
-                return status;
-            }
+        if (value == null) {
+            return null;
         }
-        throw new IllegalArgumentException("Unknown customer_status: " + value);
+        return Arrays.stream(values())
+                .filter(status -> status.value.equalsIgnoreCase(value.trim()))
+                .findFirst()
+                .orElse(null);
     }
 }

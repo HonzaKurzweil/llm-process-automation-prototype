@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class DirectExtractionStrategy implements ExtractionStrategy {
 
+    private static final String DIRECT_EXTRACTION_PROMPT = "read_prompts/extraction/direct-system.md";
+
     private final PromptResourceLoader promptLoader;
     private final CatalogService catalogService;
 
@@ -31,13 +33,17 @@ public class DirectExtractionStrategy implements ExtractionStrategy {
     @SuppressWarnings("unchecked")
     public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
         log.debug("Extracting using DIRECT strategy for requestType={}, inputLength={}", requestType, inputText.length());
-        String resolvedSystem = promptLoader.load(requestType.getPromptDirectory() + "/direct-system.md")
-                + "\n\n" + catalogService.generateCatalogMappings();
+
+        String resolvedSystem = promptLoader.load(DIRECT_EXTRACTION_PROMPT)
+                + "\n\n"
+                + catalogService.generateCatalogMappings();
+
         ResponseEntity<ChatResponse, T> response = client.prompt()
                 .system(resolvedSystem)
                 .user(inputText)
                 .call()
                 .responseEntity((Class<T>) requestType.getDtoClass());
+
         log.debug("Extraction complete using DIRECT strategy for requestType={}", requestType);
         return response;
     }

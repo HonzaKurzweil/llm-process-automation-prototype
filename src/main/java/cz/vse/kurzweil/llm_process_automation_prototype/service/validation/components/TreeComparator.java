@@ -14,9 +14,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static cz.vse.kurzweil.llm_process_automation_prototype.commons.Constants.*;
-import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.appendPath;
-import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.indexedPath;
-import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.normalizePath;
+import static cz.vse.kurzweil.llm_process_automation_prototype.commons.TextUtils.*;
 
 @RequiredArgsConstructor
 @Slf4j

@@ -1,0 +1,28 @@
+version: 6.5
+operators:
+  - operatorId: o2
+    name: O2
+    aliases:
+      - O2
+      - o2
+
+  - operatorId: vodafone
+    name: Vodafone
+    aliases:
+      - Vodafone
+      - vodafone
+
+  - operatorId: t_mobile
+    name: T-Mobile
+    aliases:
+      - T-Mobile
+      - T Mobile
+      - t-mobile
+      - t mobile
+
+  - operatorId: unknown
+    name: Unknown
+    aliases:
+      - neuvedeno
+      - neznámý
+      - operátor neuveden

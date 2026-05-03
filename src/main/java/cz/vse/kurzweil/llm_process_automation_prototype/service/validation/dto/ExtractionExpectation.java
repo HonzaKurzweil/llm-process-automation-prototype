@@ -8,7 +8,7 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record ExtractionExpectation(
         String requestTypeId,
-        String templateId,
+        String dtoClassName,
         Map<String, Object> dto,
         List<String> missingFieldPaths
 ) {

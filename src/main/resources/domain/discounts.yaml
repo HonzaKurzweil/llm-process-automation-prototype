@@ -1,4 +1,4 @@
-version: final-1.0
+version: 6.5
 operator: FuturaTel CZ
 discounts:
   - discountId: disc_bundle_10_new
@@ -6,18 +6,29 @@ discounts:
     aliases:
       - balíček 10 %
       - bundle sleva
+      - sleva na balíček
+      - zvýhodnění za balíček
+
   - discountId: disc_porting_mobile_200
     name: Přenos čísla 200 Kč na 6 měsíců
     aliases:
       - sleva za přenos čísla
       - porting bonus
+      - bonus za přenos
+      - zvýhodnění za portaci
+
   - discountId: disc_retention_15_existing
     name: Retenční sleva 15 %
     aliases:
       - retenční sleva 15 %
       - retence 15 %
+      - retenční zvýhodnění
+      - sleva za udržení zákazníka
+
   - discountId: disc_family_line_100
     name: Rodinná linka -100 Kč
     aliases:
       - rodinná linka minus 100
       - sleva na další linku
+      - sleva na rodinnou linku
+      - zvýhodnění další linky

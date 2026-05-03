@@ -1,0 +1,829 @@
+{
+  "generatedAt": "2026-05-02",
+  "generationRunParams": {
+    "mode": "classification",
+    "requestTypeIds": "all",
+    "channels": [
+      "call_transcript"
+    ],
+    "noiseCount": 3,
+    "completenessMode": null,
+    "scenarioKinds": [
+      "singleKnownExact",
+      "singleKnownPartial",
+      "singleKnownWithUnknownTail",
+      "multiKnownMixed",
+      "unknownOnly",
+      "ambiguousInsufficient"
+    ],
+    "knownRequestCount": null,
+    "variantsPerCase": 3,
+    "outputPath": "generated_telecom_benchmark/classification_call_transcript_noise3.json"
+  },
+  "records": [
+    {
+      "recordId": "cl_call_transcript_n3_known_000",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o nový mobilní tarif Mobil Neomezeně 5G.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "nový mobilní tarif Mobil Neomezeně 5G"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_001",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník chce samostatný mobilní tarif Start 5G, ale zatím neposlal všechny kontaktní údaje.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "samostatný mobilní tarif Start 5G"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_002",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o objednávka samostatné mobilní služby s portací čísla.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_new_mobile_order"
+        ],
+        "requestTypeId": "rt_new_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_new_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "objednávka samostatné mobilní služby s portací čísla"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_003",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o rodinný tarif Rodina Plus pro více linek.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "rodinný tarif Rodina Plus pro více linek"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_004",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník chce rodinná mobilní objednávka se dvěma linkami, ale zatím neposlal všechny kontaktní údaje.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "rodinná mobilní objednávka se dvěma linkami"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_005",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o rodinný mobil s hlavní a dětskou linkou.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_family_mobile_order"
+        ],
+        "requestTypeId": "rt_family_mobile_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_family_mobile_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_family_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "rodinný mobil s hlavní a dětskou linkou"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_006",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o pevný internet s routerem pro na instalační adrese.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "pevný internet s routerem pro na instalační adrese"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_007",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník chce objednávka internetu s routerem a mesh jednotkou, ale zatím neposlal všechny kontaktní údaje.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "objednávka internetu s routerem a mesh jednotkou"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_008",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o internet s instalací a hardwarem.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "internet s instalací a hardwarem"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_009",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o balíček internet a televize s TV Family.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "balíček internet a televize s TV Family"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_010",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník chce internet s televizí a set-top boxem, ale zatím neposlal všechny kontaktní údaje.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "internet s televizí a set-top boxem"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_011",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o internet TV balíček se sportovním balíčkem.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_internet_tv_bundle_order"
+        ],
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_internet_tv_bundle_order",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_internet_tv_bundle_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "internet TV balíček se sportovním balíčkem"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_012",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o retenční sleva pro stávajícího zákazníka.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "retenční sleva pro stávajícího zákazníka"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_013",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník chce retenční požadavek kvůli nabídce konkurence, ale zatím neposlal všechny kontaktní údaje.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownPartial",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "retenční požadavek kvůli nabídce konkurence"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_known_014",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o sleva pro stávajícího zákazníka při prodloužení smlouvy.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_retention_discount_request"
+        ],
+        "requestTypeId": "rt_retention_discount_request",
+        "scenarioKind": "singleKnownExact",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "rt_retention_discount_request",
+        "unclassifiableReason": null
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_retention_discount_request",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "sleva pro stávajícího zákazníka při prodloužení smlouvy"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_unclass_015",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník píše jen, že chce něco změnit u služeb, ale neuvádí, jestli jde o mobil, internet, televizi nebo slevu.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [],
+        "requestTypeId": null,
+        "scenarioKind": "ambiguousInsufficient",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 0
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "ambiguousOrInsufficientSignal"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": null,
+            "segmentRole": "ambiguousSignal",
+            "evidenceSnippets": [
+              "Zákazník píše jen, že chce něco změnit u služeb, ale neuvádí, jestli jde o mobil, internet, televizi nebo slevu"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_unclass_016",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, Zákazník prosím o objednávka internetu s routerem a mesh jednotkou; součástí zprávy je i požadavek na reklamaci posledního vyúčtování.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": "rt_fixed_internet_with_hardware_order",
+        "scenarioKind": "singleKnownWithUnknownTail",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "unknownTailSnippet",
+          "hesitationDisfluency",
+          "smalltalkNoise"
+        ],
+        "variantIndex": 1
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "knownRequestTypeWithUnknownTail"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "objednávka internetu s routerem a mesh jednotkou"
+            ]
+          },
+          {
+            "requestTypeId": null,
+            "segmentRole": "unknownTail",
+            "evidenceSnippets": [
+              "součástí zprávy je i požadavek na reklamaci posledního vyúčtování"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    },
+    {
+      "recordId": "cl_call_transcript_n3_unclass_017",
+      "inputText": "Operátor: FuturaTel CZ, dobrý den, s čím pomohu?\nZákazník: Ehm, V jedné zprávě je požadavek na objednávka samostatné mobilní služby s portací čísla a současně na internet s instalací a hardwarem.\nOperátor: Dobře, zapisuji požadavek.\nZákazník: Ještě bokem, preferovaný kontakt je po obědě.\nZákazník: Hezký den a díky.",
+      "metadata": {
+        "mode": "classification",
+        "channel": "call_transcript",
+        "requestTypeIds": [
+          "rt_new_mobile_order",
+          "rt_fixed_internet_with_hardware_order"
+        ],
+        "requestTypeId": null,
+        "scenarioKind": "multiKnownMixed",
+        "completenessMode": null,
+        "requestedNoiseCount": 3,
+        "noiseTags": [
+          "hesitationDisfluency",
+          "smalltalkNoise",
+          "irrelevantInfo"
+        ],
+        "variantIndex": 2
+      },
+      "expectedClassification": {
+        "requestTypeId": "unclassifiable",
+        "unclassifiableReason": "multipleKnownRequestTypesPresent"
+      },
+      "expectedExtractions": [],
+      "evidence": {
+        "requestSegments": [
+          {
+            "requestTypeId": "rt_new_mobile_order",
+            "segmentRole": "primaryKnown",
+            "evidenceSnippets": [
+              "objednávka samostatné mobilní služby s portací čísla"
+            ]
+          },
+          {
+            "requestTypeId": "rt_fixed_internet_with_hardware_order",
+            "segmentRole": "secondaryKnown",
+            "evidenceSnippets": [
+              "internet s instalací a hardwarem"
+            ]
+          }
+        ],
+        "materializedFieldPaths": [],
+        "intentionallyOmittedFieldPaths": [],
+        "evidenceByFieldPath": {},
+        "distractorSnippets": [
+          "Zákazník: Ještě bokem, preferovaný kontakt je po obědě.",
+          "Zákazník: Hezký den a díky."
+        ]
+      }
+    }
+  ]
+}
