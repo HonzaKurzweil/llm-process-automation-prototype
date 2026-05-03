@@ -75,7 +75,8 @@ src/main/
 │   │   └── request_types/                    # Per-request-type DTOs
 │   ├── commons/                              # Rate limiter, prompt loader, utilities
 │   └── config/
-│       └── ChatClientConfig.java             # Spring AI chat client configuration
+│       ├── ChatClientConfig.java             # Spring AI chat client configuration
+│       └── JacksonConfig.java                # Jackson JSON serialization configuration
 └── resources/
     ├── application.properties
     ├── read_prompts/
@@ -86,6 +87,7 @@ src/main/
         ├── results/                          # Validation output reports
         └── generator_helpers/               # YAML specs used for data generation
 scripts/
+├── runAll.sh                                 # Run full benchmark (classification + extraction)
 ├── runClassification.sh                      # Run classification benchmark
 └── runExtraction.sh                          # Run extraction benchmark
 ```
