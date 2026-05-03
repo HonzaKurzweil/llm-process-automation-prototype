@@ -25,6 +25,7 @@ public class Constants {
             "targetServiceId",
             "label",
             "number",
-            "donorOperator"
+            "donorOperator",
+            "lineIndex"
     );
 }

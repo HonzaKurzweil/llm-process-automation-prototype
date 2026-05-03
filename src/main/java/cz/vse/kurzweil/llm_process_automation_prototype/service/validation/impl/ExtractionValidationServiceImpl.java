@@ -34,17 +34,12 @@ public class ExtractionValidationServiceImpl implements ExtractionValidationServ
     private final TreeComparator treeComparator;
     private final ResultExporter resultExporter;
     private final ExtractionService extractionService;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     @Override
     public void validateExtractionService(Path inputFile, PromptVariant variant, ModelType model) {
-        try {
-            ExtractionValidationRunResult runResult = runExtractionValidation(inputFile, variant, model);
-            resultExporter.exportExtractionResults(inputFile, variant, model, runResult);
-        } catch (Exception e) {
-            log.error("Extraction validation failed", e);
-            throw new RuntimeException(e);
-        }
+        ExtractionValidationRunResult runResult = runExtractionValidation(inputFile, variant, model);
+        resultExporter.exportExtractionResults(inputFile, variant, model, runResult);
     }
 
     private ExtractionValidationRunResult runExtractionValidation(Path inputFile, PromptVariant variant, ModelType model) {
@@ -126,9 +121,9 @@ public class ExtractionValidationServiceImpl implements ExtractionValidationServ
         return new ExtractionValidationRecordResult(
                 ctx.record().recordId(),
                 ctx.requestType().getRequestTypeIdReference(),
-                ctx.record().channel(),
-                ctx.record().mode(),
-                ctx.record().noiseTags(),
+                ctx.record().metadata().channel(),
+                ctx.record().metadata().mode(),
+                ctx.record().metadata().noiseTags(),
                 ctx.variant().name(),
                 ctx.model().getModelId(),
                 true,
@@ -154,9 +149,9 @@ public class ExtractionValidationServiceImpl implements ExtractionValidationServ
         return ExtractionValidationRecordResult.failureAfterInvocation(
                 ctx.record().recordId(),
                 ctx.requestType().getRequestTypeIdReference(),
-                ctx.record().channel(),
-                ctx.record().mode(),
-                ctx.record().noiseTags(),
+                ctx.record().metadata().channel(),
+                ctx.record().metadata().mode(),
+                ctx.record().metadata().noiseTags(),
                 ctx.variant().name(),
                 ctx.model().getModelId(),
                 ctx.expectation().missingFieldPaths(),
@@ -169,9 +164,9 @@ public class ExtractionValidationServiceImpl implements ExtractionValidationServ
         return ExtractionValidationRecordResult.failureWithoutInvocation(
                 ctx.record().recordId(),
                 ctx.expectation().requestTypeId(),
-                ctx.record().channel(),
-                ctx.record().mode(),
-                ctx.record().noiseTags(),
+                ctx.record().metadata().channel(),
+                ctx.record().metadata().mode(),
+                ctx.record().metadata().noiseTags(),
                 ctx.variant().name(),
                 ctx.model().getModelId(),
                 "Dataset record does not map to a concrete extraction DTO class."

@@ -8,15 +8,15 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INPUTS_DIR="$SCRIPT_DIR/../src/main/resources/dataset/inputs"
 
 files=(
-"$INPUTS_DIR/cls_broker_n1.json"
-"$INPUTS_DIR/cls_broker_n3.json"
-"$INPUTS_DIR/cls_broker_n5.json"
-"$INPUTS_DIR/cls_call_n1.json"
-"$INPUTS_DIR/cls_call_n3.json"
-"$INPUTS_DIR/cls_call_n5.json"
-"$INPUTS_DIR/cls_crm_n1.json"
-"$INPUTS_DIR/cls_crm_n3.json"
-"$INPUTS_DIR/cls_crm_n5.json"
+"$INPUTS_DIR/classification_broker_email_noise1.json"
+"$INPUTS_DIR/classification_broker_email_noise3.json"
+"$INPUTS_DIR/classification_broker_email_noise5.json"
+"$INPUTS_DIR/classification_call_transcript_noise1.json"
+"$INPUTS_DIR/classification_call_transcript_noise3.json"
+"$INPUTS_DIR/classification_call_transcript_noise5.json"
+"$INPUTS_DIR/classification_crm_ticket_noise1.json"
+"$INPUTS_DIR/classification_crm_ticket_noise3.json"
+"$INPUTS_DIR/classification_crm_ticket_noise5.json"
 )
 
 for file in "${files[@]}"; do

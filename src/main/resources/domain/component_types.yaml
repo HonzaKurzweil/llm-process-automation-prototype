@@ -1,0 +1,29 @@
+version: 6.5
+componentTypes:
+  installationAddress:
+    javaClassName: InstallationAddressDto
+    fields:
+      - path: psc
+        javaType: String
+      - path: city
+        javaType: String
+      - path: street
+        javaType: String
+      - path: houseNumber
+        javaType: String
+
+  mobileLine:
+    javaClassName: MobileLineDto
+    fields:
+      - path: lineIndex
+        javaType: Integer
+      - path: lineRole
+        javaType: MobileLineRole
+      - path: planServiceId
+        javaType: String
+      - path: portingRequested
+        javaType: Boolean
+      - path: portedNumber
+        javaType: String
+      - path: donorOperator
+        javaType: DonorOperator

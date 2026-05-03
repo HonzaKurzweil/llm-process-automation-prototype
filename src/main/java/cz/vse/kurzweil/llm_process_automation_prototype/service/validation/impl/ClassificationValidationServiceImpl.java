@@ -34,13 +34,8 @@ public class ClassificationValidationServiceImpl implements ClassificationValida
 
     @Override
     public void validateClassificationService(Path inputFile, PromptVariant variant, ModelType model) {
-        try {
-            ClassificationValidationRunResult runResult = runClassificationValidation(inputFile, variant, model);
-            resultExporter.exportClassificationResults(inputFile, variant, model, runResult);
-        } catch (Exception e) {
-            log.error("Classification validation failed", e);
-            throw new RuntimeException(e);
-        }
+        ClassificationValidationRunResult runResult = runClassificationValidation(inputFile, variant, model);
+        resultExporter.exportClassificationResults(inputFile, variant, model, runResult);
     }
 
     private ClassificationValidationRunResult runClassificationValidation(Path inputFile, PromptVariant variant, ModelType model) {
@@ -70,9 +65,9 @@ public class ClassificationValidationServiceImpl implements ClassificationValida
         } catch (Exception exception) {
             return ClassificationValidationRecordResult.failure(
                     record.recordId(),
-                    record.channel(),
-                    record.mode(),
-                    record.noiseTags(),
+                    record.metadata().channel(),
+                    record.metadata().mode(),
+                    record.metadata().noiseTags(),
                     variant.name(),
                     model.getModelId(),
                     expectedRequestType,
@@ -86,9 +81,9 @@ public class ClassificationValidationServiceImpl implements ClassificationValida
                 .map(ChatResponseMetadata::getUsage);
         return new ClassificationValidationRecordResult(
                 record.recordId(),
-                record.channel(),
-                record.mode(),
-                record.noiseTags(),
+                record.metadata().channel(),
+                record.metadata().mode(),
+                record.metadata().noiseTags(),
                 variant.name(),
                 model.getModelId(),
                 true,

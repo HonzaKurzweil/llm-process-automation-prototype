@@ -3,7 +3,6 @@ package cz.vse.kurzweil.llm_process_automation_prototype.commons;
 import cz.vse.kurzweil.llm_process_automation_prototype.dto.ModelType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
@@ -17,15 +16,14 @@ class LlmRateLimiterTest {
 
     @BeforeEach
     void setUp() {
-        limiter = new LlmRateLimiter();
-        enableLimiter(0, 3, 0, 2.0);
+        limiter = limiter(true, 0, 3, 0, 2.0);
     }
 
     @Test
     void execute_whenDisabled_callsSupplierDirectly() {
-        ReflectionTestUtils.setField(limiter, "enabled", false);
+        LlmRateLimiter disabled = limiter(false, 0, 3, 0, 2.0);
 
-        String result = limiter.execute(() -> "ok");
+        String result = disabled.execute(() -> "ok");
 
         assertThat(result).isEqualTo("ok");
     }
@@ -76,7 +74,6 @@ class LlmRateLimiterTest {
             throw new RuntimeException("fail");
         };
 
-        // OLLAMA calls skip the limiter and do not retry
         assertThatThrownBy(() -> limiter.execute(ModelType.GEMMA3_12B, alwaysFails))
                 .isInstanceOf(RuntimeException.class);
 
@@ -101,25 +98,21 @@ class LlmRateLimiterTest {
 
     @Test
     void execute_withMaxAttemptsOne_noRetryOnFailure() {
-        enableLimiter(0, 1, 0, 1.0);
-
+        LlmRateLimiter oneAttempt = limiter(true, 0, 1, 0, 1.0);
         AtomicInteger attempts = new AtomicInteger(0);
         Supplier<String> alwaysFails = () -> {
             attempts.incrementAndGet();
             throw new RuntimeException("fail");
         };
 
-        assertThatThrownBy(() -> limiter.execute(alwaysFails)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> oneAttempt.execute(alwaysFails)).isInstanceOf(RuntimeException.class);
         assertThat(attempts.get()).isEqualTo(1);
     }
 
     // --- helper ---
 
-    private void enableLimiter(long minDelayMs, int maxAttempts, long retryInitialDelayMs, double retryMultiplier) {
-        ReflectionTestUtils.setField(limiter, "enabled", true);
-        ReflectionTestUtils.setField(limiter, "minDelayMs", minDelayMs);
-        ReflectionTestUtils.setField(limiter, "maxAttempts", maxAttempts);
-        ReflectionTestUtils.setField(limiter, "retryInitialDelayMs", retryInitialDelayMs);
-        ReflectionTestUtils.setField(limiter, "retryMultiplier", retryMultiplier);
+    private static LlmRateLimiter limiter(boolean enabled, long minDelayMs, int maxAttempts,
+                                          long retryInitialDelayMs, double retryMultiplier) {
+        return new LlmRateLimiter(enabled, minDelayMs, maxAttempts, retryInitialDelayMs, retryMultiplier);
     }
 }

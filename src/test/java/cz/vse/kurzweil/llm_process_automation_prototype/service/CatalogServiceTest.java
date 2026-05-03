@@ -19,11 +19,13 @@ class CatalogServiceTest {
     // --- Section structure ---
 
     @Test
-    void containsAllThreeSectionHeaders() {
+    void containsAllSectionHeaders() {
         assertThat(output)
                 .contains("Services:\n")
                 .contains("Products:\n")
-                .contains("Discounts:\n");
+                .contains("Discounts:\n")
+                .contains("Operators:\n")
+                .contains("Enums:\n");
     }
 
     @Test
@@ -31,8 +33,12 @@ class CatalogServiceTest {
         int servicesIdx = output.indexOf("Services:");
         int productsIdx = output.indexOf("Products:");
         int discountsIdx = output.indexOf("Discounts:");
+        int operatorsIdx = output.indexOf("Operators:");
+        int enumsIdx = output.indexOf("Enums:");
         assertThat(servicesIdx).isLessThan(productsIdx);
         assertThat(productsIdx).isLessThan(discountsIdx);
+        assertThat(discountsIdx).isLessThan(operatorsIdx);
+        assertThat(operatorsIdx).isLessThan(enumsIdx);
     }
 
     @Test
@@ -64,7 +70,7 @@ class CatalogServiceTest {
 
     @Test
     void serviceEntryIncludesAliases() {
-        assertThat(output).contains("- `svc_mobile_start_5g` = Mobil Start 5G (aliases: Start 5G, mobil start, start 5g)");
+        assertThat(output).contains("- `svc_mobile_start_5g` = Mobil Start 5G (aliases: Start 5G, mobil start, start 5g, základní mobilní tarif)");
     }
 
     @Test
@@ -94,12 +100,12 @@ class CatalogServiceTest {
 
     @Test
     void productEntryFormatIsCorrect() {
-        assertThat(output).contains("- `prod_router_standard` = Wi‑Fi Router Standard");
+        assertThat(output).contains("- `prod_router_standard` = Wi-Fi Router Standard");
     }
 
     @Test
     void productEntryIncludesAliases() {
-        assertThat(output).contains("(aliases: router standard, standardní router)");
+        assertThat(output).contains("- `prod_router_standard` = Wi-Fi Router Standard (aliases: router standard, standardní router, základní router)");
     }
 
     @Test
@@ -132,16 +138,80 @@ class CatalogServiceTest {
 
     @Test
     void discountEntryIncludesAliases() {
-        assertThat(output).contains("(aliases: balíček 10 %, bundle sleva)");
+        assertThat(output).contains("- `disc_bundle_10_new` = Balíček 10 % pro nové zákazníky (aliases: balíček 10 %, bundle sleva, sleva na balíček, zvýhodnění za balíček)");
     }
 
     @Test
     void discountIdsAreInDiscountsSection() {
         int discountsIdx = output.indexOf("Discounts:");
-        String discountsSection = output.substring(discountsIdx);
+        int operatorsIdx = output.indexOf("Operators:");
+        String discountsSection = output.substring(discountsIdx, operatorsIdx);
         assertThat(discountsSection)
                 .contains("disc_bundle_10_new")
                 .doesNotContain("svc_")
                 .doesNotContain("prod_");
+    }
+
+    // --- Operators ---
+
+    @Test
+    void containsAllOperatorIds() {
+        assertThat(output).contains("`o2`", "`vodafone`", "`t_mobile`", "`unknown`");
+    }
+
+    @Test
+    void operatorEntryFormatIsCorrect() {
+        assertThat(output).contains("- `o2` = O2");
+    }
+
+    @Test
+    void operatorEntryIncludesAliases() {
+        assertThat(output).contains("- `t_mobile` = T-Mobile (aliases: T-Mobile, T Mobile, t-mobile, t mobile)");
+    }
+
+    @Test
+    void operatorIdsAreInOperatorsSection() {
+        int operatorsIdx = output.indexOf("Operators:");
+        int enumsIdx = output.indexOf("Enums:");
+        String operatorsSection = output.substring(operatorsIdx, enumsIdx);
+        assertThat(operatorsSection)
+                .contains("vodafone")
+                .doesNotContain("svc_")
+                .doesNotContain("disc_")
+                .doesNotContain("prod_");
+    }
+
+    // --- Enums ---
+
+    @Test
+    void containsAllEnumSectionNames() {
+        int enumsIdx = output.indexOf("Enums:");
+        String enumsSection = output.substring(enumsIdx);
+        assertThat(enumsSection)
+                .contains("RequestType:\n")
+                .contains("CustomerStatus:\n")
+                .contains("MobileLineRole:\n");
+    }
+
+    @Test
+    void enumEntryFormatIsCorrect() {
+        assertThat(output).contains("- `new` = NEW");
+    }
+
+    @Test
+    void enumEntryIncludesAliases() {
+        assertThat(output).contains("- `new` = NEW (aliases: nový zákazník, nový klient, nová smlouva)");
+    }
+
+    @Test
+    void enumValuesAreInEnumsSection() {
+        int enumsIdx = output.indexOf("Enums:");
+        String enumsSection = output.substring(enumsIdx);
+        assertThat(enumsSection)
+                .contains("rt_new_mobile_order")
+                .doesNotContain("svc_")
+                .doesNotContain("disc_")
+                .doesNotContain("prod_")
+                .doesNotContain("addr_");
     }
 }

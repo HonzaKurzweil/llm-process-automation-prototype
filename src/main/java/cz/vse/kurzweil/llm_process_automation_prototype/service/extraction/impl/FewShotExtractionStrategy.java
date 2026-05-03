@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class FewShotExtractionStrategy implements ExtractionStrategy {
 
+    private static final String DIRECT_EXTRACTION_PROMPT = "read_prompts/extraction/direct-system.md";
+    private static final String EXTRACTION_FEW_SHOT_PROMPT = "read_prompts/extraction/few-shot-examples.md";
+
     private final PromptResourceLoader promptLoader;
     private final CatalogService catalogService;
 
@@ -31,10 +34,13 @@ public class FewShotExtractionStrategy implements ExtractionStrategy {
     @SuppressWarnings("unchecked")
     public <T> ResponseEntity<ChatResponse, T> extractResponseEntity(String inputText, RequestType requestType, ChatClient client) {
         log.debug("Extracting using FEW_SHOT strategy for requestType={}, inputLength={}", requestType, inputText.length());
-        String dir = requestType.getPromptDirectory();
-        String resolvedSystem = promptLoader.load(dir + "/direct-system.md")
-                + "\n\n" + catalogService.generateCatalogMappings()
-                + "\n\n" + promptLoader.load(dir + "/few-shot-examples.md");
+
+        String resolvedSystem = promptLoader.load(DIRECT_EXTRACTION_PROMPT)
+                + "\n\n"
+                + catalogService.generateCatalogMappings()
+                + "\n\n"
+                + promptLoader.load(EXTRACTION_FEW_SHOT_PROMPT);
+
         ResponseEntity<ChatResponse, T> response = client.prompt()
                 .system(resolvedSystem)
                 .user(inputText)

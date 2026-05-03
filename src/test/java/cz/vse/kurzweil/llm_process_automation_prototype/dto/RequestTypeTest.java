@@ -63,9 +63,6 @@ class RequestTypeTest {
             assertThat(type.getDtoClass())
                     .as("dtoClass for %s", type)
                     .isNotNull();
-            assertThat(type.getPromptDirectory())
-                    .as("promptDirectory for %s", type)
-                    .isNotBlank();
         }
     }
 }
