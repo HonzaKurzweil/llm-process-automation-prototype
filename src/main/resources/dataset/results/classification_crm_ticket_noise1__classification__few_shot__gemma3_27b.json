@@ -1,258 +1,313 @@
 {
-  "inputFile" : "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\classification_crm_ticket_noise1.json",
-  "promptVariant" : "FEW_SHOT",
-  "modelId" : "gemma3:27b",
-  "records" : [ {
-    "recordId" : "cl_crm_ticket_n1_known_000",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_001",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_002",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_003",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_004",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1360,
-    "completionTokens" : 12,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_005",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1351,
-    "completionTokens" : 13,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_006",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_007",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_008",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_009",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_010",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_011",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1351,
-    "completionTokens" : 17,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_012",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1350,
-    "completionTokens" : 14,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_013",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1357,
-    "completionTokens" : 14,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_014",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_crm_ticket_n1_unclass_015",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1365,
-    "completionTokens" : 9,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_unclass_016",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1368,
-    "completionTokens" : 9,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_unclass_017",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1368,
-    "completionTokens" : 9,
-    "errorMessage" : null
-  } ]
+  "inputFile": "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\classification_crm_ticket_noise1.json",
+  "promptVariant": "FEW_SHOT",
+  "modelId": "gemma3:27b",
+  "records": [
+    {
+      "recordId": "cl_crm_ticket_n1_known_000",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_001",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_002",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_003",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_004",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1360,
+      "completionTokens": 12,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_005",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1351,
+      "completionTokens": 13,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_006",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_007",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_008",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_009",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_010",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_011",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1351,
+      "completionTokens": 17,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_012",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1350,
+      "completionTokens": 14,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_013",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1357,
+      "completionTokens": 14,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_014",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_unclass_015",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1365,
+      "completionTokens": 9,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_unclass_016",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1368,
+      "completionTokens": 9,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_unclass_017",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1368,
+      "completionTokens": 9,
+      "errorMessage": null
+    }
+  ]
 }

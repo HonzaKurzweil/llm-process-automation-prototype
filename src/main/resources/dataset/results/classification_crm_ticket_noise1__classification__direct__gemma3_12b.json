@@ -1,258 +1,313 @@
 {
-  "inputFile" : "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\classification_crm_ticket_noise1.json",
-  "promptVariant" : "DIRECT",
-  "modelId" : "gemma3:12b",
-  "records" : [ {
-    "recordId" : "cl_crm_ticket_n1_known_000",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 448,
-    "completionTokens" : 25,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_001",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 453,
-    "completionTokens" : 25,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_002",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 449,
-    "completionTokens" : 25,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_003",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 447,
-    "completionTokens" : 25,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_004",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 457,
-    "completionTokens" : 25,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_005",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 448,
-    "completionTokens" : 25,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_006",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "correct" : true,
-    "promptTokens" : 448,
-    "completionTokens" : 22,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_007",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "correct" : true,
-    "promptTokens" : 456,
-    "completionTokens" : 22,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_008",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 443,
-    "completionTokens" : 32,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_009",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 446,
-    "completionTokens" : 28,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_010",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "correct" : true,
-    "promptTokens" : 454,
-    "completionTokens" : 18,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_011",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 448,
-    "completionTokens" : 28,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_012",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 447,
-    "completionTokens" : 27,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_013",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 454,
-    "completionTokens" : 27,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_known_014",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 451,
-    "completionTokens" : 27,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_unclass_015",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 462,
-    "completionTokens" : 25,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_unclass_016",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "shorthandInternal" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 465,
-    "completionTokens" : 32,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_crm_ticket_n1_unclass_017",
-    "channel" : "crm_ticket",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet" ],
-    "promptVariant" : "DIRECT",
-    "modelId" : "gemma3:12b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 465,
-    "completionTokens" : 22,
-    "errorMessage" : null
-  } ]
+  "inputFile": "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\classification_crm_ticket_noise1.json",
+  "promptVariant": "DIRECT",
+  "modelId": "gemma3:12b",
+  "records": [
+    {
+      "recordId": "cl_crm_ticket_n1_known_000",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 448,
+      "completionTokens": 25,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_001",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 453,
+      "completionTokens": 25,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_002",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 449,
+      "completionTokens": 25,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_003",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 447,
+      "completionTokens": 25,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_004",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 457,
+      "completionTokens": 25,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_005",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 448,
+      "completionTokens": 25,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_006",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "correct": true,
+      "promptTokens": 448,
+      "completionTokens": 22,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_007",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "correct": true,
+      "promptTokens": 456,
+      "completionTokens": 22,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_008",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 443,
+      "completionTokens": 32,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_009",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 446,
+      "completionTokens": 28,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_010",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "correct": true,
+      "promptTokens": 454,
+      "completionTokens": 18,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_011",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 448,
+      "completionTokens": 28,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_012",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 447,
+      "completionTokens": 27,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_013",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 454,
+      "completionTokens": 27,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_known_014",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 451,
+      "completionTokens": 27,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_unclass_015",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 462,
+      "completionTokens": 25,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_unclass_016",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "shorthandInternal"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 465,
+      "completionTokens": 32,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_crm_ticket_n1_unclass_017",
+      "channel": "crm_ticket",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet"
+      ],
+      "promptVariant": "DIRECT",
+      "modelId": "gemma3:12b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 465,
+      "completionTokens": 22,
+      "errorMessage": null
+    }
+  ]
 }

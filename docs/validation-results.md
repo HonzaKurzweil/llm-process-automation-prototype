@@ -162,11 +162,11 @@ The following tables summarize the currently committed `summary.csv` file.
 
 ### Rows by task
 
-| Mode             |      Rows |
-|------------------|----------:|
-| `classification` |      1296 |
-| `extraction`     |      2160 |
-| **Total**        | **3456**  |
+| Mode             |     Rows |
+|------------------|---------:|
+| `classification` |     1296 |
+| `extraction`     |     2160 |
+| **Total**        | **3456** |
 
 ### Rows by model
 

@@ -1,258 +1,313 @@
 {
-  "inputFile" : "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\classification_broker_email_noise1.json",
-  "promptVariant" : "FEW_SHOT",
-  "modelId" : "gemma3:27b",
-  "records" : [ {
-    "recordId" : "cl_broker_email_n1_known_000",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1382,
-    "completionTokens" : 13,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_001",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1386,
-    "completionTokens" : 13,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_002",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_NEW_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1385,
-    "completionTokens" : 13,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_003",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1380,
-    "completionTokens" : 13,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_004",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1391,
-    "completionTokens" : 14,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_005",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FAMILY_MOBILE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1381,
-    "completionTokens" : 13,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_006",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1384,
-    "completionTokens" : 17,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_007",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1389,
-    "completionTokens" : 20,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_008",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1377,
-    "completionTokens" : 17,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_009",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1379,
-    "completionTokens" : 16,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_010",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1390,
-    "completionTokens" : 17,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_011",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : false,
-    "expectedRequestType" : "RT_INTERNET_TV_BUNDLE_ORDER",
-    "actualRequestType" : null,
-    "correct" : false,
-    "promptTokens" : 0,
-    "completionTokens" : 0,
-    "errorMessage" : "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
-  }, {
-    "recordId" : "cl_broker_email_n1_known_012",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1381,
-    "completionTokens" : 14,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_013",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1387,
-    "completionTokens" : 14,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_known_014",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "RT_RETENTION_DISCOUNT_REQUEST",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : false,
-    "promptTokens" : 1387,
-    "completionTokens" : 14,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_unclass_015",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1399,
-    "completionTokens" : 11,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_unclass_016",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "unknownTailSnippet" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1373,
-    "completionTokens" : 9,
-    "errorMessage" : null
-  }, {
-    "recordId" : "cl_broker_email_n1_unclass_017",
-    "channel" : "broker_email",
-    "mode" : "classification",
-    "noiseTags" : [ "greetingSignatureNoise" ],
-    "promptVariant" : "FEW_SHOT",
-    "modelId" : "gemma3:27b",
-    "invocationSucceeded" : true,
-    "expectedRequestType" : "UNCLASSIFIABLE",
-    "actualRequestType" : "UNCLASSIFIABLE",
-    "correct" : true,
-    "promptTokens" : 1397,
-    "completionTokens" : 10,
-    "errorMessage" : null
-  } ]
+  "inputFile": "C:\\Users\\Jan\\Desktop\\projects\\llm-process-automation-prototype\\scripts\\..\\src\\main\\resources\\dataset\\inputs\\classification_broker_email_noise1.json",
+  "promptVariant": "FEW_SHOT",
+  "modelId": "gemma3:27b",
+  "records": [
+    {
+      "recordId": "cl_broker_email_n1_known_000",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1382,
+      "completionTokens": 13,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_001",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1386,
+      "completionTokens": 13,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_002",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_NEW_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1385,
+      "completionTokens": 13,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_003",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1380,
+      "completionTokens": 13,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_004",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1391,
+      "completionTokens": 14,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_005",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FAMILY_MOBILE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1381,
+      "completionTokens": 13,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_006",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1384,
+      "completionTokens": 17,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_007",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1389,
+      "completionTokens": 20,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_008",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_FIXED_INTERNET_WITH_HARDWARE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1377,
+      "completionTokens": 17,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_009",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1379,
+      "completionTokens": 16,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_010",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1390,
+      "completionTokens": 17,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_011",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": false,
+      "expectedRequestType": "RT_INTERNET_TV_BUNDLE_ORDER",
+      "actualRequestType": null,
+      "correct": false,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "errorMessage": "StreamReadException: Unexpected character ('}' (code 125)): was expecting a colon to separate property name and value\n at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]"
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_012",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1381,
+      "completionTokens": 14,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_013",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1387,
+      "completionTokens": 14,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_known_014",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "RT_RETENTION_DISCOUNT_REQUEST",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": false,
+      "promptTokens": 1387,
+      "completionTokens": 14,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_unclass_015",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1399,
+      "completionTokens": 11,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_unclass_016",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "unknownTailSnippet"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1373,
+      "completionTokens": 9,
+      "errorMessage": null
+    },
+    {
+      "recordId": "cl_broker_email_n1_unclass_017",
+      "channel": "broker_email",
+      "mode": "classification",
+      "noiseTags": [
+        "greetingSignatureNoise"
+      ],
+      "promptVariant": "FEW_SHOT",
+      "modelId": "gemma3:27b",
+      "invocationSucceeded": true,
+      "expectedRequestType": "UNCLASSIFIABLE",
+      "actualRequestType": "UNCLASSIFIABLE",
+      "correct": true,
+      "promptTokens": 1397,
+      "completionTokens": 10,
+      "errorMessage": null
+    }
+  ]
 }

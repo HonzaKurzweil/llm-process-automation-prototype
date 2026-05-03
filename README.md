@@ -256,12 +256,12 @@ classification_broker_email_noise1.json          # classification, broker channe
 extraction_incomplete_call_transcript_noise3.json # extraction, call channel, noise level 3, incomplete data
 ```
 
-| Dimension                      | Values                                                        |
-|--------------------------------|---------------------------------------------------------------|
-| Task                           | `classification`, `extraction`                                |
-| Channel                        | `broker_email`, `call_transcript`, `crm_ticket`               |
-| Noise level                    | `noise1`, `noise3`, `noise5`                                  |
-| Completeness (extraction only) | `complete`, `incomplete`                                      |
+| Dimension                      | Values                                          |
+|--------------------------------|-------------------------------------------------|
+| Task                           | `classification`, `extraction`                  |
+| Channel                        | `broker_email`, `call_transcript`, `crm_ticket` |
+| Noise level                    | `noise1`, `noise3`, `noise5`                    |
+| Completeness (extraction only) | `complete`, `incomplete`                        |
 
 ---
 
